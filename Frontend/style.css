@@ -11,8 +11,10 @@
 }
 .carpet{
     position: absolute;
+    top:50%;
+}
+.zIndex1{
     z-index: 1;
-    top:60%;
 }
 .zIndex2{
     z-index: 2;
