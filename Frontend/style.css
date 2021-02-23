@@ -1,0 +1,19 @@
+:root{
+    --white:#fff;
+    --black:#000;
+    --primary :#1C1C67;
+    --secondary: #E6F2FF;
+    --tertiary:#707070;
+    --primary-opacity :#1C1C6750;
+}
+.slider{
+    background-color: #E6F2FF;
+}
+.carpet{
+    position: absolute;
+    z-index: 1;
+    top:60%;
+}
+.zIndex2{
+    z-index: 2;
+}
