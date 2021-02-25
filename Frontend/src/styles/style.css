@@ -18,6 +18,15 @@
 .zIndex2 {
     z-index: 2;
 }
+#first-bar{
+    content:'';
+}
+#second-bar{
+    content:'';
+}
+#third-bar{
+    content:'';
+}
 #heroImage{
     background-image: url("../../_design/assets/undraw/undraw_awesome_rlvy.svg");
     background-position: bottom;
