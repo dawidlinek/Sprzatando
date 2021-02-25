@@ -10,12 +10,22 @@
     background-color: #e6f2ff;
 }
 .carpet {
-    position: absolute;
-    top: 50%;
+    top: 55%;
 }
 .zIndex1 {
     z-index: 1;
 }
 .zIndex2 {
     z-index: 2;
+}
+#heroImage{
+    background-image: url("../../_design/assets/undraw/undraw_awesome_rlvy.svg");
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+@media only screen and (max-width: 1366px){
+    #description{
+        font-size:16px !important; 
+    }
 }
