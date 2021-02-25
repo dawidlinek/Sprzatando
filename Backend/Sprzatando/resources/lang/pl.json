@@ -1,0 +1,11 @@
+{
+    "If you did not request a password reset, no further action is required.": "Jeśli nie żądałeś zmiany hasła, żadna dalsza akcja nie jest wymagana",
+    "Verify Email Address":"Weryfikuj adres email",
+    "If you did not create an account, no further action is required.":"Jeśli nie tworzyłeś konta, żadna dalsza akcja nie jest wymagana.",
+    "Please click the button below to verify your email address.":"Proszę kliknij poniższy przycisk w celu weryfikacji adresu email",
+
+    "Regards": "Met vriendelijke groet",
+    "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser: [:actionURL](:actionURL)": "Als u problemen ondervindt bij het klikken op de knop \":actionText\" kopieert en plakt u de onderstaande URL in uw webbrowser\n[:actionURL](:actionURL)",
+    "All rights reserved.": "Alle rechten voorbehouden."
+
+}
