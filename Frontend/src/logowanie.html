@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,14 +9,14 @@
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
-    
+
     <title>Sprzatnij me:D</title>
-    
+
 </head>
 
 <body>
     <div class="b-row d-flex flex-row">
-        
+
         <!-- <Left column> -->
         <div class="b-col col-12 col-lg-6 p-5">
 
@@ -28,8 +29,8 @@
                 </nav>
                 <a class="navbar-brand text-uppercase" href="#">Sprzątnij Me</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -50,32 +51,34 @@
             <!-- <Form> -->
             <div class="p-5">
                 <h1 class="header text-center text-primary pb-3">Witaj!</h1>
-                <p class="mb-3 text-center text-gray pb-3">Zaloguj się, aby skorzystać z jeszcze większej palety możliwości!</p>
-                <form>
-                    <div class="form-group pb-4">
-                        <label for="FormControlInput1">Email</label>
-                        <input type="email" class="form-control mb-4" id="FormControlInput1"
-                            placeholder="twój@adres.com">
-                        <label for="FormControlInput2">Hasło</label>
-                        <input type="password" class="form-control mb-4" id="FormControlInput2">
-                    </div>
+                <p class="mb-3 text-center text-gray pb-3">Zaloguj się, aby skorzystać z jeszcze większej palety
+                    możliwości!</p>
 
-                    <div class="form-check b-row d-flex flex-row pb-4">
-                        <div class="b-col col-6">
-                            <input type="checkbox" class="form-check-input" id="Check1">
-                            <label class="form-check-label" for="Check1">Pamiętaj mnie</label>
+               
+                    <form>
+                        <div class="form-group pb-4 ">
+                            <label for="FormControlInput1">Email</label>
+                            <input type="email" class="form-control mb-4 w-75 input-group mx-auto " id="FormControlInput1"
+                                placeholder="twój@adres.com">
+                            <label for="FormControlInput2 ">Hasło</label>
+                            <input type="password" class="form-control mb-4 w-75 input-group mx-auto " id="FormControlInput2">
                         </div>
-                        <div class="b-col col-6 d-flex justify-content-end">
-                            <button type="" class="btn ">Przywróć hasło</button>
+    
+                        <div class="form-check b-row d-flex flex-row pb-4">
+                            <div class="b-col col-6">
+                                <input type="checkbox" class="form-check-input" id="Check1">
+                                <label class="form-check-label" for="Check1">Pamiętaj mnie</label>
+                            </div>
+                            <div class="b-col col-6 d-flex justify-content-end">
+                                <button type="" class="btn ">Przywróć hasło</button>
+                            </div>
                         </div>
-                    </div>
-
-
-                    <div class="text-center col-12">
-                        <button type="submit"
-                            class="btn input-block-level form-control center-block btn-primary">Zaloguj!</button>
-                    </div>
-                </form>
+    
+                        <div class="text-center col-12">
+                            <button type="submit"
+                                class="btn input-block-level form-control center-block btn-primary  w-75">Zaloguj!</button>
+                        </div>
+                    </form>
             </div>
             <!-- </Form> -->
         </div>
@@ -84,15 +87,15 @@
 
         <!-- <Right column> -->
         <div class="b-col col-6 vh-100 slider d-none d-lg-flex flex-column justify-content-around align-items-center">
-            <img src="./../assets/img/slider.png" height="60%" width="55%"  class="zIndex2"/>
-            <img src="./../assets/img/floor.png" height="40%" width="40%" class="carpet zIndex1"/>
-            
+            <img src="./../assets/img/slider.png" height="60%" width="55%" class="zIndex2" />
+            <img src="./../assets/img/floor.png" height="40%" width="40%" class="carpet zIndex1" />
+
             <p class="text-center w-100 zIndex2" style="color:var(--tertiary); font-size: 22px;">
                 Jako zalogowany użytkownik <br />
                 masz dostęp do większej palety funkcjonalności!
             </p>
 
-            <div class="d-flex w-100 justify-content-center zIndex2" >
+            <div class="d-flex w-100 justify-content-center zIndex2">
                 <div class="col-2 m-1 h-50" style="background: var(--white);">&nbsp; </div>
                 <div class="col-1 m-1 h-50" style="background: var(--primary-opacity);"> &nbsp;</div>
                 <div class="col-1 m-1 h-50" style="background: var(--primary-opacity);">&nbsp; </div>
@@ -104,4 +107,5 @@
 
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
