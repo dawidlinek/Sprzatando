@@ -18,7 +18,7 @@
     <div class="b-row d-flex flex-row">
 
         <!-- <Left column> -->
-        <div class="b-col col-12 col-lg-6 p-5">
+        <div class="b-col col-12 col-lg-6 p-5 h-100">
 
             <!-- <Navbar> -->
             <nav class="navbar navbar-expand-lg navbar-light pb-3">
@@ -49,42 +49,44 @@
             <!-- </Navbar> -->
 
             <!-- <Form> -->
+            <div class="d-flex justify-content-center align-items-center h-100">
             <div class="p-5">
                 <h1 class="header text-center text-primary pb-3">Witaj!</h1>
-                <p class="mb-3 text-center text-gray pb-3">Zaloguj się, aby skorzystać z jeszcze większej palety
+                <p class="mb-3 text-center text-gray pb-3 mb-3">Zaloguj się, aby skorzystać z jeszcze większej palety
                     możliwości!</p>
 
 
                 <form>
-                    <div class="form-group pb-4 ">
+                    <div class="form-group pb-0">
 
-                        <div class="b-col col-8 mx-auto">
+                        <div class="b-col col-10 mx-auto">
                             <label for="FormControlInput1 col-offset">Email</label>
                             <input type="email" class="form-control mb-4" id="FormControlInput1"
                                 placeholder="twój@adres.com">
                         </div>
-                        <div class="b-col col-8 mx-auto">
-                            <label for="FormControlInput2 ">Hasło</label>
+                        <div class="b-col col-10 mx-auto">
+                            <div class="d-flex flex-row justify-content-between">
+                                <label for="FormControlInput2 ">Hasło</label>
+                                <a href="#" style="text-decoration: none;">Przywróć hasło</a>
+                            </div>
                             <input type="password" class="form-control mb-4 " id="FormControlInput2">
                         </div>
                     </div>
 
-                    <div class="form-check b-row d-flex flex-row pb-4 col-8 mx-auto">
+                    <div class="form-check pb-2 mt-0 mb-5 col-10 mx-auto">
                         <div class="b-col col-6">
                             <input type="checkbox" class="form-check-input" id="Check1">
                             <label class="form-check-label" for="Check1">Pamiętaj mnie</label>
                         </div>
-                        <div class="b-col col-6 d-flex justify-content-end">
-                            <button type="" class="btn ">Przywróć hasło</button>
-                        </div>
                     </div>
-                    <div class="text-center col-8 mx-auto">
+                    <div class="text-center col-10 mx-auto">
                         <button type="submit"
                             class="btn input-block-level form-control center-block btn-primary">Zaloguj!</button>
                     </div>
                 </form>
             </div>
             <!-- </Form> -->
+        </div>
         </div>
         <!-- </Left column> -->
 
