@@ -1,121 +1,172 @@
 <!DOCTYPE html>
 <html lang="pl">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles/fonts.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="./styles/fonts.css">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+        <title>Sprzatnij me:D</title>
+    </head>
 
-    <title>Sprzatnij me:D</title>
-
-</head>
-
-<body>
-    <div class="b-row d-flex flex-row">
-
-        <!-- <Left column> -->
-        <div class="b-col col-12 col-sm-12 col-lg-6 p-5 h-100">
-
-            <!-- <Navbar> -->
-            <nav class="navbar navbar-expand-lg navbar-light pb-3">
-                <nav class="navbar navbar-light">
-                    <a class="navbar-brand" href="#">
-                        <img src="" width="50" height="50" alt="LOGO OBRAZEK TU">
-                    </a>
-                </nav>
-                <a class="navbar-brand text-uppercase" href="#">Sprzątnij Me</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active mr-3">
-                            <a class="nav-link" href="#">
-                                <span class="sr-only">Zaloguj się!</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Rejestracja</a>
-                        </li>
+    <body>
+        <div class="b-row d-flex flex-row" style="min-height: 100vh">
+            <!-- <Left column> -->
+            <div
+                class="b-col col-6 vh-100 slider d-none d-lg-flex flex-column justify-content-around align-items-center"
+            >
+                <div
+                    class="d-flex h-75 w-75 flex-column align-items-center justify-content-center"
+                    style="user-select: none"
+                >
+                    <div id="heroImage" class="h-75 w-50 zIndex2">&nbsp;</div>
+                    <img
+                        src="./../assets/img/floor.png"
+                        width="35%"
+                        class="carpet zIndex1 img-fluid max-width: 45%; height:auto position-absolute"
+                        draggable="false"
+                    />
+                    <p
+                        id="description"
+                        class="text-center w-100 zIndex2 m-3"
+                        style="color: var(--tertiary); font-size: 22px"
+                    >
+                        Jako zalogowany użytkownik <br />
+                        masz dostęp do większej palety funkcjonalności!
+                    </p>
                 </div>
-            </nav>
-            <!-- </Navbar> -->
+                <div class="d-flex w-100 justify-content-center zIndex2">
+                    <div
+                        id="first-bar"
+                        class="m-1 h-50 bg-primary"
+                        style="width: 10%"
+                    ></div>
+                    <div
+                        id="second-bar"
+                        class="m-1 h-50"
+                        style="background: var(--primary-opacity); width: 5%"
+                    ></div>
+                    <div
+                        id="third-bar"
+                        class="m-1 h-50"
+                        style="background: var(--primary-opacity); width: 5%"
+                    ></div>
+                </div>
+            </div>
+            <!-- </Left column> -->
 
-           <!-- <Form> -->
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="p-5 w-100">
-                    <h1 class="header text-center text-primary pb-3">Dołącz do nas!</h1>
-                    
-    
-                    <form>
-                        <div class="form-group pb-0 ">
-                            <div class="b-col col-10 mx-auto">
-                                <label for="FormControlInput1 col-offset">Nazwa</label>
-                                <input type="text" class="form-control mb-4" id="FormControlInput1"
-                                    placeholder="Nazwa użytkownika">
-                            </div>
-                            <div class="b-col col-10 mx-auto">
-                                <label for="FormControlInput1 col-offset">Email</label>
-                                <input type="email" class="form-control mb-4" id="FormControlInput1"
-                                    placeholder="twój@adres.com">
-                            </div>
-                            <div class="b-col col-10 mx-auto">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <label for="FormControlInput2 ">Hasło</label>
-                                    
+            <!-- <Right column> -->
+            <div class="b-col col-12 col-lg-6 p-3 p-lg-5">
+                <!-- <Navbar> -->
+                <nav class="navbar navbar-light pb-3">
+                    <a class="navbar-brand" href="#">
+                        <img src="" width="50" height="50" alt="LOGO" />
+                    </a>
+                    <div class="d-flex justify-content-end">
+                        <ul class="navbar-nav flex-row">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">
+                                    <span
+                                        class="sr-only d-none d-lg-block"
+                                        style="margin-right: 3rem"
+                                        >Zaloguj się!</span
+                                    >
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-primary" href="#"
+                                    >Rejestracja</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- </Navbar> -->
+
+                <!-- <Form> -->
+                <div
+                    class="d-flex justify-content-center align-items-center"
+                    style="min-height: 90%"
+                >
+                    <div class="p-1 p-lg-5 col-12 col-sm-8 col-lg-12 col-xl-9">
+                        <h1 class="header text-center text-primary pb-3">
+                            Dołącz do nas!
+                        </h1>
+
+                        <form>
+                            <div class="form-group pb-0">
+                                <div class="b-col col-10 mx-auto">
+                                    <label for="FormControlInput1 col-offset"
+                                        >Nazwa</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control mb-4"
+                                        id="FormControlInput1"
+                                        placeholder="Nazwa użytkownika"
+                                    />
                                 </div>
-                                <input type="password" class="form-control mb-4 " id="FormControlInput2">
-                            </div>
-                            <div class="b-col col-10 mx-auto">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <label for="FormControlInput2 ">Powtórz hasło</label>
-                                    
+                                <div class="b-col col-10 mx-auto">
+                                    <label for="FormControlInput1 col-offset"
+                                        >Email</label
+                                    >
+                                    <input
+                                        type="email"
+                                        class="form-control mb-4"
+                                        id="FormControlInput1"
+                                        placeholder="twój@adres.com"
+                                    />
                                 </div>
-                                <input type="password" class="form-control mb-4 " id="FormControlInput2">
+                                <div class="b-col col-10 mx-auto">
+                                    <div
+                                        class="d-flex flex-row justify-content-between"
+                                    >
+                                        <label for="FormControlInput2 "
+                                            >Hasło</label
+                                        >
+                                    </div>
+                                    <input
+                                        type="password"
+                                        class="form-control mb-4"
+                                        id="FormControlInput2"
+                                    />
+                                </div>
+                                <div class="b-col col-10 mx-auto">
+                                    <div
+                                        class="d-flex flex-row justify-content-between"
+                                    >
+                                        <label for="FormControlInput2 "
+                                            >Powtórz hasło</label
+                                        >
+                                    </div>
+                                    <input
+                                        type="password"
+                                        class="form-control mb-4"
+                                        id="FormControlInput2"
+                                    />
+                                </div>
                             </div>
-                        </div>
-    
-                        
-                        <div class="text-center col-10 mx-auto">
-                            <button type="submit"
-                                class="btn input-block-level form-control center-block btn-primary">Zarejestruj się!</button>
-                        </div>
-                    </form>
+
+                            <div class="text-center col-10 mx-auto mt-5">
+                                <button
+                                    type="submit"
+                                    class="btn input-block-level form-control center-block btn-primary"
+                                >
+                                    Zarejestruj się!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <!-- </Form> -->
             </div>
+            <!-- </Right column> -->
         </div>
-        <!-- </Left column> -->
 
-
-        <!-- <Right column> -->
-        <div class="b-col col-sm-0 col-6 vh-100 slider d-none d-lg-flex flex-column justify-content-around align-items-center">
-            <img src="./../assets/img/slider.png" height="60%" width="55%" class="zIndex2" />
-            <img src="./../assets/img/floor.png" height="40%" width="40%" class="carpet zIndex1" />
-
-            <p class="text-center w-100 zIndex2" style="color:var(--tertiary); font-size: 22px;">
-                Jako zalogowany użytkownik <br />
-                masz dostęp do większej palety funkcjonalności!
-            </p>
-
-            <div class="d-flex w-100 justify-content-center zIndex2">
-                <div class="col-2 m-1 h-50" style="background: var(--white);">&nbsp; </div>
-                <div class="col-1 m-1 h-50" style="background: var(--primary-opacity);"> &nbsp;</div>
-                <div class="col-1 m-1 h-50" style="background: var(--primary-opacity);">&nbsp; </div>
-            </div>
-        </div>
-        <!-- </Right column> -->
-    </div>
-
-
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-
+        <script src="slider.js"></script>
+        <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
