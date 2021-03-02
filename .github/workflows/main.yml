@@ -32,6 +32,6 @@ jobs:
         with:
           server: 188.210.221.79
           username: srv32303
-          password: dobPh2NNFCmN
+          password:  ${{ secrets.password }}
           server-dir: /domains/sprzatnij.me/public_html/
           local-dir: ./Backend/Sprzatando/
