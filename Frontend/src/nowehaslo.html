@@ -89,39 +89,58 @@
                     class="d-flex justify-content-center align-items-center"
                     style="min-height: 90%"
                 >
-                    <div class="p-1 p-lg-5 col-12 col-sm-8 col-lg-12 col-xl-9">
+                    <div class="p-1 p-lg-5 col-12 col-sm-8 col-lg-12" style="max-width: 600px;">
                         <h1 class="header text-nowrap text-center text-primary pb-4">
-                            Przypomnij hasło
+                            Zmiana hasła
                         </h1>
                         <p class="mb-3 text-center text-gray">
-                            Podaj swój adres e-mail, na który wyślemy link resetujący hasło
+                           Zmień hasło dostępu do konta!
                         </p>
 
                         <form>
-                            <div class="form-group pb-0">
-                                <div class="b-col col-10 mx-auto">
-                                    <label for="FormControlInput1 col-offset"
-                                        >Email</label
+                            <div class="b-col col-10 mx-auto">
+                                <div
+                                    class="d-flex flex-row justify-content-between"
+                                >
+                                    <label for="FormControlInput2 "
+                                        >Nowe hasło</label
                                     >
-                                    <input
-                                        type="email"
-                                        class="form-control mb-4"
-                                        id="FormControlInput1"
-                                        placeholder="twój@adres.com"
-                                    />
                                 </div>
-                                
+                                <input
+                                    type="password"
+                                    class="form-control mb-4"
+                                    id="FormControlInput2"
+                                />
                             </div>
-
-                           
-                            <div class="text-center col-10 mx-auto">
+                            <div class="b-col col-10 mx-auto">
+                                <div
+                                    class="d-flex flex-row justify-content-between"
+                                >
+                                    <label for="FormControlInput2 "
+                                        >Powtórz hasło</label
+                                    >
+                                </div>
+                                <input
+                                    type="password"
+                                    class="form-control mb-4"
+                                    id="FormControlInput2"
+                                />
+                            </div>
+                            <div class="text-center col-10 mx-auto mt-5">
                                 <button
                                     type="submit"
                                     class="btn input-block-level form-control center-block btn-primary"
                                 >
-                                   Zmień!
+                                    Zmień!
                                 </button>
                             </div>
+                        </div>
+
+                        
+                            </div>
+
+                           
+                           
                         </form>
                     </div>
                 </div>
