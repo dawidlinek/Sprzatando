@@ -1,0 +1,40 @@
+:root {
+    --white: #fff;
+    --black: #000;
+    --primary: #1c1c67;
+    --secondary: #e6f2ff;
+    --tertiary: #707070;
+    --primary-opacity: #1c1c6750;
+}
+.slider {
+    background-color: #e6f2ff;
+}
+.carpet {
+    top: 55%;
+}
+.zIndex1 {
+    z-index: 1;
+}
+.zIndex2 {
+    z-index: 2;
+}
+#first-bar{
+    content:'';
+}
+#second-bar{
+    content:'';
+}
+#third-bar{
+    content:'';
+}
+#heroImage{
+    background-image: url("/img/login/undraw/undraw_awesome_rlvy.svg");
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+@media only screen and (max-width: 1366px){
+    #description{
+        font-size:16px !important; 
+    }
+}
