@@ -6,17 +6,26 @@
     --tertiary: #707070;
     --primary-opacity: #1c1c6750;
 }
-.slider {
-    background-color: #e6f2ff;
-}
 .carpet {
-    top: 55%;
+    top: 53%;
 }
 .zIndex1 {
     z-index: 1;
 }
 .zIndex2 {
     z-index: 2;
+}
+.bar{
+    transition: all .5s ease-in-out;
+}
+.bar:hover{
+    cursor: pointer;
+}
+.mainBtn{
+    width:10%;
+}
+.noMainBtn{
+    width:5%;
 }
 #first-bar{
     content:'';
@@ -28,13 +37,31 @@
     content:'';
 }
 #heroImage{
-    background-image: url("../../_design/assets/undraw/undraw_awesome_rlvy.svg");
+    background-image: url("../../assets/img/undraw_awesome_rlvy-min.png");
     background-position: bottom;
     background-size: contain;
     background-repeat: no-repeat;
 }
-@media only screen and (max-width: 1366px){
+@media only screen and (min-width: 3000px){
+    #description{
+        font-size:42px !important; 
+    }
+}
+@media only screen and (max-width: 1440px){
+    .carpet{
+        top:57%;
+    }
     #description{
         font-size:16px !important; 
+    }
+}
+@media only screen and (max-width: 1366px){
+    .carpet{
+        top:54%;
+    }
+}
+@media only screen and (max-width: 1280px){
+    .carpet{
+        top:58%;
     }
 }
