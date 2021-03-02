@@ -5,6 +5,7 @@
     </head>
 
     <body>
+        <div class="b-row d-flex flex-row" style="min-height: 100vh">
     @include('auth.slider')
             <!-- </Left column> -->
 

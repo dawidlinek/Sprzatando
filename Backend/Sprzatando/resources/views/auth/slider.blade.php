@@ -1,4 +1,3 @@
-<div class="b-row d-flex flex-row" style="min-height: 100vh">
     <!-- <Left column> -->
     <div
         class="b-col col-6 vh-100 slider d-none d-lg-flex flex-column justify-content-around align-items-center"
