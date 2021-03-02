@@ -30,11 +30,13 @@
                         </h1>
                         @if ($errors->any())
                         <div class="mb-4 font-medium text-sm text-red-600">
+
                             @foreach ($errors->all() as $error)
                 <p class='text-red'>{{ $error }}</p>
             @endforeach
                         </div>
                     @endif
+                    
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="form-group pb-0">
