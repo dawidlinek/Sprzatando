@@ -34,4 +34,4 @@ jobs:
           username: srv32303
           password: dobPh2NNFCmN
           server-dir: /domains/sprzatnij.me/public_html/
-          localDir: /Backend/Sprzatando/
+          local-dir: ./Backend/Sprzatando/
