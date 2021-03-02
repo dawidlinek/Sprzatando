@@ -5,32 +5,65 @@ const secondBar = document.querySelector('#second-bar');
 const thirdBar = document.querySelector('#third-bar');
 
 const description = document.querySelector('#description');
-let i = 1;
+let i = 2;
 function changeImage(){
-    if(i == 1){
-    heroImage.style.backgroundImage  = "url('../_design/assets/undraw/undraw_pending_approval_xuu9.svg')";
-    firstBar.style.width = "5%";
-    secondBar.style.width = "10%";
-    thirdBar.style.width = "5%";
-    secondBar.classList.add("bg-primary")
-    description.innerHTML = "Jako zalogowany użytkownik <br /> otrzymujesz dostęp do wysłania swojej aplikacji"
+    //first bar
+    if(i==1){
+    heroImage.style.backgroundImage  = "url('../assets/img/undraw_awesome_rlvy-min.png')";
+    description.innerHTML = "Jako zalogowany użytkownik <br /> masz dostęp do większej palety funkcjonalności!";
+    firstBar.classList.remove('bg-info');
+    firstBar.classList.add('bg-primary');
+    secondBar.classList.add('bg-info');
+    thirdBar.classList.add('bg-info');
     i++;
-    }else if (i == 2){
-    heroImage.style.backgroundImage  = "url('../_design/assets/undraw/undraw_Resume_folder_re_e0bi.svg')";
-    firstBar.style.width = "5%";
-    secondBar.style.width = "5%";
-    thirdBar.style.width = "10%";
-    thirdBar.classList.add("bg-primary")
-    description.innerHTML = "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń"
+    }
+    //second bar
+    else if(i==2){
+    heroImage.style.backgroundImage  = "url('../assets/img/undraw_pending_approval_xuu9-min.png')";
+    description.innerHTML = "Jako zalogowany użytkownik <br /> otrzymujesz dostęp do wysłania swojej aplikacji";
+    firstBar.classList.add('bg-info');
+    secondBar.classList.remove('bg-info');
+    secondBar.classList.add('bg-primary');
+    thirdBar.classList.add('bg-info');
     i++;
-    }else{
-    heroImage.style.backgroundImage  = "url('../_design/assets/undraw/undraw_awesome_rlvy.svg')";
-    firstBar.style.width = "10%";
-    secondBar.style.width = "5%";
-    thirdBar.style.width = "5%";
-    firstBar.classList.add("bg-primary")
-    description.innerHTML = "Jako zalogowany użytkownik <br /> masz dostęp do większej palety funkcjonalności!"
-    i = 1;
+    }
+    //third bar
+    else if(i==3){  
+    heroImage.style.backgroundImage  = "url('../assets/img/undraw_Resume_folder_re_e0bi-min.png')";
+    description.innerHTML = "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń";
+    firstBar.classList.add('bg-info');
+    secondBar.classList.add('bg-info');
+    thirdBar.classList.remove('bg-info');
+    thirdBar.classList.add('bg-primary');
+    i =1;
     }
 }
 setInterval(changeImage,5000);
+
+firstBar.addEventListener('click', ()=>{
+    heroImage.style.backgroundImage  = "url('../assets/img/undraw_awesome_rlvy-min.png')";
+    description.innerHTML = "Jako zalogowany użytkownik <br /> masz dostęp do większej palety funkcjonalności!";
+    firstBar.classList.remove('bg-info');
+    firstBar.classList.add('bg-primary');
+    secondBar.classList.add('bg-info');
+    thirdBar.classList.add('bg-info');
+    i = 1;
+});
+secondBar.addEventListener('click', ()=>{
+    heroImage.style.backgroundImage  = "url('../assets/img/undraw_pending_approval_xuu9-min.png')";
+    description.innerHTML = "Jako zalogowany użytkownik <br /> otrzymujesz dostęp do wysłania swojej aplikacji";
+    firstBar.classList.add('bg-info');
+    secondBar.classList.remove('bg-info');
+    secondBar.classList.add('bg-primary');
+    thirdBar.classList.add('bg-info');
+    i = 2;
+});
+thirdBar.addEventListener('click', ()=>{
+    heroImage.style.backgroundImage  = "url('../assets/img/undraw_Resume_folder_re_e0bi-min.png')";
+    description.innerHTML = "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń";
+    firstBar.classList.add('bg-info');
+    secondBar.classList.add('bg-info');
+    thirdBar.classList.remove('bg-info');
+    thirdBar.classList.add('bg-primary');
+    i = 3;
+});
