@@ -28,7 +28,7 @@
     content:'';
 }
 #heroImage{
-    background-image: url("../../_design/assets/undraw/undraw_awesome_rlvy.svg");
+    background-image: url("/img/login/undraw/undraw_awesome_rlvy.svg");
     background-position: bottom;
     background-size: contain;
     background-repeat: no-repeat;

@@ -1,87 +1,18 @@
 <!DOCTYPE html>
 <html lang="pl">
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <link rel="stylesheet" href="/css/login/fonts.css" />
-        <link rel="stylesheet" href="/css/login/style.css" />
-        <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css" />
-
-        <title>Sprzatnij me:D</title>
+      @include('auth.header')
     </head>
 
     <body>
         <div class="b-row d-flex flex-row" style="min-height: 100vh">
-            <!-- <Left column> -->
-            <div
-                class="b-col col-6 vh-100 slider d-none d-lg-flex flex-column justify-content-around align-items-center"
-            >
-                <div
-                    class="d-flex h-75 w-75 flex-column align-items-center justify-content-center"
-                    style="user-select: none"
-                >
-                    <div id="heroImage" class="h-75 w-50 zIndex2">&nbsp;</div>
-                    <img
-                        src="/img/login/floor.png"
-                        width="35%"
-                        class="carpet zIndex1 img-fluid max-width: 45%; height:auto position-absolute"
-                        draggable="false"
-                    />
-                    <p
-                        id="description"
-                        class="text-center w-100 zIndex2 m-3"
-                        style="color: var(--tertiary); font-size: 22px"
-                    >
-                        Jako zalogowany użytkownik <br />
-                        masz dostęp do większej palety funkcjonalności!
-                    </p>
-                </div>
-                <div class="d-flex w-100 justify-content-center zIndex2">
-                    <div
-                        id="first-bar"
-                        class="m-1 h-50 bg-primary"
-                        style="width: 10%"
-                    ></div>
-                    <div
-                        id="second-bar"
-                        class="m-1 h-50"
-                        style="background: var(--primary-opacity); width: 5%"
-                    ></div>
-                    <div
-                        id="third-bar"
-                        class="m-1 h-50"
-                        style="background: var(--primary-opacity); width: 5%"
-                    ></div>
-                </div>
-            </div>
+    @include('auth.slider')
             <!-- </Left column> -->
 
             <!-- <Right column> -->
             <div class="b-col col-12 col-lg-6 p-3 p-lg-5">
                 <!-- <Navbar> -->
-                <nav class="navbar navbar-light pb-3">
-                    <a class="navbar-brand" href="#">
-                        <img src="" width="50" height="50" alt="LOGO" />
-                    </a>
-                    <div class="d-flex justify-content-end">
-                        <ul class="navbar-nav flex-row">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">
-                                    <span
-                                        class="sr-only d-none d-lg-block text-primary"
-                                        style="margin-right: 3rem"
-                                        >Zaloguj się!</span
-                                    >
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Rejestracja</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+               @include('auth.navbar')
                 <!-- </Navbar> -->
 
                 <!-- <Form> -->
