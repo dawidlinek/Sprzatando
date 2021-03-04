@@ -10,13 +10,18 @@
                     <div class="card-body d-flex flex-column align-items-start justify-content-between">
                         <h2 class="card-title text-primary mb-4">Zmień dane konta</h2>
                         @include('auth.errors',["errors"=>$errors])
+                        @if (session('status'))
+                        <div class="alert alert-success mb-2 mt-4 col-10 mx-auto border-0 p-2" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                         {{-- <img src="..." class="card-img" width="50" height="50px" alt="BRAK ZDJĘCIA"> --}}
                         <form class="w-100" method="POST" action="{{route('user.update')}}" >
                             @csrf
                             <label for="FormControlInput1 col-offset">Nazwa</label>
-                            <input type="text" name='name' class="form-control mb-4" />
+                            <input type="text" name='name' required value="{{Auth::user()->name}}" class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Email</label>
-                            <input type="email" name='email' class="form-control mb-4"
+                            <input type="email" name='email' required value="{{Auth::user()->email}}" class="form-control mb-4"
                                 placeholder="twój@adres.com" />
                                 <div class="w-100 d-flex justify-content-end mt-2">
                                     <button class="btn btn-primary">Zapisz zmiany</button>

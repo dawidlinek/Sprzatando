@@ -9,6 +9,8 @@
 ],
 'max'=>[
     "string"=>"Nazwa jest za długa",
-]
-]
+],
+'required' => 'Pole :attribute jest wymagane.',
+'attributes' => ['name'=>"nazwa"],
+];
 ?>
