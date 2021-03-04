@@ -23,6 +23,9 @@
 .bar{
     transition: all .5s ease-in-out;
 }
+.bar:hover{
+    cursor: pointer;
+}
 .mainBtn{
     width:10%;
 }
