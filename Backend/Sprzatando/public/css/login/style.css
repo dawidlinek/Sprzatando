@@ -1,3 +1,4 @@
+/* colors */
 :root {
     --white: #fff;
     --black: #000;
@@ -6,6 +7,14 @@
     --tertiary: #707070;
     --primary-opacity: #1c1c6750;
 }
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+/* class */
 .bg__secondary{
     background:var(--primary-opacity) !important;
 }
@@ -21,12 +30,16 @@
 .bar{
     transition: all .5s ease-in-out;
 }
+.bar:hover{
+    cursor: pointer;
+}
 .mainBtn{
     width:10%;
 }
 .noMainBtn{
     width:5%;
 }
+/* id */
 #first-bar{
     content:'';
 }
@@ -37,42 +50,44 @@
     content:'';
 }
 #heroImage{
-    background-image: url("../../assets/img/undraw_awesome_rlvy-min.png");
+    background-image: url("/img/login/undraw/undraw_awesome_rlvy-min.png");
     background-position: bottom;
     background-size: contain;
     background-repeat: no-repeat;
-    translate:150px 0;
     opacity:0;
 }
 
 
-
-
+/* responsive */
 @media only screen and (min-width: 3000px){
     #description{
         font-size:42px !important; 
     }
 }
 @media only screen and (min-width: 1921px){
-    .carpet{
-        top:60%;
-    }
 }
-@media only screen and (max-width: 1440px){
+@media only screen and (max-width: 1620px){
     .carpet{
         top:57%;
     }
+    #description{
+        font-size:17px !important; 
+    }
+}
+@media only screen and (max-width: 1440px){
+
     #description{
         font-size:16px !important; 
     }
 }
 @media only screen and (max-width: 1366px){
     .carpet{
-        top:54%;
+        top:59%;
     }
 }
 @media only screen and (max-width: 1280px){
-    .carpet{
-        top:58%;
+
+    #description{
+        font-size:13px !important; 
     }
 }

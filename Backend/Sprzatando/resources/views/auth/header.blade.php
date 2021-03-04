@@ -4,6 +4,6 @@
 
 <link rel="stylesheet" href="/css/login/fonts.css" />
 <link rel="stylesheet" href="/css/login/style.css" />
-<link rel="stylesheet" href="/css/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 
 <title>Sprzatnij me:D</title>
