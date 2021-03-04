@@ -45,7 +45,7 @@
                                         >Email</label
                                     >
                                     <input
-                                    name="email" :value="old('email')" required autofocus
+                                    name="email" value="{{old('email')}}" required autofocus
                                         type="email"
                                         class="form-control mb-4"
                                         id="FormControlInput1"

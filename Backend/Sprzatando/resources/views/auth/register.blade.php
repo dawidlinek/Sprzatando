@@ -45,7 +45,7 @@
                                         >Nazwa</label
                                     >
                                     <input
-                                    name="name" :value="old('name')" required autofocus autocomplete="name"
+                                    name="name" :value="{{ old('name') }}" required autofocus autocomplete="name"
                                         type="text"
                                         class="form-control mb-4"
                                         id="FormControlInput1"
@@ -57,7 +57,7 @@
                                         >Email</label
                                     >
                                     <input
-                                    name="email" :value="old('email')" required
+                                    name="email" :value="{{ old('email') }}" required
                                         type="email"
                                         class="form-control mb-4"
                                         id="FormControlInput1"
