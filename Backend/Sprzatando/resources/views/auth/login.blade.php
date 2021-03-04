@@ -39,7 +39,7 @@
                         @include('auth.errors',["errors"=>$errors])
                         <div class="b-col col-10 mx-auto">
                             <label for="FormControlInput1 col-offset">Email</label>
-                            <input name="email" value="{{ old('email') }}" required type="email" class="form-control mb-4" id="FormControlInput1" placeholder="twój@adres.com" />
+                            <input name="email" value="{{ old('email') }}" autofocus required type="email" class="form-control mb-4" id="FormControlInput1" placeholder="twój@adres.com" />
                         </div>
                         <div class="b-col col-10 mx-auto">
                             <div class="d-flex flex-row justify-content-between">
@@ -69,8 +69,6 @@
     <!-- </Right column> -->
     </div>
 
-    <script src="slider.js"></script>
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
