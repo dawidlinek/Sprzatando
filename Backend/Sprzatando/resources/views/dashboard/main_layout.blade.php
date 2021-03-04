@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="./styles/fonts.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/panel.css" />
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/dashboard/panel.css" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
 
     <title>Sprzatnij me:D</title>
 </head>
@@ -80,59 +79,13 @@
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
-                <div class="d-flex justify-content-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <div class="row w-100 match-height">
-
-                        <div class="col-lg col-lg-6">
-                            <div class="card ">
-                                <div class="card-body d-flex flex-column align-items-start justify-content-between">
-                                    <h2 class="card-title text-primary mb-4">Zmień dane konta</h2>
-                                    <img src="..." class="card-img" width="50" height="50px" alt="BRAK ZDJĘCIA">
-                                    <form class="w-100">
-                                        <label for="FormControlInput1 col-offset">Nazwa</label>
-                                        <input type="text" class="form-control mb-4" />
-                                        <label for="FormControlInput1 col-offset">Email</label>
-                                        <input type="email" class="form-control mb-4"
-                                            placeholder="twój@adres.com" />
-                                    </form>
-                                    <div class="w-100 d-flex justify-content-end mt-2">
-                                        <a href="#" class="btn btn-primary">Zapisz zmiany</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-lg-6 mt-3 mt-lg-0">
-                            <div class="card">
-                                <div class="card-body d-flex flex-column align-items-start justify-content-between">
-                                    <h2 class="card-title text-primary mb-4">Zmień hasło</h2>
-
-                                    <form class="w-100">
-                                        <label for="FormControlInput1 col-offset">Aktualne hasło</label>
-                                        <input type="password" class="form-control mb-4" id="FormControlInput1" />
-                                        <label for="FormControlInput1 col-offset">Nowe hasło</label>
-                                        <input type="password" class="form-control mb-4" id="FormControlInput1" />
-                                        <label for="FormControlInput1 col-offset">Powtórz hasło</label>
-                                        <input type="password" class="form-control mb-4" id="FormControlInput1" />
-                                    </form>
-                                    <div class="w-100 d-flex justify-content-end mt-2">
-                                    <a href="#" class="btn btn-primary">Zmień hasło</a>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-    </main>
-
+      
+@yield('main')
     
     </div>
     </div>
 
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

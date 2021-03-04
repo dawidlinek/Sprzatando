@@ -1,45 +1,53 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('dashboard.main_layout')
 
-    <div>
-        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
-                @livewire('profile.update-profile-information-form')
+@section('main')
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+    <div class="d-flex justify-content-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <div class="row w-100 match-height">
 
-                <x-jet-section-border />
-            @endif
-
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.update-password-form')
+            <div class="col-lg col-lg-6">
+                <div class="card ">
+                    <div class="card-body d-flex flex-column align-items-start justify-content-between">
+                        <h2 class="card-title text-primary mb-4">Zmień dane konta</h2>
+                        @include('auth.errors',["errors"=>$errors])
+                        {{-- <img src="..." class="card-img" width="50" height="50px" alt="BRAK ZDJĘCIA"> --}}
+                        <form class="w-100" method="POST" action="{{route('user.update')}}" >
+                            @csrf
+                            <label for="FormControlInput1 col-offset">Nazwa</label>
+                            <input type="text" name='name' class="form-control mb-4" />
+                            <label for="FormControlInput1 col-offset">Email</label>
+                            <input type="email" name='email' class="form-control mb-4"
+                                placeholder="twój@adres.com" />
+                                <div class="w-100 d-flex justify-content-end mt-2">
+                                    <button class="btn btn-primary">Zapisz zmiany</button>
+                                </div>
+                            </form>
+                    </div>
                 </div>
-
-                <x-jet-section-border />
-            @endif
-
-            @if (Laravel\Fortify\Features::canManageTwoFactorAuthentication())
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.two-factor-authentication-form')
-                </div>
-
-                <x-jet-section-border />
-            @endif
-
-            <div class="mt-10 sm:mt-0">
-                @livewire('profile.logout-other-browser-sessions-form')
             </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasAccountDeletionFeatures())
-                <x-jet-section-border />
+            <div class="col-12 col-lg-6 mt-3 mt-lg-0">
+                <div class="card">
+                    <div class="card-body d-flex flex-column align-items-start justify-content-between">
+                        <h2 class="card-title text-primary mb-4">Zmień hasło</h2>
 
-                <div class="mt-10 sm:mt-0">
-                    @livewire('profile.delete-user-form')
+                        <form class="w-100">
+                            <label for="FormControlInput1 col-offset">Aktualne hasło</label>
+                            <input type="password" class="form-control mb-4" id="FormControlInput1" />
+                            <label for="FormControlInput1 col-offset">Nowe hasło</label>
+                            <input type="password" class="form-control mb-4" id="FormControlInput1" />
+                            <label for="FormControlInput1 col-offset">Powtórz hasło</label>
+                            <input type="password" class="form-control mb-4" id="FormControlInput1" />
+                        </form>
+                        <div class="w-100 d-flex justify-content-end mt-2">
+                        <a href="#" class="btn btn-primary">Zmień hasło</a>
+                    </div>
+                    </div>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+</div>
+</main>
+@endsection
