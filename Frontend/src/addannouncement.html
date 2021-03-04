@@ -80,14 +80,14 @@
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+            <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
                 <div class="d-flex justify-content-start flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <div class="row w-100 match-height">
 
                         <div class="card col-lg col-lg-12 d-flex flex-row justify-content-around">
                             <div class="col-lg-5">
                                 <div class="card-body d-flex flex-column align-items-start justify-content-between">
-                                    <h2 class="card-title text-primary mb-4">Dodaj ogłoszenie</h2>
+                                    <h2 class="card-title text-primary mb-5 ">Dodaj ogłoszenie</h2>
                                     <form class="w-100">
                                         <label for="FormControlInput1 col-offset">Tytuł</label>
                                         <input type="text" class="form-control mb-4" />
@@ -95,6 +95,10 @@
                                         <input type="text" class="form-control mb-4" />
                                         <label for="FormControlInput1 col-offset">Cena</label>
                                         <input type="text" class="form-control mb-4" />
+                                            <input type="radio" value="ogród"class="form-check-input mb-4" />
+                                                <label for="ogród">Stawka godzinowa</label>
+                                            <input type="radio" value="ogród"class="form-check-input mb-4" />
+                                                 <label for="ogród">Stawka za całość</label> <br />
                                         <label for="FormControlInput1 col-offset">Opis</label>
                                         <textarea class="form-control mb-1" style="resize: none; height: 30vh;"></textarea>
                                     </form>
@@ -135,11 +139,12 @@
                                             </div>
                                         </div>
                                         <label for="FormControlInput1 col-offset">Dodaj zdjęcia:</label> <br />
-                                            <div class="d-flex justify-content-around align-items-start m-4 w-100 mb-5">
-                                                <img src="../assets/img/rec.png" width="100px" height="100px" alt="BRAK ZDJĘCIA">
-                                                <img src="../assets/img/rec.png" width="100px" height="100px" alt="BRAK ZDJĘCIA">
-                                                <img src="../assets/img/rec.png" width="100px" height="100px" alt="BRAK ZDJĘCIA"><br />
-                                            </div>
+
+                                            <div class="custom-file d-flex justify-content-around align-items-start m-4 w-100 mb-5" style="height: 15vh;">
+                                                <input class="form-control w-25" type="file" id="formFileDisabled" />
+                                                <input class="form-control w-25" type="file" id="formFileDisabled" />
+                                                <input class="form-control w-25" type="file" id="formFileDisabled" />
+                                            </div><br />
                                     <button class="btn btn-primary w-100 mb-5">Dodaj</a>
                                     </form>
                                 </div>
