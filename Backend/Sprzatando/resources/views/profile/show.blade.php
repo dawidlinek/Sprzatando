@@ -9,6 +9,7 @@
                 <div class="card ">
                     <div class="card-body d-flex flex-column align-items-start justify-content-between">
                         <h2 class="card-title text-primary mb-4">Zmień dane konta</h2>
+                        @include('auth.errors',["errors"=>$errors])
                         {{-- <img src="..." class="card-img" width="50" height="50px" alt="BRAK ZDJĘCIA"> --}}
                         <form class="w-100" method="POST" action="{{route('user.update')}}" >
                             @csrf
