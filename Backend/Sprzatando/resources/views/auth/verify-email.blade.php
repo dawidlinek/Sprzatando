@@ -1,37 +1,70 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        @include('auth.header')
+    </head>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
+    <body>
+        <div class="b-row d-flex flex-row" style="min-height: 100vh">
+            <!-- <Left column> -->
+                @include('auth.slider')
+            <!-- </Left column> -->
 
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+           <!-- <Right column> -->
+            <div class="b-col col-12 col-lg-6 p-3 p-lg-5">
+                <!-- <Navbar> -->
+                    @include('auth.navbar',['route'=>""])
+                <!-- </Navbar> -->
+
+                <!-- <Form> -->
+                <div
+                    class="d-flex justify-content-center align-items-center"
+                    style="min-height: 90%"
+                >
+                    <div
+                        class="p-1 p-lg-5 col-12 col-sm-8 col-lg-12"
+                        style="max-width: 600px"
+                    >
+                        <h1 class="header text-center text-primary pb-3 text-nowrap">
+                                Dziękujemy za rejestrację!
+                            </h1> 
+                            <p class="mb-3 text-center text-gray pb-3">
+                                Zanim zaczniemy, czy mógłbyś/mogłabyś zweryfikować swój adres e-mail
+                                poprzez
+                                kliknięcie w link, który właśnie wysłaliśmy na twój adres? Jeśli nie otrzymałeś żadnej wiadomości
+                                e-mail
+                                kliknij poniżej, na podany adres wyślemy nową wiadomość z linkiem do weryfikacji konta. </p>
+                                {{-- @if (session('status')) --}}
+                                @if (session('message'))
+                              
+                                <div class="alert alert-success mb-2 mt-4 col-10 mx-auto border-0 p-2" role="alert">
+                                   Nowy email z linkiem weryfikacyjnym został wysłany na twój adres email.
+                                </div>
+                            @endif
+                          
+                            <form method="POST" action="{{ route('verification.send') }}">
+                                @csrf
+            
+                                    <button type="submit" role="button" class="btn btn-group-lg input-block-level block-center form-control btn-primary">
+                                        Wyślij ponownie!
+                                    </button>
+            
+                                </form>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" role="button" class="btn btn-group-lg input-block-level block-center form-control">
+                                        Wyloguj się
+                                    </button>
+                                </form>
+                        </div>
+                       
+                       
+                <!-- </Form> -->
             </div>
-        @endif
-
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
-
-                <div>
-                    <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
-                    </x-jet-button>
-                </div>
-            </form>
-
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
-            </form>
+            <!-- </Right column> -->
         </div>
-    </x-jet-authentication-card>
-</x-guest-layout>
+
+        <script src="slider.js"></script>
+        <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
