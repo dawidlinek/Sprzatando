@@ -1,3 +1,4 @@
+/* colors */
 :root {
     --white: #fff;
     --black: #000;
@@ -6,6 +7,7 @@
     --tertiary: #707070;
     --primary-opacity: #1c1c6750;
 }
+/* class */
 .bg__secondary{
     background:var(--primary-opacity) !important;
 }
@@ -27,6 +29,7 @@
 .noMainBtn{
     width:5%;
 }
+/* id */
 #first-bar{
     content:'';
 }
@@ -46,8 +49,7 @@
 }
 
 
-
-
+/* responsive */
 @media only screen and (min-width: 3000px){
     #description{
         font-size:42px !important; 
