@@ -13,7 +13,7 @@
         <!-- <Right column> -->
         <div class="b-col col-12 col-lg-6 p-3 p-lg-5">
             <!-- <Navbar> -->
-            @include('auth.navbar')
+            @include('auth.navbar',['route'=>"login"])
             <!-- </Navbar> -->
 
             <!-- <Form> -->
@@ -26,35 +26,20 @@
                         Zaloguj się, aby skorzystać z jeszcze większej
                         palety możliwości!
                     </p>
-
-                    <!-- @if ($errors->any())
-                        <div class="alert alert-danger mb-4 mt-2" role="alert">
-                            @foreach ($errors->all() as $error)
-                            {{ $error }}
-                            @endforeach
-                        </div>
-                        @endif -->
-
-                    {{-- @if (session('status'))
-                        <div class="mb-4 font-medium text-sm text-green-600">
-                            {{ session('status') }}
-                </div>
-                @endif --}}
+                    @if (session('status'))
+                    <div class="alert alert-success mb-2 mt-4 col-10 mx-auto border-0 p-2" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group pb-0">
 
-                        @if ($errors->any())
-                        <div class="alert alert-danger mb-2 mt-4 col-10 mx-auto border-0 p-2" role="alert">
-                            @foreach ($errors->all() as $error)
-                            {{ $error }}
-                            @endforeach
-                        </div>
-                        @endif
-
+                       
+                        @include('auth.errors',["errors"=>$errors])
                         <div class="b-col col-10 mx-auto">
                             <label for="FormControlInput1 col-offset">Email</label>
-                            <input name="email" :value="old('email')" required type="email" class="form-control mb-4" id="FormControlInput1" placeholder="twój@adres.com" />
+                            <input name="email" value="{{ old('email') }}" required type="email" class="form-control mb-4" id="FormControlInput1" placeholder="twój@adres.com" />
                         </div>
                         <div class="b-col col-10 mx-auto">
                             <div class="d-flex flex-row justify-content-between">

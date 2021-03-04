@@ -1,3 +1,4 @@
+/* colors */
 :root {
     --white: #fff;
     --black: #000;
@@ -5,6 +6,10 @@
     --secondary: #e6f2ff;
     --tertiary: #707070;
     --primary-opacity: #1c1c6750;
+}
+/* class */
+.bg__secondary{
+    background:var(--primary-opacity) !important;
 }
 .carpet {
     top: 53%;
@@ -27,6 +32,7 @@
 .noMainBtn{
     width:5%;
 }
+/* id */
 #first-bar{
     content:'';
 }
@@ -41,10 +47,20 @@
     background-position: bottom;
     background-size: contain;
     background-repeat: no-repeat;
+    translate:150px 0;
+    opacity:0;
 }
+
+
+/* responsive */
 @media only screen and (min-width: 3000px){
     #description{
         font-size:42px !important; 
+    }
+}
+@media only screen and (min-width: 1921px){
+    .carpet{
+        top:60%;
     }
 }
 @media only screen and (max-width: 1440px){

@@ -1,69 +1,129 @@
-let heroImage = document.getElementById("heroImage");
+//variables
 
+let heroImage = document.getElementById("heroImage");
 const firstBar = document.querySelector('#first-bar');
 const secondBar = document.querySelector('#second-bar');
 const thirdBar = document.querySelector('#third-bar');
-
 const description = document.querySelector('#description');
+let images = [
+    "url('../assets/img/undraw_awesome_rlvy-min.png')",
+    "url('../assets/img/undraw_pending_approval_xuu9-min.png')",
+    "url('../assets/img/undraw_Resume_folder_re_e0bi-min.png')"
+]
+let descriptions =[
+    "Jako zalogowany użytkownik <br /> masz dostęp do większej palety funkcjonalności!",
+    "Jako zalogowany użytkownik <br /> otrzymujesz dostęp do wysłania swojej aplikacji",
+    "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń"
+]
 let i = 2;
+
+//functions
+
+function changeHero(image,descriptionText,removeAddBar,addBar1,addBar2,nameFunction) {
+        nameFunction;
+        heroImage.style.backgroundImage = image;
+        description.innerHTML = descriptionText;
+        removeAddBar.classList.remove('bg-light', 'noMainBtn');
+        removeAddBar.classList.add('bg-primary','mainBtn');
+        addBar1.classList.add('bg-light', 'noMainBtn');
+        addBar2.classList.add('bg-light', 'noMainBtn');
+}
 function changeImage(){
-    //first bar
-    if(i==1){
-    heroImage.style.backgroundImage  = "url('../assets/img/undraw_awesome_rlvy-min.png')";
-    description.innerHTML = "Jako zalogowany użytkownik <br /> masz dostęp do większej palety funkcjonalności!";
-    firstBar.classList.remove('bg-info', 'noMainBtn');
-    firstBar.classList.add('bg-primary','mainBtn');
-    secondBar.classList.add('bg-info', 'noMainBtn');
-    thirdBar.classList.add('bg-info', 'noMainBtn');
-    i++;
-    }
-    //second bar
-    else if(i==2){
-    heroImage.style.backgroundImage  = "url('../assets/img/undraw_pending_approval_xuu9-min.png')";
-    description.innerHTML = "Jako zalogowany użytkownik <br /> otrzymujesz dostęp do wysłania swojej aplikacji";
-    firstBar.classList.add('bg-info', 'noMainBtn');
-    secondBar.classList.remove('bg-info', 'noMainBtn');
-    secondBar.classList.add('bg-primary','mainBtn');
-    thirdBar.classList.add('bg-info', 'noMainBtn');
-    i++;
-    }
-    //third bar
-    else if(i==3){  
-    heroImage.style.backgroundImage  = "url('../assets/img/undraw_Resume_folder_re_e0bi-min.png')";
-    description.innerHTML = "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń";
-    firstBar.classList.add('bg-info', 'noMainBtn');
-    secondBar.classList.add('bg-info', 'noMainBtn');
-    thirdBar.classList.remove('bg-info', 'noMainBtn');
-    thirdBar.classList.add('bg-primary','mainBtn');
-    i =1;
+    switch (i) {
+        case 1:
+            changeHero(images[0],descriptions[0],firstBar,secondBar,thirdBar,openAnimation());
+            i++;
+            break;
+    
+        case 2:
+            changeHero(images[1],descriptions[1],secondBar,firstBar,thirdBar,openAnimation());
+            i++;
+            break;
+        case 3:
+            changeHero(images[2],descriptions[2],thirdBar,secondBar,firstBar,openAnimation());
+            i = 1; 
     }
 }
+function clickChangeImage(){
+    switch (i) {
+        case 4:
+            changeHero(images[0],descriptions[0],firstBar,secondBar,thirdBar,clickOpenAnimation());
+            i = 2; 
+            break;
+        case 5:
+            changeHero(images[1],descriptions[1],secondBar,firstBar,thirdBar,clickOpenAnimation());
+            i = 3; 
+            break;
+        case 6:
+            changeHero(images[2],descriptions[2],thirdBar,secondBar,firstBar,clickOpenAnimation());
+            i = 1; 
+    }
+}
+changeImage();
 setInterval(changeImage,5000);
 
+// onclick functiions
+
 firstBar.addEventListener('click', ()=>{
-    heroImage.style.backgroundImage  = "url('../assets/img/undraw_awesome_rlvy-min.png')";
-    description.innerHTML = "Jako zalogowany użytkownik <br /> masz dostęp do większej palety funkcjonalności!";
-    firstBar.classList.remove('bg-info', 'noMainBtn');
-    firstBar.classList.add('bg-primary','mainBtn');
-    secondBar.classList.add('bg-info', 'noMainBtn');
-    thirdBar.classList.add('bg-info', 'noMainBtn');
-    i = 1;
+    i=4;
+    changeHero(images[0],descriptions[0],firstBar,secondBar,thirdBar,clickChangeImage());
 });
 secondBar.addEventListener('click', ()=>{
-    heroImage.style.backgroundImage  = "url('../assets/img/undraw_pending_approval_xuu9-min.png')";
-    description.innerHTML = "Jako zalogowany użytkownik <br /> otrzymujesz dostęp do wysłania swojej aplikacji";
-    firstBar.classList.add('bg-info', 'noMainBtn');
-    secondBar.classList.remove('bg-info', 'noMainBtn');
-    secondBar.classList.add('bg-primary','mainBtn');
-    thirdBar.classList.add('bg-info', 'noMainBtn');
-    i = 2;
+    i=5;
+    changeHero(images[1],descriptions[1],secondBar,firstBar,thirdBar,clickChangeImage());
 });
 thirdBar.addEventListener('click', ()=>{
-    heroImage.style.backgroundImage  = "url('../assets/img/undraw_Resume_folder_re_e0bi-min.png')";
-    description.innerHTML = "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń";
-    firstBar.classList.add('bg-info', 'noMainBtn');
-    secondBar.classList.add('bg-info', 'noMainBtn');
-    thirdBar.classList.remove('bg-info', 'noMainBtn');
-    thirdBar.classList.add('bg-primary','mainBtn');
-    i = 3;
+    i=6;
+    changeHero(images[2],descriptions[2],thirdBar,secondBar,firstBar,clickChangeImage());
 });
+
+//animations
+
+function openAnimation(){
+const tl = anime.timeline({
+    targets:heroImage,
+    keyframes:[
+        {translateX:0, opacity:0, duration:1 },
+        {translateX:-150, opacity:1, duration:500},
+        {translateX:-250, opacity:0.7, delay:4000},
+        {translateX:0, opacity:0, duration:1 }
+    ],
+    easing: 'linear',
+    autoplay:'false'
+    })
+    tl.add({
+        targets:"#description",
+        keyframes:[
+            {translateY:0, opacity:0,},
+            {translateY:10, opacity:1},
+            {translateY:0, delay:4400},
+        ],
+        duration:600,
+        easing:'linear',
+        direction:'alternate'
+    })
+}
+function clickOpenAnimation(){
+const tl2 = anime.timeline({
+    targets:heroImage,
+    keyframes:[
+        {translateX:0, opacity:0, duration:1 },
+        {translateX:-150, opacity:1, duration:500},
+        {translateX:-250, opacity:0.7, delay:4000},
+        {translateX:0, opacity:0, duration:1 }
+    ],
+    easing: 'linear',
+    autoplay:'false'
+    })
+    tl2.add({
+        targets:"#description",
+        keyframes:[
+            {translateY:0, opacity:0,},
+            {translateY:10, opacity:1},
+            {translateY:0, delay:4400},
+        ],
+        duration:600,
+        easing:'linear',
+        direction:'alternate'
+    })
+}

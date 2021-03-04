@@ -13,7 +13,7 @@
             <!-- <Right column> -->
             <div class="b-col col-12 col-lg-6 p-3 p-lg-5">
                 <!-- <Navbar> -->
-                    @include('auth.navbar')
+                    @include('auth.navbar',['route'=>"register"])
                 <!-- </Navbar> -->
 
                 <!-- <Form> -->
@@ -45,7 +45,7 @@
                                         >Nazwa</label
                                     >
                                     <input
-                                    name="name" :value="old('name')" required autofocus autocomplete="name"
+                                    name="name" :value="{{ old('name') }}" required autofocus autocomplete="name"
                                         type="text"
                                         class="form-control mb-4"
                                         id="FormControlInput1"
@@ -57,7 +57,7 @@
                                         >Email</label
                                     >
                                     <input
-                                    name="email" :value="old('email')" required
+                                    name="email" :value="{{ old('email') }}" required
                                         type="email"
                                         class="form-control mb-4"
                                         id="FormControlInput1"
