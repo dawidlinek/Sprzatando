@@ -10,16 +10,17 @@
                     <div class="card-body d-flex flex-column align-items-start justify-content-between">
                         <h2 class="card-title text-primary mb-4">Zmień dane konta</h2>
                         {{-- <img src="..." class="card-img" width="50" height="50px" alt="BRAK ZDJĘCIA"> --}}
-                        <form class="w-100">
+                        <form class="w-100" method="POST" action="{{route('user.update')}}" >
+                            @csrf
                             <label for="FormControlInput1 col-offset">Nazwa</label>
                             <input type="text" name='name' class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Email</label>
                             <input type="email" name='email' class="form-control mb-4"
                                 placeholder="twój@adres.com" />
-                        </form>
-                        <div class="w-100 d-flex justify-content-end mt-2">
-                            <a href="#" class="btn btn-primary">Zapisz zmiany</a>
-                        </div>
+                                <div class="w-100 d-flex justify-content-end mt-2">
+                                    <button class="btn btn-primary">Zapisz zmiany</button>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>
