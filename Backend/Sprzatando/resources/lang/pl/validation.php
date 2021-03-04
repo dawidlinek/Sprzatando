@@ -7,5 +7,8 @@
     'string' => 'Musi mieć conajmniej 8 znków.',
     'array' => 'The :attribute must have at least :min items.',
 ],
+'max'=>[
+    "string"=>"Nazwa jest za długa",
+]
 ]
 ?>
