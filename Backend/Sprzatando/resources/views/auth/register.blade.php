@@ -28,14 +28,7 @@
                         <h1 class="header text-center text-primary pb-3">
                             Dołącz do nas!
                         </h1>
-                        @if ($errors->any())
-                        <div class="mb-4 font-medium text-sm text-red-600">
-
-                            @foreach ($errors->all() as $error)
-                <p class='text-red'>{{ $error }}</p>
-            @endforeach
-                        </div>
-                    @endif
+                        @include('auth.errors',["errors"=>$errors])
                     
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
