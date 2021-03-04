@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Validation\Rule;
+use Laravel\Fortify\Rules\Password;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
@@ -32,5 +33,14 @@ class UserController extends Controller
             $user->forceFill($validatedData)->save();
             return back()->with('status', 'Pomyślnie zaktualizowano dane');
         // }
+    }
+    public function updatePassword(Request $request){
+        $validatedData = $request->validate( [
+            'password' =>['required', 'string', new Password, 'confirmed'],
+        ])->validate();
+
+        Auth::user()->forceFill([
+            'password' => Hash::make($validatedData),
+        ])->save();
     }
 }

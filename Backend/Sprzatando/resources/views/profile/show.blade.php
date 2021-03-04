@@ -36,17 +36,18 @@
                     <div class="card-body d-flex flex-column align-items-start justify-content-between">
                         <h2 class="card-title text-primary mb-4">Zmień hasło</h2>
 
-                        <form class="w-100">
+                        <form class="w-100" method="POST" action="{{route('user.update.password')}}">
+                            @csrf
                             <label for="FormControlInput1 col-offset">Aktualne hasło</label>
                             <input type="password" class="form-control mb-4" id="FormControlInput1" />
                             <label for="FormControlInput1 col-offset">Nowe hasło</label>
                             <input type="password" class="form-control mb-4" id="FormControlInput1" />
                             <label for="FormControlInput1 col-offset">Powtórz hasło</label>
                             <input type="password" class="form-control mb-4" id="FormControlInput1" />
+                            <div class="w-100 d-flex justify-content-end mt-2">
+                                <button class="btn btn-primary">Zmień hasło</a>
+                            </div>
                         </form>
-                        <div class="w-100 d-flex justify-content-end mt-2">
-                        <a href="#" class="btn btn-primary">Zmień hasło</a>
-                    </div>
                     </div>
                 </div>
             </div>

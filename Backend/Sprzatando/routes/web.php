@@ -33,6 +33,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
  
 Route::post('/user/profile',[UserController::class,'update'])->name('user.update');
+Route::post('/user/password',[UserController::class,'updatePassword'])->name('user.update.password');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
