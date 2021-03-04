@@ -37,7 +37,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
-        return view('profile.show')->with('status',"Pomyślnie zaktualizowano dane")
+        return view('profile.show')->with('status',"Pomyślnie zaktualizowano dane");
     }
 
     /**
