@@ -13,7 +13,7 @@
             <!-- <Right column> -->
             <div class="b-col col-12 col-lg-6 p-3 p-lg-5">
                 <!-- <Navbar> -->
-                    @include('auth.navbar')
+                    @include('auth.navbar',['route'=>"register"])
                 <!-- </Navbar> -->
 
                 <!-- <Form> -->
