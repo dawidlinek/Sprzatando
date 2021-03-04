@@ -84,7 +84,7 @@ const tl = anime.timeline({
     targets:heroImage,
     keyframes:[
         {translateX:0, opacity:0, duration:1 },
-        {translateX:-150, opacity:1, duration:500},
+        {translateX:-50, opacity:1, duration:500},
         {translateX:-250, opacity:0.7, delay:4000},
         {translateX:0, opacity:0, duration:1 }
     ],
@@ -108,7 +108,7 @@ const tl2 = anime.timeline({
     targets:heroImage,
     keyframes:[
         {translateX:0, opacity:0, duration:1 },
-        {translateX:-150, opacity:1, duration:500},
+        {translateX:-50, opacity:1, duration:500},
         {translateX:-250, opacity:0.7, delay:4000},
         {translateX:0, opacity:0, duration:1 }
     ],
