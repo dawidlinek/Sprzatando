@@ -95,8 +95,8 @@
                                         <label for="FormControlInput1 col-offset">Lokalizacja</label>
                                         <input type="text" class="form-control mb-4" />
                                         <label for="FormControlInput1 col-offset">Cena</label>
-                                        <input type="number" class="form-control mb-4" />
-                                            <input type="radio" value="godzina" id="godzina" name="typUslugi" class="form-check-input mb-4" />
+                                        <input type="number" min="1" step="0.05" class="form-control mb-4" />
+                                            <input type="radio" value="godzina" id="godzina" name="typUslugi" class="form-check-input mb-4" checked />
                                                 <label for="godzina" class="mb-3">Stawka godzinowa</label>
                                             <input type="radio" value="calosc" id="calosc" name="typUslugi" class="form-check-input mb-4" />
                                                  <label for="calosc" class="mb-3">Stawka za całość</label> <br />
@@ -169,46 +169,7 @@
     </main>
     </div>
     </div>
-    <script>
-        const getFirstImage = document.querySelector('#formFileDisabled1');
-        const firstImage = document.querySelector('#first-image');
-            getFirstImage.addEventListener('change',(evt)=>{
-            var tgt = evt.target || window.event.srcElement,
-            files = tgt.files;
-            var fr = new FileReader();
-            fr.onload = function () {
-                firstImage.src = fr.result;
-            }
-            fr.readAsDataURL(files[0]);
-            });
-        const getSecondImage = document.querySelector('#formFileDisabled2');
-        const secondImage = document.querySelector('#second-image');
-            getSecondImage.addEventListener('change',(evt)=>{
-            var tgt = evt.target || window.event.srcElement,
-            files = tgt.files;
-            var fr = new FileReader();
-            fr.onload = function () {
-                secondImage.src = fr.result;
-            }
-            fr.readAsDataURL(files[0]);
-            });
-        const getThirdImage = document.querySelector('#formFileDisabled3');
-        const thirdImage = document.querySelector('#third-image');
-            getThirdImage.addEventListener('change',(evt)=>{
-            var tgt = evt.target || window.event.srcElement,
-            files = tgt.files;
-            var fr = new FileReader();
-            fr.onload = function () {
-                thirdImage.src = fr.result;
-            }
-            fr.readAsDataURL(files[0]);
-            });
-        const descriptionTextArea = document.querySelector('#descriptionTA');
-        const leftSigns = document.querySelector('#signs');
-        descriptionTextArea.addEventListener('input',()=>{
-            leftSigns.innerHTML = 500-descriptionTextArea.value.length;
-        })
-    </script>
+    <script src="./addingannouncement.js"></script>
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
