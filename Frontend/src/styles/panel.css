@@ -64,3 +64,6 @@
 .match-height > [class*="col"] > .card {
     flex: 1 1 auto;
 }
+.w-33{
+    width:33%;
+}
