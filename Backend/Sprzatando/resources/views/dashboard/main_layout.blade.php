@@ -14,14 +14,11 @@
 </head>
 
 <body class="bg-light">
-    <header
-        class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
+    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
         <!-- Logo & hamburger -->
         <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
             <a class="navbar-brand ml-2 px-3 text-left" href="#"> logo </a>
-            <button class="navbar-toggler d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button"
-                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
@@ -33,8 +30,7 @@
                     <a class="text-primary text-decoration-none m-2 col-6 col-md-auto text-left" href="#">
                         Panel użytkownika
                     </a>
-                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
-                        style="white-space: nowrap" href="#">
+                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right" style="white-space: nowrap" href="#">
                         Kontakt
                     </a>
                 </div>
@@ -49,10 +45,12 @@
                         >
                             Zaloguj się
                         </a> -->
-                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
-                        style="white-space: nowrap; padding-right: 1rem" href="#">
-                        Wyloguj się
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right" style="white-space: nowrap; padding-right: 1rem">
+                            Wyloguj się
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -79,10 +77,10 @@
                 </div>
             </nav>
 
-      
-@yield('main')
-    
-    </div>
+
+            @yield('main')
+
+        </div>
     </div>
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
