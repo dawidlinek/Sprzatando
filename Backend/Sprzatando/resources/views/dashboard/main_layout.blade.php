@@ -18,36 +18,30 @@
         <!-- Logo & hamburger -->
         <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
             <a class="navbar-brand ml-2 px-3 text-left" href="#"> logo </a>
-            <button class="navbar-toggler d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0 d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
+        <div class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
             <!-- Przyciski z lewej -->
-            <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
-                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
-                    <a class="text-primary text-decoration-none m-2 col-6 col-md-auto text-left" href="#">
+            <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
+                <div class="d-flex justify-content-between col-auto" style="white-space: nowrap; padding-left: 0.5rem; padding-right: 0.5rem;">
+                    <a class="text-primary text-decoration-none m-2 col-auto text-left" href="#">
                         Panel użytkownika
                     </a>
-                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right" style="white-space: nowrap" href="#">
+                    <a class="text-dark text-decoration-none m-2 col-auto text-right" style="white-space: nowrap" href="#">
                         Kontakt
                     </a>
                 </div>
             </div>
 
             <!-- Przyciski z prawej -->
-            <div class="d-flex mr-2 col-12 col-md-auto">
-                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
-                    <!-- <a
-                            class="text-dark text-decoration-none m-2 col-6 col-md-auto text-left"
-                            href="#"
-                        >
-                            Zaloguj się
-                        </a> -->
+            <div class="d-none d-md-flex mr-2 col-12 col-md-auto">
+                <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right" style="white-space: nowrap; padding-right: 1rem">
+                        <button class="text-dark text-decoration-none m-2 col-5 col-auto text-right bg-transparent border-0 text-nowrap" style="padding-right: 1rem">
                             Wyloguj się
                         </button>
                     </form>
@@ -58,17 +52,52 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse">
                 <div class="position-sticky pt-3">
+                    <!-- Mobile version main links -->
+                    <div class="d-block d-md-none">
+                        <ul class="nav flex-column">
+                            <li class="nav-item m-1">
+                                <a class="nav-link" href="#" style="font-weight: 700;">
+                                    <span data-feather="file"></span>
+                                    Panel użytkownika
+                                </a>
+                            </li>
+                            <li class="nav-item m-1">
+                                <a class="nav-link rounded" href="#">
+                                    <span data-feather="file"></span>
+                                    Kontakt
+                                </a>
+                            </li>
+                            <li class="nav-item m-1">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <button class="nav-link text-decoration-none text-right bg-transparent border-0 text-nowrap">
+                                        Wyloguj się
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                        <hr>
+                    </div>
+
+                    <!-- Sidebar links -->
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item m-1">
+                            <a class="nav-link rounded" href="#">
+                                <span data-feather="home"></span>
+                                Dodaj ogłoszenie
+                            </a>
+                        </li>
+                        <li class="nav-item m-1">
+                            <a class="nav-link rounded" href="#">
                                 <span data-feather="home"></span>
                                 Moje ogłoszenia
                             </a>
                         </li>
                         <li class="nav-item m-1">
-                            <a class="nav-link bg-primary text-white" href="#">
+                            <a class="nav-link bg-primary text-white rounded" href="#">
                                 <span data-feather="file"></span>
                                 Ustawienia
                             </a>
@@ -83,7 +112,7 @@
         </div>
     </div>
 
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
