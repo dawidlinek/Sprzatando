@@ -67,4 +67,7 @@
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
+        {{-- <script src="slider.js"></script> --}}
+        {{-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+    </body>
 </html>
