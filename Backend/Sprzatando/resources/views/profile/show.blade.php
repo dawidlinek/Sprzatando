@@ -12,7 +12,7 @@
         @endif
         <div class="row w-100 match-height">
 
-            <div class="col-lg col-lg-6">
+            <div class="col-12 col-xl-6">
                 <div class="card ">
                     <div class="card-body d-flex flex-column align-items-start justify-content-start">
                         <h2 class="card-title text-primary mb-3 mb-lg-5">Zmień dane konta</h2>
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-lg-6 mt-3 mt-lg-0">
+            <div class="col-12 col-xl-6 mt-3 mt-xl-0">
                 <div class="card">
                     <div class="card-body d-flex flex-column align-items-start justify-content-start">
                         <h2 class="card-title text-primary mb-3 mb-lg-5">Zmień hasło</h2>

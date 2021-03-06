@@ -64,6 +64,15 @@
 .match-height > [class*="col"] > .card {
     flex: 1 1 auto;
 }
-.w-33{
-    width:33%;
+.w-33 {
+    width: 33%;
+}
+
+/*
+ * Cards
+ */
+.card {
+    border: none !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 2px 4px 20px #2732331a !important;
 }

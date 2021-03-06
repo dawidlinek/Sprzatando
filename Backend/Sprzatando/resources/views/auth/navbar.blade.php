@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light pb-3">
     <a class="navbar-brand" href="#">
-        <img src="" width="50" height="50" alt="LOGO" />
+        <img alt=" " src="/img/logo.png" height="60" style="margin-right: 5px;" />
+        <span class="d-none d-xl-inline">SprzatnijME!</span>
     </a>
     <div class="d-flex justify-content-end">
         <ul class="navbar-nav flex-row">

@@ -17,7 +17,10 @@
     <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
         <!-- Logo & hamburger -->
         <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
-            <a class="navbar-brand ml-2 px-3 text-left" href="#"> logo </a>
+            <a class="navbar-brand ml-2 px-3 text-left" href="#">
+                <img alt=" " src="/img/logo.png" height="60" />
+                <span class="d-none d-xl-inline">SprzatnijME!</span>
+            </a>
             <button class="navbar-toggler border-0 d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
