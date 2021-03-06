@@ -88,7 +88,7 @@
                     <!-- Sidebar links -->
                     <ul class="nav flex-column">
                         <li class="nav-item m-1">
-                            <a class="nav-link rounded" href="#">
+                            <a class="nav-link rounded" href="{{route('announcement.create')}}">
                                 <span data-feather="home"></span>
                                 Dodaj ogłoszenie
                             </a>
