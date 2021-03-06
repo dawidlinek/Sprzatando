@@ -19,13 +19,14 @@ class CreateAnnouncementsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->integer('price');
-            $table->timestamps();
-            $table->timestamp('expiring_at');
-            $table->enum('status',['active','finished','reported','banned']);
             $table->foreignId('category_id');
-            $table->integer('views');
-            $table->float('rating');
-            $table->string('rating_description');
+            $table->string('localization');
+            $table->timestamps();
+            $table->timestamp('expiring_at')->nullable();
+            $table->enum('status',['active','finished','reported','banned']);
+            $table->integer('views')->default(0);
+            $table->float('rating')->nullable();
+            $table->string('rating_description')->nullable();
         });
     }
 

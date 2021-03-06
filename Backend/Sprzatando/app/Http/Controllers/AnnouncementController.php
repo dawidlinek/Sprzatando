@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
@@ -38,6 +39,18 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         //
+        $data=$request->validate([
+            'title'=>'required|max:255',
+            'localization'=>'required',
+            'price'=>"numeric|min:1|required",
+            "description"=>"required|max:500",
+            "expiring_at"=>"required|date",
+            "category_id"=>"required|exists:categories,id"
+        ]);
+        // return $data;
+        $data['creator_id']=Auth::id();
+        Announcement::create($data);
+        return back()->with('status',"Pomyślnie dodano nowe ogłoszenie");
     }
 
     /**
