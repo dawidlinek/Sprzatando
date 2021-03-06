@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/css/fonts.css" />
     <link rel="stylesheet" href="/css/dashboard/panel.css" />
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    {{-- <script asynch src="https://maps.google.com/maps/api/js?key=AIzaSyD-Vt-coVq0Nqd2VZc_tEZvvylA36vIO3s&libraries=places" type="text/javascript"></script> --}}
 
     <title>Sprzatnij me:D</title>
 </head>

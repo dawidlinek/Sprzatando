@@ -15,7 +15,17 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('creator_id');
+            $table->string('title');
+            $table->longText('description');
+            $table->integer('price');
             $table->timestamps();
+            $table->timestamp('expiring_at');
+            $table->enum('status',['active','finished','reported','banned']);
+            $table->foreignId('category_id');
+            $table->integer('views');
+            $table->float('rating');
+            $table->string('rating_description');
         });
     }
 

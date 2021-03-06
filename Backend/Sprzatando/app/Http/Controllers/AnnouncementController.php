@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
     public function index()
     {
         //
-        return view('dashboard.mine_announcement');
+        return view('dashboard.my_announcements');
     }
     
     /**

@@ -76,3 +76,12 @@
     border-radius: 0.5rem !important;
     box-shadow: 2px 4px 20px #2732331a !important;
 }
+/* .custom-file-input::-webkit-file-upload-button {
+      visibility: hidden;
+    } */
+    .custom-image{
+        cursor: pointer;
+    }
+.custom-file-input {
+      display: none !important;
+    }
