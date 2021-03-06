@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,8 @@ class AnnouncementController extends Controller
     public function index()
     {
         //
-        return view('dashboard.my_announcements');
+        // return Auth::user()->announcements;
+        return view('dashboard.my_announcements',['announcements'=>Auth::user()->announcements]);
     }
     
     /**
@@ -26,7 +28,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('dashboard.add_announcement');
+        return view('dashboard.add_announcement',['categories'=>Categories::all()]);
         //
     }
     

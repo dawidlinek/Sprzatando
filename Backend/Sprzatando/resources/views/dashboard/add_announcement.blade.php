@@ -59,9 +59,11 @@
                                             </div>
                                         </div> --}}
                                         <select name='category_id' class="form-select mb-5 mt-1">
-                                            <option value="1">Dom</option>
-                                            <option value="2">Mieszkanie</option>
-                                            <option value="3">Mycie Okien</option>
+                                            @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                
+                                            @endforeach
+                                          
                                           </select>
                                         <label for="FormControlInput1 col-offset" class="mb-3">Dodaj zdjęcia:</label> <br />
 
