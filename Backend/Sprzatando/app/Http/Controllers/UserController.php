@@ -32,25 +32,25 @@ class UserController extends Controller
                     // } else {
             $user->forceFill($validatedData)->save();
             return back()->with('status', 'Pomyślnie zaktualizowano dane');
-        // }
-    }
+            // }
+        }
     public function updatePassword(Request $request){
         $validatedData = $request->validate( [
             'old_password'=>['required'],
             'confirmed'=>['required'],
             'password' =>['required', 'string'],
-        ]);
+            ]);
         if($request->password!=$request->confirmed){
-            return view('profile.show',['errors' => ['Hasła się nie zgadzają.'])
-            return back(['errors' => ['Hasła się nie zgadzają.'] ]);
-
+            return back()->withErrors("Hasła się nie zgadzają.");
         }
         if (!Hash::check($request['old_password'], Auth::user()->password)) {
-            return back(['errors' => ['Stare hasło się nie zgadza.'] ]);
+            return back()->withErrors("Stare hasło się nie zgadza.");
        }
 
-        Auth::user()->forceFill([
-            'password' => Hash::make($validatedData),
+       Auth::user()->forceFill([
+            'password' => Hash::make($request->password),
         ])->save();
+        return back()->with('status', 'Pomyślnie zaktualizowano hasło.');
+        
     }
 }
