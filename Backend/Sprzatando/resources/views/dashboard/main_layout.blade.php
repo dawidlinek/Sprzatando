@@ -49,10 +49,13 @@
                         >
                             Zaloguj się
                         </a> -->
-                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
-                        style="white-space: nowrap; padding-right: 1rem" href="#">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                    <button class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
+                        style="white-space: nowrap; padding-right: 1rem" >
                         Wyloguj się
-                    </a>
+                    </button>
+                        </form>
                 </div>
             </div>
         </div>
