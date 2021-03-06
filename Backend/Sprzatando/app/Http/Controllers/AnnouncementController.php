@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
     public function index()
     {
         //
-        return view('dashboard.mine');
+        return view('dashboard.mine_announcement');
     }
     
     /**
@@ -28,7 +28,7 @@ class AnnouncementController extends Controller
         return view('dashboard.add_announcement');
         //
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *

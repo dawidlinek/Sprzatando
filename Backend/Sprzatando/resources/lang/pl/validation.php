@@ -11,6 +11,6 @@
     "string"=>"Nazwa jest za długa",
 ],
 'required' => 'Pole :attribute jest wymagane.',
-'attributes' => ['name'=>"nazwa",'old_password'=>"Stare hasło"],
+'attributes' => ['name'=>"nazwa",'old_password'=>"Stare hasło",'confirmed'=>"Powtórz hasło",'password'=>"Hasło"],
 ];
 ?>
