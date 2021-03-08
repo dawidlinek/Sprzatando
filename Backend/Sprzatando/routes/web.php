@@ -16,6 +16,10 @@ use Illuminate\Http\Request;
 |
 */
 
+// Ssl validation
+Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,9 +37,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
- 
-Route::post('/user/profile',[UserController::class,'update'])->name('user.update');
-Route::post('/user/password',[UserController::class,'updatePassword'])->name('user.update.password');
+
+Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
