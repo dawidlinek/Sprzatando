@@ -41,6 +41,7 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         //
+        return $request->file1->path();
         $data=$request->validate([
             'title'=>'required|max:255',
             'localization'=>'required',

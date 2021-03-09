@@ -18,7 +18,7 @@ class CreateAnnouncementsTable extends Migration
             $table->foreignId('creator_id');
             $table->string('title');
             $table->longText('description');
-            $table->integer('price');
+            $table->float('price');
             $table->foreignId('category_id');
             $table->string('localization');
             $table->timestamps();
