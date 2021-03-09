@@ -102,31 +102,30 @@ descriptionTextArea.addEventListener("input", () => {
 });
 
 // Obsługa kategorii
-const SELECT_ID = "categorySelect";
-const categoryOptions = document.querySelector(`#${SELECT_ID}`);
-const titleSelect = document.querySelector("#title");
-
+const categoryOptions = document.querySelector("#categorySelect");
 const selectedServerSee = document.querySelector("#categoryServerSee");
 const selectedUserSee = categoryOptions.querySelector("option[value='-1']");
 
 let selectedOptionsID = new Set();
 let selectedOptionsNames = new Set();
 
-categoryOptions.addEventListener("click", (e) => {
-    if (e.target.id !== SELECT_ID) {
-        newClickOption(e.target);
-        categoryOptions.value = -1;
-    }
+categoryOptions.addEventListener("change", (e) => {
+    newClickOption(e.target);
+    categoryOptions.value = -1;
 });
 
 function newClickOption(option) {
     // When selected and clicked -> unselect
+    const liText = categoryOptions.querySelector(
+        `option[value='${option.value}']`
+    ).textContent;
+
     if (selectedOptionsID.has(option.value)) {
         selectedOptionsID.delete(option.value);
-        selectedOptionsNames.delete(option.textContent);
+        selectedOptionsNames.delete(liText);
     } else {
         selectedOptionsID.add(option.value);
-        selectedOptionsNames.add(option.textContent);
+        selectedOptionsNames.add(liText);
     }
 
     categoryOptions
