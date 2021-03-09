@@ -82,7 +82,7 @@ class AnnouncementController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -92,6 +92,11 @@ class AnnouncementController extends Controller
     public function edit(Announcement $announcement)
     {
         //
+        if($announcement->creator_id!=Auth::id()){
+            return redirect('/dashboard/announcement');
+        }
+        return $announcement;
+        return view('dashboard.edit_announcement',['announcement'=>$announcement]);
     }
 
     /**
