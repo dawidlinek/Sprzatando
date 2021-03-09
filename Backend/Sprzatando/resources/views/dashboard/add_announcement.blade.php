@@ -69,16 +69,34 @@
 
                         <div class="custom-file d-flex justify-content-between align-items-start w-100 mb-5" style="height: 15vh;">
                             <div class="w-25">
-                                <input class="form-control mb-3 custom-file-input" name='img1' accept="image/png, image/jpeg" type="file" id="formFileDisabled1" />
-                                <label class="form-check-label" for="formFileDisabled1"><img src="/img/dashboard/rec.png" height="150px" width="150px" id="first-image" class="img-fluid custom-image" draggable="false" /></label>
+                                <input class="form-control mb-3" type="file" id="formFileDisabled1"/>
+                                <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
+                                <div class="add-image" >
+                                <img src="../assets/img/rec.png" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false"/>
+                                    <div class="plus-add" id="sectionAddFirstImage">+</div>
+                                </div>
+                                <div class="delete-image w-100" id="first-delete-image">Usuń zdjęcie</div>
+                            </label>
+                            </div>
+                            <div class="w-25  d-flex flex-column">
+                                <input class="form-control mb-3" type="file" id="formFileDisabled2" />
+                                <label class="form-check-label position-relative ramka-image" for="formFileDisabled2">
+                                <div class="add-image">
+                                <img src="../assets/img/rec.png" height="150px" width="150px" id="second-image" class="img-fluid add-image zIndex2" draggable="false"/>
+                                    <div class="plus-add" id="sectionAddSecondImage">+</div>
+                                </div>
+                                <div class="delete-image w-100" id="second-delete-image">Usuń zdjęcie</div>
+                            </label>
                             </div>
                             <div class="w-25">
-                                <input class="form-control mb-3 custom-file-input" name='img2' accept="image/png, image/jpeg" type="file" id="formFileDisabled2" />
-                                <label class="form-check-label" for="formFileDisabled2"><img src="/img/dashboard/rec.png" height="150px" width="150px" id="second-image" class="img-fluid custom-image" draggable="false" /></label>
-                            </div>
-                            <div class="w-25">
-                                <input class="form-control mb-3 custom-file-input" type="file" name='img2' accept="image/png, image/jpeg" id="formFileDisabled3" />
-                                <label class="form-check-label" for="formFileDisabled3"><img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid custom-image" draggable="false" /></label>
+                                <input class="form-control mb-3" type="file" id="formFileDisabled3" />
+                                <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
+                                <div class="add-image" >
+                                <img src="../assets/img/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false"/>
+                                    <div class="plus-add" id="sectionAddThirdImage">+</div>
+                                </div>
+                                <div class="delete-image w-100" id="third-delete-image">Usuń zdjęcie</div>
+                            </label>
                             </div>
                         </div><br />
                         <button type='submit' class="btn btn-primary w-100 mt-5 mb-1 text-white">Dodaj</a>

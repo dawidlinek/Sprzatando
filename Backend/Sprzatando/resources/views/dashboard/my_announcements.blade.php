@@ -75,7 +75,7 @@
                                                                 <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
                                                             </div>
                                                             <div class="b-row d-flex align-text-center p-3">
-                                                                <a class="btn btn-primary w-100 text-nowrap text-white" href='announcement/{{$announcement->id}}/edit'>Edytuj</a>
+                                                                <a class="btn btn-primary w-100 text-nowrap text-white" href="{{ route('announcement.edit', $announcement->id) }}">Edytuj</a>
                                                             </div>
 
                                                         </div>
