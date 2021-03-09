@@ -22,7 +22,7 @@
 
             <!-- <Main form> -->
             <form class="w-100" method='POST' action='{{route('announcement.store')}}' enctype="multipart/form-data">
-@csrf
+                @csrf
                 <div class="row w-100 d-flex flex-lg-row flex-md-column justify-content-around">
 
                     <!-- Left column -->
@@ -50,10 +50,12 @@
                             <div class="w-100">
                                 <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
                                 <input type="date" name='expiring_at' class="form-control mb-4" />
-                                <label for="FormControlInput1 col-offset">Kategoria:</label>
 
                                 <!-- <Kategorie> -->
-                                <select name='category_id' class="form-select mb-4">
+                                <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
+                                <input type="text" class="d-none" id="categoryServerSee" value="" />
+                                <select class="form-select" id="categorySelect" class="form-select mb-4">
+                                    <option selected value="-1" hidden></option>
                                     @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
 
@@ -64,7 +66,7 @@
 
 
                                 <!-- <Image select> -->
-                                <label for="FormControlInput1 col-offset" class="mb-3">Dodaj zdjęcia:</label>
+                                <label for="FormControlInput1 col-offset" class="mb-3 mt-3">Dodaj zdjęcia:</label>
                                 <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
                                     <div class="w-33">
                                         <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1" />
