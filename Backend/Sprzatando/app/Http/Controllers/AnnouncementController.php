@@ -23,7 +23,7 @@ class AnnouncementController extends Controller
         $announcements=Auth::user()->announcements;
         foreach($announcements as $key=>$announcement){
             $images= collect(Storage::disk('uploads')->allFiles($announcement->id))
-            ->sortBy(function ($file) {return Storage::disk('uploads')->lastModified($file);});
+            ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
             if(count($images)>0){
                 $announcements[$key]->main_image='/uploads/'.$images[0];
             }else{
