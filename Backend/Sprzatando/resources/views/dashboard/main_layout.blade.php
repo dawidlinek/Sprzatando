@@ -20,7 +20,7 @@
     <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
         <!-- Logo & hamburger -->
         <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
-            <a class="navbar-brand ml-2 px-3 text-left" href="#">
+            <a class="navbar-brand ml-2 px-3 text-left" href="/">
                 <img alt=" " src="/img/logo.png" height="60" />
                 <span class="d-none d-xl-inline">SprzatnijME!</span>
             </a>
@@ -33,7 +33,7 @@
             <!-- Przyciski z lewej -->
             <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
                 <div class="d-flex justify-content-between col-auto" style="white-space: nowrap; padding-left: 0.5rem; padding-right: 0.5rem;">
-                    <a class="text-primary text-decoration-none m-2 col-auto text-left" href="#">
+                    <a class="text-primary text-decoration-none m-2 col-auto text-left" href="{{route('announcement.index')}}">
                         Panel użytkownika
                     </a>
                     <a class="text-dark text-decoration-none m-2 col-auto text-right" style="white-space: nowrap" href="#">

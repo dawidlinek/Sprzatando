@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="text-center col-10 mx-auto mt-5">
-                            <button type="submit" class="btn input-block-level form-control center-block btn-primary">
+                            <button type="submit" class="btn input-block-level form-control center-block btn-primary text-white">
                                 Zarejestruj się!
                             </button>
                         </div>
@@ -67,7 +67,8 @@
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
-        {{-- <script src="slider.js"></script> --}}
-        {{-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> --}}
-    </body>
+{{-- <script src="slider.js"></script> --}}
+{{-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+</body>
+
 </html>

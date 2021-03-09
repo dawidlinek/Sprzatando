@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // return view('dashboard');
-    return redirect('/user/profile');
+    return redirect('/dashboard/announcement');
 })->name('dashboard');
 
 Route::get('/email/verify', function () {
@@ -47,7 +47,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 Route::middleware(['auth'])->group(function () {
-Route::resource('/announcement', AnnouncementController::class);
+Route::resource('/dashboard/announcement', AnnouncementController::class);
 Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
 
