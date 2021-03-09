@@ -38,13 +38,17 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
-Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
-Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
+    
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+
+Route::middleware(['auth'])->group(function () {
 Route::resource('/announcement', AnnouncementController::class);
+Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
+Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
+
+});
