@@ -10,27 +10,20 @@
                 <div class="cart-title col-12">
                     <h2 class="text-primary mb-4">Moje ogłoszenia</h2>
                 </div>
+                @if(count($announcements)==0)
+                Brak ogłoszeń
+                @endif
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 @foreach ($announcements as $announcement)
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                        <!-- MAIN CONTENT START -->
-                        <div class="card w-100">
-                            <div class="card-body d-flex flex-column align-items-start justify-content-between">
-                                <div class="cart-title col-12">
-                                    <h2 class="text-primary mb-4">Moje ogłoszenia</h2>
-                                </div>
-                                <!-- POJEDYNCZE OGŁOSZENIE -->
-                                @if(count($announcements)==0)
-                                Brak ogłoszeń
-                                @endif
-                                @foreach ($announcements as $announcement)
+                
+                               
+                    
 
 
-                                <div class="card d-flex w-100 mt-3">
-                                    <div class="row w-100 mx-auto">
-                                        <div class="col-md-2 rounded" style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px;">
+                                {{-- <div class="card d-flex w-100 mt-3">
+                                    <div class="row w-100 mx-auto"> --}}
+                                        {{-- <div class="col-md-2 rounded" style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px;">
                                             &nbsp;
                                         </div>
                                         <div class="col-md-8 col-sm-8">
@@ -49,11 +42,11 @@
                                                     <p class="card-text">
                                                         <b-badge><small class="text-danger">b-badge {{$announcement->status}}</small></b-badge>
                                                     </p>
-                                                </div>
+                                                </div> --}}
 
                                                 <div class="card d-flex w-100 mt-3">
                                                     <div class="row w-100 mx-auto">
-                                                        <div class="col-md-2 rounded" style="background-image: url(https://assets.archon.pl/images/products/mfe42422780eaf/widok-1-projekt-dom-w-balsamowcach-2-8719685424c5e520fa9a1911a47e76a0__289.jpg); background-position: center center; background-size: cover; min-height: 200px;">
+                                                        <div class="col-md-2 rounded" style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px;">
                                                             &nbsp;
                                                         </div>
                                                         <div class="col-md-8 col-sm-8">
@@ -89,12 +82,14 @@
                                                     </div>
                                                 </div>
                                                 <!-- POJEDYNCZE OGŁOSZENIE END -->
-                                                @endforeach
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="fixed-bottom offset-md-2 p-4">
+                                            
+                                @endforeach
+            </div>
+        </div>
+        </div>
+    
+    
+                                    {{-- <div class="fixed-bottom offset-md-2 p-4">
                                         <nav aria-label="Strony">
                                             <ul class="pagination justify-content-center">
                                                 <li class="page-item disabled">
@@ -109,7 +104,7 @@
                                             </ul>
                                         </nav>
                                         <!-- PAGINATION END -->
-                                    </div>
+                                    </div> --}}
 
                                     <!-- MAIN CONTENT END -->
                                     <!-- PAGINATION START -->
