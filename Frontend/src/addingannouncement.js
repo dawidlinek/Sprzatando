@@ -2,12 +2,35 @@ const getFirstImage = document.querySelector('#formFileDisabled1');
 const firstImage = document.querySelector('#first-image');
 const firstDeleteImage = document.querySelector('#first-delete-image');
 const sectionFirstImage = document.querySelector('#sectionAddFirstImage');
+let czas1 = 0;
+let czas2 = 0;
+let czas3 = 0;
+function disabled1(){
+    getFirstImage.disabled = true;
+}
+function enabled1(){
+    getFirstImage.disabled = false;
+}
+function disabled2(){
+    getSecondImage.disabled = true;
+}
+function enabled2(){
+    getSecondImage.disabled = false;
+}
+function disabled3(){
+    getThirdImage.disabled = true;
+}
+function enabled3(){
+    getThirdImage.disabled = false;
+}
     firstDeleteImage.addEventListener('click',()=>{
-        firstImage.src = "";
         sectionFirstImage.style.display = 'flex';
-        firstDeleteImage.style.display = 'none';
+        firstImage.src = "";
         getFirstImage.value = null;
         firstImage.style.display = 'none';
+        firstDeleteImage.style.display = 'none';
+        disabled1();
+        setTimeout(enabled1,100)
     })
     getFirstImage.addEventListener('change',(evt)=>{
     var tgt = evt.target,
@@ -31,6 +54,8 @@ const sectionSecondImage = document.querySelector('#sectionAddSecondImage');
         secondImage.style.display = 'none';
         secondDeleteImage.style.display = 'none';
         getSecondImage.value = null;
+        disabled2();
+        setTimeout(enabled2,100)
     })
     getSecondImage.addEventListener('change',(evt)=>{
     var tgt = evt.target,
@@ -54,6 +79,8 @@ const sectionThirdImage = document.querySelector('#sectionAddThirdImage');
         thirdImage.style.display = 'none';
         thirdDeleteImage.style.display = 'none';
         getThirdImage.value = null;
+        disabled3();
+        setTimeout(enabled3,100)
     })
     getThirdImage.addEventListener('change',(evt)=>{
     var tgt = evt.target,
