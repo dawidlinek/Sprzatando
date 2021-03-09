@@ -12,6 +12,9 @@
                                 <h2 class="text-primary mb-4">Moje ogłoszenia</h2>
                             </div>
                             <!-- POJEDYNCZE OGŁOSZENIE -->
+                            @if(count($announcements)==0)
+                                Brak ogłoszeń
+                            @endif
                             @foreach ($announcements as $announcement)
                                 
                          
