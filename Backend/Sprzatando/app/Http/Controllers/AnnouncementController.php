@@ -95,8 +95,10 @@ class AnnouncementController extends Controller
         if($announcement->creator_id!=Auth::id()){
             return redirect('/dashboard/announcement');
         }
-        return $announcement;
-        return view('dashboard.edit_announcement',['announcement'=>$announcement]);
+        $announcement->images= collect(Storage::disk('uploads')->allFiles($announcement->id))
+        ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
+        // return $announcement;
+        return view('dashboard.edit_announcement',['announcement'=>$announcement,'categories'=>Categories::all()]);
     }
 
     /**
