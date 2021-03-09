@@ -100,3 +100,20 @@ const leftSigns = document.querySelector('#signs');
 descriptionTextArea.addEventListener('input',()=>{
     leftSigns.innerHTML = 500-descriptionTextArea.value.length;
 })
+const categoryOptions = document.querySelector('#categorySelect');
+const titleSelect = document.querySelector('#title');
+categoryOptions.addEventListener('click',()=>{
+    categoryOptions.size = 4;
+})
+let tab = []
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+categoryOptions.addEventListener('change',(e)=>{
+
+    tab.push(e.target.value);
+    var uniqTab = tab.filter(onlyUnique)
+    titleSelect.value = uniqTab;
+    titleSelect.innerHTML = titleSelect.value.toString();
+    console.log(e.target.value)
+});

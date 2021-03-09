@@ -3,7 +3,7 @@ const secondNumber = document.querySelector('#secondNum');
 const thirdNumber = document.querySelector('#thirdNum');
 let i = 0;
 function randomNumber(){
-    if(i > 20){
+    if(i > 5){
         firstNumber.innerHTML = "4";
         secondNumber.innerHTML ="0"
         thirdNumber.innerHTML ="4";
