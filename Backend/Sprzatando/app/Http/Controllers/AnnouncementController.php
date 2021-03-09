@@ -20,7 +20,8 @@ class AnnouncementController extends Controller
     {
         //
         // return Auth::user()->announcements;
-        $announcements=Auth::user()->announcements;
+        $announcements=Auth::user()->announcements->reverse();
+        // $announcements=array_reverse($announcements);
         foreach($announcements as $key=>$announcement){
             $images= collect(Storage::disk('uploads')->allFiles($announcement->id))
             ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
@@ -64,9 +65,16 @@ class AnnouncementController extends Controller
         // return $data;
         $data['creator_id']=Auth::id();
         $announcement=Announcement::create($data);
+        // foreach($request->categories as $categoty){
+        //     $announcement
+        // }
+        $x=0;
         for($i=1;$i<4;$i++){
             if($request->hasFile('img'.$i)){
-                $request->file('img'.$i)->store($announcement->id,'uploads');
+                 $x++;
+                 $path=$request->file('img'.$i)->store($announcement->id,'uploads');
+                 $key='img'.$x;
+                 $announcement->update([$key=>$path]);
             }
         }
         return back()->with('status',"Pomyślnie dodano nowe ogłoszenie");
@@ -95,7 +103,7 @@ class AnnouncementController extends Controller
         if($announcement->creator_id!=Auth::id()){
             return redirect('/dashboard/announcement');
         }
-        $announcement->images= collect(Storage::disk('uploads')->allFiles($announcement->id))
+        $announcement->images = collect(Storage::disk('uploads')->allFiles($announcement->id))
         ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
         // return $announcement;
         return view('dashboard.edit_announcement',['announcement'=>$announcement,'categories'=>Categories::all()]);
@@ -111,6 +119,7 @@ class AnnouncementController extends Controller
     public function update(Request $request, Announcement $announcement)
     {
         //
+
     }
 
     /**
