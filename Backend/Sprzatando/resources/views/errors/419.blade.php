@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
-    @include('error.header')
+    @include('errors.header')
 <body style="height: 100vh; width: 100vw;">
      <main class="col-md-12 ms-sm-auto col-lg-12 px-md-4 bg-light bg-light h-100 w-100 d-flex align-items-center justify-content-center text-center" >
         <div class="card w-75 h-75 d-flex flex-column align-items-center justify-content-center">
@@ -14,7 +14,7 @@
     </div>
      </main>
 
-     @include('error.footer')
+     @include('errors.footer')
 </body>
 
 </html>
