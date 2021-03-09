@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/panel.css" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+
+    <title>Sprzatnij me:D</title>
+
+</head>
+
+<body class="bg-light">
+    <header
+        class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
+        <!-- Logo & hamburger -->
+        <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
+            <a class="navbar-brand ml-2 px-3 text-left" href="#"> logo </a>
+            <button class="navbar-toggler d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
+            <!-- Przyciski z lewej -->
+            <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
+                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
+                    <a class="text-primary text-decoration-none m-2 col-6 col-md-auto text-left" href="#">
+                        Panel użytkownika
+                    </a>
+                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
+                        style="white-space: nowrap" href="#">
+                        Kontakt
+                    </a>
+                </div>
+            </div>
+
+            <!-- Przyciski z prawej -->
+            <div class="d-flex mr-2 col-12 col-md-auto">
+                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
+                    <!-- <a
+                            class="text-dark text-decoration-none m-2 col-6 col-md-auto text-left"
+                            href="#"
+                        >
+                            Zaloguj się
+                        </a> -->
+                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
+                        style="white-space: nowrap; padding-right: 1rem" href="#">
+                        Wyloguj się
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="home"></span>
+                                Moje ogłoszenia
+                            </a>
+                        </li>
+                        <li class="nav-item m-1">
+                            <a class="nav-link bg-primary text-white" href="#">
+                                <span data-feather="file"></span>
+                                Ustawienia
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+                <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
+                    <div class="row w-100 match-height">
+
+                        <div class="card col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
+                            <div class="col-lg-5">
+                                <div class="card-body d-flex flex-column align-items-start justify-content-between">
+                                    <h2 class="card-title text-primary mt-4 mb-4 ">Dodaj ogłoszenie</h2>
+                                    <form class="w-100">
+                                        <label for="FormControlInput1 col-offset">Tytuł</label>
+                                        <input type="text" class="form-control mb-4" />
+                                        <label for="FormControlInput1 col-offset">Lokalizacja</label>
+                                        <input type="text" class="form-control mb-4" />
+                                        <label for="FormControlInput1 col-offset">Cena</label>
+                                        <input type="number" min="1" step="0.05" class="form-control mb-4" />
+                                            <input type="radio" value="godzina" id="godzina" name="typUslugi" class="form-check-input mb-4" checked />
+                                                <label for="godzina" class="mb-3">Stawka godzinowa</label>
+                                            <input type="radio" value="calosc" id="calosc" name="typUslugi" class="form-check-input mb-4" />
+                                                 <label for="calosc" class="mb-3">Stawka za całość</label> <br />
+                                        <label for="FormControlInput1 col-offset">Opis</label>
+                                        <textarea maxlength="500" id="descriptionTA" class="form-control mb-1" style="resize: none; height: 30vh;"></textarea>
+                                    </form>
+                                    <p >Pozostało <span id="signs">500</span> znaków</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 d-flex align-items-center justify-content-center">
+                                <div class="card-body d-flex flex-column align-items-center justify-content-around h-100">
+                                    <form class="w-100">
+                                        <p>&nbsp;</p>
+                                        <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
+                                        <input type="number" class="form-control mt-1 mb-5" />
+                                        <label for="FormControlInput1 col-offset" class="mb-5 ">Kategorie:</label> <br />
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex">
+                                                <div class="w-33">
+                                                    <input type="checkbox" value="ogród"class="form-check-input mb-4" />
+                                                        <label for="ogród">Ogród</label>
+                                                </div>
+                                                <div class="w-33">
+                                                    <input type="checkbox" value="ogród"class="form-check-input mb-4" />
+                                                        <label for="ogród">Biuro</label>
+                                                </div>
+                                                <div class="w-33">
+                                                    <input type="checkbox" value="ogród"class="form-check-input mb-4" />
+                                                        <label for="ogród">Dachy</label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class=" w-33">
+                                                    <input type="checkbox" value="ogród"class="form-check-input mb-4" />
+                                                        <label for="ogród">Mieszkanie</label>
+                                                </div>
+                                                <div class=" w-33">
+                                                    <input type="checkbox" value="ogród"class="form-check-input mb-4" />
+                                                        <label for="ogród">Mycie okien</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label for="FormControlInput1 col-offset" class="mb-3">Dodaj zdjęcia:</label> <br />
+
+                                            <div class="custom-file d-flex justify-content-between align-items-start w-100 mb-5" style="height: 15vh;">
+                                                <div class="w-25">
+                                                    <input class="form-control mb-3" type="file" id="formFileDisabled1"/>
+                                                    <label class="form-check-label" for="formFileDisabled1"><img src="../assets/img/rec.png" height="150px" width="150px"  id="first-image" class="img-fluid" draggable="false"/></label>
+                                                </div>
+                                                <div class="w-25">
+                                                    <input class="form-control mb-3" type="file" id="formFileDisabled2" />
+                                                    <label class="form-check-label" for="formFileDisabled2"><img src="../assets/img/rec.png" height="150px" width="150px" id="second-image" class="img-fluid" draggable="false"/></label>
+                                                </div>
+                                                <div class="w-25">
+                                                    <input class="form-control mb-3" type="file" id="formFileDisabled3" />
+                                                    <label class="form-check-label" for="formFileDisabled3"><img src="../assets/img/rec.png" height="150px" width="150px" id="third-image" class="img-fluid" draggable="false"/></label>
+                                                </div>
+                                            </div><br />
+                                    <button class="btn btn-primary w-100 mt-5 mb-1">Dodaj</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+        </div>
+    </div>
+    </main>
+    </div>
+    </div>
+    <script src="./addingannouncement.js"></script>
+    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
