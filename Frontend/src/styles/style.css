@@ -34,6 +34,7 @@ img {
     cursor: pointer;
 }
 .mainBtn{
+    background-color: #e6f2ff;
     width:10%;
 }
 .noMainBtn{

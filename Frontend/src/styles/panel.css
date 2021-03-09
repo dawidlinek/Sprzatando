@@ -76,3 +76,56 @@
     border-radius: 0.5rem !important;
     box-shadow: 2px 4px 20px #2732331a !important;
 }
+
+.delete-image{
+    margin-top: -25px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(252, 65, 65);
+    border-radius: 0 0 15px 15px;
+    height:25px;
+    z-index: 99;
+}
+#first-image{
+    display: none;
+}
+#second-image{
+    display: none;
+}
+#third-image{
+    display: none;
+}
+.add-image{
+    max-width: 150px;
+    width: 150px;
+    max-height: 150px;
+    height: 150px;
+    background-color: #dedeff;
+    border-radius: 15px;
+    border: 2px solid #1c1c67;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index:1;
+}
+.plus-add{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    background-color: #1c1c67;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    font-size:30px;
+}
+.add-image:hover{
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+.ramka-image{
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
