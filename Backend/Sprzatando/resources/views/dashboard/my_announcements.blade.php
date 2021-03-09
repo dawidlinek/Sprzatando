@@ -18,7 +18,7 @@
                             <div class="card d-flex w-100 mt-3">
                                 <div class="row w-100 mx-auto">
                                     <div class="col-md-2 rounded"
-                                        style="background-image: url(https://assets.archon.pl/images/products/mfe42422780eaf/widok-1-projekt-dom-w-balsamowcach-2-8719685424c5e520fa9a1911a47e76a0__289.jpg); background-position: center center; background-size: cover; min-height: 200px;">
+                                        style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px;">
                                         &nbsp;
                                     </div>
                                     <div class="col-md-8 col-sm-8">
