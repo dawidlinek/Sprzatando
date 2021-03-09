@@ -65,6 +65,9 @@ class AnnouncementController extends Controller
         // return $data;
         $data['creator_id']=Auth::id();
         $announcement=Announcement::create($data);
+        // foreach($request->categories as $categoty){
+        //     $announcement
+        // }
         $x=0;
         for($i=1;$i<4;$i++){
             if($request->hasFile('img'.$i)){
@@ -100,7 +103,7 @@ class AnnouncementController extends Controller
         if($announcement->creator_id!=Auth::id()){
             return redirect('/dashboard/announcement');
         }
-        $announcement->images= collect(Storage::disk('uploads')->allFiles($announcement->id))
+        $announcement->images = collect(Storage::disk('uploads')->allFiles($announcement->id))
         ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
         // return $announcement;
         return view('dashboard.edit_announcement',['announcement'=>$announcement,'categories'=>Categories::all()]);
@@ -116,6 +119,7 @@ class AnnouncementController extends Controller
     public function update(Request $request, Announcement $announcement)
     {
         //
+
     }
 
     /**

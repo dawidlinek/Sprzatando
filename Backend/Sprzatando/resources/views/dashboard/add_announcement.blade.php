@@ -22,7 +22,7 @@
 
             <!-- <Main form> -->
             <form class="w-100" method='POST' action='{{route('announcement.store')}}' enctype="multipart/form-data">
-
+@csrf
                 <div class="row w-100 d-flex flex-lg-row flex-md-column justify-content-around">
 
                     <!-- Left column -->
