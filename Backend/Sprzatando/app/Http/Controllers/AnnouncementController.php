@@ -20,7 +20,8 @@ class AnnouncementController extends Controller
     {
         //
         // return Auth::user()->announcements;
-        $announcements=Auth::user()->announcements;
+        $announcements=Auth::user()->announcements->reverse();
+        // $announcements=array_reverse($announcements);
         foreach($announcements as $key=>$announcement){
             $images= collect(Storage::disk('uploads')->allFiles($announcement->id))
             ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
