@@ -6,6 +6,8 @@ use App\Models\Announcement;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class AnnouncementController extends Controller
 {
@@ -18,6 +20,11 @@ class AnnouncementController extends Controller
     {
         //
         // return Auth::user()->announcements;
+        // $announcement=Auth::user()->announcements;
+    //    return collect(Storage::disk('uploads')->allFiles(6));
+    //    )->sortBy(function ($file) {
+            // return $file->getCTime();
+        // });
         return view('dashboard.my_announcements',['announcements'=>Auth::user()->announcements]);
     }
     
@@ -41,7 +48,6 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         //
-        return $request->file1->path();
         $data=$request->validate([
             'title'=>'required|max:255',
             'localization'=>'required',
@@ -52,7 +58,12 @@ class AnnouncementController extends Controller
         ]);
         // return $data;
         $data['creator_id']=Auth::id();
-        Announcement::create($data);
+        $announcement=Announcement::create($data);
+        for($i=1;$i<4;$i++){
+            if($request->hasFile('img'.$i)){
+                $request->file('img'.$i)->store($announcement->id,'uploads');
+            }
+        }
         return back()->with('status',"Pomyślnie dodano nowe ogłoszenie");
     }
 
