@@ -64,9 +64,13 @@ class AnnouncementController extends Controller
         // return $data;
         $data['creator_id']=Auth::id();
         $announcement=Announcement::create($data);
+        $x=0;
         for($i=1;$i<4;$i++){
             if($request->hasFile('img'.$i)){
-                $request->file('img'.$i)->store($announcement->id,'uploads');
+                 $x++;
+                 $path=$request->file('img'.$i)->store($announcement->id,'uploads');
+                 $key='img'.$x;
+                 $announcement->update([$key=>$path]);
             }
         }
         return back()->with('status',"Pomyślnie dodano nowe ogłoszenie");
