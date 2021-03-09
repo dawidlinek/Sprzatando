@@ -22,7 +22,7 @@
 
             <!-- <Main form> -->
             <form class="w-100" method='POST' action='{{route('announcement.store')}}' enctype="multipart/form-data">
-
+@csrf
                 <div class="row w-100 d-flex flex-lg-row flex-md-column justify-content-around">
 
                     <!-- Left column -->
@@ -47,52 +47,54 @@
                     <div class="col-xl-5">
                         <div class="d-flex h-100 flex-column align-items-start justify-content-between">
 
-                            <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                            <input type="date" name='expiring_at' class="form-control mb-4" />
-                            <label for="FormControlInput1 col-offset">Kategoria:</label>
+                            <div class="w-100">
+                                <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
+                                <input type="date" name='expiring_at' class="form-control mb-4" />
+                                <label for="FormControlInput1 col-offset">Kategoria:</label>
 
-                            <!-- <Kategorie> -->
-                            <select name='category_id' class="form-select mb-4">
-                                @foreach ($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <!-- <Kategorie> -->
+                                <select name='category_id' class="form-select mb-4">
+                                    @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
 
-                                @endforeach
-                            </select>
-                            <!-- </Kategorie> -->
+                                    @endforeach
+                                </select>
+                                <!-- </Kategorie> -->
 
 
 
-                            <!-- <Image select> -->
-                            <label for="FormControlInput1 col-offset" class="mb-3">Dodaj zdjęcia:</label>
-                            <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
-                                <div class="w-33">
-                                    <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1" />
-                                    <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
-                                        <div class="add-image">
-                                            <img src="/img/dashboard/rec.png" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                            <div class="plus-add" id="sectionAddFirstImage">+</div>
-                                        </div>
-                                        <div class="delete-image w-100" id="first-delete-image">Usuń zdjęcie</div>
-                                    </label>
-                                </div>
-                                <div class="w-33 d-flex flex-column">
-                                    <input class="form-control mb-3" type="file" name='img2' accept="image/png, image/jpeg" id="formFileDisabled2" />
-                                    <label class="form-check-label position-relative ramka-image" for="formFileDisabled2">
-                                        <div class="add-image">
-                                            <img src="/img/dashboard/rec.png" height="150px" width="150px" id="second-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                            <div class="plus-add" id="sectionAddSecondImage">+</div>
-                                        </div>
-                                        <div class="delete-image w-100" id="second-delete-image">Usuń zdjęcie</div>
-                                    </label>
-                                </div>
-                                <div class="w-3">
-                                    <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled3" />
-                                    <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
-                                        <div class="add-image">
-                                            <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                            <div class="plus-add" id="sectionAddThirdImage">+</div>
-                                            <div class="delete-image w-100" id="third-delete-image">Usuń zdjęcie</div>
-                                    </label>
+                                <!-- <Image select> -->
+                                <label for="FormControlInput1 col-offset" class="mb-3">Dodaj zdjęcia:</label>
+                                <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
+                                    <div class="w-33">
+                                        <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1" />
+                                        <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
+                                            <div class="add-image">
+                                                <img src="/img/dashboard/rec.png" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false" />
+                                                <div class="plus-add" id="sectionAddFirstImage">+</div>
+                                            </div>
+                                            <div class="delete-image w-100" id="first-delete-image">Usuń zdjęcie</div>
+                                        </label>
+                                    </div>
+                                    <div class="w-33 d-flex flex-column">
+                                        <input class="form-control mb-3" type="file" name='img2' accept="image/png, image/jpeg" id="formFileDisabled2" />
+                                        <label class="form-check-label position-relative ramka-image" for="formFileDisabled2">
+                                            <div class="add-image">
+                                                <img src="/img/dashboard/rec.png" height="150px" width="150px" id="second-image" class="img-fluid add-image zIndex2" draggable="false" />
+                                                <div class="plus-add" id="sectionAddSecondImage">+</div>
+                                            </div>
+                                            <div class="delete-image w-100" id="second-delete-image">Usuń zdjęcie</div>
+                                        </label>
+                                    </div>
+                                    <div class="w-3">
+                                        <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled3" />
+                                        <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
+                                            <div class="add-image">
+                                                <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false" />
+                                                <div class="plus-add" id="sectionAddThirdImage">+</div>
+                                                <div class="delete-image w-100" id="third-delete-image">Usuń zdjęcie</div>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

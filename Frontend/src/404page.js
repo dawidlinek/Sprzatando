@@ -15,4 +15,9 @@ function randomNumber(){
     i++
     }
 }
-setInterval(randomNumber,80);
+function repeat(){
+    i = 0;
+    setInterval(randomNumber,80);
+}
+repeat();
+setInterval(repeat,7420)
