@@ -13,6 +13,44 @@
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 @foreach ($announcements as $announcement)
 
+<<<<<<< HEAD
+=======
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                    <!-- MAIN CONTENT START -->
+                    <div class="card w-100">
+                        <div class="card-body d-flex flex-column align-items-start justify-content-between">
+                            <div class="cart-title col-12">
+                                <h2 class="text-primary mb-4">Moje ogłoszenia</h2>
+                            </div>
+                            <!-- POJEDYNCZE OGŁOSZENIE -->
+                            @foreach ($announcements as $announcement)
+                                
+                         
+                            <div class="card d-flex w-100 mt-3">
+                                <div class="row w-100 mx-auto">
+                                    <div class="col-md-2 rounded"
+                                        style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px;">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-md-8 col-sm-8">
+                                        <div class="card-body">
+                                            <div class="row col-12">
+                                                <div class="col-lg-6">
+                                                    <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <p class="card-text nowrap d-sm-flex"><small class="text-muted d-md-none justify-content-start">{{$announcement->localization}}</small><small class="text-muted d-flex justify-content-around">{{$announcement->price}} zł</small>
+                                                    </p>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="w-100">
+                                                <p class="card-text">
+                                                    <b-badge><small class="text-danger">b-badge {{$announcement->status}}</small></b-badge>
+                                                </p>
+                                            </div>
+>>>>>>> bb85c0f2c5c7791e0b8f2bd17e1d1279477a4bec
 
                 <div class="card d-flex w-100 mt-3">
                     <div class="row w-100 mx-auto">

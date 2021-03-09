@@ -20,12 +20,17 @@ class AnnouncementController extends Controller
     {
         //
         // return Auth::user()->announcements;
-        // $announcement=Auth::user()->announcements;
-    //    return collect(Storage::disk('uploads')->allFiles(6));
-    //    )->sortBy(function ($file) {
-            // return $file->getCTime();
-        // });
-        return view('dashboard.my_announcements',['announcements'=>Auth::user()->announcements]);
+        $announcements=Auth::user()->announcements;
+        foreach($announcements as $key=>$announcement){
+            $images= collect(Storage::disk('uploads')->allFiles($announcement->id))
+            ->sortBy(function ($file) {return Storage::disk('uploads')->lastModified($file);});
+            if(count($images)>0){
+                $announcements[$key]->main_image='/uploads/'.$images[0];
+            }else{
+                $announcements[$key]->main_image='/uploads/placeholder.jpg';
+            }
+        }
+        return view('dashboard.my_announcements',['announcements'=>$announcements]);
     }
     
     /**
