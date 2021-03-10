@@ -120,7 +120,22 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        return $request->all();
+        $data=$request->validate([
+            'title'=>'required|max:255',
+            'localization'=>'required',
+            'price'=>"numeric|min:1|required",
+            "description"=>"required|max:500",
+            "expiring_at"=>"required|date",
+            "categories"=>"required"
+        ]);
+        $categories=explode(",",$data['categories']);
+        unset($data['categories']);
+        $announcement->update($data);
+        Has_Category::where('announcement_id',$announcement->id)->delete();
+        foreach($categories as $categoty){
+            Has_Category::create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
+        }
+        return back()->with('status','Pomyślnie zaktualizowano dane');
         //
 
     }

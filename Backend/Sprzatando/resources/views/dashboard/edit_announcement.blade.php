@@ -18,7 +18,7 @@
                 <!-- </Title  -->
 
                 <!-- <Main form> -->
-                <form class="w-100" method='POST' id='update' onsubmit="document.querySelectorAll('.delete-images').forEach(elem=>{elem.remove()})" action='{{route('announcement.update',$announcement->id)}}' enctype="multipart/form-data">
+                <form class="w-100" method='POST' id='update' action='{{route('announcement.update',$announcement->id)}}' enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="row w-100 d-flex flex-lg-row flex-md-column justify-content-around">
@@ -92,10 +92,10 @@
                                             <div class="add-image">
                                                 <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px"  class="img-fluid add-image zIndex2" draggable="false" />
                                             </div>
-                                            <form method='POST' id='delete{{$i}}' class='delete-images' action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}' >
+                                            <form method='POST' id='deletef{{$i}}' class='delete-images' action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}' >
                                                 @method('DELETE')
                                                 @csrf
-                                            <button class="delete-image w-100  edit-image" form='delete{{$i}}' type='submit' >Usuń zdjęcie</button>
+                                            <button class="delete-image w-100  edit-image" form='deletef{{$i}}'  >Usuń zdjęcie</button>
                                             </form>
                                         </label>
                                         <div id='{{$tmp[$i]}}-delete-image'> </div>
@@ -105,17 +105,18 @@
                                       
                                     </div>
                                 </div>
+                                <div class="w-100" style="margin-bottom: 2.8rem;">
+                                    @method('PUT')
+                                    {{-- <button type='submit' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a> --}}
+                                        <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
+                                </div>
                             </div>
                        
                             <!-- </Image select> -->
 
-                            <div class="w-100" style="margin-bottom: 2.8rem;">
-                                <button type='submit' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a>
-                                    <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white">Zapisz</a>
-                            </div>
                         </div>
                     </div>
-                {{-- </form> --}}
+                </form>
                 <!-- </Main form> -->
 
             </div>
