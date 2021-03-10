@@ -11,7 +11,7 @@
     "string"=>"Wartość pola :attribute jest za długa",
 ],
 'date'=>"Pole :attribute musi być poprawną datą",
-'after'=>"Data zakończenia musi być w przyszłości",
+'after'=>"Czas ważności musi być w przyszłości",
 "image"=>"Pliki muszą być zdjęciami",
 'numeric'=>"Pole :attribute musi być liczbą",
 'exists'=>"Podana wartość nie instnieje",

@@ -55,7 +55,7 @@ class AnnouncementController extends Controller
     {
         //
         // return $request->file('img1');
-        $request->validate(['img1'=>'nullable|image','img2'=>'nullable|image','img3'=>'nullable|image']);
+        $request->validate(['img1'=>'nullable|image|size:20000','img2'=>'nullable|image|size:20000','img3'=>'nullable|image|size:20000']);
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
