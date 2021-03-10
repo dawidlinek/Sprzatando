@@ -108,8 +108,6 @@ class AnnouncementController extends Controller
         if($announcement->creator_id!=Auth::id()){
             return redirect('/dashboard/announcement');
         }
-        $announcement->images = collect(Storage::disk('uploads')->allFiles($announcement->id))
-        ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
         return view('dashboard.edit_announcement',['announcement'=>$announcement,'categories'=>Categories::all()]);
     }
 
@@ -122,6 +120,7 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
+        return $request->all();
         //
 
     }
@@ -132,8 +131,19 @@ class AnnouncementController extends Controller
      * @param  \App\Models\Announcement  $announcement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announcement $announcement)
+    public function destroy(Announcement $announcement,Request $request)
     {
+        if(Auth::id()!=$announcement->creator_id || $request->id>3 || $request->id<1)
+        return redirect('/dashboard/announcement');
+
+        $image= $announcement['img'.$request->id];
+        if($image!=NULL){
+            $announcement->update(['img'.$request->id=>Null]);
+            Storage::disk('uploads')->delete($image);
+            return back()->with('status','Pomyślnie usunięto zdjęcie');
+            }
+            return back();
+
         //
     }
 }

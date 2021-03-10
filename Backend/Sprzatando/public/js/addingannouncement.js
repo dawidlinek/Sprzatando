@@ -186,6 +186,7 @@ let selectedOptionsID = new Set();
 let selectedOptionsNames = new Set();
 
 window.addEventListener("DOMContentLoaded", () => {
+    leftSigns.innerHTML = 500 - descriptionTextArea.value.length;
     const active = categoryOptions.querySelectorAll("option.selectedOption");
 
     active.forEach((option) => {
@@ -234,3 +235,4 @@ function initialize() {
         var place = autocomplete.getPlace();
     });
 }
+
