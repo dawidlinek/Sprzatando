@@ -30,13 +30,13 @@
                         <div class="d-flex flex-column align-items-start justify-content-between">
 
                             <label for="FormControlInput1 col-offset">Tytuł</label>
-                            <input type="text" name='title' required class="form-control mb-4" />
+                            <input  value="{{ old('title') }}" type="text" name='title' required class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Lokalizacja</label>
-                            <input type="text" name='localization' required id='LocalizationAutocomplete' class="form-control mb-4" />
+                            <input  value="{{ old('localization') }}" type="text" name='localization' required id='LocalizationAutocomplete' class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Cena</label>
-                            <input type="number" min="1" required name='price' step="0.05" class="form-control mb-4" />
+                            <input type="number" value="{{ old('price') }}" min="1" required name='price' step="0.05" class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Opis</label>
-                            <textarea maxlength="500" id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;"></textarea>
+                            <textarea maxlength="500" id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{ old('description') }}</textarea>
 
                             <p>Pozostało <span id="signs">500</span> znaków</p>
                         </div>
@@ -49,7 +49,7 @@
 
                             <div class="w-100">
                                 <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                                <input type="date" name='expiring_at' class="form-control mb-4" />
+                                <input value="{{ old('expiring_at') }}" type="date" name='expiring_at' class="form-control mb-4" />
 
                                 <!-- <Kategorie> -->
                                 <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
