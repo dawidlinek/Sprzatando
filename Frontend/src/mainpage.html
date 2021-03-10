@@ -15,16 +15,19 @@
 </head>
 
 <body class="bg-light">
-  <main >
-    <div class="row position-relative"
+  <div class="container-fluid">
+  
+    <div class="row">
+      <div class="img-fluid position-relative col-12"
       style="background-image: url(../_design/pexels-becosan-3681787.jpg); background-size: cover; min-height: 50vh;  filter: brightness(70%);">
 
     </div>
+    </div>
 
-    <div class="input-group col-md-12 d-flex justify-content-center align-items-center position-absolute "
-      style="top: 0; min-height: 50vh;">
+    <div class="input-group position-absolute d-flex justify-content-center align-items-center"
+      style="top: 0; left: 0; min-height: 50vh;">
       <div class="form-outline col-5">
-        <input type="search" id="form1" class="form-control" style="min-height: 5vh; max-height: 5vh;" />
+        <input type="search" id="form1" class="form-control" style="min-height: 5vh; max-height: 5vh; z-index: 100; background-color: white;" />
       </div>
       <button type="button" class="btn btn-primary" style="min-height: 5vh; max-height: 5vh;">
         <p class="fas fa-search">Szukaj</p>
@@ -100,8 +103,8 @@
 
 
 
+  </div>
 
-  </main>
 
 
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
