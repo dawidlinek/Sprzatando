@@ -46,7 +46,7 @@
 
                     <div class="card d-flex w-100 mt-3">
                         <div class="row w-100 mx-auto">
-                            <div class="col-md-2 rounded" style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px;">
+                            <div class="col-md-2 rounded" style="background-image: url(/uploads/{{$announcement->img1}}); background-position: center center; background-size: cover; min-height: 200px;">
                                 &nbsp;
                             </div>
                             <div class="col-md-8 col-sm-8">

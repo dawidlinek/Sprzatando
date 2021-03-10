@@ -89,7 +89,7 @@
                                         </label>
                                     </div>
                                     <div class="w-3">
-                                        <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled3" />
+                                        <input class="form-control mb-3" type="file" name='img3' accept="image/png, image/jpeg" id="formFileDisabled3" />
                                         <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
                                             <div class="add-image">
                                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false" />

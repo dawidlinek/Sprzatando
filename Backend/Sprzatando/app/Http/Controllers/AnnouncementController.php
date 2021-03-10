@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use App\Models\Categories;
+use App\Models\Has_Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
@@ -23,12 +24,8 @@ class AnnouncementController extends Controller
         $announcements=Auth::user()->announcements->reverse();
         // $announcements=array_reverse($announcements);
         foreach($announcements as $key=>$announcement){
-            $images= collect(Storage::disk('uploads')->allFiles($announcement->id))
-            ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
-            if(count($images)>0){
-                $announcements[$key]->main_image='/uploads/'.$images[0];
-            }else{
-                $announcements[$key]->main_image='/uploads/placeholder.jpg';
+            if($announcement->img1==Null){
+                $announcements[$key]->img1='placeholder.jpg';
             }
         }
         return view('dashboard.my_announcements',['announcements'=>$announcements]);
@@ -54,7 +51,7 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         //
-        // return $request->all();
+        // return $request->file('img1');
         $data=$request->validate([
             'title'=>'required|max:255',
             'localization'=>'required',
@@ -68,15 +65,17 @@ class AnnouncementController extends Controller
         $data['creator_id']=Auth::id();
         $announcement=Announcement::create($data);
         foreach($categories as $categoty){
-            $announcement->categories()->create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
+            Has_Category::create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
         }
-        $x=0;
+        $x=1;
         for($i=1;$i<4;$i++){
+            // return $request->hasFile($key);
             if($request->hasFile('img'.$i)){
-                 $x++;
-                 $path=$request->file('img'.$i)->store($announcement->id,'uploads');
-                 $key='img'.$x;
-                 $announcement->update([$key=>$path]);
+                $key='img'.$x; 
+                $x++;
+                $path=$request->file('img'.$i)->store($announcement->id,'uploads');
+                // return [$key=>$path];
+                $announcement->update([$key=>$path]);
             }
         }
         return back()->with('status',"Pomyślnie dodano nowe ogłoszenie");
@@ -108,7 +107,6 @@ class AnnouncementController extends Controller
         }
         $announcement->images = collect(Storage::disk('uploads')->allFiles($announcement->id))
         ->sortByDesc(function ($file) {return Storage::disk('uploads')->lastModified($file);});
-        // return $announcement;
         return view('dashboard.edit_announcement',['announcement'=>$announcement,'categories'=>Categories::all()]);
     }
 
