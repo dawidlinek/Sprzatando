@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="w-100">
                                             <p class="card-text">
-                                                <span class="badge bg-success rounded">{{__($announcement->status)}}</span>
+                                                <span class="badge {{$announcement->status}} rounded">{{__($announcement->status)}}</span>
                                             </p>
                                         </div>
 
