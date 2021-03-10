@@ -10,6 +10,7 @@
 'max'=>[
     "string"=>"Wartość pola :attribute jest za długa",
 ],
+'date'=>"Pole :attribute musi być poprawną datą",
 'numeric'=>"Pole :attribute musi być liczbą",
 'exists'=>"Podana wartość nie instnieje",
 'required' => 'Pole :attribute jest wymagane.',
