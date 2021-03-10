@@ -29,7 +29,7 @@
                         @csrf
                         <p>&nbsp;</p>
                         <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                        <input value="{{$announcement->date}}" type="date" name='expiring_at' class="form-control mt-1 mb-5" />
+                        <input value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" type="date" name='expiring_at' class="form-control mt-1 mb-5" />
                         <label for="FormControlInput1 col-offset">Kategoria:</label>
                         <input name="categories" type='text' id="categoryServerSee" value="{{implode(',',$announcement->categories()->pluck('id')->toArray())}}"/>
                         <select name='category_id' class="form-select mb-5 mt-1">
