@@ -48,6 +48,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::middleware(['auth'])->group(function () {
 Route::resource('/dashboard/announcement', AnnouncementController::class);
+
 Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
 

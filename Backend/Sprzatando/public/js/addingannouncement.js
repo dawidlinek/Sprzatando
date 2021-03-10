@@ -95,6 +95,7 @@ thirdDeleteImage.addEventListener("click", () => {
 });
 
 getThirdImage.addEventListener("change", (evt) => {
+   
     var tgt = evt.target,
         files = tgt.files;
     var fr = new FileReader();
@@ -185,6 +186,7 @@ let selectedOptionsID = new Set();
 let selectedOptionsNames = new Set();
 
 window.addEventListener("DOMContentLoaded", () => {
+    leftSigns.innerHTML = 500 - descriptionTextArea.value.length;
     const active = categoryOptions.querySelectorAll("option.selectedOption");
 
     active.forEach((option) => {
@@ -197,6 +199,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 categoryOptions.addEventListener("change", (e) => {
+    e.stopPropagation();
     newClickOption(e.target);
     categoryOptions.value = -1;
 });
@@ -232,3 +235,4 @@ function initialize() {
         var place = autocomplete.getPlace();
     });
 }
+

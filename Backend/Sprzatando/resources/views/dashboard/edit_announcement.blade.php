@@ -18,7 +18,8 @@
                 <!-- </Title  -->
 
                 <!-- <Main form> -->
-                <form class="w-100" method='POST' action='{{route('announcement.store')}}' enctype="multipart/form-data">
+                <form class="w-100" method='POST' id='update' action='{{route('announcement.update',$announcement->id)}}' enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="row w-100 d-flex flex-lg-row flex-md-column justify-content-around">
 
@@ -33,9 +34,7 @@
                                 <label for="FormControlInput1 col-offset">Cena</label>
                                 <input type="number" min="1" required name='price' value="{{$announcement->price}}" step="0.05" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Opis</label>
-                                <textarea maxlength="500" id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">
-                                {{$announcement->description}}
-                                </textarea>
+                                <textarea maxlength="500" id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{$announcement->description}}</textarea>
 
                                 <p>Pozostało <span id="signs">500</span> znaków</p>
                             </div>
@@ -47,8 +46,8 @@
                             <div class="d-flex h-100 flex-column align-items-start justify-content-between">
 
                                 <div class="w-100">
-                                    <label for="FormControlInput1 col-offset mt-6" value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}">Czas ważności</label>
-                                    <input type="date" name='expiring_at' class="form-control mb-4" />
+                                    <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
+                                    <input type="date" name='expiring_at' value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
 
                                     <!-- <Kategorie> -->
                                     <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
@@ -72,53 +71,96 @@
                                     <!-- <Image select> -->
                                     <label for="FormControlInput1 col-offset" class="mb-3 mt-3">Dodaj zdjęcia:</label>
                                     <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
-                                        <div class="w-33">
-                                            <input value='{{request()->getHttpHost()}}/uploads/{{$announcement->img1 ?? ""}}' class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1" />
-                                            <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
-                                                <div class="add-image">
-                                                    <img src="/uploads/{{$announcement->img1 ?? ""}}" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                                    <div class="plus-add" id="sectionAddFirstImage">+</div>
-                                                </div>
-                                                <div class="delete-image w-100" id="first-delete-image">Usuń zdjęcie</div>
-                                            </label>
-                                        </div>
-                                        <div class="w-33 d-flex flex-column">
-                                            <input value='{{request()->getHttpHost()}}/uploads/{{$announcement->img2 ?? ""}}' class="form-control mb-3" type="file" name='img2' accept="image/png, image/jpeg" id="formFileDisabled2" />
-                                            <label class="form-check-label position-relative ramka-image" for="formFileDisabled2">
-                                                <div class="add-image">
-                                                    <img src="/img/dashboard/rec.png" height="150px" width="150px" id="second-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                                    <div class="plus-add" id="sectionAddSecondImage">+</div>
-                                                </div>
-                                                <div class="delete-image w-100" id="second-delete-image">Usuń zdjęcie</div>
-                                            </label>
-                                        </div>
-                                        <div class="w-3">
-                                            <input value='{{request()->getHttpHost()}}/uploads/{{$announcement->img3 ?? ""}}' class="form-control mb-3" type="file" name='img3' accept="image/png, image/jpeg" id="formFileDisabled3" />
-                                            <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
-                                                <div class="add-image">
-                                                    <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                                    <div class="plus-add" id="sectionAddThirdImage">+</div>
-                                                    <div class="delete-image w-100" id="third-delete-image">Usuń zdjęcie</div>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- </Image select> -->
+                                        @php $tmp=["o",'first','second','third']@endphp
+                                        @for ($i = 1; $i < 4; $i++)
+                                        @if((array)$announcement['img'.$i]==Null)
 
-                            <div class="w-100" style="margin-bottom: 2.8rem;">
-                                <button type='submit' class="btn btn-primary w-100 mt-3 text-white">Dodaj</a>
+                                          
+                                                <input class="form-control mb-3" type="file" name='img{{$i}}' accept="image/png, image/jpeg" id="formFileDisabled{{$i}}" />
+                                                <label class="form-check-label position-relative ramka-image" for="formFileDisabled{{$i}}">
+                                                    <div class="add-image">
+                                                        <img src="/img/dashboard/rec.png" height="150px" width="150px" id="{{$tmp[$i]}}-image" class="img-fluid add-image zIndex2" draggable="false" />
+                                                        <div class="plus-add" id="sectionAdd{{strtoupper($tmp[$i][0]).substr($tmp[$i],1,strlen($tmp[$i]))}}Image">+</div>
+                                                    </div>
+                                                    <div class="delete-image w-100" id="{{$tmp[$i]}}-delete-image">Usuń zdjęcie</div>
+                                                </label>
+                                          
+                                            
+                                            @else
+                                            
+                                            <label class="form-check-label position-relative ramka-image" >
+                                                <div class="add-image">
+                                                    <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px"  class="img-fluid add-image zIndex2" draggable="false" />
+                                                </div>
+                                                <form></form>
+                                                <form method='POST' id='deletef{{$i}}' class='delete-images' onsubmit="return confirm('Czy na pewno chcesz usunąć zdjęcie?')" action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}' >
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="delete-image w-100  edit-image" form='deletef{{$i}}'  >Usuń zdjęcie</button>
+                                                </form>
+                                            </label>
+                                            <div id='{{$tmp[$i]}}-delete-image'> </div>
+                                            <div id='formFileDisabled{{$i}}'> </div>
+                                            @endif
+                                            @endfor
+                                            
+                                        </div>
                             </div>
-                        </div>
-                    </div>
-                </form>
+                            
+                            <div class="w-100" style="margin-bottom: 2.8rem;">
+                                <button type='submit' form='archiwizuj' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a>
+                                    @method('PUT')
+                                    <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
+                                </form>
+                            </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <!-- </Image select> -->
+                                    
+                                </div>
+                  
                 <!-- </Main form> -->
 
-            </div>
-        </div>
-    </div>
-    </div>
+        
+{{-- <script>
+    const firstImage = document.querySelector('#first-image');
+const firstDeleteImage = document.querySelector('#first-delete-image');
+const sectionFirstImage = document.querySelector('#sectionAddFirstImage');
+    firstDeleteImage.addEventListener('click',()=>{
+        firstImage.src = "";
+        sectionFirstImage.style.display = 'flex';
+        firstDeleteImage.classList.remove('d-flex')
+        firstImage.style.display = 'none';
+    })
+    
+const secondImage = document.querySelector('#second-image');
+const secondDeleteImage = document.querySelector('#second-delete-image');
+const sectionSecondImage = document.querySelector('#sectionAddSecondImage');
+    secondDeleteImage.addEventListener('click',()=>{
+        secondImage.src = "";
+        sectionSecondImage.style.display = 'flex';
+        secondImage.style.display = 'none';
+        secondDeleteImage.classList.remove('d-flex')
+    })
+    
+const thirdImage = document.querySelector('#third-image');
+const thirdDeleteImage = document.querySelector('#third-delete-image');
+const sectionThirdImage = document.querySelector('#sectionAddThirdImage');
+    thirdDeleteImage.addEventListener('click',()=>{
+        thirdImage.src = "";
+        sectionThirdImage.style.display = 'flex';
+        thirdImage.style.display = 'none';
+        thirdDeleteImage.classList.remove('d-flex')
+    })
 
+    
+const descriptionTextArea = document.querySelector('#descriptionTA');
+const leftSigns = document.querySelector('#signs');
+descriptionTextArea.addEventListener('input',()=>{
+    leftSigns.innerHTML = 500-descriptionTextArea.value.length;
+})
+</script> --}}
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyD-Vt-coVq0Nqd2VZc_tEZvvylA36vIO3s&libraries=places" type="text/javascript"></script>
     <script defer src="/js/addingannouncement.js"></script>
 </main>

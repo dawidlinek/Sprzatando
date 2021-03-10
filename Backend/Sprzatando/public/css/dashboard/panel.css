@@ -99,11 +99,12 @@
     max-height: 150px;
     height: 150px;
     background-color: #dedeff;
-    border-radius: 15px;
-    border: 2px solid #1c1c67;
+    /* border-radius: 15px; */
+    /* border: 2px solid #1c1c67; */
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.3s ease-in-out;
     z-index: 1;
 }
 @media screen and (max-width: 1450px) {
@@ -117,7 +118,7 @@
     -webkit-transform: scale(1.3);
     transition: 0.3s ease-in-out;
     transform: scale(1.3);
-    border: 2px solid #1c1c67;
+    /* border: 2px solid #1c1c67; */
 }
 
 .plus-add {
@@ -148,6 +149,7 @@
 .ramka-image {
     width: 150px;
     height: 150px;
+     /* border: 2px solid #1c1c67; */
     overflow: hidden;
     border-radius: 15px;
 }
@@ -199,4 +201,7 @@
 
 .reported {
     background-color: var(--bs-warning);
+}
+.edit-image{
+    display: block !important;
 }

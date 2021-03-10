@@ -28,7 +28,7 @@
                         <!-- w100m200px -> width: 100% - 200px (image width) -->
                         <div class="w100m200px">
 
-                            <div class="row d-flex justify-content-md-between">
+                            <div class="row d-flex justify-content-md-between h-100">
 
                                 <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
 
@@ -36,7 +36,7 @@
 
                                         <div class="col-12 d-flex flex-column flex-md-row">
                                             <div class="w-auto">
-                                                <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
+                                                <h5 class="card-title text-primary">{{$announcement->title}}</h5>
                                             </div>
                                             <div>
                                                 <p class="card-text nowrap d-sm-flex">
@@ -56,7 +56,7 @@
 
                                 </div>
 
-                                <div class="col-xl-4 col-lg-5 col-md-6 p-3" style="text-align: right;">
+                                <div class="col-xl-4 col-lg-5 col-md-6 p-3 d-flex flex-column justify-content-between" style="text-align: right;">
                                     <div class="b-row d-md-block d-none p-3" style="padding-top: 0 !important;">
                                         <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
                                     </div>
