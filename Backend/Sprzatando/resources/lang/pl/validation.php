@@ -8,7 +8,7 @@
     'array' => 'The :attribute must have at least :min items.',
 ],
 'max'=>[
-    "string"=>"Nazwa jest za długa",
+    "string"=>"Wartość pola :attribute jest za długa",
 ],
 'exists'=>"Podana wartość nie instnieje",
 'required' => 'Pole :attribute jest wymagane.',
