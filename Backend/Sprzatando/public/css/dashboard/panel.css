@@ -168,8 +168,27 @@
     display: none !important;
 }
 
+@media screen and (min-width: 768px) {
+    .w100m200px {
+        width: calc(100% - 200px) !important;
+    }
+}
+
 /* Category select */
 .selectedOption {
     background-color: var(--bs-primary);
     color: #fff;
+}
+
+/* Badge */
+.badge {
+    font-weight: normal !important;
+}
+
+.bg-danger {
+    background-color: var(--bs-danger);
+}
+
+.bg-success {
+    background-color: var(--bs-success);
 }

@@ -17,38 +17,55 @@
                 @foreach ($announcements as $announcement)
                 <div class="card d-flex w-100 mt-3">
                     <div class="row w-100 mx-auto">
+
+                        <!-- <Image> -->
                         <div class="col-md-auto rounded" style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
                             &nbsp;
                         </div>
-                        <div class="col-md-6 col-sm-8">
-                            <div class="card-body">
-                                <div class="row col-12">
-                                    <div class="col-lg-6">
-                                        <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
+                        <!-- </Image> -->
+
+
+                        <!-- w100m200px -> width: 100% - 200px (image width) -->
+                        <div class="w100m200px">
+
+                            <div class="row d-flex justify-content-md-between">
+
+                                <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
+
+                                    <div class="row p-3">
+
+                                        <div class="col-12 d-flex flex-column flex-md-row">
+                                            <div class="w-auto">
+                                                <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
+                                            </div>
+                                            <div>
+                                                <p class="card-text nowrap d-sm-flex">
+                                                    <small class="text-muted d-md-none">{{$announcement->localization}}</small>
+                                                    <small class="text-muted text-nowrap" style="margin-left: 1rem;">{{$announcement->price}} zł</small>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="w-100">
+                                            <p class="card-text">
+                                                <span class="badge bg-success rounded">{{$announcement->status}}</span>
+                                            </p>
+                                        </div>
+
+                                        <p class="card-text p-3">{{$announcement->description}} </p>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <p class="card-text nowrap d-sm-flex"><small class="text-muted d-md-none justify-content-start">{{$announcement->localization}}</small><small class="text-muted d-flex justify-content-around">{{$announcement->price}} zł</small>
-                                        </p>
 
+                                </div>
+
+                                <div class="col-xl-4 col-lg-5 col-md-6 p-3" style="text-align: right;">
+                                    <div class="b-row d-md-block d-none p-3" style="padding-top: 0 !important;">
+                                        <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
                                     </div>
-                                </div>
-                                <div class="w-100">
-                                    <p class="card-text">
-                                        <b-badge><small class="text-danger">b-badge {{$announcement->status}}</small></b-badge>
-                                    </p>
-                                </div>
+                                    <div class="b-row d-flex p-3">
+                                        <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="{{ route('announcement.edit', $announcement->id) }}">Edytuj</a>
+                                    </div>
 
-                                <p class="card-text">{{$announcement->description}} </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 p-4">
-                            <div class="b-row d-md-block d-none">
-                                <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
-                            </div>
-                            <div class="b-row d-flex align-text-center p-3">
-                                <a class="btn btn-primary w-100 text-nowrap text-white" href="{{ route('announcement.edit', $announcement->id) }}">Edytuj</a>
-                            </div>
-
                         </div>
                     </div>
                 </div>
