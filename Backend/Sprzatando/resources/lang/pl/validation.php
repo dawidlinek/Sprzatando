@@ -10,6 +10,7 @@
 'max'=>[
     "string"=>"Wartość pola :attribute jest za długa",
 ],
+'dimensions'=>"Zdjęcie może mieć maksymalnie 2000 x 2000 pikseli",
 'date'=>"Pole :attribute musi być poprawną datą",
 'after'=>"Czas ważności musi być w przyszłości",
 "image"=>"Pliki muszą być zdjęciami",
