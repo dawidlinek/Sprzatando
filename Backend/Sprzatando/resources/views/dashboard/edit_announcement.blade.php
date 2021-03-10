@@ -29,16 +29,21 @@
                         @csrf
                         <p>&nbsp;</p>
                         <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                        <input value="{{$announcement->date}}" type="date" name='expiring_at' class="form-control mt-1 mb-5" />
+                        <input value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" type="date" name='expiring_at' class="form-control mt-1 mb-5" />
                         <label for="FormControlInput1 col-offset">Kategoria:</label>
+                        <input name="categories" type='text' id="categoryServerSee" value="{{implode(',',$announcement->categories()->pluck('id')->toArray())}}"/>
                         <select name='category_id' class="form-select mb-5 mt-1">
+                            @php $selected=$announcement->categories()->pluck('name')->toArray() @endphp
+                            <option value="0" hidden selected>{{implode(", ",$selected)}}</option>
                             @foreach ($categories as $category)
-                            @if($category->id == $announcement->category_id)
-                            <option value="{{$category->id}}" selected>{{$category->name}}</option>
-                            @else
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                           
+                           @if (in_array($category->name,$selected))
+                           <option value="{{$category->id}}" class="selectedOption">{{$category->name}}</option>                              
+                           @else
+                           <option value="{{$category->id}}">{{$category->name}}</option>
+                           @endif
 
-                            @endif
+                            {{-- @endif --}}
 
                             @endforeach
 
@@ -48,7 +53,7 @@
                         <div class="custom-file d-flex justify-content-between align-items-start w-100 mb-5" style="height: 15vh;">
                          
                             <div class="w-25">
-                                <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1"/>
+                                <input class="form-control mb-3" type="file" name='img1' value='{{request()->getHttpHost()}}/uploads/{{$announcement->img1 ?? ""}}' accept="image/png, image/jpeg" id="formFileDisabled1"/>
                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
                                 <div class="add-image" >
                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false"/>
@@ -58,7 +63,7 @@
                             </label>
                             </div>
                             <div class="w-25  d-flex flex-column">
-                                <input class="form-control mb-3" type="file" name='img2'  accept="image/png, image/jpeg" id="formFileDisabled2" />
+                                <input class="form-control mb-3" type="file" name='img2' value='{{request()->getHttpHost()}}/uploads/{{$announcement->img2 ?? ""}}'  accept="image/png, image/jpeg" id="formFileDisabled2" />
                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled2">
                                 <div class="add-image">
                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="second-image" class="img-fluid add-image zIndex2" draggable="false"/>
@@ -68,7 +73,7 @@
                             </label>
                             </div>
                             <div class="w-25">
-                                <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled3" />
+                                <input class="form-control mb-3" type="file" name='img3' value='{{request()->getHttpHost()}}/uploads/{{$announcement->img3 ?? ""}}' accept="image/png, image/jpeg" id="formFileDisabled3" />
                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
                                 <div class="add-image" >
                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false"/>

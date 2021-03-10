@@ -19,7 +19,7 @@
                     <div class="row w-100 mx-auto">
 
                         <!-- <Image> -->
-                        <div class="col-md-auto rounded" style="background-image: url({{$announcement->main_image}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
+                        <div class="col-md-auto rounded" style="background-image: url(/uploads/{{$announcement->img1}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
                             &nbsp;
                         </div>
                         <!-- </Image> -->

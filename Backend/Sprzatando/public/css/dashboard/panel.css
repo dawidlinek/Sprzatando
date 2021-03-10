@@ -192,3 +192,11 @@
 .bg-success {
     background-color: var(--bs-success);
 }
+
+.bg-gray {
+    background-color: var(--bs-gray);
+}
+
+.bs-warning {
+    background-color: var(--bs-warning);
+}
