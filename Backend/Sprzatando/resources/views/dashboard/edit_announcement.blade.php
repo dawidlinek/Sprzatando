@@ -76,7 +76,7 @@
                                             <input value='{{request()->getHttpHost()}}/uploads/{{$announcement->img1 ?? ""}}' class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1" />
                                             <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
                                                 <div class="add-image">
-                                                    <img src="/img/dashboard/rec.png" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false" />
+                                                    <img src="/uploads/{{$announcement->img1 ?? ""}}" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false" />
                                                     <div class="plus-add" id="sectionAddFirstImage">+</div>
                                                 </div>
                                                 <div class="delete-image w-100" id="first-delete-image">Usuń zdjęcie</div>
