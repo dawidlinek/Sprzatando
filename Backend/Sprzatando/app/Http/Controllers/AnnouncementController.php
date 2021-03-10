@@ -126,8 +126,13 @@ class AnnouncementController extends Controller
             'price' => "numeric|min:1|required",
             "description" => "required|max:502",
             "expiring_at" => "required|date",
-            "categories" => "required"
+            "categories" => "required",
         ]);
+        if(isset($request->status)){
+            if($request->status=='finished'){
+                $data['status']='finished';
+            }
+        }
         $categories = explode(",", $data['categories']);
         unset($data['categories']);
         $announcement->update($data);
@@ -135,11 +140,9 @@ class AnnouncementController extends Controller
         foreach ($categories as $categoty) {
             Has_Category::create(['category_id' => $categoty, 'announcement_id' => $announcement->id]);
         }
-        $x = 1;
         for ($i = 1; $i < 4; $i++) {
             if ($request->hasFile('img' . $i)) {
                 $path = $request->file('img' . $i)->store($announcement->id, 'uploads');
-
                 if ($announcement->img1 == null) {
                     $announcement->update(['img1' => $path]);
                 } elseif ($announcement->img2 == null) {
@@ -149,7 +152,9 @@ class AnnouncementController extends Controller
                 }
             }
         }
-
+if(isset($data['status'])){
+    return redirect()->route('announcement.index')->with('status','Pomyślnie zakończono ogłoszenie');
+}
         return back()->with('status', 'Pomyślnie zaktualizowano dane');
         //
 
