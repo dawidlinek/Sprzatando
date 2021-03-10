@@ -132,7 +132,7 @@ function newClickOption(option) {
         .querySelector(`option[value='${option.value}']`)
         .classList.toggle("selectedOption");
 
-    selectedServerSee.value = Array.from(selectedOptionsID).join(", ");
+    selectedServerSee.value = Array.from(selectedOptionsID).join(",");
     selectedUserSee.textContent = Array.from(selectedOptionsNames).join(", ");
 }
 
