@@ -27,6 +27,9 @@ class AnnouncementController extends Controller
             if($announcement->img1==Null){
                 $announcements[$key]->img1='placeholder.jpg';
             }
+            if(strlen($announcement->description)>150){
+                $announcements[$key]->description=substr($announcement->description,0,150)."...";
+            }
         }
         return view('dashboard.my_announcements',['announcements'=>$announcements]);
     }
