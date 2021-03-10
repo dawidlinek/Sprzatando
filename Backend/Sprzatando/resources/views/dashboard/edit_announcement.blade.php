@@ -53,7 +53,7 @@
                         <div class="custom-file d-flex justify-content-between align-items-start w-100 mb-5" style="height: 15vh;">
                          
                             <div class="w-25">
-                                <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled1"/>
+                                <input class="form-control mb-3" type="file" name='img1' value='{{request()->getHttpHost()}}/uploads/{{$announcement->img1 ?? ""}}' accept="image/png, image/jpeg" id="formFileDisabled1"/>
                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled1">
                                 <div class="add-image" >
                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="first-image" class="img-fluid add-image zIndex2" draggable="false"/>
@@ -63,7 +63,7 @@
                             </label>
                             </div>
                             <div class="w-25  d-flex flex-column">
-                                <input class="form-control mb-3" type="file" name='img2'  accept="image/png, image/jpeg" id="formFileDisabled2" />
+                                <input class="form-control mb-3" type="file" name='img2' value='{{request()->getHttpHost()}}/uploads/{{$announcement->img2 ?? ""}}'  accept="image/png, image/jpeg" id="formFileDisabled2" />
                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled2">
                                 <div class="add-image">
                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="second-image" class="img-fluid add-image zIndex2" draggable="false"/>
@@ -73,7 +73,7 @@
                             </label>
                             </div>
                             <div class="w-25">
-                                <input class="form-control mb-3" type="file" name='img1' accept="image/png, image/jpeg" id="formFileDisabled3" />
+                                <input class="form-control mb-3" type="file" name='img3' value='{{request()->getHttpHost()}}/uploads/{{$announcement->img3 ?? ""}}' accept="image/png, image/jpeg" id="formFileDisabled3" />
                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled3">
                                 <div class="add-image" >
                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false"/>
