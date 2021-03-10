@@ -73,9 +73,9 @@
                                     <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
                                         @php $tmp=["o",'first','second','third']@endphp
                                         @for ($i = 1; $i < 4; $i++)
-                                            @if((array)$announcement['img'.$i]==Null)
+                                        @if((array)$announcement['img'.$i]==Null)
 
-                                            <div>
+                                          
                                                 <input class="form-control mb-3" type="file" name='img{{$i}}' accept="image/png, image/jpeg" id="formFileDisabled{{$i}}" />
                                                 <label class="form-check-label position-relative ramka-image" for="formFileDisabled{{$i}}">
                                                     <div class="add-image">
@@ -84,45 +84,45 @@
                                                     </div>
                                                     <div class="delete-image w-100" id="{{$tmp[$i]}}-delete-image">Usuń zdjęcie</div>
                                                 </label>
-                                            </div>
-
+                                          
+                                            
                                             @else
-
-                                        <label class="form-check-label position-relative ramka-image" >
-                                            <div class="add-image">
-                                                <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px"  class="img-fluid add-image zIndex2" draggable="false" />
-                                            </div>
-                                            <form method='POST' id='deletef{{$i}}' class='delete-images' action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}' >
-                                                @method('DELETE')
-                                                @csrf
-                                            <button class="delete-image w-100  edit-image" form='deletef{{$i}}'  >Usuń zdjęcie</button>
-                                            </form>
-                                        </label>
-                                        <div id='{{$tmp[$i]}}-delete-image'> </div>
-                                        <div id='formFileDisabled{{$i}}'> </div>
+                                            
+                                            <label class="form-check-label position-relative ramka-image" >
+                                                <div class="add-image">
+                                                    <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px"  class="img-fluid add-image zIndex2" draggable="false" />
+                                                </div>
+                                                <form></form>
+                                                <form method='POST' id='deletef{{$i}}' class='delete-images' onsubmit="return confirm('Czy na pewno chcesz usunąć zdjęcie?')" action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}' >
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="delete-image w-100  edit-image" form='deletef{{$i}}'  >Usuń zdjęcie</button>
+                                                </form>
+                                            </label>
+                                            <div id='{{$tmp[$i]}}-delete-image'> </div>
+                                            <div id='formFileDisabled{{$i}}'> </div>
                                             @endif
-                                        @endfor
-                                      
-                                    </div>
-                                </div>
-                                <div class="w-100" style="margin-bottom: 2.8rem;">
-                                    @method('PUT')
-                                    {{-- <button type='submit' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a> --}}
-                                        <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
-                                </div>
+                                            @endfor
+                                            
+                                        </div>
                             </div>
-                       
-                            <!-- </Image select> -->
-
-                        </div>
-                    </div>
-                </form>
+                            
+                            <div class="w-100" style="margin-bottom: 2.8rem;">
+                                <button type='submit' form='archiwizuj' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a>
+                                    @method('PUT')
+                                    <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
+                                </form>
+                            </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <!-- </Image select> -->
+                                    
+                                </div>
+                  
                 <!-- </Main form> -->
 
-            </div>
-        </div>
-    </div>
-    </div>
+        
 {{-- <script>
     const firstImage = document.querySelector('#first-image');
 const firstDeleteImage = document.querySelector('#first-delete-image');
