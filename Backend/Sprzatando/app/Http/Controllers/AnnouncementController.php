@@ -21,19 +21,19 @@ class AnnouncementController extends Controller
     {
         //
         // return Auth::user()->announcements;
-        $announcements=Auth::user()->announcements->reverse();
+        $announcements = Auth::user()->announcements->reverse();
         // $announcements=array_reverse($announcements);
-        foreach($announcements as $key=>$announcement){
-            if($announcement->img1==Null){
-                $announcements[$key]->img1='placeholder.jpg';
+        foreach ($announcements as $key => $announcement) {
+            if ($announcement->img1 == Null) {
+                $announcements[$key]->img1 = 'placeholder.jpg';
             }
-            if(strlen($announcement->description)>150){
-                $announcements[$key]->description=substr($announcement->description,0,150)."...";
+            if (strlen($announcement->description) > 150) {
+                $announcements[$key]->description = substr($announcement->description, 0, 150) . "...";
             }
         }
-        return view('dashboard.my_announcements',['announcements'=>$announcements]);
+        return view('dashboard.my_announcements', ['announcements' => $announcements]);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,10 +41,10 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('dashboard.add_announcement',['categories'=>Categories::all()]);
+        return view('dashboard.add_announcement', ['categories' => Categories::all()]);
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -55,33 +55,33 @@ class AnnouncementController extends Controller
     {
         //
         // return $request->file('img1');
-        $data=$request->validate([
-            'title'=>'required|max:255',
-            'localization'=>'required',
-            'price'=>"numeric|min:1|required",
-            "description"=>"required|max:502",
-            "expiring_at"=>"required|date",
-            "categories"=>"required"
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'localization' => 'required',
+            'price' => "numeric|min:1|required",
+            "description" => "required|max:502",
+            "expiring_at" => "required|date",
+            "categories" => "required"
         ]);
-        $categories=explode(",",$data['categories']);
+        $categories = explode(",", $data['categories']);
         unset($data['categories']);
-        $data['creator_id']=Auth::id();
-        $announcement=Announcement::create($data);
-        foreach($categories as $categoty){
-            Has_Category::create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
+        $data['creator_id'] = Auth::id();
+        $announcement = Announcement::create($data);
+        foreach ($categories as $categoty) {
+            Has_Category::create(['category_id' => $categoty, 'announcement_id' => $announcement->id]);
         }
-        $x=1;
-        for($i=1;$i<4;$i++){
+        $x = 1;
+        for ($i = 1; $i < 4; $i++) {
             // return $request->hasFile($key);
-            if($request->hasFile('img'.$i)){
-                $key='img'.$x; 
+            if ($request->hasFile('img' . $i)) {
+                $key = 'img' . $x;
                 $x++;
-                $path=$request->file('img'.$i)->store($announcement->id,'uploads');
+                $path = $request->file('img' . $i)->store($announcement->id, 'uploads');
                 // return [$key=>$path];
-                $announcement->update([$key=>$path]);
+                $announcement->update([$key => $path]);
             }
         }
-        return back()->with('status',"Pomyślnie dodano nowe ogłoszenie");
+        return back()->with('status', "Pomyślnie dodano nowe ogłoszenie");
     }
 
     /**
@@ -94,7 +94,7 @@ class AnnouncementController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -105,10 +105,10 @@ class AnnouncementController extends Controller
     {
         //
         // return $announcement->categories()->get();
-        if($announcement->creator_id!=Auth::id()){
+        if ($announcement->creator_id != Auth::id()) {
             return redirect('/dashboard/announcement');
         }
-        return view('dashboard.edit_announcement',['announcement'=>$announcement,'categories'=>Categories::all()]);
+        return view('dashboard.edit_announcement', ['announcement' => $announcement, 'categories' => Categories::all()]);
     }
 
     /**
@@ -120,28 +120,37 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        $data=$request->validate([
-            'title'=>'required|max:255',
-            'localization'=>'required',
-            'price'=>"numeric|min:1|required",
-            "description"=>"required|max:502",
-            "expiring_at"=>"required|date",
-            "categories"=>"required"
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'localization' => 'required',
+            'price' => "numeric|min:1|required",
+            "description" => "required|max:502",
+            "expiring_at" => "required|date",
+            "categories" => "required"
         ]);
-        $categories=explode(",",$data['categories']);
+        $categories = explode(",", $data['categories']);
         unset($data['categories']);
         $announcement->update($data);
-        Has_Category::where('announcement_id',$announcement->id)->delete();
-        foreach($categories as $categoty){
-            Has_Category::create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
+        Has_Category::where('announcement_id', $announcement->id)->delete();
+        foreach ($categories as $categoty) {
+            Has_Category::create(['category_id' => $categoty, 'announcement_id' => $announcement->id]);
         }
-        for($i=1;$i<4;$i++){
-            if($request->hasFile('img'.$i)){
-                $path=$request->file('img'.$i)->store($announcement->id,'uploads');
-                $announcement->update(['img'.$i=>$path]);
+        $x = 1;
+        for ($i = 1; $i < 4; $i++) {
+            if ($request->hasFile('img' . $i)) {
+                $path = $request->file('img' . $i)->store($announcement->id, 'uploads');
+
+                if ($announcement->img1 == null) {
+                    $announcement->update(['img1' => $path]);
+                } elseif ($announcement->img2 == null) {
+                    $announcement->update(['img2' => $path]);
+                } else {
+                    $announcement->update(['img' . $i => $path]);
+                }
             }
         }
-        return back()->with('status','Pomyślnie zaktualizowano dane');
+
+        return back()->with('status', 'Pomyślnie zaktualizowano dane');
         //
 
     }
@@ -152,33 +161,33 @@ class AnnouncementController extends Controller
      * @param  \App\Models\Announcement  $announcement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announcement $announcement,Request $request)
+    public function destroy(Announcement $announcement, Request $request)
     {
-        if(Auth::id()!=$announcement->creator_id || $request->id>3 || $request->id<1)
-        return redirect('/dashboard/announcement');
+        if (Auth::id() != $announcement->creator_id || $request->id > 3 || $request->id < 1)
+            return redirect('/dashboard/announcement');
 
-        $image= $announcement['img'.$request->id];
-        if($image!=NULL){
-            $announcement->update(['img'.$request->id=>Null]);
+        $image = $announcement['img' . $request->id];
+        if ($image != NULL) {
+            $announcement->update(['img' . $request->id => Null]);
             Storage::disk('uploads')->delete($image);
-            if($announcement->img1==Null){
-                if($announcement->img2!=null){
-                    $announcement->update(['img1'=>$announcement->img2]);
-                    $announcement->update(['img2'=>Null]);
-                }elseif($announcement->img3!=null){
-                    $announcement->update(['img1'=>$announcement->img3]);
-                    $announcement->update(['img3'=>Null]);
+            if ($announcement->img1 == Null) {
+                if ($announcement->img2 != null) {
+                    $announcement->update(['img1' => $announcement->img2]);
+                    $announcement->update(['img2' => Null]);
+                } elseif ($announcement->img3 != null) {
+                    $announcement->update(['img1' => $announcement->img3]);
+                    $announcement->update(['img3' => Null]);
                 }
             }
-            if($announcement->img2==Null){
-                if($announcement->img3!=null){
-                    $announcement->update(['img2'=>$announcement->img3]);
-                    $announcement->update(['img3'=>Null]);
+            if ($announcement->img2 == Null) {
+                if ($announcement->img3 != null) {
+                    $announcement->update(['img2' => $announcement->img3]);
+                    $announcement->update(['img3' => Null]);
                 }
             }
-            return back()->with('status','Pomyślnie usunięto zdjęcie');
-            }
-            return back();
+            return back()->with('status', 'Pomyślnie usunięto zdjęcie');
+        }
+        return back();
 
         //
     }
