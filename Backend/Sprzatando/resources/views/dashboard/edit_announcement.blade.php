@@ -31,14 +31,19 @@
                         <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
                         <input value="{{$announcement->date}}" type="date" name='expiring_at' class="form-control mt-1 mb-5" />
                         <label for="FormControlInput1 col-offset">Kategoria:</label>
+                        <input name="categories" type='text' id="categoryServerSee" value="{{implode(',',$announcement->categories()->pluck('id')->toArray())}}"/>
                         <select name='category_id' class="form-select mb-5 mt-1">
+                            @php $selected=$announcement->categories()->pluck('name')->toArray() @endphp
+                            <option value="0" hidden selected>{{implode(", ",$selected)}}</option>
                             @foreach ($categories as $category)
-                            @if($category->id == $announcement->category_id)
-                            <option value="{{$category->id}}" selected>{{$category->name}}</option>
-                            @else
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                           
+                           @if (in_array($category->name,$selected))
+                           <option value="{{$category->id}}" class="selectedOption">{{$category->name}}</option>                              
+                           @else
+                           <option value="{{$category->id}}">{{$category->name}}</option>
+                           @endif
 
-                            @endif
+                            {{-- @endif --}}
 
                             @endforeach
 

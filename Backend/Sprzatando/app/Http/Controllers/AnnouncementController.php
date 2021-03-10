@@ -102,7 +102,7 @@ class AnnouncementController extends Controller
     public function edit(Announcement $announcement)
     {
         //
-        // return $announcement->categories();
+        // return $announcement->categories()->get();
         if($announcement->creator_id!=Auth::id()){
             return redirect('/dashboard/announcement');
         }
