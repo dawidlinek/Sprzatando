@@ -48,7 +48,7 @@
 
                                 <div class="w-100">
                                     <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                                    <input type="date" name='expiring_at'  value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
+                                    <input type="date" name='expiring_at' value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
 
                                     <!-- <Kategorie> -->
                                     <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
@@ -107,7 +107,8 @@
                             <!-- </Image select> -->
 
                             <div class="w-100" style="margin-bottom: 2.8rem;">
-                                <button type='submit' class="btn btn-primary w-100 mt-3 text-white">Dodaj</a>
+                                <button type='submit' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a>
+                                    <button type='submit' class="btn btn-primary w-100 mt-3 text-white">Edytuj</a>
                             </div>
                         </div>
                     </div>
