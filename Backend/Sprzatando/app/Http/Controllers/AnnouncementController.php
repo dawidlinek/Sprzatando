@@ -54,20 +54,22 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         //
+        // return $request->all();
         $data=$request->validate([
             'title'=>'required|max:255',
             'localization'=>'required',
             'price'=>"numeric|min:1|required",
             "description"=>"required|max:500",
             "expiring_at"=>"required|date",
-            "category_id"=>"required|exists:categories,id"
+            "categories"=>"required"
         ]);
-        // return $data;
+        $categories=explode(",",$data['categories']);
+        unset($data['categories']);
         $data['creator_id']=Auth::id();
         $announcement=Announcement::create($data);
-        // foreach($request->categories as $categoty){
-        //     $announcement
-        // }
+        foreach($categories as $categoty){
+            $announcement->categories()->create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
+        }
         $x=0;
         for($i=1;$i<4;$i++){
             if($request->hasFile('img'.$i)){
@@ -100,6 +102,7 @@ class AnnouncementController extends Controller
     public function edit(Announcement $announcement)
     {
         //
+        // return $announcement->categories();
         if($announcement->creator_id!=Auth::id()){
             return redirect('/dashboard/announcement');
         }

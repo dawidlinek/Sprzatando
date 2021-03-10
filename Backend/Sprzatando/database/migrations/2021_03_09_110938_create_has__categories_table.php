@@ -14,8 +14,8 @@ class CreateHasCategoriesTable extends Migration
     public function up()
     {
         Schema::create('has__categories', function (Blueprint $table) {
-            $table->foreignId('category_id');
             $table->foreignId('announcement_id');
+            $table->foreignId('category_id');
         });
     }
 

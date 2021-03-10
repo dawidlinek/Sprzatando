@@ -132,8 +132,16 @@ function newClickOption(option) {
         .querySelector(`option[value='${option.value}']`)
         .classList.toggle("selectedOption");
 
-    selectedServerSee.value = Array.from(selectedOptionsID).join(", ");
+    selectedServerSee.value = Array.from(selectedOptionsID).join(",");
     selectedUserSee.textContent = Array.from(selectedOptionsNames).join(", ");
 }
 
-// Obsługa kategorii
+// Google Maps Places Api
+google.maps.event.addDomListener(window, 'load', initialize);
+function initialize() {
+    var input = document.getElementById('LocalizationAutocomplete');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+    });
+} 

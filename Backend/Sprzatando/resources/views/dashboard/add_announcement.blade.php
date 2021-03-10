@@ -53,7 +53,7 @@
 
                                 <!-- <Kategorie> -->
                                 <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
-                                <input type="text" class="d-none" id="categoryServerSee" value="" />
+                                <input type="text" name="categories" class="d-none" id="categoryServerSee" value="" />
                                 <select class="form-select" id="categorySelect" class="form-select mb-4">
                                     <option selected value="-1" hidden></option>
                                     @foreach ($categories as $category)

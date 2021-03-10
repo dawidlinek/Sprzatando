@@ -20,7 +20,6 @@
                             <input type="number" min="1" required name='price' value="{{$announcement->price}}" step="0.05" class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Opis</label>
                             <textarea maxlength="500" id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{$announcement->description}}</textarea>
-
                             <p>Pozostało <span id="signs">500</span> znaków</p>
                     </div>
                 </div>
