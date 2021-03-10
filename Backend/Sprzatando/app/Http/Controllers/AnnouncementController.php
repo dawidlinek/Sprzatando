@@ -55,12 +55,13 @@ class AnnouncementController extends Controller
     {
         //
         // return $request->file('img1');
+        $request->validate(['img1'=>'nullable|image','img2'=>'nullable|image','img3'=>'nullable|image']);
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
             'price' => "numeric|min:1|required",
             "description" => "required|max:502",
-            "expiring_at" => "required|date",
+            "expiring_at" => "required|date|after:today",
             "categories" => "required"
         ]);
         $categories = explode(",", $data['categories']);
@@ -120,15 +121,15 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
+        $request->validate(['img1'=>'nullable|image','img2'=>'nullable|image','img3'=>'nullable|image']);
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
             'price' => "numeric|min:1|required",
             "description" => "required|max:502",
-            "expiring_at" => "required|date|after:today",
+            "expiring_at" => "required|date",
             "categories" => "required",
         ]);
-        $request->validate(['img1'=>'nullable|image','img2'=>'nullable|image','img3'=>'nullable|image']);
         if(isset($request->status)){
             if($request->status=='finished'){
                 $data['status']='finished';
