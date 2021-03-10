@@ -59,7 +59,7 @@ class AnnouncementController extends Controller
             'title'=>'required|max:255',
             'localization'=>'required',
             'price'=>"numeric|min:1|required",
-            "description"=>"required|max:500",
+            "description"=>"required|max:502",
             "expiring_at"=>"required|date",
             "categories"=>"required"
         ]);
@@ -124,7 +124,7 @@ class AnnouncementController extends Controller
             'title'=>'required|max:255',
             'localization'=>'required',
             'price'=>"numeric|min:1|required",
-            "description"=>"required|max:500",
+            "description"=>"required|max:502",
             "expiring_at"=>"required|date",
             "categories"=>"required"
         ]);
@@ -155,6 +155,21 @@ class AnnouncementController extends Controller
         if($image!=NULL){
             $announcement->update(['img'.$request->id=>Null]);
             Storage::disk('uploads')->delete($image);
+            if($announcement->img1==Null){
+                if($announcement->img2!=null){
+                    $announcement->update(['img1'=>$announcement->img2]);
+                    $announcement->update(['img2'=>Null]);
+                }elseif($announcement->img3!=null){
+                    $announcement->update(['img1'=>$announcement->img3]);
+                    $announcement->update(['img3'=>Null]);
+                }
+            }
+            if($announcement->img2==Null){
+                if($announcement->img3!=null){
+                    $announcement->update(['img2'=>$announcement->img3]);
+                    $announcement->update(['img3'=>Null]);
+                }
+            }
             return back()->with('status','Pomyślnie usunięto zdjęcie');
             }
             return back();
