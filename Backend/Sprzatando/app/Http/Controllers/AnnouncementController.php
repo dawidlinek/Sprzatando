@@ -135,6 +135,12 @@ class AnnouncementController extends Controller
         foreach($categories as $categoty){
             Has_Category::create(['category_id'=>$categoty,'announcement_id'=>$announcement->id]);
         }
+        for($i=1;$i<4;$i++){
+            if($request->hasFile('img'.$i)){
+                $path=$request->file('img'.$i)->store($announcement->id,'uploads');
+                $announcement->update(['img'.$i=>$path]);
+            }
+        }
         return back()->with('status','Pomyślnie zaktualizowano dane');
         //
 

@@ -12,6 +12,6 @@
 ],
 'exists'=>"Podana wartość nie instnieje",
 'required' => 'Pole :attribute jest wymagane.',
-'attributes' => ['name'=>"nazwa",'old_password'=>"Stare hasło",'confirmed'=>"Powtórz hasło",'password'=>"Hasło",'title'=>"Tytuł"],
+'attributes' => ['name'=>"nazwa",'old_password'=>"Stare hasło",'confirmed'=>"Powtórz hasło",'password'=>"Hasło",'title'=>"Tytuł",'description'=>"Opis"],
 ];
 ?>
