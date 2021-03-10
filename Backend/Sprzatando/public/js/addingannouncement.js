@@ -95,6 +95,7 @@ thirdDeleteImage.addEventListener("click", () => {
 });
 
 getThirdImage.addEventListener("change", (evt) => {
+   
     var tgt = evt.target,
         files = tgt.files;
     var fr = new FileReader();
@@ -197,6 +198,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 categoryOptions.addEventListener("change", (e) => {
+    e.stopPropagation();
     newClickOption(e.target);
     categoryOptions.value = -1;
 });
