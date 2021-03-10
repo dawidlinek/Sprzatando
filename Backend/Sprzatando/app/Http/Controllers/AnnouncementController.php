@@ -128,6 +128,7 @@ class AnnouncementController extends Controller
             "expiring_at" => "required|date|after:today",
             "categories" => "required",
         ]);
+        $request->validate(['img1'=>'nullable|image','img2'=>'nullable|image','img3'=>'nullable|image']);
         if(isset($request->status)){
             if($request->status=='finished'){
                 $data['status']='finished';
