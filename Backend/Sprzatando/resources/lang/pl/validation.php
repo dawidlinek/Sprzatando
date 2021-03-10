@@ -10,7 +10,7 @@
 'max'=>[
     "string"=>"Wartość pola :attribute jest za długa",
 ],
-'numeric'=>"Pole musi być liczbą",
+'numeric'=>"Pole :attribute musi być liczbą",
 'exists'=>"Podana wartość nie instnieje",
 'required' => 'Pole :attribute jest wymagane.',
 'attributes' => ['name'=>"nazwa",'old_password'=>"Stare hasło",'confirmed'=>"Powtórz hasło",'password'=>"Hasło",'title'=>"Tytuł",'description'=>"Opis",'price'=>"Cena",'localization'=>"Lokalizacja",'categories'=>"Kategorii",'expiring_at'=>'Czas ważności'],
