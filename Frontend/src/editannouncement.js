@@ -6,7 +6,7 @@ const sectionFirstImage = document.querySelector('#sectionAddFirstImage');
         sectionFirstImage.style.display = 'flex';
         firstDeleteImage.classList.remove('d-flex')
         firstImage.style.display = 'none';
-})
+    })
     
 const secondImage = document.querySelector('#second-image');
 const secondDeleteImage = document.querySelector('#second-delete-image');
@@ -16,7 +16,7 @@ const sectionSecondImage = document.querySelector('#sectionAddSecondImage');
         sectionSecondImage.style.display = 'flex';
         secondImage.style.display = 'none';
         secondDeleteImage.classList.remove('d-flex')
-})
+    })
     
 const thirdImage = document.querySelector('#third-image');
 const thirdDeleteImage = document.querySelector('#third-delete-image');
@@ -25,5 +25,10 @@ const sectionThirdImage = document.querySelector('#sectionAddThirdImage');
         thirdImage.src = "";
         sectionThirdImage.style.display = 'flex';
         thirdImage.style.display = 'none';
-        thirdDeleteImage.classList.remove('d-flex');
+        thirdDeleteImage.classList.remove('d-flex')
+    })
+const descriptionTextArea = document.querySelector('#descriptionTA');
+const leftSigns = document.querySelector('#signs');
+descriptionTextArea.addEventListener('input',()=>{
+    leftSigns.innerHTML = 500-descriptionTextArea.value.length;
 })
