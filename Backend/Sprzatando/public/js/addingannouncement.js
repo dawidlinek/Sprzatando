@@ -109,6 +109,18 @@ const selectedUserSee = categoryOptions.querySelector("option[value='-1']");
 let selectedOptionsID = new Set();
 let selectedOptionsNames = new Set();
 
+window.addEventListener("DOMContentLoaded", () => {
+    const active = categoryOptions.querySelectorAll("option.selectedOption");
+
+    active.forEach((option) => {
+        selectedOptionsID.add(option.value);
+        selectedOptionsNames.add(option.textContent);
+    });
+
+    selectedServerSee.value = Array.from(selectedOptionsID).join(",");
+    selectedUserSee.textContent = Array.from(selectedOptionsNames).join(", ");
+});
+
 categoryOptions.addEventListener("change", (e) => {
     newClickOption(e.target);
     categoryOptions.value = -1;
@@ -137,11 +149,11 @@ function newClickOption(option) {
 }
 
 // Google Maps Places Api
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, "load", initialize);
 function initialize() {
-    var input = document.getElementById('LocalizationAutocomplete');
+    var input = document.getElementById("LocalizationAutocomplete");
     var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.addListener('place_changed', function() {
+    autocomplete.addListener("place_changed", function () {
         var place = autocomplete.getPlace();
     });
-} 
+}

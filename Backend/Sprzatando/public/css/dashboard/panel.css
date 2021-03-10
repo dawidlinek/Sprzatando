@@ -185,18 +185,18 @@
     font-weight: normal !important;
 }
 
-.bg-danger {
+.banned {
     background-color: var(--bs-danger);
 }
 
-.bg-success {
+.active {
     background-color: var(--bs-success);
 }
 
-.bg-gray {
+.finished {
     background-color: var(--bs-gray);
 }
 
-.bs-warning {
+.reported {
     background-color: var(--bs-warning);
 }
