@@ -16,7 +16,7 @@ let descriptions =[
     "Jako zalogowany użytkownik <br /> możesz przeglądać otrzymane oferty zgłoszeń"
 ]
 let i = 2;
-
+var startInterval = setInterval(changeImage,5000);
 //functions
 
 function changeHero(image,descriptionText,removeAddBar,addBar1,addBar2,nameFunction) {
@@ -59,8 +59,18 @@ function clickChangeImage(){
             i = 1; 
     }
 }
+function stopStart(){
+    return {
+        start() {
+            startInterval = setInterval(changeImage,5000)
+        },
+        stop() {
+            clearInterval(startInterval)
+        }
+    }
+}
+const status = stopStart();
 changeImage();
-setInterval(changeImage,5000);
 
 // onclick functiions
 
@@ -126,4 +136,6 @@ const tl2 = anime.timeline({
         easing:'linear',
         direction:'alternate'
     })
+    status.stop();
+    status.start();
 }
