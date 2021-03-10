@@ -106,10 +106,11 @@
                                             
                                         </div>
                             </div>
+                            <input hidden name='status' id='status' type='text' value/>
                             
                             <div class="w-100" style="margin-bottom: 2.8rem;">
-                                <button type='submit' form='archiwizuj' class="btn btn-outline-primary w-100 mt-3">Archiwizuj</a>
-                                    @method('PUT')
+                                @method('PUT')
+                                <button type='submit'  onclick="status.value='finished';update.submit()" class="btn btn-outline-primary w-100 mt-3">Zakończ ofertę</a>
                                     <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
                                 </form>
                             </div>
