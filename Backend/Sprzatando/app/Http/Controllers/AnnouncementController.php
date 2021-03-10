@@ -125,7 +125,7 @@ class AnnouncementController extends Controller
             'localization' => 'required',
             'price' => "numeric|min:1|required",
             "description" => "required|max:502",
-            "expiring_at" => "required|date",
+            "expiring_at" => "required|date|after:today",
             "categories" => "required",
         ]);
         if(isset($request->status)){
