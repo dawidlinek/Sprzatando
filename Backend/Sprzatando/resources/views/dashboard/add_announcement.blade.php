@@ -49,7 +49,7 @@
 
                             <div class="w-100">
                                 <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                                <input value="{{ old('expiring_at') }}" type="date" name='expiring_at' class="form-control mb-4" />
+                                <input value="{{ old('expiring_at') }}" type="date" name='expiring_at' id='datePickerId' class="form-control mb-4" />
 
                                 <!-- <Kategorie> -->
                                 <label for="FormControlInput1 col-offset">Kategorie:</label> <br />

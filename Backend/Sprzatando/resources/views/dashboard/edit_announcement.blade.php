@@ -36,7 +36,7 @@
                                 <label for="FormControlInput1 col-offset">Opis</label>
                                 <textarea maxlength="500" @if($announcement->status!='active') disabled @endif id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{$announcement->description}}</textarea>
 
-                                  <p>Pozostało <span id="signs">@if($announcement->status=='active')500 @else 0 @endif</span> znaków</p>  
+                                  <p @if($announcement->status!='active') class='d-none' @endif >Pozostało <span id="signs">500</span> znaków</p>  
                             </div>
                         </div>
 
@@ -47,7 +47,7 @@
 
                                 <div class="w-100">
                                     <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                                    <input type="date" @if($announcement->status!='active') disabled @endif name='expiring_at' value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
+                                    <input id='datePickerId' type="date" @if($announcement->status!='active') disabled @endif name='expiring_at' value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
 
                                     <!-- <Kategorie> -->
                                     <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
