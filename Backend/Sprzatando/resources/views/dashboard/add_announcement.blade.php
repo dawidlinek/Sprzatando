@@ -100,11 +100,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- </Image select> -->
-
-                        <div class="w-100" style="margin-bottom: 2.8rem;">
-                            <button type='submit' class="btn btn-primary w-100 mt-3 text-white">Dodaj</a>
+                            <!-- </Image select> -->
+                            <div class="w-100" style="margin-bottom: 2.8rem;">
+                                <button type='submit' class="btn btn-primary w-100 mt-3 text-white">Dodaj</a>
+                            </div>
                         </div>
                     </div>
                 </div>
