@@ -43,6 +43,9 @@ class UserController extends Controller
         if($request->password!=$request->confirmed){
             return back()->withErrors("Hasła się nie zgadzają.");
         }
+        if(strlen($request->password)<8){
+            return back()->withErrors("Hasła musi mieć co najmniej 8 znaków.");
+        }
         if (!Hash::check($request['old_password'], Auth::user()->password)) {
             return back()->withErrors("Stare hasło się nie zgadza.");
        }

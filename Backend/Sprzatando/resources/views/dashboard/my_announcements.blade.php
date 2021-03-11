@@ -62,7 +62,11 @@
                                         <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
                                     </div>
                                     <div class="b-row d-flex p-3">
+                                        @if($announcement->status=='active')
                                         <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="{{ route('announcement.edit', $announcement->id) }}">Edytuj</a>
+                                        @else 
+                                        <a class="btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="{{ route('announcement.edit', $announcement->id) }}">Podgląd</a>
+                                        @endif
                                     </div>
 
                                 </div>

@@ -10,13 +10,13 @@
             </div>
         </div>
         @endif
+        @include('auth.errors',["errors"=>$errors])
         <div class="row w-100 match-height">
 
             <div class="col-12 col-xl-6">
                 <div class="card ">
                     <div class="card-body d-flex flex-column align-items-start justify-content-start">
                         <h2 class="card-title text-primary mb-3 mb-lg-5">Zmień dane konta</h2>
-                        @include('auth.errors',["errors"=>$errors])
                         {{-- <img src="..." class="card-img" width="50" height="50px" alt="BRAK ZDJĘCIA"> --}}
                         <form class="w-100 h-100 d-flex flex-column justify-content-between" method="POST" action="{{route('user.update')}}">
                             @csrf
