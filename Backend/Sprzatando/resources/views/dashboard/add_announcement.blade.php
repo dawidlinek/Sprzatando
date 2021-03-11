@@ -52,7 +52,7 @@
                                 <input value="{{ old('expiring_at') }}" type="date" name='expiring_at' id='datePickerId' class="form-control mb-4" />
 
                                 <!-- <Kategorie> -->
-                                <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
+                                <label for="FormControlInput1 col-offset">Kategorie: (można wybrać parę)</label> <br />
                                 <input type="text" name="categories" class="d-none" id="categoryServerSee" value="" />
                                 <select class="form-select" id="categorySelect" class="form-select mb-4">
                                     <option selected value="-1" hidden></option>
