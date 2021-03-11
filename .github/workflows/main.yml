@@ -30,7 +30,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: 188.210.221.79
+          server: ${{ secrets.ip }}
           username: srv32303
           password:  ${{ secrets.password }}
           server-dir: /domains/sprzatnij.me/public_html/
