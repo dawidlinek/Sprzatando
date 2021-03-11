@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         <div class="row w-100 match-height">
             @include('dashboard.status')
-            <div class="card">
+            <div class="card" style="padding-bottom: 1rem;">
 
                 <!-- <Title  -->
                 <div class="row w-100">
