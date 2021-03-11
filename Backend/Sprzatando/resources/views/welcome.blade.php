@@ -25,9 +25,12 @@
                 <li class="nav-item">
                   <a class="nav-link btn-lg" aria-current="page" href="{{ url('/dashboard') }}">Panel</a>
                 </li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
                 <li class="nav-item">
-                  <a class="nav-link btn-lg" aria-current="page" href="{{ route('logout') }}">Wyloguj się</a>
+                  <button class="nav-link btn-lg" aria-current="page">Wyloguj się</button>
                 </li>
+                </form>
             @else
                 <li class="nav-item">
                   <a class="nav-link btn-lg" aria-current="page" href="{{ route('login') }}">Zaloguj się!</a>
