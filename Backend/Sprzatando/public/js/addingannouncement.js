@@ -189,6 +189,7 @@ window.addEventListener("DOMContentLoaded", () => {
     leftSigns.innerHTML = 500 - descriptionTextArea.value.length;
     const active = categoryOptions.querySelectorAll("option.selectedOption");
     datePickerId.min = new Date().toISOString().split("T")[0];
+    datePickerId.max = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split("T")[0];
 
     active.forEach((option) => {
         selectedOptionsID.add(option.value);
