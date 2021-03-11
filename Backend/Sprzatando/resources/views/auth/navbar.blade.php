@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light pb-3">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img alt=" " src="/img/logo.png" height="60" style="margin-right: 5px;" />
         <span class="d-none d-xl-inline">SprzatnijME!</span>
     </a>
