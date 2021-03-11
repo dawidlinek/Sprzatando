@@ -60,9 +60,10 @@ function clickChangeImage() {
     }
 }
 function stopStart(){
+    let startInterval;
     return {
         start() {
-            let startInterval = setInterval(changeImage,5000)
+            startInterval = setInterval(changeImage,5000)
         },
         stop() {
             clearInterval(startInterval)
