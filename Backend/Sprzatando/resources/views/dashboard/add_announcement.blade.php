@@ -30,9 +30,9 @@
                         <div class="d-flex flex-column align-items-start justify-content-between">
 
                             <label for="FormControlInput1 col-offset">Tytuł</label>
-                            <input  value="{{ old('title') }}" type="text" name='title' maxlength="254" required class="form-control mb-4" />
+                            <input value="{{ old('title') }}" type="text" name='title' maxlength="254" required class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Lokalizacja</label>
-                            <input  value="{{ old('localization') }}" type="text" name='localization' maxlength="254" required id='LocalizationAutocomplete' class="form-control mb-4" />
+                            <input value="{{ old('localization') }}" type="text" name='localization' maxlength="254" required id='LocalizationAutocomplete' class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Cena</label>
                             <input type="number" value="{{ old('price') }}" min="1" required name='price' step="0.05" class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Opis</label>
@@ -49,7 +49,7 @@
 
                             <div class="w-100">
                                 <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                                <input value="{{ old('expiring_at') }}" type="date" name='expiring_at'  id='datePickerId' class="form-control mb-4" />
+                                <input value="{{ old('expiring_at') }}" type="date" name='expiring_at' id='datePickerId' class="form-control mb-4" />
 
                                 <!-- <Kategorie> -->
                                 <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
@@ -94,7 +94,8 @@
                                             <div class="add-image">
                                                 <img src="/img/dashboard/rec.png" height="150px" width="150px" id="third-image" class="img-fluid add-image zIndex2" draggable="false" />
                                                 <div class="plus-add" id="sectionAddThirdImage">+</div>
-                                                <div class="delete-image w-100" id="third-delete-image">Usuń zdjęcie</div>
+                                            </div>
+                                            <div class="delete-image w-100" id="third-delete-image">Usuń zdjęcie</div>
                                         </label>
                                     </div>
                                 </div>

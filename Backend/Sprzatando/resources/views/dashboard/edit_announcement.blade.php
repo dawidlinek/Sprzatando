@@ -28,7 +28,7 @@
                             <div class="d-flex flex-column align-items-start justify-content-between">
 
                                 <label for="FormControlInput1 col-offset">Tytuł</label>
-                                <input    @if($announcement->status!='active') disabled @endif type="text" name='title' required value="{{$announcement->title}}" class="form-control mb-4" />
+                                <input @if($announcement->status!='active') disabled @endif type="text" name='title' required value="{{$announcement->title}}" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Lokalizacja</label>
                                 <input type="text" @if($announcement->status!='active') disabled @endif name='localization' required value="{{$announcement->localization}}" id='LocalizationAutocomplete' class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Cena</label>
@@ -36,7 +36,7 @@
                                 <label for="FormControlInput1 col-offset">Opis</label>
                                 <textarea maxlength="500" @if($announcement->status!='active') disabled @endif id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{$announcement->description}}</textarea>
 
-                                  <p @if($announcement->status!='active') class='d-none' @endif >Pozostało <span id="signs">500</span> znaków</p>  
+                                <p @if($announcement->status!='active') class='d-none' @endif >Pozostało <span id="signs">500</span> znaków</p>
                             </div>
                         </div>
 
@@ -72,32 +72,28 @@
                                     <label for="FormControlInput1 col-offset" class="mb-3 mt-3"> @if($announcement->status=='active')Dodaj zdjęcia: @else Zobacz zdjęcia @endif</label>
                                     <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
                                         @php $tmp=["o",'first','second','third']@endphp
-                                        @for ($i = 1; $i < 4; $i++)
-                                        @if((array)$announcement['img'.$i]==Null)
-
-                                          
-                                                <input @if($announcement->status!='active') disabled @endif class="form-control mb-3" type="file" name='img{{$i}}' accept="image/png, image/jpeg" id="formFileDisabled{{$i}}" />
-                                                <label class="form-check-label position-relative ramka-image" for="formFileDisabled{{$i}}">
-                                                    <div class="add-image">
-                                                        <img src="/img/dashboard/rec.png" height="150px" width="150px" id="{{$tmp[$i]}}-image" class="img-fluid add-image zIndex2" draggable="false" />
-                                                        <div class="plus-add" id="sectionAdd{{strtoupper($tmp[$i][0]).substr($tmp[$i],1,strlen($tmp[$i]))}}Image">+</div>
-                                                    </div>
-                                                    <div class="delete-image w-100" id="{{$tmp[$i]}}-delete-image">Usuń zdjęcie</div>
-                                                </label>
-                                          
-                                            
-                                            @else
-                                            
-                                            <label class="form-check-label position-relative ramka-image" >
+                                        @for ($i = 1; $i < 4; $i++) @if((array)$announcement['img'.$i]==Null) <input @if($announcement->status!='active') disabled @endif class="form-control mb-3" type="file" name='img{{$i}}' accept="image/png, image/jpeg" id="formFileDisabled{{$i}}" />
+                                            <label class="form-check-label position-relative ramka-image" for="formFileDisabled{{$i}}">
                                                 <div class="add-image">
-                                                    <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px"  class="img-fluid add-image zIndex2" draggable="false" />
+                                                    <img src="/img/dashboard/rec.png" height="150px" width="150px" id="{{$tmp[$i]}}-image" class="img-fluid add-image zIndex2" draggable="false" />
+                                                    <div class="plus-add" id="sectionAdd{{strtoupper($tmp[$i][0]).substr($tmp[$i],1,strlen($tmp[$i]))}}Image">+</div>
+                                                </div>
+                                                <div class="delete-image w-100" id="{{$tmp[$i]}}-delete-image">Usuń zdjęcie</div>
+                                            </label>
+
+
+                                            @else
+
+                                            <label class="form-check-label position-relative ramka-image">
+                                                <div class="add-image">
+                                                    <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px" class="img-fluid add-image zIndex2" draggable="false" />
                                                 </div>
                                                 @if($announcement->status=='active')
                                                 <form></form>
-                                                <form method='POST' id='deletef{{$i}}' class='delete-images' onsubmit="return confirm('Czy na pewno chcesz usunąć zdjęcie?')" action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}' >
+                                                <form method='POST' id='deletef{{$i}}' class='delete-images' onsubmit="return confirm('Czy na pewno chcesz usunąć zdjęcie?')" action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}'>
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button class="delete-image w-100  edit-image" form='deletef{{$i}}'  >Usuń zdjęcie</button>
+                                                    <button class="delete-image w-100  edit-image" form='deletef{{$i}}'>Usuń zdjęcie</button>
                                                 </form>
                                                 @endif
                                             </label>
@@ -105,34 +101,34 @@
                                             <div id='formFileDisabled{{$i}}'> </div>
                                             @endif
                                             @endfor
-                                            
-                                        </div>
-                            </div>
-                            <input hidden @if($announcement->status!='active') disabled @endif name='status' id='status' type='text' value/>
-                            
-                            <div class="w-100" style="margin-bottom: 2.8rem;">
-                                @method('PUT')
-                                @if($announcement->status=='active')
-                                <button type='submit'  onclick="status.value='finished';update.submit()" class="btn btn-outline-primary w-100 mt-3">Zakończ ofertę</a>
-                                    <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
-                                    @else
-                                    <a  class="btn btn-primary w-100 mt-3 text-white" href='{{route('announcement.index')}}'>Powrót</a>
-                                    
-                                    @endif
 
-                                </form>
-                            </div>
                                     </div>
-                                    </div>
-                                    
-                                    <!-- </Image select> -->
-                                    
                                 </div>
-                  
-                <!-- </Main form> -->
+                                <input hidden @if($announcement->status!='active') disabled @endif name='status' id='status' type='text' value/>
 
-        
-{{-- <script>
+                                <div class="w-100" style="margin-bottom: 2.8rem;">
+                                    @method('PUT')
+                                    @if($announcement->status=='active')
+                                    <button type='submit' onclick="status.value='finished';update.submit()" class="btn btn-outline-primary w-100 mt-3">Zakończ ofertę</a>
+                                        <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
+                                        @else
+                                        <a class="btn btn-primary w-100 mt-3 text-white" href='{{route('announcement.index')}}'>Powrót</a>
+
+                                        @endif
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- </Image select> -->
+
+    </div>
+
+    <!-- </Main form> -->
+
+
+    {{-- <script>
     const firstImage = document.querySelector('#first-image');
 const firstDeleteImage = document.querySelector('#first-delete-image');
 const sectionFirstImage = document.querySelector('#sectionAddFirstImage');
