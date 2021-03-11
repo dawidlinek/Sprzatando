@@ -82,7 +82,7 @@ class AnnouncementController extends Controller
                 $announcement->update([$key => $path]);
             }
         }
-        return back()->with('status', "Pomyślnie dodano nowe ogłoszenie");
+        return redirect()->route('announcement.index')->with('status', "Pomyślnie dodano nowe ogłoszenie");
     }
 
     /**
