@@ -5,5 +5,5 @@
 <link rel="stylesheet" href="/css/login/fonts.css" />
 <link rel="stylesheet" href="/css/login/style.css" />
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-
+<link rel="icon" href="/img/ooda na sto pro.ico">
 <title>Sprzatnij me:D</title>

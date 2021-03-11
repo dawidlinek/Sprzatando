@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="/css/fonts.css" />
   <link rel="stylesheet" href="/css/dashboard/panel.css" />
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+ 
+  <link rel="icon" href="/img/ooda na sto pro.ico">
   <title>Sprzatnij me:D</title>
 </head>
 
