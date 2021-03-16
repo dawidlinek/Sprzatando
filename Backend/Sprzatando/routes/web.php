@@ -23,6 +23,9 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/offer/show', function () {
+    return view('offer.show_offer');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // return view('dashboard');
