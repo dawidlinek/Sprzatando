@@ -20,6 +20,8 @@ class CreateAnnouncementsTable extends Migration
             $table->longText('description');
             $table->float('price');
             $table->string('localization');
+            $table->double('longitude');
+            $table->double('latitude');
             $table->string('img1')->nullable();
             $table->string('img2')->nullable();
             $table->string('img3')->nullable();

@@ -198,4 +198,12 @@ if(isset($data['status'])){
 
         //
     }
+
+    public function Api(Request $request){
+        $querry= Announcement::where('status','active');
+        if($request->title) $querry->where('title', 'LIKE', '%'.$request->title.'%');
+        if($request->price_min) $querry->where('price', '>', $request->price_min);
+        if($request->price_max) $querry->where('price', '<', $request->price_max);
+        return $querry->get();
+    }
 }
