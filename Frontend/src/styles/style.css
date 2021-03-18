@@ -15,6 +15,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+input::before{
+    content: '';
+    background-color: red;
+    width: 5px;
+    height: 100%;
+}
 img {
   -webkit-user-select: none;
   -khtml-user-select: none;

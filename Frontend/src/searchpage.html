@@ -62,29 +62,29 @@
         <div class="col-4 mt-5 d-flex flex-column align-items-center">
             <!-- CENA -->
             <div class="col-8">
-                <div>
-                    <label  for="example-number-input"
-                            class="col-8 col-form-label mb-3">
-                        Cena:
-                    </label>
-                    <div class="d-flex w-75 justify-content-between">
-                        <input  class="form-control w-50 px-3 mx-1"
-                                type="number"
-                                id="example-number-input"
-                                placeholder="od"
-                                >
-                        <input  class="form-control w-50 px-3 mx-1"
-                                type="number"
-                                id="example-number-input"
-                                placeholder="do"
-                                >   
-                    </div>
+                <div class="col-10">
+                        <label  for="example-number-input"
+                                class="col-8 col-form-label mb-3">
+                            Cena:
+                        </label>
+                        <div class="d-flex w-75 justify-content-between">
+                            <input  class="form-control w-50 px-3 mx-1"
+                                    type="number"
+                                    id="example-number-input"
+                                    placeholder="od"
+                                    >
+                            <input  class="form-control w-50 px-3 mx-1"
+                                    type="number"
+                                    id="example-number-input"
+                                    placeholder="do"
+                                    >   
+                        </div>
                 </div>
             </div>
             <!-- KONIEC CENY -->
             <!-- LOKALIZACJA -->
             <div class="col-8">
-                <div>
+                <div >
                     <label  for="example-number-input"
                             class="col-8 col-form-label">
                         Lokalizacja:
@@ -100,7 +100,8 @@
                             class="col-8 col-form-label">
                         Promień wyszukań:
                     </label>
-                    <input type="range" class="form-range"/>
+                    <p id="rangeText">0km</p>
+                    <input type="range" class="form-range" id="rangeValue" min="0" max="100" value="0"/>
                 </div>
             </div>
             <!-- KONIEC PROMIEŃ -->
@@ -124,8 +125,8 @@
         </div>
         <!-- KONIEC LEWEJ KOLUMNY -->
         <!-- PRAWA KOLUMNA -->
-        <div  class="col-8 mt-5">
-            <div class="col-10">
+        <div  class="col-7 mt-5">
+            <div class="w-100">
                 <h2 class="text-primary mb-4">Wpisz interesującą frazę</h2>
                 <!-- SEARCH BUTTON -->
                     <div class="d-flex w-100 mb-5">
@@ -191,6 +192,13 @@
     </div>
   </div>
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+      let rangeVal = document.querySelector('#rangeValue');
+      let rangeTxt = document.querySelector('#rangeText');
+      rangeVal.addEventListener('input',()=>{
+          rangeTxt.innerHTML = rangeVal.value + 'km'
+      })
+  </script>
 </body>
 
 </html>

@@ -55,7 +55,7 @@ class AnnouncementController extends Controller
     {
         //
         // return $request->file('img1');
-        $request->validate(['img1'=>'nullable|image|dimensions:max_width=2000,max_height=2000','img2'=>'nullable|image|dimensions:max_width=2000,max_height=2000','img3'=>'nullable|image|dimensions:max_width=2000,max_height=2000']);
+        $request->validate(['img1' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img2' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img3' => 'nullable|image|dimensions:max_width=2000,max_height=2000']);
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
@@ -121,7 +121,7 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        $request->validate(['img1'=>'nullable|image|dimensions:max_width=2000,max_height=2000','img2'=>'nullable|image|dimensions:max_width=2000,max_height=2000','img3'=>'nullable|image|dimensions:max_width=2000,max_height=2000']);
+        $request->validate(['img1' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img2' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img3' => 'nullable|image|dimensions:max_width=2000,max_height=2000']);
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
@@ -130,9 +130,9 @@ class AnnouncementController extends Controller
             "expiring_at" => "required|date",
             "categories" => "required",
         ]);
-        if(isset($request->status)){
-            if($request->status=='finished'){
-                $data['status']='finished';
+        if (isset($request->status)) {
+            if ($request->status == 'finished') {
+                $data['status'] = 'finished';
             }
         }
         $categories = explode(",", $data['categories']);
@@ -154,9 +154,9 @@ class AnnouncementController extends Controller
                 }
             }
         }
-if(isset($data['status'])){
-    return redirect()->route('announcement.index')->with('status','Pomyślnie zakończono ogłoszenie');
-}
+        if (isset($data['status'])) {
+            return redirect()->route('announcement.index')->with('status', 'Pomyślnie zakończono ogłoszenie');
+        }
         return back()->with('status', 'Pomyślnie zaktualizowano dane');
         //
 
@@ -199,11 +199,27 @@ if(isset($data['status'])){
         //
     }
 
-    public function Api(Request $request){
-        $querry= Announcement::where('status','active');
-        if($request->title) $querry->where('title', 'LIKE', '%'.$request->title.'%');
-        if($request->price_min) $querry->where('price', '>', $request->price_min);
-        if($request->price_max) $querry->where('price', '<', $request->price_max);
-        return $querry->get();
+    public function Api(Request $request)
+    {
+        $querry = Announcement::where('status',"LIKE", 'active');
+        if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
+        if ($request->price_min) $querry->where('price', '>', $request->price_min);
+        if ($request->price_max) $querry->where('price', '<', $request->price_max);
+        // if($request->categories){
+        //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
+        // }
+        $offers = $querry->with('categories')->get();
+        if ($request->categories) {
+            $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
+            foreach ($offers as $key => $offer) {
+                foreach ($categories_prim as $category) {
+                    if (in_array($category->name, $offer->categories->pluck('name')->toArray())) {
+                        unset($offers[$key]);
+                        continue;
+                    }
+                }
+            };
+        }
+        return $offers;
     }
 }
