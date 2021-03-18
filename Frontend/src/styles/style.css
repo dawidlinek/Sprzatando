@@ -7,6 +7,14 @@
     --tertiary: #707070;
     --primary-opacity: #1c1c6750;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
 img {
   -webkit-user-select: none;
   -khtml-user-select: none;
