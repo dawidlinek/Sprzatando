@@ -22,7 +22,8 @@
     <div class="input-group position-absolute d-flex justify-content-center align-items-center"
       style="top: 0; left: 0; min-height: 50vh;">
       <div class="form-outline col-5">
-        <input type="search" id="form1" class="form-control"
+        <span id="this_little_thing" style="position: absolute; background-color: #1c1c67; display: block; min-height: 5vh;">&nbsp</span>
+        <input type="search" id="form1" class="form-control" placeholder="Wyszukaj ofertę..."
           style="min-height: 5vh; max-height: 5vh; z-index: 100; background-color: white;" />
       </div>
       <button type="button" class="btn btn-primary" style="min-height: 5vh; max-height: 5vh;">
@@ -30,15 +31,15 @@
       </button>
     </div>
     <div class="row d-none d-md-block">
-      <h2 class="text-primary text-center p-4">Kategorie:</h2>
+      <h2 class="text-primary text-center mt-5 p-3">Wybierz zlecenia tylko z kategorii, które Cię interesują!</h2>
       <form class="btn-group justify-content-between">
         <button class="btn col-3 m-5 btn-primary border-light btn-block btn-lg rounded">Dom</button>
         <button class="btn col-3 m-5 btn-primary border-light btn-block btn-lg rounded">Ogród</button>
         <button class="btn col-3 m-5 btn-primary border-light btn-block btn-lg rounded">Mieszkanie</button>
-        <button class="btn col-3 m-5 btn-primary border-light btn-block btn-lg rounded">Mycie okien</button>
+        <button class="btn col-3 m-5 btn-outline-primary btn-block btn-lg rounded">Więcej...</button>
       </form>
     </div>
-    <h2 for="category_id col-offset" class="m-4 text-primary d-sm-block d-md-none text-center">Kategorie:</h2>
+    <h2 for="category_id col-offset" class="m-4 text-primary d-sm-block d-md-none text-center">Wybierz zlecenia tylko z kategorii, które Cię interesują!</h2>
     <select name="category_id" class="form-select d-sm-block d-md-none">
       <option value="1">Dom</option>
 
