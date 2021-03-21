@@ -61,19 +61,19 @@
         <!-- LEWA KOLUMNA -->
         <div class="col-4 mt-5 d-flex flex-column align-items-center">
             <!-- CENA -->
-            <div class="col-8">
-                <div class="col-10">
+            <div class="col-8 mb-5">
+                <div class="col-10 col-sm-12">
                         <label  for="example-number-input"
                                 class="col-8 col-form-label mb-3">
-                            Cena:
+                            <h2>Cena:</h2>
                         </label>
-                        <div class="d-flex w-75 justify-content-between">
-                            <input  class="form-control w-50 px-3 mx-1"
+                        <div class="d-flex w-75 justify-content-between flex-md-row flex-sm-column">
+                            <input  class="form-control mw-50 p-3 mx-1 my-1"
                                     type="number"
                                     id="example-number-input"
                                     placeholder="od"
                                     >
-                            <input  class="form-control w-50 px-3 mx-1"
+                            <input  class="form-control mw-50 p-3 mx-1 my-1"
                                     type="number"
                                     id="example-number-input"
                                     placeholder="do"
@@ -83,42 +83,42 @@
             </div>
             <!-- KONIEC CENY -->
             <!-- LOKALIZACJA -->
-            <div class="col-8">
+            <div class="col-8 mb-5">
                 <div >
                     <label  for="example-number-input"
                             class="col-8 col-form-label">
-                        Lokalizacja:
+                        <h2>Lokalizacja:</h2>
                     </label>
-                    <input type="text" class="form-control mb-4" placeholder="Opole..."/>
+                    <input type="text" class="form-control mb-4 p-3" placeholder="Opole..."/>
                 </div>
             </div>
             <!-- KONIEC LOKALIZACJA -->
             <!-- PROMIEŃ WYSZUKAŃ -->
-            <div class="col-8">
+            <div class="col-8 mb-5">
                 <div>
                     <label  for="example-number-input"
-                            class="col-8 col-form-label">
-                        Promień wyszukań:
+                            class="col-8 col-form-label w-100">
+                        <h2>Promień wyszukiwań:</h2>
                     </label>
                     <p id="rangeText">0km</p>
-                    <input type="range" class="form-range" id="rangeValue" min="0" max="100" value="0"/>
+                    <input type="range" class="form-range " id="rangeValue" data-slider-min="0" data-slider-max="100" value="0"/>
                 </div>
             </div>
             <!-- KONIEC PROMIEŃ -->
             <!-- KATEGORIE -->
-            <div class="col-8">
+            <div class="col-8 mb-5">
                 <div>
                     <label  for="example-number-input"
                             class="col-8 col-form-label w-100">
-                        Kategorie:
+                        <h2>Kategorie:</h2>
                     </label>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Auto</button>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Zamiatanie</button>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Wycieranie</button>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Mycie Okien</button>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Lokale</button>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Pranie</button>
-                    <button class="btn btn-primary text-nowrap m-2 px-4 py-2">Dezynfekcja</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Auto</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Zamiatanie</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Wycieranie</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Mycie Okien</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Lokale</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Pranie</button>
+                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Dezynfekcja</button>
                 </div>
             </div>
             <!-- KONIEC KATEGORIE -->
@@ -127,20 +127,20 @@
         <!-- PRAWA KOLUMNA -->
         <div  class="col-7 mt-5">
             <div class="w-100">
-                <h2 class="text-primary mb-4">Wpisz interesującą frazę</h2>
+                <h2 class="text-primary mb-5">Wpisz interesującą frazę</h2>
                 <!-- SEARCH BUTTON -->
                     <div class="d-flex w-100 mb-5">
                         <div class="form-outline col-5 w-75">
                             <input
                                 type="search"
                                 id="form1"
-                                class="form-control w-100"
+                                class="form-control w-100  p-3"
                                 placeholder="Sprzatanie biura..."
                                 style="min-height: 5vh; max-height: 5vh; z-index: 100; background-color: white;" />
                         </div>
-                            <button type="button" class="btn btn-primary w-25" style="min-height: 5vh; max-height: 5vh;">
+                            <button type="button" class="btn btn-primary w-25 " style="min-height: 5vh; max-height: 5vh;">
                                     <p class="fas fa-search m-0">Szukaj</p>
-                        </button>
+                            </button>
                     </div>
                 <!-- KONIEC SEARCH BUTTON -->
             <!-- POJEDYNCZE OGŁOSZENIE -->
@@ -150,15 +150,15 @@
                         style="background-image: url(https://assets.archon.pl/images/products/mfe42422780eaf/widok-1-projekt-dom-w-balsamowcach-2-8719685424c5e520fa9a1911a47e76a0__289.jpg); background-position: center center; background-size: cover; min-height: 180px;">
                         &nbsp;
                     </div>
-                    <div class="col-md-6 col-sm-8">
-                        <div class="card-body">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card-body mb-3">
                             <div class="row col-12">
                                 <div class="col-lg-6">
                                     <h5 class="card-title text-primary text-nowrap">Posprzątanie ogromnej willi</h5>
                                 </div>
-                                <div class="col-lg-6 d-flex justify-content-end">
-                                <p class="row card-text nowrap d-sm-flex"><small
-                                    class="col-md-5 text-muted d-flex justify-content-start align-items-center">0000zł</small><small
+                                <div class="col-lg-6 d-flex justify-content-md-end justify-content-sm-start">
+                                <p class="row card-text nowrap d-sm-flex">
+                                    <small class="col-md-5 text-muted d-flex justify-content-start align-items-center ">0000zł</small><small
                                     class=" col-md-4 text-muted d-md-none justify-content-start">Opole ul.Kozacka 2</small>
                                 </p>
                                 </div>
@@ -174,11 +174,11 @@
                             kiedy sobie nie radziłem, kiedy byłem sam. </p>
                         </div>
                     </div>
-                    <div class="col-md-3 p-4 position-relative">
+                    <div class="col-md-3 col-sm-12 p-4 position-relative">
                         <div class="b-row d-md-flex d-none justify-content-end">
                             <p><small class="text-muted overflow-wrap">Opole, Polska</small></p>
                         </div>
-                        <div class="b-row d-flex align-text-center p-3 w-75 position-absolute bottom-0 right-0"> 
+                        <div class="b-row d-flex align-text-center m-3 col-sm-11 position-absolute " style="right:5px; bottom: 5px"> 
                             <button class="btn btn-primary w-100 text-nowrap">Szczegóły</button>
                         </div>
                     </div>
@@ -193,11 +193,24 @@
   </div>
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
+      let i = 1;
       let rangeVal = document.querySelector('#rangeValue');
       let rangeTxt = document.querySelector('#rangeText');
       rangeVal.addEventListener('input',()=>{
           rangeTxt.innerHTML = rangeVal.value + 'km'
       })
+      function buttonStatus(evt){
+          if(evt.classList.contains('button-off')){
+            evt.classList.remove('button-off')
+            evt.classList.add('button-on')
+            evt.style.color = 'white';
+          }
+          else if(evt.classList.contains('button-on')){
+            evt.classList.remove('button-on')
+            evt.classList.add('button-off')
+            evt.style.color = 'black';
+          }
+      }
   </script>
 </body>
 

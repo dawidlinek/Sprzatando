@@ -12,6 +12,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input{
+    box-shadow: 0px 6px 29px -7px rgba(0,0,0,0.75);
+}
+input[type=range]{
+    box-shadow: none;
+}
 input[type=number] {
   -moz-appearance: textfield;
 }
@@ -54,6 +60,12 @@ img {
 .noMainBtn{
     width:5%;
 }
+.button-off{
+    background: #EEEEEE !important;
+}
+.button-on{
+    background: #1C1C67 !important;
+}
 /* id */
 #first-bar{
     content:'';
@@ -71,7 +83,6 @@ img {
     background-repeat: no-repeat;
     opacity:0;
 }
-
 /* responsive */
 @media only screen and (min-width: 3000px){
     #description{
