@@ -68,6 +68,7 @@
                             <h2>Cena:</h2>
                         </label>
                         <div class="d-flex w-75 justify-content-between flex-md-row flex-sm-column">
+                            
                             <input  class="form-control mw-50 p-3 mx-1 my-1"
                                     type="number"
                                     id="example-number-input"
@@ -89,6 +90,12 @@
                             class="col-8 col-form-label">
                         <h2>Lokalizacja:</h2>
                     </label>
+                    <span   id="this_little_thing"
+                            style="position: absolute; background-color: #1c1c67; display: block;"
+                            class="py-3"
+                            >
+                            &nbsp
+                    </span>
                     <input type="text" class="form-control mb-4 p-3" placeholder="Opole..."/>
                 </div>
             </div>
@@ -131,14 +138,20 @@
                 <!-- SEARCH BUTTON -->
                     <div class="d-flex w-100 mb-5">
                         <div class="form-outline col-5 w-75">
+                            <span   id="this_little_thing"
+                                    style="position: absolute; background-color: #1c1c67; display: block; min-height: 5vh;"
+                                    class="py-3"
+                                    >
+                                &nbsp
+                            </span>
                             <input
                                 type="search"
                                 id="form1"
-                                class="form-control w-100  p-3"
+                                class="form-control w-100  p-3 inputad"
                                 placeholder="Sprzatanie biura..."
-                                style="min-height: 5vh; max-height: 5vh; z-index: 100; background-color: white;" />
+                                style=" z-index: 100; background-color: white;" />
                         </div>
-                            <button type="button" class="btn btn-primary w-25 " style="min-height: 5vh; max-height: 5vh;">
+                            <button type="button" class="btn btn-primary w-25 ">
                                     <p class="fas fa-search m-0">Szukaj</p>
                             </button>
                     </div>
@@ -150,7 +163,7 @@
                         style="background-image: url(https://assets.archon.pl/images/products/mfe42422780eaf/widok-1-projekt-dom-w-balsamowcach-2-8719685424c5e520fa9a1911a47e76a0__289.jpg); background-position: center center; background-size: cover; min-height: 180px;">
                         &nbsp;
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-6 col-sm-12 py-2">
                         <div class="card-body mb-3">
                             <div class="row col-12">
                                 <div class="col-lg-6">
@@ -191,6 +204,12 @@
                 <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
   </div>
+  <div class="toTop bg-primary" onclick="scrollToTop()">
+      ↑
+  </div>
+  <footer>
+
+  </footer>
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
       let i = 1;
@@ -210,6 +229,9 @@
             evt.classList.add('button-off')
             evt.style.color = 'black';
           }
+      }
+      function scrollToTop(){
+          window.scrollTo(0, 0);
       }
   </script>
 </body>
