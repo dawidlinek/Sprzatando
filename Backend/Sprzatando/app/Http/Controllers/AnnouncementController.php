@@ -208,7 +208,12 @@ class AnnouncementController extends Controller
 
     public function Api(Request $request)
     {
-        $querry = Announcement::where('status',"LIKE", 'active');
+        if($request->longitude && $request->latitude){
+            $querry=Announcement::geofence(5,51,10,10);
+            $querry->where('status',"LIKE", 'active');
+        }else{
+            $querry = Announcement::where('status',"LIKE", 'active');
+        }
         if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
