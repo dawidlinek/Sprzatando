@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Categories;
 use App\Models\Has_Category;
+use App\Models\user_has_announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
@@ -218,7 +219,6 @@ class AnnouncementController extends Controller
         if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
-
         // if($request->categories){
         //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
         // }
@@ -236,4 +236,6 @@ class AnnouncementController extends Controller
         }
         return $offers;
     }
+
+   
 }
