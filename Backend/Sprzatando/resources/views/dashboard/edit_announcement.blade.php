@@ -31,6 +31,8 @@
                                 <input @if($announcement->status!='active') disabled @endif type="text" name='title' required value="{{$announcement->title}}" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Lokalizacja</label>
                                 <input type="text" @if($announcement->status!='active') disabled @endif name='localization' required value="{{$announcement->localization}}" id='LocalizationAutocomplete' class="form-control mb-4" />
+                                <input name="longitude" id='longitude'  value="{{$announcement->longitude}}" type="text" hidden/>
+                                <input name="latitude" id='latitude' value="{{$announcement->latitude}}" type="text" hidden/>
                                 <label for="FormControlInput1 col-offset">Cena</label>
                                 <input type="number" @if($announcement->status!='active') disabled @endif min="1" required name='price' value="{{$announcement->price}}" step="0.05" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Opis</label>
