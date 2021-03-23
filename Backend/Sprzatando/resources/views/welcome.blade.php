@@ -13,7 +13,41 @@
     <title>Sprzatnij me:D</title>
   </head>
 <body class="bg-light">
+  
   <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light m-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <h2 class="text-primary">SprzatnijME! </h2>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            @auth
+            <li class="nav-item">
+              <a class="nav-link btn-lg" aria-current="page" href="{{ url('/dashboard') }}">Panel</a>
+            </li>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <li class="nav-item">
+                <button class="nav-link btn-lg text-decoration-none bg-transparent border-0" aria-current="page">Wyloguj się</button>
+              </li>
+            </form>
+            @else
+            <li class="nav-item">
+              <a class="nav-link btn-lg" aria-current="page" href="{{ route('login') }}">Zaloguj się!</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-lg" aria-current="page" href="{{ route('register') }}">Rejestracja</a>
+            </li>
+            @endauth
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
     <div class="row d-none d-md-block">
       <div class="img-fluid position-relative col-12"
         style="background-image: url(/img/pexels-becosan-3681787.jpg); background-size: cover; min-height: 50vh;  filter: brightness(70%);">
