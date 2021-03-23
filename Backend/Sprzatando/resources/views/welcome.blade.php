@@ -78,46 +78,45 @@
             <h2 class="text-primary text-center mt-4 mb-4">Ostatnio dodane ogłoszenia:</h2>
           </div>
           <!-- POJEDYNCZE OGŁOSZENIE -->
-
-          <div class="row w-100 mx-auto" style="z-index: 100">
-            <div class="col-md-2"
-              style="background-image: url(https://assets.archon.pl/images/products/mfe42422780eaf/widok-1-projekt-dom-w-balsamowcach-2-8719685424c5e520fa9a1911a47e76a0__289.jpg); background-position: center center; background-size: cover; min-height: 180px;">
-              &nbsp;
-            </div>
-            <div class="col-md-8 col-sm-8">
-              <div class="card-body">
+@foreach ($announcements as $announcement)
+    
+<div class="row w-100 mx-auto" style="z-index: 100">
+  <div class="col-md-2"
+  style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
+  &nbsp;
+</div>
+<div class="col-md-8 col-sm-8">
+  <div class="card-body">
                 <div class="row col-12">
                   <div class="col-lg-6">
-                    <h5 class="card-title text-primary text-nowrap">Posprzątanie ogromnej willi</h5>
+                    <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
                   </div>
                   <div class="col-lg-4">
                     <p class="row card-text nowrap d-sm-flex"><small
-                        class="col-md-4 text-muted d-flex justify-content-start">0000zł</small><small
-                        class=" col-md-4text-muted d-md-none justify-content-start">Opole ul.Kozacka 2</small>
+                        class="col-md-4 text-muted d-flex justify-content-start">{{$announcement->price}} zł</small><small
+                        class=" col-md-4text-muted d-md-none justify-content-start">{{$announcement->localization}}</small>
                     </p>
                   </div>
                 </div>
                 <div class="w-100">
                   <p class="card-text">
-                    <b-badge><small class="text-danger">b-badge</small></b-badge>
+                      <span class="badge {{$announcement->status}} rounded">{{__($announcement->status)}}</span>
                   </p>
-                </div>
-                <p class="card-text">Moim zdaniem to nie ma tak, że dobrze albo że nie
-                  dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej,
-                  powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń,
-                  kiedy sobie nie radziłem, kiedy byłem sam. </p>
+              </div>
+                <p class="card-text">{{$announcement->description}} </p>
               </div>
             </div>
             <div class="col-md-2 p-4">
               <div class="b-row d-md-block d-none">
-                <p><small class="text-muted overflow-wrap">Opole ul.Kozacka 2</small></p>
+                <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
               </div>
               <div class="b-row d-flex align-text-center p-3">
-                <button class="btn btn-primary w-100 text-nowrap">Edytuj</button>
+                <button class="btn btn-primary w-100 text-nowrap">Pokaż</button>
               </div>
             </div>
           </div>
-
+          
+          @endforeach
           <!-- POJEDYNCZE OGŁOSZENIE END -->
         </div>
       </div>

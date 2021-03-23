@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
+use App\Models\Announcement;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->take(5)->get()]);
 });
 Route::get('/offer/show', function () {
     return view('offer.show_offer');
