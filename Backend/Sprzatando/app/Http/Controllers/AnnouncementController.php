@@ -123,6 +123,9 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
+        if($announcement->status!="active"){
+            return back()->withErrors(["Edytować można tylko aktywne oferty"]);
+        }
         $request->validate(['img1' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img2' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img3' => 'nullable|image|dimensions:max_width=2000,max_height=2000']);
         $data = $request->validate([
             'title' => 'required|max:255',
@@ -134,7 +137,6 @@ class AnnouncementController extends Controller
             "expiring_at" => "required|date",
             "categories" => "required",
         ]);
-
         if (isset($request->status)) {
             if ($request->status == 'finished') {
                 $data['status'] = 'finished';
