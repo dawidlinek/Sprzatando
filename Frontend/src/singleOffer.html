@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles/fonts.css" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/panel.css" />
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+  <title>Sprzatnij me:D</title>
+</head>
+
+<body class="bg-light">
+        <header
+        class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
+        <!-- Logo & hamburger -->
+        <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
+            <a class="navbar-brand ml-2 px-3 text-left" href="#"> logo </a>
+            <button class="navbar-toggler d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button"
+                data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
+            <!-- Przyciski z lewej -->
+            <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
+                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
+                    <a class="text-primary text-decoration-none m-2 col-6 col-md-auto text-left" href="#">
+                        Panel użytkownika
+                    </a>
+                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
+                        style="white-space: nowrap" href="#">
+                        Kontakt
+                    </a>
+                </div>
+            </div>
+
+            <!-- Przyciski z prawej -->
+            <div class="d-flex mr-2 col-12 col-md-auto">
+                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
+                    <a  class="text-dark text-decoration-none m-2 col-6 col-md-auto text-left"
+                        href="#"
+                    >
+                            Zaloguj się
+                        </a>
+                    <a  class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right"
+                        style="white-space: nowrap; padding-right: 1rem"
+                        href="#"
+                    >
+                        Rejestracja
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="d-flex col-12 mt-5 justify-content-center">
+        <!-- LEWA KOLUMNA -->
+        <div class="col-8 d-flex align-items-center justify-content-start flex-column">
+            <div class="card h-50 w-75 p-5 mb-5">
+                    <img src="../assets/img/rec.png" alt="">
+            </div>
+            <div class="card w-75 p-5 d-flex flex-row">
+                <div class="w-75">
+                    <h3 class="text-primary fw-bolder">Wysprzątanie domu szybko</h3>
+                    <p>Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.</p>
+                </div>
+                <div  class="w-25 d-flex justify-content-end">
+                    210 zł
+                </div>
+            </div>
+        </div>
+        <!-- KONIEC LEWEJ KOLUMNY -->
+        <!-- PRAWA KOLUMNA -->
+        <div class="col-3">
+            <div class="card h-25 w-100 p-5 mb-5">
+                    <h3>Opole, Polska</h3>
+            </div>
+            <div class="card w-100 p-5">
+                    <button class="btn btn-primary mb-3 p-4">Zgłoś się do zgłoszenia</button>
+                    <button class="btn bg-white border border-primary border-4 p-4">Zgłoś ogłoszenie</button>
+            </div>
+            <div class="d-flex flex-wrap w-100">
+                    <button class="btn btn-primary m-3 px-5 py-3">Wycieranie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
+            </div>
+        </div>
+        <!-- KONIEC PRAWEJ KOLUMNY -->
+    </div>
+  </div>
+  <div class="toTop bg-primary" onclick="scrollToTop()">
+      ↑
+  </div>
+  <footer>
+
+  </footer>
+  <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+      function scrollToTop(){
+          window.scrollTo(0, 0);
+      }
+  </script>
+</body>
+
+</html>
