@@ -18,6 +18,7 @@ input::-webkit-inner-spin-button {
 }
 input{
     box-shadow: 0px 6px 29px -7px rgba(0,0,0,0.75);
+    position: relative;
 }
 input[type=range]{
     box-shadow: none;
@@ -28,7 +29,15 @@ input[type=range]::-moz-range-progress{
   background-color: #1c1c67;
   border: 2px solid #1c1c67;
 }
-
+.form-control::before{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 3px;
+    height: 100%;
+    left: 0;
+    top:0;
+}
 input[type=number] {
   -moz-appearance: textfield;
 }
