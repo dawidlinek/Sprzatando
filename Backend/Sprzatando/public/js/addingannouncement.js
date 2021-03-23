@@ -235,6 +235,8 @@ function initialize() {
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.addListener("place_changed", function () {
         var place = autocomplete.getPlace();
+        longitude.value=place.geometry.location.lng()
+        latitude.value=place.geometry.location.lat()
     });
 }
 

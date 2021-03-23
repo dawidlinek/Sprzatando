@@ -67,18 +67,21 @@
                                 class="col-8 col-form-label mb-3">
                             <h2>Cena:</h2>
                         </label>
-                        <div class="d-flex w-75 justify-content-between flex-md-row flex-sm-column">
-                            
-                            <input  class="form-control mw-50 p-3 mx-1 my-1"
-                                    type="number"
-                                    id="example-number-input"
-                                    placeholder="od"
-                                    >
-                            <input  class="form-control mw-50 p-3 mx-1 my-1"
-                                    type="number"
-                                    id="example-number-input"
-                                    placeholder="do"
-                                    >   
+                        <div class="d-flex w-75 justify-content-between flex-md-row flex-sm-column ">
+                            <div class="inputBar mx-1 my-1 " style="position: relative; z-index: 1;">
+                                <input  class="form-control mw-50 p-3 "
+                                        type="number"
+                                        id="example-number-input"
+                                        placeholder="od"
+                                        >
+                            </div>
+                            <div class="inputBar mx-1 my-1 " style="position: relative; z-index: 1;">
+                                <input  class="form-control mw-50 p-3"
+                                        type="number"
+                                        id="example-number-input"
+                                        placeholder="do"
+                                        >
+                             </div>          
                         </div>
                 </div>
             </div>
@@ -90,13 +93,9 @@
                             class="col-8 col-form-label">
                         <h2>Lokalizacja:</h2>
                     </label>
-                    <span   id="this_little_thing"
-                            style="position: absolute; background-color: #1c1c67; display: block;"
-                            class="py-3"
-                            >
-                            &nbsp
-                    </span>
-                    <input type="text" class="form-control mb-4 p-3" placeholder="Opole..."/>
+                    <div class="inputBar" style="position: relative; z-index: 1;">
+                        <input type="text" class="form-control mb-4 p-3" placeholder="Opole..."/>
+                    </div>
                 </div>
             </div>
             <!-- KONIEC LOKALIZACJA -->
@@ -137,13 +136,7 @@
                 <h2 class="text-primary mb-5">Wpisz interesującą frazę</h2>
                 <!-- SEARCH BUTTON -->
                     <div class="d-flex w-100 mb-5">
-                        <div class="form-outline col-5 w-75">
-                            <span   id="this_little_thing"
-                                    style="position: absolute; background-color: #1c1c67; display: block; min-height: 5vh;"
-                                    class="py-3"
-                                    >
-                                &nbsp
-                            </span>
+                        <div class="form-outline col-5 w-75 inputSearchBar" style="position: relative; z-index: 1;">
                             <input
                                 type="search"
                                 id="form1"

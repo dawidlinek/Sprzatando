@@ -59,6 +59,8 @@ class AnnouncementController extends Controller
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
             'price' => "numeric|min:1|required",
             "description" => "required|max:502",
             "expiring_at" => "required|date|after:today",
@@ -125,11 +127,14 @@ class AnnouncementController extends Controller
         $data = $request->validate([
             'title' => 'required|max:255',
             'localization' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
             'price' => "numeric|min:1|required",
             "description" => "required|max:502",
             "expiring_at" => "required|date",
             "categories" => "required",
         ]);
+
         if (isset($request->status)) {
             if ($request->status == 'finished') {
                 $data['status'] = 'finished';
@@ -205,6 +210,10 @@ class AnnouncementController extends Controller
         if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
+
+
+
+
         // if($request->categories){
         //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
         // }

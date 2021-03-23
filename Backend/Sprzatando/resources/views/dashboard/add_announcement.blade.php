@@ -33,6 +33,8 @@
                             <input value="{{ old('title') }}" type="text" name='title' maxlength="254" required class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Lokalizacja</label>
                             <input value="{{ old('localization') }}" type="text" name='localization' maxlength="254" required id='LocalizationAutocomplete' class="form-control mb-4" />
+                            <input name="longitude" id='longitude'  value="{{ old('longitude') }}" type="text" hidden/>
+                            <input name="latitude" id='latitude' value="{{ old('latitude') }}" type="text" hidden/>
                             <label for="FormControlInput1 col-offset">Cena</label>
                             <input type="number" value="{{ old('price') }}" min="1" required name='price' step="0.05" class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Opis</label>
