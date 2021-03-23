@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Geographical;
+use Malhal\Geographical\Geographical;
 
 class Announcement extends Model
 {
+    use Geographical;
     use HasFactory;
+    protected static $kilometers = true;
     protected  $fillable = ['title','localization','price','description','expiring_at','category_id','creator_id','img1','img2','img3','status','longitude','latitude'];
     public function categories()
     {

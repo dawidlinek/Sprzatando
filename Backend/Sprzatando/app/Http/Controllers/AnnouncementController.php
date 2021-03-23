@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Geographical;
 
 class AnnouncementController extends Controller
 {
@@ -208,8 +209,8 @@ class AnnouncementController extends Controller
 
     public function Api(Request $request)
     {
-        if($request->longitude && $request->latitude){
-            $querry=Announcement::geofence(5,51,10,10);
+        if($request->longitude && $request->latitude && $request->distance){
+            $querry=Announcement::geofence($request->latitude,$request->longitude,0,$request->distance);
             $querry->where('status',"LIKE", 'active');
         }else{
             $querry = Announcement::where('status',"LIKE", 'active');
@@ -217,9 +218,6 @@ class AnnouncementController extends Controller
         if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
-
-
-
 
         // if($request->categories){
         //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
