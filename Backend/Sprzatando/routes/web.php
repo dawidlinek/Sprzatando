@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\BanController;
 use App\Models\Announcement;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -21,8 +23,11 @@ use Illuminate\Http\Request;
 // Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
 
 
+Route::view('/search','search');
 Route::get('/', function () {
-    return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->take(5)->get()]);
+    $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
+    $categories=Categories::inRandomOrder()->limit(3)->get();
+    return view('welcome',['announcements'=>$announcements,'categories'=>$categories]);
 });
 Route::get('/offer/show', function () {
     return view('offer.show_offer');
@@ -52,8 +57,9 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::middleware(['auth'])->group(function () {
 Route::resource('/dashboard/announcement', AnnouncementController::class);
+Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
+
 
 Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
-
 });

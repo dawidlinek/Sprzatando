@@ -91,10 +91,13 @@
       <h2 for="category_id col-offset" class="m-4 text-primary text-center">Wybierz zlecenia tylko
         z kategorii, które Cię interesują!</h2>
       <form class="btn-group-vertical w-75 text-center">
-        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded">Mycie
-          okien</button>
-        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Zamiatanie</button>
-        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Auto</button>
+
+        @foreach ($categories as $category)
+
+        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded">{{$category->name}}</button>
+        @endforeach
+        {{-- <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Zamiatanie</button>
+        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Auto</button> --}}
         <button class="btn col-3 m-1 btn-outline-primary btn-block btn-sm rounded">Więcej...</button>
       </form>
     </div>
@@ -106,43 +109,52 @@
             <h2 class="text-primary text-center mt-4 mb-4">Ostatnio dodane ogłoszenia:</h2>
           </div>
           <!-- POJEDYNCZE OGŁOSZENIE -->
-          @foreach ($announcements as $announcement)
-
-          <div class="row w-100 mx-auto" style="z-index: 100">
+          <<<<<<< HEAD @foreach ($announcements as $announcement) <div class="row w-100 mx-auto" style="z-index: 100">
             <div class="col-md-2" style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
               &nbsp;
             </div>
             <div class="col-md-8 col-sm-8">
               <div class="card-body">
-                <div class="row col-12">
-                  <div class="col-lg-6">
-                    <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
+                =======
+                @foreach ($announcements as $announcement)
+                @include('components.announcement')
+                {{-- <div class="row w-100 mx-auto" style="z-index: 100">
+  <div class="col-md-2"
+  style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
+                &nbsp;
+              </div>
+              <div class="col-md-8 col-sm-8">
+                <div class="card-body">
+                  >>>>>>> 45d4bd8830fb7622ef1207cb2488717a21c0a3e8
+                  <div class="row col-12">
+                    <div class="col-lg-6">
+                      <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
+                    </div>
+                    <div class="col-lg-4">
+                      <p class="row card-text nowrap d-sm-flex"><small class="col-md-4 text-muted d-flex justify-content-start">{{$announcement->price}} zł</small><small class=" col-md-4text-muted d-md-none justify-content-start">{{$announcement->localization}}</small>
+                      </p>
+                    </div>
                   </div>
-                  <div class="col-lg-4">
-                    <p class="row card-text nowrap d-sm-flex"><small class="col-md-4 text-muted d-flex justify-content-start">{{$announcement->price}} zł</small><small class=" col-md-4text-muted d-md-none justify-content-start">{{$announcement->localization}}</small>
+                  <div class="w-100">
+                    <p class="card-text">
+                      <span class="badge {{$announcement->status}} rounded">{{__($announcement->status)}}</span>
                     </p>
                   </div>
+                  <p class="card-text">{{$announcement->description}} </p>
                 </div>
-                <div class="w-100">
-                  <p class="card-text">
-                    <span class="badge {{$announcement->status}} rounded">{{__($announcement->status)}}</span>
-                  </p>
+              </div>
+              <div class="col-md-2 p-4">
+                <div class="b-row d-md-block d-none">
+                  <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
                 </div>
-                <p class="card-text">{{$announcement->description}} </p>
+                <div class="b-row d-flex align-text-center p-3">
+                  <button class="btn btn-primary w-100 text-nowrap">Pokaż</button>
+                </div>
               </div>
             </div>
-            <div class="col-md-2 p-4">
-              <div class="b-row d-md-block d-none">
-                <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
-              </div>
-              <div class="b-row d-flex align-text-center p-3">
-                <button class="btn btn-primary w-100 text-nowrap">Pokaż</button>
-              </div>
-            </div>
-          </div>
-
-          @endforeach
-          <!-- POJEDYNCZE OGŁOSZENIE END -->
+            <<<<<<< HEAD=======--}}>>>>>>> 45d4bd8830fb7622ef1207cb2488717a21c0a3e8
+              @endforeach
+              <!-- POJEDYNCZE OGŁOSZENIE END -->
         </div>
       </div>
 
