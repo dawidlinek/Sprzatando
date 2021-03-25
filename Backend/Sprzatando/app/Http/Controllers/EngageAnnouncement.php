@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class EngageAnnouncement extends Controller
 {
     public function engage(Announcement $announcement){
+        if($announcement->creator_id==Auth::id())
+            return back()->withErrors(['Nie możesz zgłosić się swojego ogłoszenia']);
         user_has_announcement::create(['announcement'=>$announcement->id,'user'=>Auth::id()]);
         return back()->with('status','Pomyślnie zgłoszono się do ogłoszenia');
     }
@@ -19,4 +21,5 @@ class EngageAnnouncement extends Controller
     public function get_engaged_announcements(Request $request){
 
     }
+   
 }
