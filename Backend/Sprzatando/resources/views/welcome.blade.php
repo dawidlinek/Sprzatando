@@ -61,7 +61,7 @@
         <input type="search" id="form1" class="form-control" placeholder="Wyszukaj ofertę..."
           style="min-height: 5vh; max-height: 5vh; z-index: 100; background-color: white;" />
       </div>
-      <button type="button" class="btn btn-primary" style="min-height: 5vh; max-height: 5vh; ">
+      <button type="button" class="btn btn-primary" onclick="window.location='/search?name='+form1.value" style="min-height: 5vh; max-height: 5vh; ">
         <p class="fas fa-search">Szukaj</p>
       </button>
     </div>
