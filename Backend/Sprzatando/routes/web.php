@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 // Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
 
 
+Route::view('/search','search');
 Route::get('/', function () {
     return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->take(5)->get()]);
 });
@@ -52,6 +53,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::middleware(['auth'])->group(function () {
 Route::resource('/dashboard/announcement', AnnouncementController::class);
+
 
 Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
