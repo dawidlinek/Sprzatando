@@ -23,7 +23,6 @@ use Illuminate\Http\Request;
 
 
 Route::view('/search','search');
-Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
 Route::get('/', function () {
     return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get()]);
 });
@@ -55,9 +54,9 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::middleware(['auth'])->group(function () {
 Route::resource('/dashboard/announcement', AnnouncementController::class);
+Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
 
 
 Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
 Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
-
 });
