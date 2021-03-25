@@ -62,7 +62,7 @@
         <input type="search" id="form1" class="form-control" placeholder="Wyszukaj ofertę..."
           style="min-height: 5vh; max-height: 5vh; z-index: 100; background-color: white;" />
       </div>
-      <button type="button" class="btn btn-primary" onclick="window.location='/search?name='+form1.value" style="min-height: 5vh; max-height: 5vh; ">
+      <button type="button" class="btn btn-primary" onclick="window.location='/search?name='+form1[0].value" style="min-height: 5vh; max-height: 5vh; ">
         <p class="fas fa-search">Szukaj</p>
       </button>
     </div>
@@ -87,15 +87,15 @@
 
     <div class="row d-none d-md-block">
       <h2 class="text-primary text-center mt-5 p-3">Wybierz zlecenia tylko z kategorii, które Cię interesują!</h2>
-      <form class="btn-group justify-content-between">
+      <div class="btn-group justify-content-between">
         @foreach ($categories as $category)
             
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">{{$category->name}}</button>
+        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
           @endforeach
         {{-- <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Zamiatanie</button>
         <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Auto</button> --}}
-        <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded">Więcej...</button>
-      </form>
+        <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded"  onclick="window.location='/search'">Więcej...</button>
+      </div>
     </div>
     <div class="d-sm-block d-md-none text-center">
       <h2 for="category_id col-offset" class="m-4 text-primary text-center">Wybierz zlecenia tylko
