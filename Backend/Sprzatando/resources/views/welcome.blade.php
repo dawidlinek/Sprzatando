@@ -80,12 +80,14 @@
       <h2 class="text-primary text-center mb-4 p-2" style="font-weight: 700; margin-top: 2.5rem;">
         Wybierz zlecenia tylko z kategorii, <br> które Cię interesują!
       </h2>
-      <form class="btn-group justify-content-between">
-        <button class="btn col-3 m-3 text-nowrap btn-primary border-light btn-block btn-lg rounded">Mycie okien</button>
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Zamiatanie</button>
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Auto</button>
+      <div class="btn-group justify-content-between">
+        @foreach ($categories as $category)
+        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
+        @endforeach
+        {{-- <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Zamiatanie</button>
+        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Auto</button> --}}
         <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded">Więcej...</button>
-      </form>
+      </div>
     </div>
     <div class="d-sm-block d-md-none text-center">
       <h2 for="category_id col-offset" class="m-4 text-primary text-center">Wybierz zlecenia tylko
@@ -93,12 +95,11 @@
       <form class="btn-group-vertical w-75 text-center">
 
         @foreach ($categories as $category)
-
-        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded">{{$category->name}}</button>
+        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
         @endforeach
         {{-- <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Zamiatanie</button>
         <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Auto</button> --}}
-        <button class="btn col-3 m-1 btn-outline-primary btn-block btn-sm rounded">Więcej...</button>
+        <button class="btn col-3 m-1 btn-outline-primary btn-block btn-sm rounded"  onclick="window.location='/search'">Więcej...</button>
       </form>
     </div>
 
@@ -109,13 +110,14 @@
             <h2 class="text-primary text-center mt-4 mb-4">Ostatnio dodane ogłoszenia:</h2>
           </div>
           <!-- POJEDYNCZE OGŁOSZENIE -->
-          <<<<<<< HEAD @foreach ($announcements as $announcement) <div class="row w-100 mx-auto" style="z-index: 100">
+          {{-- @foreach ($announcements as $announcement)  --}}
+          {{-- <div class="row w-100 mx-auto" style="z-index: 100">
             <div class="col-md-2" style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
               &nbsp;
             </div>
             <div class="col-md-8 col-sm-8">
               <div class="card-body">
-                =======
+                ======= --}}
                 @foreach ($announcements as $announcement)
                 @include('components.announcement')
                 {{-- <div class="row w-100 mx-auto" style="z-index: 100">
@@ -152,7 +154,9 @@
                 </div>
               </div>
             </div>
-            <<<<<<< HEAD=======--}}>>>>>>> 45d4bd8830fb7622ef1207cb2488717a21c0a3e8
+            <<<<<<< HEAD=======--}}
+            
+            {{-- >>>>>>> 45d4bd8830fb7622ef1207cb2488717a21c0a3e8 --}}
               @endforeach
               <!-- POJEDYNCZE OGŁOSZENIE END -->
         </div>
