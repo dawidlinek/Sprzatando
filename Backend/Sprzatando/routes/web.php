@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\BanController;
 use App\Models\Announcement;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -24,7 +25,9 @@ use Illuminate\Http\Request;
 
 Route::view('/search','search');
 Route::get('/', function () {
-    return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get()]);
+    $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
+    $categories=Categories::inRandomOrder()->limit(3)->get();
+    return view('welcome',['announcements'=>$announcements,'categories'=>$categories]);
 });
 Route::get('/offer/show', function () {
     return view('offer.show_offer');

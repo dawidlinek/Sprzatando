@@ -88,9 +88,12 @@
     <div class="row d-none d-md-block">
       <h2 class="text-primary text-center mt-5 p-3">Wybierz zlecenia tylko z kategorii, które Cię interesują!</h2>
       <form class="btn-group justify-content-between">
-        <button class="btn col-3 m-3 text-nowrap btn-primary border-light btn-block btn-lg rounded">Mycie okien</button>
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Zamiatanie</button>
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Auto</button>
+        @foreach ($categories as $category)
+            
+        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">{{$category->name}}</button>
+          @endforeach
+        {{-- <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Zamiatanie</button>
+        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Auto</button> --}}
         <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded">Więcej...</button>
       </form>
     </div>
@@ -98,10 +101,13 @@
       <h2 for="category_id col-offset" class="m-4 text-primary text-center">Wybierz zlecenia tylko
         z kategorii, które Cię interesują!</h2>
       <form class="btn-group-vertical w-75 text-center">
-        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded">Mycie
-          okien</button>
-        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Zamiatanie</button>
-        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Auto</button>
+       
+        @foreach ($categories as $category)
+            
+        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded">{{$category->name}}</button>
+          @endforeach
+        {{-- <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Zamiatanie</button>
+        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Auto</button> --}}
         <button class="btn col-3 m-1 btn-outline-primary btn-block btn-sm rounded">Więcej...</button>
       </form>
     </div>
