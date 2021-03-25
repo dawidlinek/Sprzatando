@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\BanController;
 use App\Models\Announcement;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -22,8 +23,9 @@ use Illuminate\Http\Request;
 
 
 Route::view('/search','search');
+Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
 Route::get('/', function () {
-    return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->take(5)->get()]);
+    return view('welcome',['announcements'=>Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get()]);
 });
 Route::get('/offer/show', function () {
     return view('offer.show_offer');

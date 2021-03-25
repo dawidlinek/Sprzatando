@@ -212,9 +212,11 @@ class AnnouncementController extends Controller
     {
         if($request->longitude && $request->latitude && $request->distance){
             $querry=Announcement::geofence($request->latitude,$request->longitude,0,$request->distance);
-            $querry->where('status',"LIKE", 'active');
+            $querry->where('status', 'active');
+            $querry->Orwhere('status', 'reported');
         }else{
             $querry = Announcement::where('status',"LIKE", 'active');
+            $querry->Orwhere('status', 'reported');
         }
         if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
