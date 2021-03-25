@@ -1,14 +1,10 @@
 <div class="card d-flex w-100 mt-3">
     <div class="row w-100 mx-auto">
 
-        <!-- <Image> -->
+        
         <div class="col-md-auto rounded" style="background-image: url(/uploads/{{$announcement->img1}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
             &nbsp;
         </div>
-        <!-- </Image> -->
-
-
-        <!-- w100m200px -> width: 100% - 200px (image width) -->
         <div class="w100m200px">
 
             <div class="row d-flex justify-content-md-between h-100">
@@ -44,10 +40,15 @@
                         <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
                     </div>
                     <div class="b-row d-flex p-3">
+                        @if($user??false)
+                        {{-- {{Route::currentRouteName()}} --}}
                         @if($announcement->status=='active')
                         <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="{{ route('announcement.edit', $announcement->id) }}">Edytuj</a>
                         @else 
                         <a class="btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="{{ route('announcement.edit', $announcement->id) }}">Podgląd</a>
+                        @endif
+                        @else 
+                        <a class="btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="#">Pokaż</a>
                         @endif
                     </div>
 
