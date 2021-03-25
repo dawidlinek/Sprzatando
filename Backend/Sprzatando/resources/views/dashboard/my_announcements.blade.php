@@ -16,7 +16,8 @@
                 @endif
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 @foreach ($announcements as $announcement)
-                <div class="card d-flex w-100 mt-3">
+                @include('components.announcement',['user'=>true])
+                {{-- <div class="card d-flex w-100 mt-3">
                     <div class="row w-100 mx-auto">
 
                         <!-- <Image> -->
@@ -73,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- POJEDYNCZE OGŁOSZENIE END -->
 
                 @endforeach

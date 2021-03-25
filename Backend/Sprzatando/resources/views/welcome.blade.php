@@ -114,8 +114,8 @@
           </div>
           <!-- POJEDYNCZE OGŁOSZENIE -->
 @foreach ($announcements as $announcement)
-    
-<div class="row w-100 mx-auto" style="z-index: 100">
+@include('components.announcement')
+{{-- <div class="row w-100 mx-auto" style="z-index: 100">
   <div class="col-md-2"
   style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
   &nbsp;
@@ -150,7 +150,7 @@
               </div>
             </div>
           </div>
-          
+           --}}
           @endforeach
           <!-- POJEDYNCZE OGŁOSZENIE END -->
         </div>
