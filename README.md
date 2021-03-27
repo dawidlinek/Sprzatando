@@ -1,11 +1,13 @@
 ## Sprzatando
 
 Platforma łącząca ludzi posiadający srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.
+<br>
 
 ## Design
 
 Projekt graficzny został oparty na programie Adobe Xd, jest on dostępny pod tym linkiem: <br>
 https://xd.adobe.com/view/f8812adf-6d46-4401-b9bb-5ef1619719e8-add2/specs/
+<br>
 
 ## Struktura plików
 
@@ -20,3 +22,25 @@ https://xd.adobe.com/view/f8812adf-6d46-4401-b9bb-5ef1619719e8-add2/specs/
 │
 └─ Plik excel - Plik z wymaganiami odnośnie projektu
 ```
+
+<br>
+
+## Instalacja
+
+```bash
+cd Aplikacja
+npm install
+composer install
+```
+
+<br>
+
+## Uruchomienie projektu
+
+```bash
+cd Aplikacja
+php artisan serve
+```
+
+Do poprawnego działania projektu wymagany jest plik .env
+<br>
