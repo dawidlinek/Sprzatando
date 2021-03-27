@@ -1,5 +1,11 @@
 {
-    "private": true,
+    "name": "Sprzatando",
+    "version": "1.0.0",
+    "description": "Platforma łącząca ludzi posiadający srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dawidlinek123/Sprzatando"
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
