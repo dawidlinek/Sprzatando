@@ -14,6 +14,10 @@
 
   <!-- TODO! -->
   <style>
+    body {
+      overflow-x: hidden;
+    }
+
     .input-before-style {
       position: relative;
     }
@@ -38,11 +42,44 @@
       background-color: #ccc;
     }
 
+    .welcome-width-fluid {
+      width: 90%;
+    }
+
+    .btn-group>button {
+      width: inherit;
+    }
+
+    .welcome-wave {
+      bottom: -5rem;
+      left: -1rem;
+      right: 1rem;
+
+      z-index: 0;
+      transform: scaleX(1.2) scaleY(1.4);
+    }
+
+    .card {
+      z-index: 100;
+    }
+
     @media screen and (min-width: 576px) {
       .welcome-image-background {
         background-image: url('/img/welcome/background-landing.png');
         background-size: cover;
         min-height: 50vh;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .welcome-width-fluid {
+        width: 75%;
+      }
+    }
+
+    @media screen and (min-width: 1500px) {
+      .welcome-width-fluid {
+        width: 50%;
       }
     }
   </style>
@@ -56,8 +93,6 @@
 
     <!-- <Search row> -->
     <div class="row d-grid place-items-center welcome-image-background" style="place-items: center;">
-
-      <!-- <Search input> -->
       <div class="col-12 col-md-8 col-xl-6 d-flex">
 
         <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
@@ -70,114 +105,64 @@
         </button>
 
       </div>
-      <!-- </Search input> -->
-
     </div>
     <!-- </Search row> -->
 
 
-    <div class="row d-none d-md-block">
-      <h2 class="text-primary text-center mb-4 p-2" style="font-weight: 700; margin-top: 2.5rem;">
+    <!-- <Categories> -->
+    <div class="row d-flex flex-column align-items-center">
+
+      <h2 class="text-primary text-center mb-5 p-2" style="font-weight: 700; margin-top: 2.5rem;">
         Wybierz zlecenia tylko z kategorii, <br> które Cię interesują!
       </h2>
-      <div class="btn-group justify-content-between">
+
+      <div class="btn-group justify-content-between align-items-center welcome-width-fluid flex-column flex-md-row">
+
         @foreach ($categories as $category)
         <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
         @endforeach
-        {{-- <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Zamiatanie</button>
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded">Auto</button> --}}
+
         <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded">Więcej...</button>
+
       </div>
     </div>
-    <div class="d-sm-block d-md-none text-center">
-      <h2 for="category_id col-offset" class="m-4 text-primary text-center">Wybierz zlecenia tylko
-        z kategorii, które Cię interesują!</h2>
-      <form class="btn-group-vertical w-75 text-center">
+    <!-- </Categories> -->
 
-        @foreach ($categories as $category)
-        <button class="btn col-3 m-1  text-nowrap btn-primary border-light btn-block btn-sm rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
+
+    <!-- <Ostatnio dodane ogłoszenia> -->
+    <div class="row position-relative mt-5 mb-5 p-3 bg-white d-flex flex-column justify-content-center align-items-center">
+
+      <div class="col-12">
+        <h2 class="text-primary text-center mb-5 p-2" style="font-weight: 700; margin-top: 2.5rem;">
+          Ostatnio dodane ogłoszenia:
+        </h2>
+      </div>
+
+      <div class="col-12 col-md-11 col-lg-10 col-xl-9">
+        @foreach ($announcements as $announcement)
+        @include('components.announcement')
         @endforeach
-        {{-- <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Zamiatanie</button>
-        <button class="btn col-3 m-1 btn-primary border-light btn-block btn-sm rounded">Auto</button> --}}
-        <button class="btn col-3 m-1 btn-outline-primary btn-block btn-sm rounded"  onclick="window.location='/search'">Więcej...</button>
-      </form>
-    </div>
-
-    <div class="row position-relative mt-5">
-      <div class="card w-100">
-        <div class="card-body d-flex flex-column align-items-start justify-content-between">
-          <div class="cart-title col-12">
-            <h2 class="text-primary text-center mt-4 mb-4">Ostatnio dodane ogłoszenia:</h2>
-          </div>
-          <!-- POJEDYNCZE OGŁOSZENIE -->
-          {{-- @foreach ($announcements as $announcement)  --}}
-          {{-- <div class="row w-100 mx-auto" style="z-index: 100">
-            <div class="col-md-2" style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
-              &nbsp;
-            </div>
-            <div class="col-md-8 col-sm-8">
-              <div class="card-body">
-                ======= --}}
-                @foreach ($announcements as $announcement)
-                @include('components.announcement')
-                {{-- <div class="row w-100 mx-auto" style="z-index: 100">
-  <div class="col-md-2"
-  style="background-image: url(/uploads/{{$announcement->img1??"placeholder.jpg"}}); background-position: center center; background-size: cover; min-height: 180px;">
-                &nbsp;
-              </div>
-              <div class="col-md-8 col-sm-8">
-                <div class="card-body">
-                  >>>>>>> 45d4bd8830fb7622ef1207cb2488717a21c0a3e8
-                  <div class="row col-12">
-                    <div class="col-lg-6">
-                      <h5 class="card-title text-primary text-nowrap">{{$announcement->title}}</h5>
-                    </div>
-                    <div class="col-lg-4">
-                      <p class="row card-text nowrap d-sm-flex"><small class="col-md-4 text-muted d-flex justify-content-start">{{$announcement->price}} zł</small><small class=" col-md-4text-muted d-md-none justify-content-start">{{$announcement->localization}}</small>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="w-100">
-                    <p class="card-text">
-                      <span class="badge {{$announcement->status}} rounded">{{__($announcement->status)}}</span>
-                    </p>
-                  </div>
-                  <p class="card-text">{{$announcement->description}} </p>
-                </div>
-              </div>
-              <div class="col-md-2 p-4">
-                <div class="b-row d-md-block d-none">
-                  <p><small class="text-muted overflow-wrap">{{$announcement->localization}}</small></p>
-                </div>
-                <div class="b-row d-flex align-text-center p-3">
-                  <button class="btn btn-primary w-100 text-nowrap">Pokaż</button>
-                </div>
-              </div>
-            </div>
-            <<<<<<< HEAD=======--}}
-            
-            {{-- >>>>>>> 45d4bd8830fb7622ef1207cb2488717a21c0a3e8 --}}
-              @endforeach
-              <!-- POJEDYNCZE OGŁOSZENIE END -->
-        </div>
       </div>
 
+      <!-- <Wave> -->
+      <svg class="welcome-wave position-absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2023.356 825.819">
+        <path id="Path_24" data-name="Path 24" d="M-446.3,317.207s10.768,320.258,857.508,257.938,1120.265-202.512,1107.238-50.964-8.707,593.705-26.076,602.2-1996.839,8.321-1996.839,8.321V308.887Z" transform="translate(504.469 -308.887)" fill="#e6f2ff" />
+      </svg>
+      <!-- </Wave> -->
     </div>
+    <!-- </Ostatnio dodane ogłoszenia> -->
+
+
+    <!-- <Footer -->
     <div class="row">
-      <div class="position-relative
-       p-0 m-0" style="z-index: 100; background-color: #15192F;">
-        &nbsp;
-        <div class="position-absolute d-block m-0 p-0" style="height: 50vh;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2023.356 825.819">
-            <path id="Path_24" data-name="Path 24" d="M-446.3,317.207s10.768,320.258,857.508,257.938,1120.265-202.512,1107.238-50.964-8.707,593.705-26.076,602.2-1996.839,8.321-1996.839,8.321V308.887Z" transform="translate(504.469 -308.887)" fill="#e6f2ff" />
-          </svg>
-        </div>
+      <div class="p-3" style="background-color: #15192F; min-height: 200px; z-index: 1000;">
+
       </div>
     </div>
+    <!-- </Footer> -->
+
+
   </div>
-
-
-
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
