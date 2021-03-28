@@ -1,0 +1,68 @@
+body {
+    overflow-x: hidden;
+}
+
+.input-before-style {
+    position: relative;
+}
+
+.input-before-style::before {
+    position: absolute;
+    z-index: 990;
+    left: 0;
+    top: 0;
+
+    display: block;
+    content: "";
+
+    width: 4px;
+    height: 100%;
+
+    background-color: var(--bs-primary);
+}
+
+.welcome-image-background {
+    padding: 20px 0;
+    background-color: #ccc;
+}
+
+.welcome-width-fluid {
+    width: 90%;
+}
+
+.btn-group > button {
+    width: inherit;
+}
+
+.welcome-wave {
+    bottom: -5rem;
+    left: -1rem;
+    right: 1rem;
+
+    z-index: 0;
+    transform: scaleX(1.2) scaleY(1.4);
+}
+
+.card {
+    z-index: 100;
+}
+
+@media screen and (min-width: 576px) {
+    .welcome-image-background {
+        background-image: url("/img/welcome/background-landing.png");
+        background-size: cover;
+        min-height: 50vh;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .welcome-width-fluid {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .welcome-width-fluid {
+        width: 50%;
+    }
+}
