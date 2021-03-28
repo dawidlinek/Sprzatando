@@ -13,8 +13,11 @@
 </head>
 
 <body class="bg-light">
-        <div id="bigImage" style="height:100vh; width:100vw; z-index: 99; background:#1c1c678e" class="position-absolute top-0 left-0 d-none align-items-center justify-content-center">
-            <p class="position-absolute top-0 left-0">X</p>
+        <div id="bigImage" style="height:100vh; width:100vw; z-index: 99; background:#1c1c678e" class="position-fixed top-0 start-0 d-none align-items-center justify-content-center">
+            <div class="position-absolute d-flex align-items-center justify-content-center bg-primary" id="boxBar" onclick="unShowImage()">
+               <div class="closeBar" id="bar1"></div>
+               <div class="closeBar" id="bar2"></div>
+            </div>
             <div class="w-75 h-75  d-flex align-items-center justify-content-center" >
                 <img src="" id="showImage" height="100%"/>
             </div>
@@ -67,23 +70,23 @@
     </header>
     <div class="d-flex col-12 mt-5 justify-content-center">
         <!-- LEWA KOLUMNA -->
-        <div class="col-8 d-flex align-items-center justify-content-start flex-column">
+        <div class="col-8 d-flex align-items-center justify-content-start flex-column mb-5">
             <div class="card h-100 w-75 p-5 mb-5 ">
-                    <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 d-flex  align-items-center justify-content-center" data-bs-ride="carousel">
+                    <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 d-flex  align-items-center justify-content-center"  >
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-inner w-75 d-flex align-items-center" style="height: 50vh;">
-                            <div class="carousel-item active " >
-                                <img src="../assets/img/z25697568Q.jpg" class="d-block w-25" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
+                        <div class="carousel-inner w-75 d-flex align-items-center position-relative" style="height: 50vh;" data-interval="false" data-ride="carousel" data-pause="hover">
+                            <div class="carousel-item active align-items-center" >
+                                <img src="../assets/img/z25697568Q.jpg" class="carouselImg d-block" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
                             </div>
                             <div class="carousel-item align-items-center">
-                                <img src="../assets/img/types-of-homes-hero.jpg" class="d-block w-100 align-bottom" alt="Drugie zdjęcie oferty" onclick="showImage(this)">
+                                <img src="../assets/img/types-of-homes-hero.jpg" class="carouselImg d-block w-100 align-bottom" alt="Drugie zdjęcie oferty" onclick="showImage(this)">
                             </div>
                             <div class="carousel-item align-items-center" >
-                                <img src="../assets/img/HomeKONCEPT-68-zdjecie-1.jpg" class="d-block w-100 " alt="Trzecie zdjęcie oferty" onclick="showImage(this)">
+                                <img src="../assets/img/HomeKONCEPT-68-zdjecie-1.jpg" class="carouselImg d-block w-100 " alt="Trzecie zdjęcie oferty" onclick="showImage(this)">
                             </div>
                         </div>
                         <button class="carousel-control-prev" class="bg-dark" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -96,7 +99,7 @@
                         </button>
                     </div>
             </div>
-            <div class="card w-75 p-5 d-flex flex-row">
+            <div class="card w-75 p-5  d-flex flex-row">
                 <div class="w-75">
                     <h3 class="text-primary fw-bolder">Wysprzątanie domu szybko</h3>
                     <p>Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.</p>
@@ -108,21 +111,23 @@
         </div>
         <!-- KONIEC LEWEJ KOLUMNY -->
         <!-- PRAWA KOLUMNA -->
-        <div class="col-3">
-            <div class="card h-25 w-100 p-5 mb-5">
+        <div class="col-3 mb-5 h-100">
+            <div class="card h-50 w-100 p-5 mb-5 d-flex flex-column">
                     <h3>Opole, Polska</h3>
+                    <img src="../assets/img/HomeKONCEPT-68-zdjecie-1.jpg" alt="">
             </div>
-            <div class="card w-100 p-5">
+            <div class="card w-100 p-5 mb-5">
                     <button class="btn btn-primary mb-3 p-4">Zgłoś się do zgłoszenia</button>
                     <button class="btn bg-white border border-primary border-4 p-4">Zgłoś ogłoszenie</button>
             </div>
-            <div class="d-flex flex-wrap w-100">
-                    <button class="btn btn-primary m-3 px-5 py-3">Wycieranie</button>
-                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
-                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
-                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
-                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
-                    <button class="btn btn-primary m-3 px-5 py-3">Pranie</button>
+                <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
+                    <button class="btn btn-primary m-3 px-5 py-3">Mieszkanie</button>
             </div>
         </div>
         <!-- KONIEC PRAWEJ KOLUMNY -->
@@ -131,7 +136,7 @@
   <div class="toTop bg-primary" onclick="scrollToTop()">
       ↑
   </div>
-  <footer>
+  <footer class="mt-5">
 
   </footer>
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -148,6 +153,12 @@
         showBigImage.classList.remove('d-none')
         showBigImage.classList.add('d-flex')
         imageToShow.src = e.src 
+      }
+      function unShowImage(){
+        document.body.style.overflowY = "scroll"
+        header.style.display = 'flex'
+        showBigImage.classList.add('d-none')
+        showBigImage.classList.remove('d-flex')
       }
   </script>
 </body>
