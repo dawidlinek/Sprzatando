@@ -22,11 +22,13 @@
                                 </p>
                             </div>
                         </div>
+                        @if($user??false)
                         <div class="w-100">
                             <p class="card-text">
                                 <span class="badge {{$announcement->status}} rounded">{{__($announcement->status)}}</span>
                             </p>
                         </div>
+                        @endif
 
                         <p class="card-text p-3">{{$announcement->description}} </p>
                     </div>
