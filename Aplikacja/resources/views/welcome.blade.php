@@ -100,7 +100,7 @@
           <input type="search" class="form-control" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
         </div>
 
-        <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
+        <button type="button" id='search' class="btn btn-primary d-flex align-items-center justify-content-center" onclick="window.location='/search?name='+search.value" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
           <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
         </button>
 
@@ -122,7 +122,7 @@
         <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
         @endforeach
 
-        <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded">Więcej...</button>
+        <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded" onclick="window.location='/search'">Więcej...</button>
 
       </div>
     </div>
