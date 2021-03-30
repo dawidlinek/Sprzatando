@@ -5,91 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/css/fonts.css" />
-  <link rel="stylesheet" href="/css/dashboard/panel.css" />
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/fonts.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+  <link rel="stylesheet" href="/css/welcome.css" />
 
   <link rel="icon" href="/img/ooda na sto pro.ico">
   <title>Sprzatnij me:D</title>
 
-  <!-- TODO! -->
-  <style>
-    body {
-      overflow-x: hidden;
-    }
-
-    .input-before-style {
-      position: relative;
-    }
-
-    .input-before-style::before {
-      position: absolute;
-      z-index: 999;
-      left: 0;
-      top: 0;
-
-      display: block;
-      content: '';
-
-      width: 4px;
-      height: 100%;
-
-      background-color: var(--bs-primary);
-    }
-
-    .welcome-image-background {
-      padding: 20px 0;
-      background-color: #ccc;
-    }
-
-    .welcome-width-fluid {
-      width: 90%;
-    }
-
-    .btn-group>button {
-      width: inherit;
-    }
-
-    .welcome-wave {
-      bottom: -5rem;
-      left: -1rem;
-      right: 1rem;
-
-      z-index: 0;
-      transform: scaleX(1.2) scaleY(1.4);
-    }
-
-    .card {
-      z-index: 100;
-    }
-
-    @media screen and (min-width: 576px) {
-      .welcome-image-background {
-        background-image: url('/img/welcome/background-landing.png');
-        background-size: cover;
-        min-height: 50vh;
-      }
-    }
-
-    @media screen and (min-width: 768px) {
-      .welcome-width-fluid {
-        width: 75%;
-      }
-    }
-
-    @media screen and (min-width: 1500px) {
-      .welcome-width-fluid {
-        width: 50%;
-      }
-    }
-  </style>
 </head>
 
 <body class="bg-light">
 
-  <div class="container-fluid">
+  @include('components.navbar')
 
-    <!-- Todo, navbar -->
+  <div class="container-fluid">
 
     <!-- <Search row> -->
     <div class="row d-grid place-items-center welcome-image-background" style="place-items: center;">
@@ -100,7 +30,7 @@
           <input type="search" id='search' class="form-control" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
         </div>
 
-        <button type="button"  class="btn btn-primary d-flex align-items-center justify-content-center" onclick="window.location='/search?name='+search.value" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
+        <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center" onclick="window.location='/search?name='+search.value" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
           <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
         </button>
 

@@ -39,21 +39,21 @@
             <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
 
                 <!-- <Logged> -->
-                    @auth
-                
+                @auth
+
                 <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3" style="white-space: nowrap" href="{{route('announcements.show')}}">
                     Panel użytkownika
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="ml-3 mr-3">
-                @csrf
-                <button class="text-dark text-decoration-none m-2 col-5 text-right bg-transparent border-0 text-nowrap w-100" style="padding-right: 1rem">
-                    Wyloguj się
-                </button>
+                    @csrf
+                    <button class="text-dark text-decoration-none m-2 col-5 text-right bg-transparent border-0 text-nowrap w-100" style="padding-right: 1rem">
+                        Wyloguj się
+                    </button>
                 </form>
-               @endauth
+                @endauth
                 <!-- </Logged> -->
 
-@guest
+                @guest
                 <!-- <Unlogged> -->
                 <a class="text-dark text-decoration-none m-2 col-auto text-right ml-3 mr-3" style="white-space: nowrap" href="/login">
                     Zaloguj się
@@ -73,54 +73,56 @@
 </header>
 
 <!-- <Linki mobile> -->
-<nav id="mobileMenu" class="position-fixed col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse w-100" style="z-index: 999;">
-    <div class="pt-3">
+<div class="d-block d-md-none">
+    <nav id="mobileMenu" class="position-fixed col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse w-100" style="z-index: 999;">
+        <div class="pt-3">
 
-        <ul class="nav flex-column" style="text-align: right;">
+            <ul class="nav flex-column" style="text-align: right;">
 
-            <!-- <Main links> -->
-            <li class="nav-item m-1 nav-item-active">
-                <a class="nav-link" href="/search">
-                    Szukaj
-                </a>
-            </li>
-            <li class="nav-item m-1 nav-item-inactive">
-                <a class="nav-link rounded" href="#">
-                    Ranking
-                </a>
-            </li>
-            <!-- </Main links> -->
+                <!-- <Main links> -->
+                <li class="nav-item m-1 nav-item-active">
+                    <a class="nav-link" href="/search">
+                        Szukaj
+                    </a>
+                </li>
+                <li class="nav-item m-1 nav-item-inactive">
+                    <a class="nav-link rounded" href="#">
+                        Ranking
+                    </a>
+                </li>
+                <!-- </Main links> -->
 
-            <!-- <Logged> -->
-            {{--
-            <li class="nav-item m-1 nav-item-inactive">
-                <a class="nav-link rounded" href="#">
-                    Panel użytkownika
-                </a>
-            </li>
-            <li class="nav-item m-1 nav-item-inactive">
-                <form method="POST" action="{{ route('logout') }}" class="d-flex justify-content-end">
-            @csrf
-            <button class="nav-link text-decoration-none text-right bg-transparent border-0 text-nowrap">
-                Wyloguj się
-            </button>
-            </form>
-            </li>
-            --}}
-            <!-- </Logged> -->
+                <!-- <Logged> -->
+                {{--
+                <li class="nav-item m-1 nav-item-inactive">
+                    <a class="nav-link rounded" href="#">
+                        Panel użytkownika
+                    </a>
+                </li>
+                <li class="nav-item m-1 nav-item-inactive">
+                    <form method="POST" action="{{ route('logout') }}" class="d-flex justify-content-end">
+                @csrf
+                <button class="nav-link text-decoration-none text-right bg-transparent border-0 text-nowrap">
+                    Wyloguj się
+                </button>
+                </form>
+                </li>
+                --}}
+                <!-- </Logged> -->
 
-            <!-- <Unlogged> -->
-            <li class="nav-item m-1 nav-item-inactive">
-                <a class="nav-link rounded" href="/login">
-                    Zaloguj się
-                </a>
-            </li>
-            <li class="nav-item m-1 nav-item-inactive">
-                <a class="nav-link rounded" href="/register">
-                    Rejestracja
-                </a>
-            </li>
-            <!-- </Unlogged> -->
-        </ul>
-    </div>
-</nav>
+                <!-- <Unlogged> -->
+                <li class="nav-item m-1 nav-item-inactive">
+                    <a class="nav-link rounded" href="/login">
+                        Zaloguj się
+                    </a>
+                </li>
+                <li class="nav-item m-1 nav-item-inactive">
+                    <a class="nav-link rounded" href="/register">
+                        Rejestracja
+                    </a>
+                </li>
+                <!-- </Unlogged> -->
+            </ul>
+        </div>
+    </nav>
+</div>
