@@ -15,7 +15,7 @@
 
 
     <!-- <Linki desktop> -->
-    <div class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
+    <div class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1 ml-3">
 
         <!-- <Przyciski z lewej> -->
         <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
