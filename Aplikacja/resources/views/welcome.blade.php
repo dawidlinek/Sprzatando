@@ -49,10 +49,10 @@
       <div class="btn-group justify-content-between align-items-center welcome-width-fluid flex-column flex-md-row">
 
         @foreach ($categories as $category)
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" onclick="window.location='/search?category={{$category->name}}'">{{$category->name}}</button>
+        <a class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" href="/search?category={{$category->name}}">{{$category->name}}</a>
         @endforeach
 
-        <button class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded" onclick="window.location='/search'">Więcej...</button>
+        <a class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded" href="/search">Więcej...</a>
 
       </div>
     </div>
