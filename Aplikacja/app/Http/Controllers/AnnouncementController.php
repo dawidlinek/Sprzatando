@@ -29,8 +29,8 @@ class AnnouncementController extends Controller
             if ($announcement->img1 == Null) {
                 $announcements[$key]->img1 = 'placeholder.jpg';
             }
-            if (strlen($announcement->description) > 150) {
-                $announcements[$key]->description = substr($announcement->description, 0, 150) . "...";
+            if (strlen($announcement->description) > 100) {
+                $announcements[$key]->description = substr($announcement->description, 0, 100) . "...";
             }
         }
         return view('dashboard.my_announcements', ['announcements' => $announcements]);
@@ -125,7 +125,7 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        if($announcement->status!="active"){
+        if ($announcement->status != "active") {
             return back()->withErrors(["Edytować można tylko aktywne oferty"]);
         }
         $request->validate(['img1' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img2' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img3' => 'nullable|image|dimensions:max_width=2000,max_height=2000']);
@@ -210,12 +210,12 @@ class AnnouncementController extends Controller
 
     public function Api(Request $request)
     {
-        if($request->longitude && $request->latitude && $request->distance){
-            $querry=Announcement::geofence($request->latitude,$request->longitude,0,$request->distance);
+        if ($request->longitude && $request->latitude && $request->distance) {
+            $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->distance);
             $querry->where('status', 'active');
             $querry->Orwhere('status', 'reported');
-        }else{
-            $querry = Announcement::where('status',"LIKE", 'active');
+        } else {
+            $querry = Announcement::where('status', "LIKE", 'active');
             $querry->Orwhere('status', 'reported');
         }
         if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
@@ -238,6 +238,4 @@ class AnnouncementController extends Controller
         }
         return $offers;
     }
-
-   
 }
