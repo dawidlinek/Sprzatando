@@ -7,95 +7,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
-    <link rel="stylesheet" href="/css/dashboard/panel.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/welcome.css" />
     <title>Sprzatnij me:D</title>
 </head>
 
 <body class="bg-light">
-    <header class="navbar navbar-light sticky-top bg-light flex-md-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
-        <!-- Logo & hamburger -->
-        <div class="d-flex justify-content-between col-12 col-md-3 col-lg-2">
-            <a class="navbar-brand ml-2 px-3 text-left" href="/"> logo </a>
-            <button class="navbar-toggler d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
 
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
-            <!-- Przyciski z lewej -->
-            <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
-                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
-                    <a class="text-primary text-decoration-none m-2 col-6 col-md-auto text-left" href="#">
-                        Panel użytkownika
-                    </a>
-                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right" style="white-space: nowrap" href="#">
-                        Kontakt
-                    </a>
-                </div>
-            </div>
+    @include('components.navbar')
 
-            <!-- Przyciski z prawej -->
-            <div class="d-flex mr-2 col-12 col-md-auto">
-                <div class="d-flex mr-2 col-12 col-md-auto" style="white-space: nowrap">
-                    <a class="text-dark text-decoration-none m-2 col-6 col-md-auto text-left" href="#">
-                        Zaloguj się
-                    </a>
-                    <a class="text-dark text-decoration-none m-2 col-5 col-md-auto text-right" style="white-space: nowrap; padding-right: 1rem" href="#">
-                        Rejestracja
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
     <div class="d-flex col-12 mt-5">
+
         <!-- LEWA KOLUMNA -->
         <div class="col-4 mt-5 d-flex flex-column align-items-center">
+
             <!-- CENA -->
             <div class="col-8 mb-5">
                 <div class="col-10 col-sm-12">
-                    <label for="example-number-input" class="col-8 col-form-label mb-3">
-                        <h2>Cena:</h2>
+
+                    <label class="col-8">
+                        <h3 class="mb-3">Cena:</h3>
                     </label>
-                    <div class="d-flex w-75 justify-content-between flex-md-row flex-sm-column ">
-                        <div class="inputBar mx-1 my-1 " style="position: relative; z-index: 1;">
-                            <input class="form-control mw-50 p-3 " type="number" id="example-number-input" placeholder="od">
+
+                    <div class="d-flex w-100 justify-content-between flex-md-row flex-sm-column ">
+
+                        <div class="w-100 input-before-style mr-3">
+                            <input class="form-control mw-50 p-3" type="number" placeholder="od">
                         </div>
-                        <div class="inputBar mx-1 my-1 " style="position: relative; z-index: 1;">
-                            <input class="form-control mw-50 p-3" type="number" id="example-number-input" placeholder="do">
+
+                        <div class="w-100 input-before-style">
+                            <input class="form-control mw-50 p-3" type="number" placeholder="do">
                         </div>
+
                     </div>
                 </div>
             </div>
             <!-- KONIEC CENY -->
+
             <!-- LOKALIZACJA -->
             <div class="col-8 mb-5">
                 <div>
-                    <label for="example-number-input" class="col-8 col-form-label">
-                        <h2>Lokalizacja:</h2>
+                    <label for="lokalizacja-input" class="col-8">
+                        <h3 class="mb-3">Lokalizacja:</h3>
                     </label>
-                    <div class="inputBar" style="position: relative; z-index: 1;">
-                        <input type="text" class="form-control mb-4 p-3" placeholder="Opole..." />
+                    <div class="w-100 input-before-style">
+                        <input type="text" class="form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
                     </div>
                 </div>
             </div>
             <!-- KONIEC LOKALIZACJA -->
+
             <!-- PROMIEŃ WYSZUKAŃ -->
             <div class="col-8 mb-5">
                 <div>
-                    <label for="example-number-input" class="col-8 col-form-label w-100">
-                        <h2>Promień wyszukiwań:</h2>
+                    <label for="rangeValue" class="col-8 w-100">
+                        <h3>Promień wyszukiwań:</h3>
                     </label>
                     <p id="rangeText">0km</p>
                     <input type="range" class="form-range " id="rangeValue" data-slider-min="0" data-slider-max="100" value="0" />
                 </div>
             </div>
             <!-- KONIEC PROMIEŃ -->
+
             <!-- KATEGORIE -->
             <div class="col-8 mb-5">
                 <div>
-                    <label for="example-number-input" class="col-8 col-form-label w-100">
-                        <h2>Kategorie:</h2>
+                    <label class="col-8 w-100">
+                        <h3 class="mb-3">Kategorie:</h3>
                     </label>
+
                     <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Auto</button>
                     <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Zamiatanie</button>
                     <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Wycieranie</button>
@@ -108,58 +88,30 @@
             <!-- KONIEC KATEGORIE -->
         </div>
         <!-- KONIEC LEWEJ KOLUMNY -->
+
         <!-- PRAWA KOLUMNA -->
         <div class="col-7 mt-5">
             <div class="w-100">
-                <h2 class="text-primary mb-5">Wpisz interesującą frazę</h2>
+                <h3 class="text-primary mb-3">Wpisz interesującą frazę</h3>
+
                 <!-- SEARCH BUTTON -->
-                <div class="d-flex w-100 mb-5">
-                    <div class="form-outline col-5 w-75 inputSearchBar" style="position: relative; z-index: 1;">
-                        <input type="search" id="form1" class="form-control w-100  p-3 inputad" placeholder="Sprzatanie biura..." style=" z-index: 100; background-color: white;" />
+                <div class="w-100 d-flex">
+
+                    <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
+                    <div class="w-100 input-before-style">
+                        <input type="search" id='search' class="form-control" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
                     </div>
-                    <button type="button" class="btn btn-primary w-25 ">
-                        <p class="fas fa-search m-0">Szukaj</p>
+
+                    <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center" onclick="window.location='/search?name='+search.value" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
+                        <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
                     </button>
+
                 </div>
                 <!-- KONIEC SEARCH BUTTON -->
+
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 <div class="card d-flex w-100 mt-5">
-                    <div class="row w-100 mx-auto">
-                        <div class="col-md-3" style="background-image: url(https://assets.archon.pl/images/products/mfe42422780eaf/widok-1-projekt-dom-w-balsamowcach-2-8719685424c5e520fa9a1911a47e76a0__289.jpg); background-position: center center; background-size: cover; min-height: 180px;">
-                            &nbsp;
-                        </div>
-                        <div class="col-md-6 col-sm-12 py-2">
-                            <div class="card-body mb-3">
-                                <div class="row col-12">
-                                    <div class="col-lg-6">
-                                        <h5 class="card-title text-primary text-nowrap">Posprzątanie ogromnej willi</h5>
-                                    </div>
-                                    <div class="col-lg-6 d-flex justify-content-md-end justify-content-sm-start">
-                                        <p class="row card-text nowrap d-sm-flex">
-                                            <small class="col-md-5 text-muted d-flex justify-content-start align-items-center ">0000zł</small><small class=" col-md-4 text-muted d-md-none justify-content-start">Opole ul.Kozacka 2</small>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="w-100">
-                                    <p class="card-text">
-                                        <b-badge><small class="text-danger">b-badge</small></b-badge>
-                                    </p>
-                                </div>
-                                <p class="card-text">Moim zdaniem to nie ma tak, że dobrze albo że nie
-                                    dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej,
-                                    powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń,
-                                    kiedy sobie nie radziłem, kiedy byłem sam. </p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 p-4 position-relative">
-                            <div class="b-row d-md-flex d-none justify-content-end">
-                                <p><small class="text-muted overflow-wrap">Opole, Polska</small></p>
-                            </div>
-                            <div class="b-row d-flex align-text-center m-3 col-sm-11 position-absolute " style="right:5px; bottom: 5px">
-                                <button class="btn btn-primary w-100 text-nowrap">Szczegóły</button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <!-- POJEDYNCZE OGŁOSZENIE END -->
             </div>
