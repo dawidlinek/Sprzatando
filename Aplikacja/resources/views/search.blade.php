@@ -84,8 +84,11 @@
                         <label class="col-8 w-100">
                             <h3 class="mb-3">Kategorie:</h3>
                         </label>
+                        @php
+                          $category=$category??'';  
+                        @endphp
 @foreach ($categories as $category_tmp)
-@if($category??''== $category_tmp->name)
+@if($category=== $category_tmp->name)
 <button class="btn button-on text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
 @else 
 <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>

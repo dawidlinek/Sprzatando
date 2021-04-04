@@ -22,20 +22,23 @@
   <div class="container-fluid">
 
     <!-- <Search row> -->
+      <form method="POST" action="/search">
     <div class="row d-grid place-items-center welcome-image-background" style="place-items: center;">
       <div class="col-12 col-md-8 col-xl-6 d-flex">
 
         <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
         <div class="w-100 input-before-style">
-          <input type="search" id='search' class="form-control" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
+          @csrf
+          <input type="search" id='search' class="form-control" name='name' placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
         </div>
 
-        <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center" onclick="window.location='/search?name='+search.value" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
+        <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center"  style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
           <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
         </button>
-
+        
       </div>
     </div>
+  </form>
     <!-- </Search row> -->
 
 
@@ -49,7 +52,11 @@
       <div class="btn-group justify-content-between align-items-center welcome-width-fluid flex-column flex-md-row">
 
         @foreach ($categories as $category)
-        <a class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" href="/search?category={{$category->name}}">{{$category->name}}</a>
+        <form method="POST" action="/search">
+          @csrf
+          <input hidden name='category' value="{{$category->name}}"/>
+        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" >{{$category->name}}</button>
+        </form>
         @endforeach
 
         <a class="btn col-3 m-3 btn-outline-primary btn-block btn-lg rounded" href="/search">Więcej...</a>
