@@ -23,7 +23,11 @@ use Illuminate\Http\Request;
 // Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
 
 
-Route::view('/search','search');
+Route::get('/search',function(){
+    $categories=Categories::all();
+    return view('search',compact('categories'));
+});
+
 Route::get('/', function () {
     $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
     $categories=Categories::inRandomOrder()->limit(3)->get();

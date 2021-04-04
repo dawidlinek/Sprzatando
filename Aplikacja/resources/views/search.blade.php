@@ -84,14 +84,15 @@
                         <label class="col-8 w-100">
                             <h3 class="mb-3">Kategorie:</h3>
                         </label>
-
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="auto">Auto</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="zamiatanie">Zamiatanie</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="wycieranie">Wycieranie</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="mycie okien">Mycie Okien</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="lokale">Lokale</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="pranie">Pranie</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="dezynfekcja">Dezynfekcja</button>
+@foreach ($categories as $category)
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category->name}}">{{$category->name}}</button>
+@endforeach
+{{-- <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="zamiatanie">Zamiatanie</button>
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="wycieranie">Wycieranie</button>
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="mycie okien">Mycie Okien</button>
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="lokale">Lokale</button>
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="pranie">Pranie</button>
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="dezynfekcja">Dezynfekcja</button> --}}
                     </div>
                 </div>
             </div>
