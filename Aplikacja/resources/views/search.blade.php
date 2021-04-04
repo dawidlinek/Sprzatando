@@ -72,8 +72,8 @@
                         <label for="rangeValue" class="col-8 w-100">
                             <h3>Promień wyszukiwań:</h3>
                         </label>
-                        <p id="rangeText">0km</p>
-                        <input type="range" class="search-announcement form-range" id="rangeValue" data-slider-min="0" data-slider-max="100" value="0" />
+                        <p id="rangeText">1km</p>
+                        <input type="range"  class="search-announcement form-range" id="rangeValue" data-slider-min="1" data-slider-max="100" value="1" />
                     </div>
                 </div>
                 <!-- KONIEC PROMIEŃ -->
@@ -189,13 +189,15 @@ function initialize() {
             window.scrollTo(0, 0);
         }
 
-        const API_URL = "/api/announcement";
+        const API_URL = "/api/announcement?";
         const zgloszeniaPlace = document.getElementById('zgloszeniaPlace');
         const inputsOpoznione = document.querySelectorAll('.search-announcement');
         const priceMinInput = document.getElementById('price_min');
         const priceMaxInput = document.getElementById('price_max');
         const rangeInput = document.getElementById('rangeValue');
         const titleInput = document.getElementById('search');
+        const longitudeInput = document.getElementById('longitude');
+        const latitudeInput = document.getElementById('latitude');
         let delayRequest;
 
         const getZgloszenia = async () => {
@@ -205,16 +207,15 @@ function initialize() {
             const categories = []
             categoriesButtonsOn.forEach(button => categories.push(button.value));
 
-            const parameters = {
-                title: titleInput.value,
-                price_min: priceMinInput.value,
-                price_max: priceMaxInput.value,
-                range: rangeInput.value,
-                categories,
-            }
-
-            const zgloszenia = await fetch(API_URL, parameters)
-                .then(response => response.json())
+            const zgloszenia = await fetch(API_URL + new URLSearchParams({
+                    title: titleInput.value,
+                    price_min: priceMinInput.value,
+                    price_max: priceMaxInput.value,
+                    range: rangeInput.value,
+                    longitude: longitudeInput.value,
+                    latitude: latitudeInput.value,
+                    categories,
+                })).then(response => response.json())
                 .catch(error => console.error(error))
 
             zgloszeniaPlace.innerHTML = "";

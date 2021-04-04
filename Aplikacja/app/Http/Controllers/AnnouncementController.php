@@ -210,9 +210,9 @@ class AnnouncementController extends Controller
 
     public function Api(Request $request)
     {
-        return $request->all();
-        if ($request->longitude && $request->latitude && $request->distance) {
-            $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->distance);
+        // return $request->all();
+        if ($request->longitude && $request->latitude && $request->range) {
+            $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->range);
             $querry->where('status', 'active');
             $querry->Orwhere('status', 'reported');
         } else {
@@ -227,6 +227,7 @@ class AnnouncementController extends Controller
         // }
         $offers = $querry->with('categories')->get();
         if ($request->categories) {
+            $request->categories=explode(',',$request->categories);
             $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
             foreach ($offers as $key => $offer) {
                 foreach ($categories_prim as $category) {
