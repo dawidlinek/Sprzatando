@@ -210,6 +210,7 @@ class AnnouncementController extends Controller
 
     public function Api(Request $request)
     {
+        return $request->all();
         if ($request->longitude && $request->latitude && $request->distance) {
             $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->distance);
             $querry->where('status', 'active');

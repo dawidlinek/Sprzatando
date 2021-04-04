@@ -59,6 +59,8 @@
                         </label>
                         <div class="w-100 input-before-style">
                             <input type="text" class="search-announcement form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
+                            <input type="text" id='longitude' hidden/>
+                            <input type="text" id='latitude' hidden/>
                         </div>
                     </div>
                 </div>
@@ -137,8 +139,23 @@
     <footer>
 
     </footer>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyD-Vt-coVq0Nqd2VZc_tEZvvylA36vIO3s&libraries=places" type="text/javascript"></script>
+
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Map api
+google.maps.event.addDomListener(window, "load", initialize);
+function initialize() {
+    var input = document.getElementById("lokalizacja-input");
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener("place_changed", function () {
+        var place = autocomplete.getPlace();
+        longitude.value=place.geometry.location.lng()
+        latitude.value=place.geometry.location.lat()
+    });
+}
+// End Map api
+
         let i = 1;
         let rangeVal = document.querySelector('#rangeValue');
         let rangeTxt = document.querySelector('#rangeText');
