@@ -19,17 +19,25 @@
     <div class="d-flex col-12 mt-5">
 
         <!-- LEWA KOLUMNA -->
-        <div class="col-4 mt-5 d-flex flex-column align-items-center">
+        <div id="filtry" class="d-md-flex collapse col-12 col-md-4 mt-0 mt-md-5 flex-column align-items-center">
 
-            <!-- CENA -->
-            <div class="col-8 mb-5">
-                <div class="col-10 col-sm-12">
+
+            <div class="d-flex flex-column align-items-center">
+
+                <div class="col-10 mb-5 d-block d-md-none">
+                    <button type="button" data-bs-toggle="collapse" data-bs-target="#filtry" aria-expanded="false" class="d-block d-md-none btn-block btn button-off text-nowrap mt-3 px-4 py-2" href="#">
+                        Przeglądaj oferty
+                    </button>
+                </div>
+
+                <!-- CENA -->
+                <div class="col-10 col-md-8 mb-5">
 
                     <label class="col-8">
                         <h3 class="mb-3">Cena:</h3>
                     </label>
 
-                    <div class="d-flex w-100 justify-content-between flex-md-row flex-sm-column ">
+                    <div class="d-flex w-100 justify-content-between flex-row ">
 
                         <div class="w-100 input-before-style mr-3">
                             <input class="form-control mw-50 p-3" type="number" placeholder="od">
@@ -41,48 +49,48 @@
 
                     </div>
                 </div>
-            </div>
-            <!-- KONIEC CENY -->
+                <!-- KONIEC CENY -->
 
-            <!-- LOKALIZACJA -->
-            <div class="col-8 mb-5">
-                <div>
-                    <label for="lokalizacja-input" class="col-8">
-                        <h3 class="mb-3">Lokalizacja:</h3>
-                    </label>
-                    <div class="w-100 input-before-style">
-                        <input type="text" class="form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
+                <!-- LOKALIZACJA -->
+                <div class="col-10 col-md-8 mb-5">
+                    <div>
+                        <label for="lokalizacja-input" class="col-8">
+                            <h3 class="mb-3">Lokalizacja:</h3>
+                        </label>
+                        <div class="w-100 input-before-style">
+                            <input type="text" class="form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- KONIEC LOKALIZACJA -->
+                <!-- KONIEC LOKALIZACJA -->
 
-            <!-- PROMIEŃ WYSZUKAŃ -->
-            <div class="col-8 mb-5">
-                <div>
-                    <label for="rangeValue" class="col-8 w-100">
-                        <h3>Promień wyszukiwań:</h3>
-                    </label>
-                    <p id="rangeText">0km</p>
-                    <input type="range" class="form-range " id="rangeValue" data-slider-min="0" data-slider-max="100" value="0" />
+                <!-- PROMIEŃ WYSZUKAŃ -->
+                <div class="col-10 col-md-8 mb-5">
+                    <div>
+                        <label for="rangeValue" class="col-8 w-100">
+                            <h3>Promień wyszukiwań:</h3>
+                        </label>
+                        <p id="rangeText">0km</p>
+                        <input type="range" class="form-range " id="rangeValue" data-slider-min="0" data-slider-max="100" value="0" />
+                    </div>
                 </div>
-            </div>
-            <!-- KONIEC PROMIEŃ -->
+                <!-- KONIEC PROMIEŃ -->
 
-            <!-- KATEGORIE -->
-            <div class="col-8 mb-5">
-                <div>
-                    <label class="col-8 w-100">
-                        <h3 class="mb-3">Kategorie:</h3>
-                    </label>
+                <!-- KATEGORIE -->
+                <div class="col-10 col-md-8 mb-5">
+                    <div>
+                        <label class="col-8 w-100">
+                            <h3 class="mb-3">Kategorie:</h3>
+                        </label>
 
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Auto</button>
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Zamiatanie</button>
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Wycieranie</button>
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Mycie Okien</button>
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Lokale</button>
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Pranie</button>
-                    <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Dezynfekcja</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Auto</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Zamiatanie</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Wycieranie</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Mycie Okien</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Lokale</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Pranie</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Dezynfekcja</button>
+                    </div>
                 </div>
             </div>
             <!-- KONIEC KATEGORIE -->
@@ -90,7 +98,7 @@
         <!-- KONIEC LEWEJ KOLUMNY -->
 
         <!-- PRAWA KOLUMNA -->
-        <div class="col-7 mt-5">
+        <div class="col-12 col-md-7 mt-0 mt-md-5 p-3 p-md-0">
             <div class="w-100">
                 <h3 class="text-primary mb-3">Wpisz interesującą frazę</h3>
 
@@ -107,6 +115,9 @@
                     </button>
 
                 </div>
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#filtry" aria-expanded="false" class="d-block d-md-none btn-block btn button-off text-nowrap mt-3 px-4 py-2" href="#">
+                    Kategorie i filtry
+                </button>
                 <!-- KONIEC SEARCH BUTTON -->
 
                 <!-- POJEDYNCZE OGŁOSZENIE -->

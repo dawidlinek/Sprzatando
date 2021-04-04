@@ -15,7 +15,7 @@
                             <div class="col-12 d-flex flex-column flex-md-row">
                                 <div class="w-100 d-flex justify-content-between">
                                     <h5 class="card-title text-primary">{{$announcement->title}}</h5>
-                                    <h5 class="m-0 text-primary d-block d-md-none">{{$announcement->price}} zł</h5>
+                                    <h5 class="m-0 text-nowrap text-primary d-block d-md-none">{{$announcement->price}} zł</h5>
                                 </div>
                             </div>
 
