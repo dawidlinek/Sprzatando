@@ -84,8 +84,12 @@
                         <label class="col-8 w-100">
                             <h3 class="mb-3">Kategorie:</h3>
                         </label>
-@foreach ($categories as $category)
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category->name}}">{{$category->name}}</button>
+@foreach ($categories as $category_tmp)
+@if($category??''== $category_tmp->name)
+<button class="btn button-on text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
+@else 
+<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
+@endif
 @endforeach
 {{-- <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="zamiatanie">Zamiatanie</button>
 <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="wycieranie">Wycieranie</button>
@@ -110,7 +114,7 @@
 
                     <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
                     <div class="w-100 input-before-style">
-                        <input type="search" id='search' class="form-control" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
+                        <input type="search" id='search' class="form-control" value="{{$name??''}}"  placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
                     </div>
 
                     <button id="mainSearch" type="button" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">

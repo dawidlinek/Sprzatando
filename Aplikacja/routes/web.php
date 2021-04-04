@@ -23,9 +23,10 @@ use Illuminate\Http\Request;
 // Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
 
 
-Route::get('/search',function(){
-    $categories=Categories::all();
-    return view('search',compact('categories'));
+Route::any('/search',function(Request $request){
+    $data=$request->all();
+    $data['categories']=Categories::all();
+    return view('search',$data);
 });
 
 Route::get('/', function () {
