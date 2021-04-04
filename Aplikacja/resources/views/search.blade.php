@@ -132,7 +132,7 @@
 
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5">
-
+@include('components.announcement')
                 </div>
                 <!-- POJEDYNCZE OGŁOSZENIE END -->
             </div>
