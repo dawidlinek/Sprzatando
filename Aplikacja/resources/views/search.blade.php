@@ -40,11 +40,11 @@
                     <div class="d-flex w-100 justify-content-between flex-row ">
 
                         <div class="w-100 input-before-style mr-3">
-                            <input class="form-control mw-50 p-3" type="number" placeholder="od">
+                            <input id="price_min" class="search-announcement form-control mw-50 p-3" type="number" placeholder="od">
                         </div>
 
                         <div class="w-100 input-before-style">
-                            <input class="form-control mw-50 p-3" type="number" placeholder="do">
+                            <input id="price_max" class="search-announcement form-control mw-50 p-3" type="number" placeholder="do">
                         </div>
 
                     </div>
@@ -58,7 +58,7 @@
                             <h3 class="mb-3">Lokalizacja:</h3>
                         </label>
                         <div class="w-100 input-before-style">
-                            <input type="text" class="form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
+                            <input type="text" class="search-announcement form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
                         </div>
                     </div>
                 </div>
@@ -71,25 +71,25 @@
                             <h3>Promień wyszukiwań:</h3>
                         </label>
                         <p id="rangeText">0km</p>
-                        <input type="range" class="form-range " id="rangeValue" data-slider-min="0" data-slider-max="100" value="0" />
+                        <input type="range" class="search-announcement form-range" id="rangeValue" data-slider-min="0" data-slider-max="100" value="0" />
                     </div>
                 </div>
                 <!-- KONIEC PROMIEŃ -->
 
                 <!-- KATEGORIE -->
                 <div class="col-10 col-md-8 mb-5">
-                    <div>
+                    <div id="categories">
                         <label class="col-8 w-100">
                             <h3 class="mb-3">Kategorie:</h3>
                         </label>
 
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Auto</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Zamiatanie</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Wycieranie</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Mycie Okien</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Lokale</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Pranie</button>
-                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)">Dezynfekcja</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="auto">Auto</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="zamiatanie">Zamiatanie</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="wycieranie">Wycieranie</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="mycie okien">Mycie Okien</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="lokale">Lokale</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="pranie">Pranie</button>
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="dezynfekcja">Dezynfekcja</button>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                         <input type="search" id='search' class="form-control" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
                     </div>
 
-                    <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center" onclick="window.location='/search?name='+search.value" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
+                    <button id="mainSearch" type="button" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
                         <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
                     </button>
 
@@ -121,7 +121,7 @@
                 <!-- KONIEC SEARCH BUTTON -->
 
                 <!-- POJEDYNCZE OGŁOSZENIE -->
-                <div class="card d-flex w-100 mt-5">
+                <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5">
 
                 </div>
                 <!-- POJEDYNCZE OGŁOSZENIE END -->
@@ -147,6 +147,8 @@
         })
 
         function buttonStatus(evt) {
+            startCountingToSearch();
+
             if (evt.classList.contains('button-off')) {
                 evt.classList.remove('button-off')
                 evt.classList.add('button-on')
@@ -161,6 +163,53 @@
         function scrollToTop() {
             window.scrollTo(0, 0);
         }
+
+        const API_URL = "/api/announcement";
+        const zgloszeniaPlace = document.getElementById('zgloszeniaPlace');
+        const inputsOpoznione = document.querySelectorAll('.search-announcement');
+        const priceMinInput = document.getElementById('price_min');
+        const priceMaxInput = document.getElementById('price_max');
+        const rangeInput = document.getElementById('rangeValue');
+        const titleInput = document.getElementById('search');
+        let delayRequest;
+
+        const getZgloszenia = async () => {
+            clearInterval(delayRequest);
+
+            const categoriesButtonsOn = document.querySelector("#categories").querySelectorAll('.button-on');
+            const categories = []
+            categoriesButtonsOn.forEach(button => categories.push(button.value));
+
+            const parameters = {
+                title: titleInput.value,
+                price_min: priceMinInput.value,
+                price_max: priceMaxInput.value,
+                range: rangeInput.value,
+                categories,
+            }
+
+            const zgloszenia = await fetch(API_URL, parameters)
+                .then(response => response.json())
+                .catch(error => console.error(error))
+
+            zgloszeniaPlace.innerHTML = "";
+            zgloszenia.forEach(zgloszenie => {
+                zgloszeniaPlace.innerHTML += `<div class="m-3"><h5>${zgloszenie.title}</h5></div> <br>`
+            })
+        }
+
+        const startCountingToSearch = () => {
+            clearInterval(delayRequest);
+            delayRequest = setInterval(getZgloszenia, 1000);
+        }
+
+        inputsOpoznione.forEach(input => {
+            input.addEventListener("change", startCountingToSearch)
+            input.addEventListener("keydown", startCountingToSearch)
+        })
+
+        getZgloszenia()
+        document.getElementById("mainSearch").addEventListener("click", startCountingToSearch)
     </script>
 </body>
 
