@@ -80,6 +80,7 @@
                     <img src="../assets/img/HomeKONCEPT-68-zdjecie-1.jpg" alt="">
             </div>
             <div class="card w-100 p-5 mb-5">
+                @auth
                 <form method="POST" action="/engage/{{$announcement->id}}">
                     @csrf
                     <button class="btn btn-primary mb-3 p-4">Zgłoś się do zgłoszenia</button>
@@ -88,6 +89,11 @@
                     @csrf
                     <button class="btn bg-white border border-primary border-4 p-4">Zgłoś ogłoszenie</button> 
                 </form>
+                @endauth 
+                @guest 
+                <a class="btn btn-primary mb-3 p-4" href='/login'>Zaloguj się</a>
+                <a class="btn bg-white border border-primary border-4 p-4" href='/register'>Zarejestruj się</a> 
+                @endguest
             </div>
                 <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
                     @foreach ($announcement->categories as $category)

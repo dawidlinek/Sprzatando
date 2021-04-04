@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\BanController;
+use App\Http\Controllers\EngageAnnouncement;
 use App\Models\Announcement;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::get('/singleOffer/{id}',function($id){
 return view('singleOffer',compact('announcement'));
 })->name('singleOffer');
 Route::post('/report/{announcement}',[BanController::class,'report_announcement']);
+Route::post('/engage/{announcement}',[EngageAnnouncement::class,'engage']);
 Route::get('/', function () {
     $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
     $categories=Categories::inRandomOrder()->limit(3)->get();
