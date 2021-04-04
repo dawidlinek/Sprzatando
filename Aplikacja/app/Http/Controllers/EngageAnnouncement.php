@@ -12,6 +12,8 @@ class EngageAnnouncement extends Controller
     public function engage(Announcement $announcement){
         if($announcement->creator_id==Auth::id())
             return back()->withErrors(['Nie możesz zgłosić się swojego ogłoszenia']);
+        if(user_has_announcement::where(['user'=>Auth::id(),'announcement'=>$announcement->id])->exists())
+            return back()->withErrors(['Już zgłosiłeś się do tego ogłoszenia']);
         user_has_announcement::create(['announcement'=>$announcement->id,'user'=>Auth::id()]);
         return back()->with('status','Pomyślnie zgłoszono się do ogłoszenia');
     }

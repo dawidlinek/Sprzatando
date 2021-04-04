@@ -34,7 +34,6 @@ Route::get('/singleOffer/{id}',function($id){
 return view('singleOffer',compact('announcement'));
 })->name('singleOffer');
 Route::post('/report/{announcement}',[BanController::class,'report_announcement']);
-Route::post('/engage/{announcement}',[EngageAnnouncement::class,'engage']);
 Route::get('/', function () {
     $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
     $categories=Categories::inRandomOrder()->limit(3)->get();
@@ -67,10 +66,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 Route::middleware(['auth'])->group(function () {
-Route::resource('/dashboard/announcement', AnnouncementController::class);
-Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
-
-
-Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
-Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
+    Route::resource('/dashboard/announcement', AnnouncementController::class);
+    Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
+    
+    
+    Route::post('/engage/{announcement}',[EngageAnnouncement::class,'engage']);
+    Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
+    Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
 });
