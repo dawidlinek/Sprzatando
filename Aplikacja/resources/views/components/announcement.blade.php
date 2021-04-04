@@ -54,7 +54,7 @@
                         @endif
 
                         @else
-                        <a class="btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="#">Pokaż</a>
+                        <a class="btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="{{route('singleOffer', $announcement->id??"0")}}">Pokaż</a>
                         @endif
                     </div>
 

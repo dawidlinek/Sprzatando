@@ -28,6 +28,10 @@ Route::any('/search',function(Request $request){
     $data['categories']=Categories::all();
     return view('search',$data);
 });
+Route::get('/singleOffer/{id}',function($id){
+    $announcement=Announcement::findOrFail($id);
+return view('singleOffer',compact('announcement'));
+})->name('singleOffer');
 
 Route::get('/', function () {
     $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
