@@ -31,19 +31,25 @@
                     <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 d-flex  align-items-center justify-content-center"  >
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            @if($announcement->img2)  <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="1" aria-label="Slide 2"></button>@endif
+                            @if($announcement->img3)  <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="2" aria-label="Slide 3"></button>@endif
                         </div>
                         <div class="carousel-inner w-75 d-flex align-items-center position-relative" style="height: 50vh;" data-interval="false" data-ride="carousel" data-pause="hover">
+                            {{-- @if($announcement->img1) --}}
                             <div class="carousel-item active align-items-center" >
                                 <img src="/uploads/{{$announcement->img1}}" class="carouselImg d-block" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
                             </div>
+                            {{-- @endif --}}
+                            @if($announcement->img2)
                             <div class="carousel-item align-items-center">
                                 <img src="/uploads/{{$announcement->img2}}" class="carouselImg d-block w-100 align-bottom" alt="Drugie zdjęcie oferty" onclick="showImage(this)">
                             </div>
+                            @endif
+                            @if($announcement->img3)
                             <div class="carousel-item align-items-center" >
                                 <img src="/uploads/{{$announcement->img3}}" class="carouselImg d-block w-100 " alt="Trzecie zdjęcie oferty" onclick="showImage(this)">
                             </div>
+                            @endif
                         </div>
                         <button class="carousel-control-prev" class="bg-dark" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
