@@ -41,7 +41,7 @@
                 <!-- <Logged> -->
                 @auth
 
-                <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3" style="white-space: nowrap" href="{{route('announcements.show')}}">
+                <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3" style="white-space: nowrap" href="/dashboard/announcement">
                     Panel użytkownika
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="ml-3 mr-3">

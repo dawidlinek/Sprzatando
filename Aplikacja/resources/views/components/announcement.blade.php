@@ -28,7 +28,7 @@
                             @endif
 
                             <div class="col-12 mt-3">
-                                <p class="card-text">{{$announcement->description}} </p>
+                                <p class="card-text">{{strlen($announcement->description)>125?substr($announcement->description, 0, 125) . "..." : $announcement->description}} </p>
                             </div>
                         </div>
 
