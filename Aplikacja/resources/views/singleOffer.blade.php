@@ -24,6 +24,7 @@
             </div>
         </div>
    @include('components.navbar')
+   @include('components.info')
     <div class="d-flex col-12 mt-5 justify-content-center">
         <!-- LEWA KOLUMNA -->
         <div class="col-8 d-flex align-items-center justify-content-start flex-column mb-5">
@@ -83,7 +84,7 @@
                     @csrf
                     <button class="btn btn-primary mb-3 p-4">Zgłoś się do zgłoszenia</button>
                 </form>
-                <form method="POST" action="/ban/{{$announcement->id}}">
+                <form method="POST" action="/report/{{$announcement->id}}">
                     @csrf
                     <button class="btn bg-white border border-primary border-4 p-4">Zgłoś ogłoszenie</button> 
                 </form>
