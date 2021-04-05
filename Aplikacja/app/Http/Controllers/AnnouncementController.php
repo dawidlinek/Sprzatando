@@ -213,13 +213,11 @@ class AnnouncementController extends Controller
         // return $request->all();
         if ($request->longitude && $request->latitude && $request->range) {
             $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->range);
-            $querry->where('status', 'active');
-            $querry->Orwhere('status', 'reported');
+            $querry->whereIn('status', ['active','reported']);
         } else {
-            $querry = Announcement::where('status', "LIKE", 'active');
-            $querry->Orwhere('status', 'reported');
+            $querry = Announcement::whereIn('status',  ['active','reported']);
         }
-        if ($request->title) $querry->where('title', 'LIKE', '%' . $request->title . '%');
+        if ($request->title) $querry->where('title',"LIKE", "%$request->title%");
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
         // if($request->categories){
