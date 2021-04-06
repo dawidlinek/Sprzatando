@@ -66,3 +66,13 @@ body {
         width: 50%;
     }
 }
+
+input[type="range"] {
+    box-shadow: none;
+}
+input[type="range"]::-moz-range-progress {
+    height: 20%;
+    border-radius: 10px 0 0 10px;
+    background-color: #1c1c67;
+    border: 2px solid #1c1c67;
+}

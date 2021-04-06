@@ -135,7 +135,7 @@
     <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
     </div>
-    <div class="toTop bg-primary" onclick="scrollToTop()">
+    <div id="toTop" class="toTop bg-primary" onclick="scrollToTop()">
         ↑
     </div>
     <footer>
@@ -145,148 +145,160 @@
 
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
-        (function() {
-            // Map api
-            google.maps.event.addDomListener(window, "load", initialize);
+        // Map api
+        google.maps.event.addDomListener(window, "load", initialize);
 
-            function initialize() {
-                var input = document.getElementById("lokalizacja-input");
-                var autocomplete = new google.maps.places.Autocomplete(input);
-                autocomplete.addListener("place_changed", function() {
-                    var place = autocomplete.getPlace();
-                    longitude.value = place.geometry.location.lng()
-                    latitude.value = place.geometry.location.lat()
-                });
+        function initialize() {
+            var input = document.getElementById("lokalizacja-input");
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener("place_changed", function() {
+                var place = autocomplete.getPlace();
+                longitude.value = place.geometry.location.lng()
+                latitude.value = place.geometry.location.lat()
+            });
+        }
+        // End Map api
+
+        let i = 1;
+        let rangeVal = document.querySelector('#rangeValue');
+        let rangeTxt = document.querySelector('#rangeText');
+        rangeVal.addEventListener('input', () => {
+            rangeTxt.innerHTML = rangeVal.value + 'km'
+        })
+
+        function buttonStatus(evt) {
+            startCountingToSearch();
+
+            if (evt.classList.contains('button-off')) {
+                evt.classList.remove('button-off')
+                evt.classList.add('button-on')
+                evt.style.color = 'white';
+            } else if (evt.classList.contains('button-on')) {
+                evt.classList.remove('button-on')
+                evt.classList.add('button-off')
+                evt.style.color = 'black';
             }
-            // End Map api
+        }
 
-            let i = 1;
-            let rangeVal = document.querySelector('#rangeValue');
-            let rangeTxt = document.querySelector('#rangeText');
-            rangeVal.addEventListener('input', () => {
-                rangeTxt.innerHTML = rangeVal.value + 'km'
-            })
+        function scrollToTop() {
+            window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
+            document.querySelector('#toTop').style.display = "none";
+        }
+        document.body.addEventListener('wheel', () => {
+            showScroll();
+        })
 
-            function buttonStatus(evt) {
-                startCountingToSearch();
-
-                if (evt.classList.contains('button-off')) {
-                    evt.classList.remove('button-off')
-                    evt.classList.add('button-on')
-                    evt.style.color = 'white';
-                } else if (evt.classList.contains('button-on')) {
-                    evt.classList.remove('button-on')
-                    evt.classList.add('button-off')
-                    evt.style.color = 'black';
-                }
+        function showScroll() {
+            if (window.scrollY > window.screen.height - 200) {
+                document.querySelector('#toTop').style.display = "flex"
+            } else {
+                document.querySelector('#toTop').style.display = "none"
             }
-
-            function scrollToTop() {
-                window.scrollTo(0, 0);
-            }
+        }
+        showScroll();
 
 
-            const API_URL = "/api/announcement?";
-            const zgloszeniaPlace = document.getElementById('zgloszeniaPlace');
-            const inputsOpoznione = document.querySelectorAll('.search-announcement');
-            const priceMinInput = document.getElementById('price_min');
-            const priceMaxInput = document.getElementById('price_max');
-            const rangeInput = document.getElementById('rangeValue');
-            const titleInput = document.getElementById('search');
-            const longitudeInput = document.getElementById('longitude');
-            const latitudeInput = document.getElementById('latitude');
-            let zgloszenieCard;
-            let delayRequest;
+        const API_URL = "/api/announcement?";
+        const zgloszeniaPlace = document.getElementById('zgloszeniaPlace');
+        const inputsOpoznione = document.querySelectorAll('.search-announcement');
+        const priceMinInput = document.getElementById('price_min');
+        const priceMaxInput = document.getElementById('price_max');
+        const rangeInput = document.getElementById('rangeValue');
+        const titleInput = document.getElementById('search');
+        const longitudeInput = document.getElementById('longitude');
+        const latitudeInput = document.getElementById('latitude');
+        let zgloszenieCard;
+        let delayRequest;
 
-            const getAnnouncementCard = ({
-                id,
-                img,
-                title,
-                desc,
-                price,
-                localization
-            }) => {
-                const cloneCard = zgloszenieCard.cloneNode(true);
-                const imgSrc = img !== null ? `url('${img}')` : "url('/uploads/placeholder.jpg')"
+        const getAnnouncementCard = ({
+            id,
+            img,
+            title,
+            desc,
+            price,
+            localization
+        }) => {
+            const cloneCard = zgloszenieCard.cloneNode(true);
+            const imgSrc = img !== null ? `url('/uploads/${img}')` : "url('/uploads/placeholder.jpg')"
 
-                try {
-                    cloneCard.querySelector("div.card-main-img-1").style.backgroundImage = imgSrc
-                    cloneCard.querySelector("h5.card-main-title").innerText = title
-                    cloneCard.querySelector("p.card-main-desc").innerText = desc
-                    cloneCard.querySelector("small.card-main-localization").innerText = localization
+            try {
+                cloneCard.querySelector("div.card-main-img-1").style.backgroundImage = imgSrc
+                cloneCard.querySelector("h5.card-main-title").innerText = title
+                cloneCard.querySelector("p.card-main-desc").innerText = desc
+                cloneCard.querySelector("small.card-main-localization").innerText = localization
 
-                    cloneCard.querySelectorAll("h5.card-main-price").forEach(h5price => {
-                        h5price.innerText = `${price}zł`
-                    })
+                cloneCard.querySelectorAll("h5.card-main-price").forEach(h5price => {
+                    h5price.innerText = `${price}zł`
+                })
 
-                    cloneCard.querySelector("a.card-main-a-show").setAttribute('href', `/singleOffer/${id}`)
-                } catch (e) {
-                    console.error(e)
-                }
-
-                return cloneCard
-            }
-
-            const getZgloszenia = async () => {
-                clearInterval(delayRequest);
-
-                const categoriesButtonsOn = document.querySelector("#categories").querySelectorAll('.button-on');
-                const categories = []
-                categoriesButtonsOn.forEach(button => categories.push(button.value));
-
-                const zgloszenia = await fetch(API_URL + new URLSearchParams({
-                        title: titleInput.value,
-                        price_min: priceMinInput.value,
-                        price_max: priceMaxInput.value,
-                        range: rangeInput.value,
-                        longitude: longitudeInput.value,
-                        latitude: latitudeInput.value,
-                        categories,
-                    })).then(response => response.json())
-                    .catch(error => console.error(error))
-
-                zgloszeniaPlace.innerHTML = "";
-                if (zgloszenia.length === 0) {
-                    zgloszeniaPlace.innerHTML = "<div class='card p-3'>Brak rezultatów.. Spróbuj zastosować inne filtry!</div>"
-                } else {
-                    // Reset first card margin
-                    zgloszeniaPlace.innerHTML = "<div style='margin-top: -1rem;'></div>"
-
-                    zgloszenia.forEach(zgloszenie => {
-                        if (zgloszenie !== undefined) {
-                            zgloszeniaPlace.appendChild(getAnnouncementCard({
-                                id: zgloszenie.id,
-                                img: zgloszenie.img1,
-                                title: zgloszenie.title,
-                                desc: zgloszenie.description,
-                                price: zgloszenie.price,
-                                localization: zgloszenie.localization,
-                            }))
-                        }
-                    })
-                }
+                cloneCard.querySelector("a.card-main-a-show").setAttribute('href', `/singleOffer/${id}`)
+            } catch (e) {
+                console.error(e)
             }
 
-            const startCountingToSearch = () => {
-                clearInterval(delayRequest);
-                delayRequest = setInterval(getZgloszenia, 1000);
+            return cloneCard
+        }
+
+        const getZgloszenia = async () => {
+            clearInterval(delayRequest);
+
+            const categoriesButtonsOn = document.querySelector("#categories").querySelectorAll('.button-on');
+            const categories = []
+            categoriesButtonsOn.forEach(button => categories.push(button.value));
+
+            const zgloszenia = await fetch(API_URL + new URLSearchParams({
+                    title: titleInput.value,
+                    price_min: priceMinInput.value,
+                    price_max: priceMaxInput.value,
+                    range: rangeInput.value,
+                    longitude: longitudeInput.value,
+                    latitude: latitudeInput.value,
+                    categories,
+                })).then(response => response.json())
+                .catch(error => console.error(error))
+
+            zgloszeniaPlace.innerHTML = "";
+            if (zgloszenia.length === 0) {
+                zgloszeniaPlace.innerHTML = "<div class='card p-3'>Brak rezultatów.. Spróbuj zastosować inne filtry!</div>"
+            } else {
+                // Reset first card margin
+                zgloszeniaPlace.innerHTML = "<div style='margin-top: -1rem;'></div>"
+
+                zgloszenia.forEach(zgloszenie => {
+                    if (zgloszenie !== undefined) {
+                        zgloszeniaPlace.appendChild(getAnnouncementCard({
+                            id: zgloszenie.id,
+                            img: zgloszenie.img1,
+                            title: zgloszenie.title,
+                            desc: zgloszenie.description,
+                            price: zgloszenie.price,
+                            localization: zgloszenie.localization,
+                        }))
+                    }
+                })
             }
+        }
 
-            // Get card component
-            zgloszenieCard = zgloszeniaPlace.querySelector(".card")
-            zgloszeniaPlace.innerHTML = ""
-            zgloszeniaPlace.classList.remove("d-none")
+        const startCountingToSearch = () => {
+            clearInterval(delayRequest);
+            delayRequest = setInterval(getZgloszenia, 1000);
+        }
 
-            // Init call
-            getZgloszenia()
+        // Get card component
+        zgloszenieCard = zgloszeniaPlace.querySelector(".card")
+        zgloszeniaPlace.innerHTML = ""
+        zgloszeniaPlace.classList.remove("d-none")
 
-            // Actions
-            document.getElementById("mainSearch").addEventListener("click", getZgloszenia)
-            inputsOpoznione.forEach(input => {
-                input.addEventListener("change", startCountingToSearch)
-                input.addEventListener("keydown", startCountingToSearch)
-            })
-        })();
+        // Init call
+        getZgloszenia()
+
+        // Actions
+        document.getElementById("mainSearch").addEventListener("click", getZgloszenia)
+        inputsOpoznione.forEach(input => {
+            input.addEventListener("change", startCountingToSearch)
+            input.addEventListener("keydown", startCountingToSearch)
+        })
     </script>
 </body>
 
