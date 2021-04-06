@@ -135,7 +135,7 @@
     <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
     </div>
-    <div id="toTop" class="toTop bg-primary" onclick="scrollToTop()">
+    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()">
         ↑
     </div>
     <footer>
@@ -182,21 +182,23 @@
 
         function scrollToTop() {
             window.scrollTo(0, 0);
-            window.scrollTo(0, 0);
-            document.querySelector('#toTop').style.display = "none";
+            document.querySelector('#toTopButton').style.display = "none";
         }
         document.body.addEventListener('wheel', () => {
             showScroll();
         })
+        window.addEventListener('scroll', () => {
+            showScroll();
+        })
 
         function showScroll() {
-            if (window.scrollY > window.screen.height - 200) {
-                document.querySelector('#toTop').style.display = "flex"
+            if (window.scrollY > window.screen.height / 3) {
+                document.querySelector('#toTopButton').style.display = "flex"
             } else {
-                document.querySelector('#toTop').style.display = "none"
+                document.querySelector('#toTopButton').style.display = "none"
             }
         }
-        showScroll();
+        showScroll()
 
 
         const API_URL = "/api/announcement?";
