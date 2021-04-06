@@ -133,7 +133,7 @@
         <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
   </div>
-  <div class="toTop bg-primary" onclick="scrollToTop()">
+  <div class="toTop bg-primary" id="toTop" onclick="scrollToTop()">
       ↑
   </div>
   <footer class="mt-5">
@@ -145,7 +145,18 @@
       const headerSection = document.querySelector('#header');
       const imageToShow = document.querySelector('#showImage');
       function scrollToTop(){
-          window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
+        document.querySelector('#toTop').style.display = "none";
+      }
+      document.body.addEventListener('wheel',()=>{
+          showScroll();
+      })
+      function showScroll(){
+          if(window.scrollY > window.screen.height/3){
+              document.querySelector('#toTop').style.display = "flex"
+          }else{
+              document.querySelector('#toTop').style.display = "none"
+          }
       }
       function showImage(e){
         document.body.style.overflow = "hidden"
