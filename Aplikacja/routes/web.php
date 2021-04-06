@@ -24,20 +24,20 @@ use Illuminate\Http\Request;
 // Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
 
 
-Route::any('/search',function(Request $request){
-    $data=$request->all();
-    $data['categories']=Categories::all();
-    return view('search',$data);
+Route::any('/search', function (Request $request) {
+    $data = $request->all();
+    $data['categories'] = Categories::all();
+    return view('search', $data);
 });
-Route::get('/singleOffer/{id}',function($id){
-    $announcement=Announcement::findOrFail($id);
-return view('singleOffer',compact('announcement'));
+Route::get('/singleOffer/{id}', function ($id) {
+    $announcement = Announcement::findOrFail($id);
+    return view('singleOffer', compact('announcement'));
 })->name('singleOffer');
-Route::post('/report/{announcement}',[BanController::class,'report_announcement']);
+Route::post('/report/{announcement}', [BanController::class, 'report_announcement']);
 Route::get('/', function () {
-    $announcements=Announcement::latest()->where('status','active')->Orwhere('status','reported')->take(5)->get();
-    $categories=Categories::inRandomOrder()->limit(3)->get();
-    return view('welcome',['announcements'=>$announcements,'categories'=>$categories]);
+    $announcements = Announcement::latest()->where('status', 'active')->Orwhere('status', 'reported')->take(3)->get();
+    $categories = Categories::inRandomOrder()->limit(3)->get();
+    return view('welcome', ['announcements' => $announcements, 'categories' => $categories]);
 });
 Route::get('/offer/show', function () {
     return view('offer.show_offer');
@@ -60,17 +60,17 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-    
+
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/announcement', AnnouncementController::class);
-    Route::get('/report/{announcement}',[BanController::class,'report_announcement']);
-    
-    
-    Route::post('/engage/{announcement}',[EngageAnnouncement::class,'engage']);
+    Route::get('/report/{announcement}', [BanController::class, 'report_announcement']);
+
+
+    Route::post('/engage/{announcement}', [EngageAnnouncement::class, 'engage']);
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
 });
