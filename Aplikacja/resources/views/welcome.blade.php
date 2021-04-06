@@ -22,23 +22,23 @@
   <div class="container-fluid">
 
     <!-- <Search row> -->
-      <form method="POST" action="/search">
-    <div class="row d-grid place-items-center welcome-image-background" style="place-items: center;">
-      <div class="col-12 col-md-8 col-xl-6 d-flex">
+    <form method="POST" action="/search">
+      <div class="row d-grid place-items-center welcome-image-background" style="place-items: center;">
+        <div class="col-12 col-md-8 col-xl-6 d-flex">
 
-        <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
-        <div class="w-100 input-before-style">
-          @csrf
-          <input type="search" id='search' class="form-control" name='name' placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
+          <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
+          <div class="w-100 input-before-style">
+            @csrf
+            <input type="search" id='search' class="form-control" name='name' placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
+          </div>
+
+          <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
+            <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
+          </button>
+
         </div>
-
-        <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center"  style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
-          <x-feathericon-search class="text-white" style="margin-right: 6px;" /> Szukaj
-        </button>
-        
       </div>
-    </div>
-  </form>
+    </form>
     <!-- </Search row> -->
 
 
@@ -52,10 +52,10 @@
       <div class="btn-group justify-content-between align-items-center welcome-width-fluid flex-column flex-md-row">
 
         @foreach ($categories as $category)
-        <form method="POST" action="/search">
+        <form class="w-100 m-3" method="POST" action="/search">
           @csrf
-          <input hidden name='category' value="{{$category->name}}"/>
-        <button class="btn col-3 m-3 btn-primary border-light btn-block btn-lg rounded" >{{$category->name}}</button>
+          <input hidden name='category' value="{{$category->name}}" />
+          <button class="btn btn-block col-3 btn-primary border-light btn-block btn-lg rounded">{{$category->name}}</button>
         </form>
         @endforeach
 

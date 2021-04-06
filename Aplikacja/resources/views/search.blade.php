@@ -59,8 +59,8 @@
                         </label>
                         <div class="w-100 input-before-style">
                             <input type="text" class="search-announcement form-control mb-4 p-3" id="lokalizacja-input" placeholder="Opole..." />
-                            <input type="text" id='longitude' hidden/>
-                            <input type="text" id='latitude' hidden/>
+                            <input type="text" id='longitude' hidden />
+                            <input type="text" id='latitude' hidden />
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                             <h3>Promień wyszukiwań:</h3>
                         </label>
                         <p id="rangeText">1km</p>
-                        <input type="range"  class="search-announcement form-range" id="rangeValue" data-slider-min="1" data-slider-max="100" value="1" />
+                        <input type="range" class="search-announcement form-range" id="rangeValue" data-slider-min="1" data-slider-max="100" value="1" />
                     </div>
                 </div>
                 <!-- KONIEC PROMIEŃ -->
@@ -85,21 +85,15 @@
                             <h3 class="mb-3">Kategorie:</h3>
                         </label>
                         @php
-                          $category=$category??'';  
+                        $category=$category??'';
                         @endphp
-@foreach ($categories as $category_tmp)
-@if($category=== $category_tmp->name)
-<button class="btn button-on text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
-@else 
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
-@endif
-@endforeach
-{{-- <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="zamiatanie">Zamiatanie</button>
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="wycieranie">Wycieranie</button>
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="mycie okien">Mycie Okien</button>
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="lokale">Lokale</button>
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="pranie">Pranie</button>
-<button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="dezynfekcja">Dezynfekcja</button> --}}
+                        @foreach ($categories as $category_tmp)
+                        @if($category=== $category_tmp->name)
+                        <button class="btn button-on text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
+                        @else
+                        <button class="btn button-off text-nowrap m-2 px-4 py-2" onclick="buttonStatus(this)" value="{{$category_tmp->name}}">{{$category_tmp->name}}</button>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -117,7 +111,7 @@
 
                     <!-- Input wrapped in div to let css ::before pseudoclass to be active -->
                     <div class="w-100 input-before-style">
-                        <input type="search" id='search' class="form-control" value="{{$name??''}}"  placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
+                        <input type="search" id='search' class="form-control" value="{{$name??''}}" placeholder="Np. sprzątanie biura..." style="height: 6vh; border-radius: .25rem 0 0 .25rem" />
                     </div>
 
                     <button id="mainSearch" type="button" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 6vh; padding: 0 20px; border-radius: 0 .25rem .25rem 0">
@@ -130,11 +124,11 @@
                 </button>
                 <!-- KONIEC SEARCH BUTTON -->
 
-                <!-- POJEDYNCZE OGŁOSZENIE -->
-                <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5">
-                            @include('components.announcement')
+                <!-- OGŁOSZENIA -->
+                <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5 d-none p-3">
+                    @include('components.announcement')
                 </div>
-                <!-- POJEDYNCZE OGŁOSZENIE END -->
+                <!-- OGLOSZENIA END -->
             </div>
         </div>
     </div>
@@ -151,91 +145,148 @@
 
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Map api
-google.maps.event.addDomListener(window, "load", initialize);
-function initialize() {
-    var input = document.getElementById("lokalizacja-input");
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.addListener("place_changed", function () {
-        var place = autocomplete.getPlace();
-        longitude.value=place.geometry.location.lng()
-        latitude.value=place.geometry.location.lat()
-    });
-}
-// End Map api
+        (function() {
+            // Map api
+            google.maps.event.addDomListener(window, "load", initialize);
 
-        let i = 1;
-        let rangeVal = document.querySelector('#rangeValue');
-        let rangeTxt = document.querySelector('#rangeText');
-        rangeVal.addEventListener('input', () => {
-            rangeTxt.innerHTML = rangeVal.value + 'km'
-        })
-
-        function buttonStatus(evt) {
-            startCountingToSearch();
-
-            if (evt.classList.contains('button-off')) {
-                evt.classList.remove('button-off')
-                evt.classList.add('button-on')
-                evt.style.color = 'white';
-            } else if (evt.classList.contains('button-on')) {
-                evt.classList.remove('button-on')
-                evt.classList.add('button-off')
-                evt.style.color = 'black';
+            function initialize() {
+                var input = document.getElementById("lokalizacja-input");
+                var autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.addListener("place_changed", function() {
+                    var place = autocomplete.getPlace();
+                    longitude.value = place.geometry.location.lng()
+                    latitude.value = place.geometry.location.lat()
+                });
             }
-        }
+            // End Map api
 
-        function scrollToTop() {
-            window.scrollTo(0, 0);
-        }
-
-        const API_URL = "/api/announcement?";
-        const zgloszeniaPlace = document.getElementById('zgloszeniaPlace');
-        const inputsOpoznione = document.querySelectorAll('.search-announcement');
-        const priceMinInput = document.getElementById('price_min');
-        const priceMaxInput = document.getElementById('price_max');
-        const rangeInput = document.getElementById('rangeValue');
-        const titleInput = document.getElementById('search');
-        const longitudeInput = document.getElementById('longitude');
-        const latitudeInput = document.getElementById('latitude');
-        let delayRequest;
-
-        const getZgloszenia = async () => {
-            clearInterval(delayRequest);
-
-            const categoriesButtonsOn = document.querySelector("#categories").querySelectorAll('.button-on');
-            const categories = []
-            categoriesButtonsOn.forEach(button => categories.push(button.value));
-
-            const zgloszenia = await fetch(API_URL + new URLSearchParams({
-                    title: titleInput.value,
-                    price_min: priceMinInput.value,
-                    price_max: priceMaxInput.value,
-                    range: rangeInput.value,
-                    longitude: longitudeInput.value,
-                    latitude: latitudeInput.value,
-                    categories,
-                })).then(response => response.json())
-                .catch(error => console.error(error))
-
-            zgloszeniaPlace.innerHTML = "";
-            zgloszenia.forEach(zgloszenie => {
-                zgloszeniaPlace.innerHTML += `<div class="m-3"><h5>${zgloszenie.title}</h5></div> <br>`
+            let i = 1;
+            let rangeVal = document.querySelector('#rangeValue');
+            let rangeTxt = document.querySelector('#rangeText');
+            rangeVal.addEventListener('input', () => {
+                rangeTxt.innerHTML = rangeVal.value + 'km'
             })
-        }
 
-        const startCountingToSearch = () => {
-            clearInterval(delayRequest);
-            delayRequest = setInterval(getZgloszenia, 1000);
-        }
+            function buttonStatus(evt) {
+                startCountingToSearch();
 
-        inputsOpoznione.forEach(input => {
-            input.addEventListener("change", startCountingToSearch)
-            input.addEventListener("keydown", startCountingToSearch)
-        })
+                if (evt.classList.contains('button-off')) {
+                    evt.classList.remove('button-off')
+                    evt.classList.add('button-on')
+                    evt.style.color = 'white';
+                } else if (evt.classList.contains('button-on')) {
+                    evt.classList.remove('button-on')
+                    evt.classList.add('button-off')
+                    evt.style.color = 'black';
+                }
+            }
 
-        getZgloszenia()
-        document.getElementById("mainSearch").addEventListener("click", startCountingToSearch)
+            function scrollToTop() {
+                window.scrollTo(0, 0);
+            }
+
+
+            const API_URL = "/api/announcement?";
+            const zgloszeniaPlace = document.getElementById('zgloszeniaPlace');
+            const inputsOpoznione = document.querySelectorAll('.search-announcement');
+            const priceMinInput = document.getElementById('price_min');
+            const priceMaxInput = document.getElementById('price_max');
+            const rangeInput = document.getElementById('rangeValue');
+            const titleInput = document.getElementById('search');
+            const longitudeInput = document.getElementById('longitude');
+            const latitudeInput = document.getElementById('latitude');
+            let zgloszenieCard;
+            let delayRequest;
+
+            const getAnnouncementCard = ({
+                id,
+                img,
+                title,
+                desc,
+                price,
+                localization
+            }) => {
+                const cloneCard = zgloszenieCard.cloneNode(true);
+                const imgSrc = img !== null ? `url('${img}')` : "url('/uploads/placeholder.jpg')"
+
+                try {
+                    cloneCard.querySelector("div.card-main-img-1").style.backgroundImage = imgSrc
+                    cloneCard.querySelector("h5.card-main-title").innerText = title
+                    cloneCard.querySelector("p.card-main-desc").innerText = desc
+                    cloneCard.querySelector("small.card-main-localization").innerText = localization
+
+                    cloneCard.querySelectorAll("h5.card-main-price").forEach(h5price => {
+                        h5price.innerText = `${price}zł`
+                    })
+
+                    cloneCard.querySelector("a.card-main-a-show").setAttribute('href', `/singleOffer/${id}`)
+                } catch (e) {
+                    console.error(e)
+                }
+
+                return cloneCard
+            }
+
+            const getZgloszenia = async () => {
+                clearInterval(delayRequest);
+
+                const categoriesButtonsOn = document.querySelector("#categories").querySelectorAll('.button-on');
+                const categories = []
+                categoriesButtonsOn.forEach(button => categories.push(button.value));
+
+                const zgloszenia = await fetch(API_URL + new URLSearchParams({
+                        title: titleInput.value,
+                        price_min: priceMinInput.value,
+                        price_max: priceMaxInput.value,
+                        range: rangeInput.value,
+                        longitude: longitudeInput.value,
+                        latitude: latitudeInput.value,
+                        categories,
+                    })).then(response => response.json())
+                    .catch(error => console.error(error))
+
+                zgloszeniaPlace.innerHTML = "";
+                if (zgloszenia.length === 0) {
+                    zgloszeniaPlace.innerHTML = "<div class='card p-3'>Brak rezultatów.. Spróbuj zastosować inne filtry!</div>"
+                } else {
+                    // Reset first card margin
+                    zgloszeniaPlace.innerHTML = "<div style='margin-top: -1rem;'></div>"
+
+                    zgloszenia.forEach(zgloszenie => {
+                        if (zgloszenie !== undefined) {
+                            zgloszeniaPlace.appendChild(getAnnouncementCard({
+                                id: zgloszenie.id,
+                                img: zgloszenie.img1,
+                                title: zgloszenie.title,
+                                desc: zgloszenie.description,
+                                price: zgloszenie.price,
+                                localization: zgloszenie.localization,
+                            }))
+                        }
+                    })
+                }
+            }
+
+            const startCountingToSearch = () => {
+                clearInterval(delayRequest);
+                delayRequest = setInterval(getZgloszenia, 1000);
+            }
+
+            // Get card component
+            zgloszenieCard = zgloszeniaPlace.querySelector(".card")
+            zgloszeniaPlace.innerHTML = ""
+            zgloszeniaPlace.classList.remove("d-none")
+
+            // Init call
+            getZgloszenia()
+
+            // Actions
+            document.getElementById("mainSearch").addEventListener("click", getZgloszenia)
+            inputsOpoznione.forEach(input => {
+                input.addEventListener("change", startCountingToSearch)
+                input.addEventListener("keydown", startCountingToSearch)
+            })
+        })();
     </script>
 </body>
 
