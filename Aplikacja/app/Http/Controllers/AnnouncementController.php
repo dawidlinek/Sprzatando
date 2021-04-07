@@ -249,6 +249,9 @@ class AnnouncementController extends Controller
         // }
         foreach($offers as $key=>$offer){
             $offers[$key]->description=substr($offer->description,0,75)."...";
+            // $offers[$key]->categories=$offer->categories;
+            // $offers[$key]->categories=array_map(fn($x)=>$x,(array)$offers[$key]->categories);
+            
         }
         return ['announcements'=>$offers,'all'=>$all];
     }
