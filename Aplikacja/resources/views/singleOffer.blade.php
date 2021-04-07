@@ -93,7 +93,7 @@
                 </form>
                 @endauth 
                 @guest 
-                <a class="btn btn-primary mb-3 p-4" href='/login'>Zaloguj się</a>
+                <a class="btn btn-primary mb-3 p-4" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
                 <a class="btn bg-white border border-primary border-4 p-4" href='/register'>Zarejestruj się</a> 
                 @endguest
             </div>
