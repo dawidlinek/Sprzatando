@@ -5,6 +5,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BanController;
 use App\Http\Controllers\EngageAnnouncement;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OtherController;
 use App\Models\Announcement;
 use App\Models\Categories;
@@ -34,9 +35,10 @@ Route::get('/',[OtherController::class,'dashboard']);
 Route::redirect('/dashboard','/dashboard/announcement')->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 Route::post('/report/{announcement}', [BanController::class, 'report_announcement']);
 
-
+Route::post('/login', [LoginController::class,'login']);
 Route::middleware(['auth'])->group(function () {
-
+    
+    Route::get('/logout', 'LoginController@logout');
     Route::view('/email/verify','auth.verify-email')->name('verification.notice');
     Route::resource('/dashboard/announcement', AnnouncementController::class);
 

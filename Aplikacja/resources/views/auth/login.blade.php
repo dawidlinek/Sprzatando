@@ -33,6 +33,7 @@
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        <input name='redirect' value="{{$request->redirect??null}}" hidden/>
                         <div class="form-group pb-0">
 
 
