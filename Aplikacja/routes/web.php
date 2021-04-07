@@ -5,6 +5,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BanController;
 use App\Http\Controllers\EngageAnnouncement;
+use App\Http\Controllers\OtherController;
 use App\Models\Announcement;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
@@ -26,21 +27,20 @@ use Illuminate\Http\Request;
 
 
 Route::any('/search',[AnnouncementController::class,'search']);
-Route::get('/singleOffer/{announcement}',[AnnouncementController::class,'SingleOffer'])->name('singleOffer');
-Route::post('/report/{announcement}', [BanController::class, 'report_announcement']);
-Route::redirect('/dashboard','/dashboard/announcement')->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 
-Route::get('/', function () {
-    $announcements = Announcement::latest()->where('status', 'active')->Orwhere('status', 'reported')->take(3)->get();
-    $categories = Categories::inRandomOrder()->limit(3)->get();
-    return view('welcome', ['announcements' => $announcements, 'categories' => $categories]);
-});
+Route::get('/singleOffer/{announcement}',[AnnouncementController::class,'SingleOffer'])->name('singleOffer');
+Route::get('/',[OtherController::class,'dashboard']);
+
+Route::redirect('/dashboard','/dashboard/announcement')->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+Route::post('/report/{announcement}', [BanController::class, 'report_announcement']);
+
 
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::view('/email/verify','auth.verify-email')->name('verification.notice');
-    Route::get('/email/verify/{id}/{hash}',[AuthController::class,'EmailVerify'])->middleware('signed')->name('verification.verify');
     Route::resource('/dashboard/announcement', AnnouncementController::class);
+
+    Route::get('/email/verify/{id}/{hash}',[AuthController::class,'EmailVerify'])->middleware('signed')->name('verification.verify');
     Route::get('/report/{announcement}', [BanController::class, 'report_announcement']);
     
     Route::post('/email/verification-notification', [AuthController::class,'SendEmail'])->middleware('throttle:6,1')->name('verification.send');
