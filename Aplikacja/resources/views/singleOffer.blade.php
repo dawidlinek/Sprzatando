@@ -114,7 +114,7 @@
   <footer class="mt-5">
 
   </footer>
-  <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
       const showBigImage = document.querySelector('#bigImage');
       const headerSection = document.querySelector('#header');
