@@ -240,4 +240,12 @@ class AnnouncementController extends Controller
         }
         return $offers;
     }
+    public function search(Request $request){
+        $data = $request->all();
+        $data['categories'] = Categories::all();
+        return view('search', $data);
+    }
+    public function SingleOffer(Announcement $announcement){
+        return view('singleOffer',['announcement'=>$announcement]);
+    }
 }

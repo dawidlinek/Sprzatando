@@ -28,6 +28,7 @@
     <div class="d-flex col-12 mt-5 justify-content-center">
         <!-- LEWA KOLUMNA -->
         <div class="col-8 d-flex align-items-center justify-content-start flex-column mb-5">
+            @if($announcement->img1)
             <div class="card h-100 w-75 p-5 mb-5 ">
                     <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 d-flex  align-items-center justify-content-center"  >
                         <div class="carousel-indicators">
@@ -62,6 +63,7 @@
                         </button>
                     </div>
             </div>
+            @endif
             <div class="card w-75 p-5  d-flex flex-row">
                 <div class="w-75">
                     <h3 class="text-primary fw-bolder">{{$announcement->title}}</h3>
