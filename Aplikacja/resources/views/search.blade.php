@@ -135,7 +135,7 @@
     <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
     </div>
-    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()">
+    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()" style="z-index: 1000;">
         ↑
     </div>
     <footer>
@@ -189,6 +189,7 @@
         })
         window.addEventListener('scroll', () => {
             showScroll();
+            checkCanLoadMoreOffers();
         })
 
         function showScroll() {
@@ -211,7 +212,10 @@
         const longitudeInput = document.getElementById('longitude');
         const latitudeInput = document.getElementById('latitude');
         let zgloszenieCard;
+        let allZgloszenia;
         let delayRequest;
+        let loadingData;
+        let page;
 
         const getAnnouncementCard = ({
             id,
@@ -244,30 +248,51 @@
 
         const getZgloszenia = async () => {
             clearInterval(delayRequest);
+            loadingData = true
 
+            // Filter on category expect array of strings!
             const categoriesButtonsOn = document.querySelector("#categories").querySelectorAll('.button-on');
             const categories = []
             categoriesButtonsOn.forEach(button => categories.push(button.value));
 
-            const zgloszenia = await fetch(API_URL + new URLSearchParams({
-                    title: titleInput.value,
-                    price_min: priceMinInput.value,
-                    price_max: priceMaxInput.value,
-                    range: rangeInput.value,
-                    longitude: longitudeInput.value,
-                    latitude: latitudeInput.value,
-                    categories,
-                })).then(response => response.json())
+            const userFilters = {
+                page,
+                title: titleInput.value,
+                price_min: priceMinInput.value,
+                price_max: priceMaxInput.value,
+                longitude: longitudeInput.value,
+                latitude: latitudeInput.value,
+                range: rangeInput.value,
+                categories,
+            }
+
+
+            // Only on page 0, becouse later on infity scrolling we only add cards
+            if (page === 0) {
+                zgloszeniaPlace.innerText = "Przetwarzanie..";
+            }
+
+            const zgloszenia = await fetch(API_URL + new URLSearchParams(userFilters))
+                .then(response => response.json())
                 .catch(error => console.error(error))
+                .finally(() => loadingData = false)
 
-            zgloszeniaPlace.innerHTML = "";
-            if (zgloszenia.length === 0) {
-                zgloszeniaPlace.innerHTML = "<div class='card p-3'>Brak rezultatów.. Spróbuj zastosować inne filtry!</div>"
-            } else {
-                // Reset first card margin
-                zgloszeniaPlace.innerHTML = "<div style='margin-top: -1rem;'></div>"
+            allZgloszenia = zgloszenia.all
 
-                zgloszenia.forEach(zgloszenie => {
+            // Only on page 0, becouse later on infity scrolling we only add cards
+            if (page === 0) {
+
+                if (zgloszenia.announcements.length === 0 && page === 0) {
+                    zgloszeniaPlace.innerText = "Brak rezultatów.. Spróbuj zastosować inne filtry!"
+                } else {
+
+                    // Reset first card margin
+                    zgloszeniaPlace.innerHTML = "<div style='margin-top: -1rem;'></div>";
+                }
+            }
+
+            if (zgloszenia.announcements.length > 0) {
+                zgloszenia.announcements.forEach(zgloszenie => {
                     if (zgloszenie !== undefined) {
                         zgloszeniaPlace.appendChild(getAnnouncementCard({
                             id: zgloszenie.id,
@@ -284,23 +309,48 @@
 
         const startCountingToSearch = () => {
             clearInterval(delayRequest);
+            page = 0;
+
             delayRequest = setInterval(getZgloszenia, 1000);
         }
 
-        // Get card component
-        zgloszenieCard = zgloszeniaPlace.querySelector(".card")
-        zgloszeniaPlace.innerHTML = ""
-        zgloszeniaPlace.classList.remove("d-none")
+        const checkCanLoadMoreOffers = () => {
+            if (loadingData) return
+            if (allZgloszenia < 10) return
+            if (page * 10 > allZgloszenia - 10) return
 
-        // Init call
-        getZgloszenia()
+            const zgloszeniaCards = zgloszeniaPlace.querySelectorAll('.card')
+            const penultimateCard = zgloszeniaCards[zgloszeniaCards.length - 1]
+            if (penultimateCard.getBoundingClientRect().top - window.innerHeight > 300) return
+            loadingData = true
+            page += 1
+            getZgloszenia()
 
-        // Actions
-        document.getElementById("mainSearch").addEventListener("click", getZgloszenia)
-        inputsOpoznione.forEach(input => {
-            input.addEventListener("change", startCountingToSearch)
-            input.addEventListener("keydown", startCountingToSearch)
-        })
+        }
+
+        // Init
+        (function() {
+            page = 0;
+            allZgloszenia = 0;
+
+            // Get card component
+            zgloszenieCard = zgloszeniaPlace.querySelector(".card")
+            zgloszeniaPlace.innerHTML = ""
+            zgloszeniaPlace.classList.remove("d-none")
+
+            // Init call
+            getZgloszenia()
+
+            // Actions
+            document.getElementById("mainSearch").addEventListener("click", () => {
+                page = 0;
+                getZgloszenia();
+            })
+            inputsOpoznione.forEach(input => {
+                input.addEventListener("change", startCountingToSearch)
+                input.addEventListener("keydown", startCountingToSearch)
+            })
+        })()
     </script>
 </body>
 
