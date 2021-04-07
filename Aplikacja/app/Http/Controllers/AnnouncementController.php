@@ -211,6 +211,7 @@ class AnnouncementController extends Controller
     public function Api(Request $request)
     {
         // return $request->all();
+        $per_page=10;
         if ($request->longitude && $request->latitude && $request->range) {
             $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->range);
             $querry->whereIn('status', ['active','reported']);
@@ -221,8 +222,9 @@ class AnnouncementController extends Controller
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
         // if($request->categories){
-        //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
-        // }
+            //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
+            // }
+        if($request->page ||$request->page==0)$querry->skip($request->page*$request->per_page??$per_page)->take($request->per_page??$per_page);
         $offers = $querry->with('categories')->get();
         if ($request->categories) {
             $request->categories=explode(',',$request->categories);
