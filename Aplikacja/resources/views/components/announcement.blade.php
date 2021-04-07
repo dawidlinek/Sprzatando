@@ -1,31 +1,20 @@
 <div class="card d-flex w-100 mt-3">
     <div class="row w-100 mx-auto">
-        {{-- @if(str_contains($announcement->title??'','faker')) --}}
-        {{-- <div class="card-main-img-1 col-md-auto rounded" style="background-image: url(https://loremflickr.com/320/240/house); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;"> --}}
-            {{-- &nbsp; --}}
-        {{-- </div> --}}
-        {{-- @else --}}
-        <div class="card-main-img-1 col-md-auto rounded" style="background-image: url(/uploads/{{$announcement->img1??'placeholder.jpg'}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
+        <div class="card-main-img-1 rounded @if($search??false) col-xl-auto @else col-md-auto @endif" style="background-image: url(/uploads/{{$announcement->img1??'placeholder.jpg'}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
             &nbsp;
         </div>
-        {{-- @endif --}}
-        <div class="w100m200px">
+        <div class="@if($search??false) xlw100m200px @else mdw100m200px @endif">
 
-            <div class="row d-flex justify-content-md-between h-100">
+            <div class="row d-flex h-100 @if($search??false) justify-content-xl-between @else justify-content-md-between @endif">
 
-                <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12 p-3 pb-0 pb-md-3">
+                <div class="col-xl-8 col-sm-12 p-3 pb-0 @if($search??false) col-xl-6 pb-xl-3 @else col-lg-7 col-md-6 pb-md-3 @endif">
 
                     <div class="row d-flex justify-content-between h-100">
-{{-- @if($search??false)
-
-@else 
-
-@endif --}}
                         <div>
-                            <div class="col-12 d-flex flex-column flex-md-row">
+                            <div class="col-12 d-flex flex-column @if($search??false) flex-xl-row @else flex-md-row @endif">
                                 <div class="w-100 d-flex justify-content-between">
                                     <h5 class="card-main-title card-title text-primary">{{$announcement->title??'Title'}}</h5>
-                                    <h5 class="m-0 text-nowrap text-primary d-block d-md-none card-main-price">{{$announcement->price??'Price'}} zł</h5>
+                                    <h5 class="m-0 text-nowrap text-primary d-block card-main-price @if($search??false) d-xl-none @else d-md-none @endif" style="padding-left: 1rem;">{{$announcement->price??'Price'}} zł</h5>
                                 </div>
                             </div>
 
@@ -50,8 +39,8 @@
 
                 </div>
 
-                <div class="col-xl-4 col-lg-5 col-md-6 p-3 d-flex flex-column justify-content-between" style="text-align: right;">
-                    <div class="d-none d-md-block">
+                <div class="col-xl-4 p-3 d-flex flex-column justify-content-between @if($search??false)  @else col-lg-5 col-md-6 @endif" style="text-align: right;">
+                    <div class="d-none @if($search??false) d-xl-block @else d-md-block @endif">
                         <h5 class="m-0 text-primary card-main-price">{{$announcement->price??"Price"}} zł</h5>
                     </div>
                     <div class="b-row d-flex">

@@ -81,7 +81,12 @@
 }
 
 @media screen and (min-width: 768px) {
-    .w100m200px {
+    .mdw100m200px {
+        width: calc(100% - 200px) !important;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .xlw100m200px {
         width: calc(100% - 200px) !important;
     }
 }
