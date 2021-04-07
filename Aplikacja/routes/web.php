@@ -39,12 +39,12 @@ Route::get('/', function () {
     $categories = Categories::inRandomOrder()->limit(3)->get();
     return view('welcome', ['announcements' => $announcements, 'categories' => $categories]);
 });
+
 Route::get('/offer/show', function () {
     return view('offer.show_offer');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    // return view('dashboard');
     return redirect('/dashboard/announcement');
 })->name('dashboard');
 
@@ -60,7 +60,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
-
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
@@ -68,7 +67,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/announcement', AnnouncementController::class);
     Route::get('/report/{announcement}', [BanController::class, 'report_announcement']);
-
 
     Route::post('/engage/{announcement}', [EngageAnnouncement::class, 'engage']);
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');

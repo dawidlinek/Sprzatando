@@ -225,7 +225,7 @@ class AnnouncementController extends Controller
             //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
             // }
         if($request->page ||$request->page==0)$querry->skip($request->page*$request->per_page??$per_page)->take($request->per_page??$per_page);
-        $offers = $querry->with('categories')->get();
+        $offers = $querry->with('categories')->get(['title','id','description','img1','localization','price']);
         if ($request->categories) {
             $request->categories=explode(',',$request->categories);
             $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
