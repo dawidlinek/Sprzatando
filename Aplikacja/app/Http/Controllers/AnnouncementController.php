@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Geographical;
+use Illuminate\Database\Eloquent\Builder;
 
 class AnnouncementController extends Controller
 {
@@ -224,21 +225,27 @@ class AnnouncementController extends Controller
         // if($request->categories){
             //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
             // }
+            if ($request->categories) {
+                $request->categories=explode(',',$request->categories);
+                $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
+                $querry->whereDoesntHave('categories', function (Builder $query2) use ($categories_prim){
+                    $query2->whereIn('name', $categories_prim);
+                });
+            }
+        $all=$querry->count();
         if($request->page ||$request->page==0)$querry->skip($request->page*$request->per_page??$per_page)->take($request->per_page??$per_page);
         $offers = $querry->with('categories')->get(['title','id','description','img1','localization','price']);
-        if ($request->categories) {
-            $request->categories=explode(',',$request->categories);
-            $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
-            foreach ($offers as $key => $offer) {
-                foreach ($categories_prim as $category) {
-                    if (in_array($category->name, $offer->categories->pluck('name')->toArray())) {
-                        unset($offers[$key]);
-                        continue;
-                    }
-                }
-            };
-        }
-        return $offers;
+        // if ($request->categories) {
+        //     foreach ($offers as $key => $offer) {
+        //         foreach ($categories_prim as $category) {
+        //             if (in_array($category->name, $offer->categories->pluck('name')->toArray())) {
+        //                 unset($offers[$key]);
+        //                 continue;
+        //             }
+        //         }
+        //     };
+        // }
+        return ['announcements'=>$offers,'all'=>$all];
     }
     public function search(Request $request){
         $data = $request->all();
