@@ -214,7 +214,7 @@ class AnnouncementController extends Controller
         // return $request->all();
     //   return Announcement::factory()->count(1)->create();
         // Announcement::factory()->count(3)->make();
-        $per_page=10;
+        $per_page=2;
         if ($request->longitude && $request->latitude && $request->range) {
             $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->range);
             $querry->whereIn('status', ['active','reported']);
@@ -224,6 +224,7 @@ class AnnouncementController extends Controller
         if ($request->title) $querry->where('title',"LIKE", "%$request->title%");
         if ($request->price_min) $querry->where('price', '>', $request->price_min);
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
+        $querry->orderByDesc('created_at');
         // if($request->categories){
             //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
             // }
@@ -235,7 +236,7 @@ class AnnouncementController extends Controller
                 });
             }
         $all=$querry->count();
-        if($request->page ||$request->page==0)$querry->skip($request->page*$request->per_page??$per_page)->take($request->per_page??$per_page);
+        if($request->page || $request->page==0)$querry->skip($request->page*($request->per_page??$per_page))->take($request->per_page??$per_page);
         
         // $querry->selectRaw('SUBSTRING(description, 1, 100)');
         $offers = $querry->with('categories')->get(['title','id','description','img1','localization','price']);
