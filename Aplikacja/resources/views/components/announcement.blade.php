@@ -1,8 +1,14 @@
 <div class="card d-flex w-100 mt-3">
     <div class="row w-100 mx-auto">
+        {{-- @if(str_contains($announcement->title??'','faker')) --}}
+        {{-- <div class="card-main-img-1 col-md-auto rounded" style="background-image: url(https://loremflickr.com/320/240/house); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;"> --}}
+            {{-- &nbsp; --}}
+        {{-- </div> --}}
+        {{-- @else --}}
         <div class="card-main-img-1 col-md-auto rounded" style="background-image: url(/uploads/{{$announcement->img1??'placeholder.jpg'}}); background-position: center center; background-size: cover; min-height: 200px; min-width: 200px;">
             &nbsp;
         </div>
+        {{-- @endif --}}
         <div class="w100m200px">
 
             <div class="row d-flex justify-content-md-between h-100">
