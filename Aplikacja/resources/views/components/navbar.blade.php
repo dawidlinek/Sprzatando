@@ -86,7 +86,7 @@
                     </a>
                 </li>
                 <li class="nav-item m-1 nav-item-inactive">
-                    <a class="nav-link rounded" href="#">
+                    <a class="nav-link rounded" href="/ranking">
                         Ranking
                     </a>
                 </li>
@@ -95,7 +95,7 @@
                 <!-- <Logged> -->
                 {{--
                 <li class="nav-item m-1 nav-item-inactive">
-                    <a class="nav-link rounded" href="#">
+                    <a class="nav-link rounded" href="/dashboard/announcement">
                         Panel użytkownika
                     </a>
                 </li>
