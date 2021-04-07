@@ -25,7 +25,7 @@
                     Przeglądaj
                 </a>
 
-                <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3" style="white-space: nowrap" href="#">
+                <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3" style="white-space: nowrap" href="/ranking">
                     Ranking
                 </a>
 

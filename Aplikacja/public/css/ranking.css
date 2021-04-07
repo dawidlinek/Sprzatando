@@ -1,0 +1,96 @@
+.toTop{
+    height: 50px;
+    width: 50px;
+    position: fixed;
+    right:2%;
+    bottom:5%;
+    border-radius: 10%;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+.closeBar{
+    height: 40px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.liczba_zgloszen{
+    border-radius: 10px;
+    height: min-content;
+    width:  max-content;
+}
+.liczba_zgloszen p{
+    margin-bottom: 0;
+    padding:5px;
+    color:white;
+}
+.spaceRow{
+    height: 15px;
+    border-bottom: none !important;
+}
+/* id */
+#bar1{
+    transform: rotate(45deg);
+}
+#bar2{
+    transform: rotate(-45deg);
+}
+#first-bar{
+    content:'';
+}
+#second-bar{
+    content:'';
+}
+#third-bar{
+    content:'';
+}
+#heroImage{
+    background-image: url("../../assets/img/undraw_awesome_rlvy-min.png");
+    background-position: bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity:0;
+}
+#boxBar{
+    height: 50px;
+    width: 50px;
+    top:3%;
+    right: 5%;
+    border-radius: 10px;
+}
+#rankTable{
+    border-collapse: collapse;
+    width: 70vw;
+    border-radius: 10%;
+}
+#rankTable tr{
+    background: rgba(255, 255, 255, 0.7);
+    border: none !important;
+    border-radius: 0.5rem !important ;
+    box-shadow: 2px 4px 20px #2732331a !important ;
+}
+#rankTable tr:hover{
+    background: white;
+}
+#rankTable tr:first-child{
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: none !important;
+}
+#myVideo{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -99;
+}
+td:first-child{
+    width:5%;
+    padding: 1rem;
+}
+td{
+    width:33%;
+    padding: 1rem;
+}
