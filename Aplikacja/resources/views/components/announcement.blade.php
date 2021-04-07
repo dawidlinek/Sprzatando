@@ -10,7 +10,11 @@
                 <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12 p-3 pb-0 pb-md-3">
 
                     <div class="row d-flex justify-content-between h-100">
+{{-- @if($search??false)
 
+@else 
+
+@endif --}}
                         <div>
                             <div class="col-12 d-flex flex-column flex-md-row">
                                 <div class="w-100 d-flex justify-content-between">

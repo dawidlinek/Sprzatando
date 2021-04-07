@@ -126,7 +126,7 @@
 
                 <!-- OGŁOSZENIA -->
                 <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5 d-none p-3">
-                    @include('components.announcement')
+                    @include('components.announcement',['search'=>true])
                 </div>
                 <!-- OGLOSZENIA END -->
             </div>
