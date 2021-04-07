@@ -234,6 +234,8 @@ class AnnouncementController extends Controller
             }
         $all=$querry->count();
         if($request->page ||$request->page==0)$querry->skip($request->page*$request->per_page??$per_page)->take($request->per_page??$per_page);
+        
+        // $querry->selectRaw('SUBSTRING(description, 1, 100)');
         $offers = $querry->with('categories')->get(['title','id','description','img1','localization','price']);
         // if ($request->categories) {
         //     foreach ($offers as $key => $offer) {
@@ -245,6 +247,12 @@ class AnnouncementController extends Controller
         //         }
         //     };
         // }
+        foreach($offers as $key=>$offer){
+            $offers[$key]->description=substr($offer->description,0,75)."...";
+            // $offers[$key]->categories=$offer->categories;
+            // $offers[$key]->categories=array_map(fn($x)=>$x,(array)$offers[$key]->categories);
+            
+        }
         return ['announcements'=>$offers,'all'=>$all];
     }
     public function search(Request $request){
