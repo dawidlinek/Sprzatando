@@ -214,7 +214,7 @@ class AnnouncementController extends Controller
         // return $request->all();
     //   return Announcement::factory()->count(1)->create();
         // Announcement::factory()->count(3)->make();
-        $per_page=2;
+        $per_page=10;
         if ($request->longitude && $request->latitude && $request->range) {
             $querry = Announcement::geofence($request->latitude, $request->longitude, 0, $request->range);
             $querry->whereIn('status', ['active','reported']);
