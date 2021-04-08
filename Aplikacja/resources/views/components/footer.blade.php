@@ -33,8 +33,8 @@
                         <p>Znajdziesz nas także na:</p>
                         <div class="row justify-content-center justify-content-lg-start">
                             <div class="col-lg-6 col-sm-8 d-flex justify-content-center justify-content-lg-start">
-                                <a href="https://github.com/dawidlinek123/Sprzatando" style="margin-right: 0.5rem;"><img width="48px" height="48px" src="/img/GitHub-Mark-Light-64px.png"></a>
-                                <a href="https://www.facebook.com/ReniaKisza" style="margin-left: 0.5rem;"><img width="48px" height="48px" src="/img/facebook.png"></a>
+                                <a href="https://github.com/dawidlinek123/Sprzatando" style="margin-right: 0.5rem;" rel="noopener" target="_blank"><img width="48px" height="48px" src="/img/GitHub-Mark-Light-64px.png"></a>
+                                <a href="https://www.facebook.com/ReniaKisza" style="margin-left: 0.5rem;" rel="noopener" target="_blank"><img width="48px" height="48px" src="/img/facebook.png"></a>
                             </div>
                         </div>
                     </div>
