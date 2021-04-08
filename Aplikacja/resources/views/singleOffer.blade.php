@@ -88,16 +88,16 @@
                 @auth
                 <form method="POST" action="/engage/{{$announcement->id}}">
                     @csrf
-                    <button class="btn btn-primary mb-3 p-4">Zgłoś się do zgłoszenia</button>
+                    <button class="btn btn-primary mb-3 p-4 w-100">Aplikuj</button>
                 </form>
                 <form method="POST" action="/report/{{$announcement->id}}">
                     @csrf
-                    <button class="btn bg-white border border-primary border-4 p-4">Zgłoś ogłoszenie</button> 
+                    <button class="btn bg-white border border-primary border-4 p-4 w-100">Zgłoś nadużycie</button> 
                 </form>
                 @endauth 
                 @guest 
-                <a class="btn btn-primary mb-3 p-4" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
-                <a class="btn bg-white border border-primary border-4 p-4" href='/register'>Zarejestruj się</a> 
+                <a class="btn btn-primary mb-3 p-4 w-100" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
+                <a class="btn bg-white border border-primary border-4 p-4 w-100"  href='/register'>Zarejestruj się</a> 
                 @endguest
             </div>
                 <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
