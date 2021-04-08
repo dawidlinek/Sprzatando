@@ -145,11 +145,25 @@
 function initMap() {
   map = new google.maps.Map(document.getElementById("miniMap"), {
     center: { lat: {{$announcement->latitude}}, lng: {{$announcement->longitude}} },
-    zoom: 8,
+    zoom: 14,
     disableDefaultUI: true,
     fullscreenControl: true
-
   });
+  var marker = new google.maps.Marker({
+  map: map,
+  position: new google.maps.LatLng({{$announcement->latitude}}, {{$announcement->longitude}}),
+  title: "{{$announcement->localization}}"
+});
+var circle = new google.maps.Circle({
+  map: map,
+  radius: 500,    // 10 miles in metres
+  fillColor: '#1c1c67',
+  strokeOpacity: 0.4,
+  fillOpacity: 0.3,
+  strokeColor: "#1c1c67",
+  strokeWeight: 1,
+});
+circle.bindTo('center', marker, 'position');
 }
   </script>
   <style>
