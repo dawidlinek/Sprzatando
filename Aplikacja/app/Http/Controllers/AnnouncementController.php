@@ -212,7 +212,7 @@ class AnnouncementController extends Controller
     public function Api(Request $request)
     {
         // return $request->all();
-    //   return Announcement::factory()->count(1)->create();
+    //   return Announcement::factory()->count(20)->create();
         // Announcement::factory()->count(3)->make();
         $per_page=10;
         if ($request->longitude && $request->latitude && $request->range) {

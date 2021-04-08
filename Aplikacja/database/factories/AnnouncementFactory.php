@@ -26,15 +26,24 @@ class AnnouncementFactory extends Factory
      */
     public function definition()
     {
+        $r=rand(0,5);
+        $loc=[
+            ['name'=>'Opole, Polska','lon'=>'17.9230651','lat'=>'50.6683223'],
+            ['name'=>'Strefa Otmęt, Grunwaldzka, Krapkowice, Polska','lon'=>'17.9854468','lat'=>'50.482069'],
+            ['name'=>'Politechnika Wrocławska, wybrzeże Stanisława Wyspiańskiego, Wrocław, Polska','lon'=>'21.0122287','lat'=>'52.2296756'],
+            ['name'=>"Restauracja McDonald's, Ozimska, Opole, Polska",'lon'=>'17.970252','lat'=>'50.669808'],
+            ['name'=>'Irkutsk, Верхняя набережная, Irkuck, Rosja','lon'=>'104.3069577','lat'=>'52.25729980000001'],
+            ['name'=>'Trójmiasto II. Apartamenty, Sambora, Gdynia, Polska','lon'=>'18.6466384','lat'=>'54.35202520000001'],
+    ];
         return [
             'title'=>$this->faker->sentence($nbWords = 4, $variableNbWords = true).'faker' ,
-            'localization'=>$this->faker->address,
+            'localization'=>$loc[$r]['name'],
             'price'=>rand(10,1000),
             'description'=>$this->faker->text($maxNbChars = 170),
             'expiring_at'=>$this->faker->date($format = 'Y-m-d', $min = 'now'),
             'creator_id'=>User::inRandomOrder()->first()->id,
-            'longitude'=>$this->faker->longitude(),
-            'latitude'=>$this->faker->longitude(),
+            'longitude'=>$loc[$r]['lon'],
+            'latitude'=>$loc[$r]['lat'],
         ];
     }
     public function configure()
