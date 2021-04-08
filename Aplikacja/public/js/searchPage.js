@@ -64,6 +64,7 @@ const titleInput = document.getElementById("search");
 const longitudeInput = document.getElementById("longitude");
 const latitudeInput = document.getElementById("latitude");
 const localizationInput = document.getElementById("lokalizacja-input");
+const searchInput = document.getElementById("search");
 let zgloszenieCard;
 let allZgloszenia;
 let delayRequest;
@@ -241,5 +242,11 @@ const checkCanLoadMoreOffers = () => {
     inputsOpoznione.forEach((input) => {
         input.addEventListener("change", startCountingToSearch);
         input.addEventListener("keydown", startCountingToSearch);
+    });
+    searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            page = 0;
+            getZgloszenia();
+        }
     });
 })();
