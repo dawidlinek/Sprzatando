@@ -136,7 +136,7 @@ class AnnouncementController extends Controller
             'longitude' => 'required',
             'latitude' => 'required',
             'price' => "numeric|min:1|required",
-            "description" => "required|max:502",
+            "description" => "required|max:510",
             "expiring_at" => "required|date",
             "categories" => "required",
         ]);
