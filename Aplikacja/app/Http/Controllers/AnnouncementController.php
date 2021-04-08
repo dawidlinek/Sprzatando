@@ -239,8 +239,8 @@ class AnnouncementController extends Controller
             }
             
         // $all=$querry->count();
-        $all=20;
-        return $querry->get();
+        $all= count($querry->get('id'));
+        
         if($request->page || $request->page==0)$querry->skip($request->page*($request->per_page??$per_page))->take($request->per_page??$per_page);
         
         // $querry->selectRaw('SUBSTRING(description, 1, 100)');
