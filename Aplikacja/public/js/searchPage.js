@@ -63,6 +63,7 @@ const rangeInput = document.getElementById("rangeValue");
 const titleInput = document.getElementById("search");
 const longitudeInput = document.getElementById("longitude");
 const latitudeInput = document.getElementById("latitude");
+const localizationInput = document.getElementById("lokalizacja-input");
 let zgloszenieCard;
 let allZgloszenia;
 let delayRequest;
@@ -130,6 +131,12 @@ const getAnnouncementCard = ({
 const getZgloszenia = async () => {
     clearInterval(delayRequest);
     loadingData = true;
+
+    // Reset geo local when input clear
+    if (localizationInput.value === "") {
+        longitudeInput.value = 0;
+        latitudeInput.value = 0;
+    }
 
     // Filter on category expect array of strings!
     const categoriesButtonsOn = document
