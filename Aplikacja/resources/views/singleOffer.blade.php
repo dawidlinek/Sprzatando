@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="/css/fonts.css" />
         <link rel="stylesheet" href="/css/app.css" />
         <link rel="stylesheet" href="/css/welcome.css" />
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
         <title>Sprzatnij me:D</title>
     </head>
 
@@ -79,7 +81,8 @@
         <div class="col-3 mb-5 h-100">
             <div class="card h-50 w-100 p-5 mb-5 d-flex flex-column">
                     <h3>   {{$announcement->localization}}</h3>
-                    <img src="../assets/img/HomeKONCEPT-68-zdjecie-1.jpg" alt="">
+                    <div id="miniMap"></div>
+                    {{-- <img src="../assets/img/HomeKONCEPT-68-zdjecie-1.jpg" alt=""> --}}
             </div>
             <div class="card w-100 p-5 mb-5">
                 @auth
@@ -136,6 +139,28 @@
         showBigImage.classList.remove('d-flex')
       }
   </script>
+  <script>
+      let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("miniMap"), {
+    center: { lat: {{$announcement->latitude}}, lng: {{$announcement->longitude}} },
+    zoom: 8,
+    disableDefaultUI: true,
+    fullscreenControl: true
+
+  });
+}
+  </script>
+  <style>
+      #miniMap{
+          width: 100%;
+          min-height: 200px;
+          position: block !important;
+      }
+  </style>
+      <script src="https://maps.google.com/maps/api/js?key=AIzaSyD-Vt-coVq0Nqd2VZc_tEZvvylA36vIO3s&callback=initMap" type="text/javascript"></script>
+
 </body>
 
 </html>
