@@ -108,6 +108,7 @@ input[type="number"] {
 }
 .button-on {
     background: #1c1c67 !important;
+    color:#eeeeee;
 }
 .toTop {
     height: 50px;
