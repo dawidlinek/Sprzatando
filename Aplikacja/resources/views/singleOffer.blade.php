@@ -41,7 +41,7 @@
                         <div class="carousel-inner w-75 d-flex align-items-center position-relative" style="height: 50vh;" data-interval="false" data-ride="carousel" data-pause="hover">
                             {{-- @if($announcement->img1) --}}
                             <div class="carousel-item active align-items-center" >
-                                <img src="/uploads/{{$announcement->img1}}" class="carouselImg d-block" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
+                                <img src="/uploads/{{$announcement->img1}}" class="carouselImg d-block w-100" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
                             </div>
                             {{-- @endif --}}
                             @if($announcement->img2)
