@@ -230,13 +230,13 @@ class AnnouncementController extends Controller
         // if($request->categories){
             //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
             // }
-            if ($request->categories) {
-                $request->categories=explode(',',$request->categories);
-                $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
-                $querry->whereDoesntHave('categories', function (Builder $query2) use ($categories_prim){
-                    $query2->whereIn('name', $categories_prim);
-                });
-            }
+            // if ($request->categories) {
+            //     $request->categories=explode(',',$request->categories);
+            //     $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
+            //     $querry->whereDoesntHave('categories', function (Builder $query2) use ($categories_prim){
+            //         $query2->whereIn('name', $categories_prim);
+            //     });
+            // }
             
         // $all=$querry->count();
         $all= count($querry->get('id'));
@@ -244,7 +244,7 @@ class AnnouncementController extends Controller
         if($request->page || $request->page==0)$querry->skip($request->page*($request->per_page??$per_page))->take($request->per_page??$per_page);
         
         // $querry->selectRaw('SUBSTRING(description, 1, 100)');
-        $offers = $querry->with('categories')->get(['title','id','description','img1','localization','price']);
+        $offers = $querry->get(['title','id','description','img1','localization','price'])->toArray();
         // if ($request->categories) {
         //     foreach ($offers as $key => $offer) {
         //         foreach ($categories_prim as $category) {
@@ -256,9 +256,13 @@ class AnnouncementController extends Controller
         //     };
         // }
         foreach($offers as $key=>$offer){
-            $offers[$key]->description=substr($offer->description,0,75)."...";
+            // unset($offers[$key]->categories);
+            $offers[$key]['description']=substr($offer['description'],0,75)."...";
+            
             // $offers[$key]->categories=$offer->categories;
-            // $offers[$key]->categories=array_map(fn($x)=>$x,(array)$offers[$key]->categories);
+            // return $offer->categories->pluck('name');
+            $offers[$key]['categories']=Announcement::find($offer['id'])->categories->pluck('name');
+            // return $offer;
             
         }
         return ['announcements'=>$offers,'all'=>$all];
