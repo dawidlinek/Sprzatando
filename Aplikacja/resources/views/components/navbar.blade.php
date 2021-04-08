@@ -1,4 +1,4 @@
-<header class="navbar navbar-light sticky-top bg-light flex-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
+<header id="header" class="navbar navbar-light sticky-top bg-light flex-nowrap pl-2 pr-2 pt-3 pb-3 shadow w-100 justify-content-start">
 
     <!-- <Logo & hamburger> -->
     <div class="d-flex justify-content-between col-12 col-md-auto col-lg-2">
