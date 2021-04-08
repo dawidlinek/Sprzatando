@@ -18,13 +18,20 @@
                                 </div>
                             </div>
 
-                            @if($user??false)
                             <div class="col-12">
                                 <p class="card-text">
+                                    @if($user??false)
                                     <span class="badge {{$announcement->status??''}} rounded">{{__($announcement->status??'Status')}}</span>
+                                    @endif
+                                    @if($announcement??false)
+                                    @foreach ($announcement->categories as $category)
+                                    <span class="badge primary rounded">{{$category->name}}</span>
+                                    @endforeach
+                                    @else
+                                    <span class="card-main-category badge primary rounded">Kategoria</span>
+                                    @endif
                                 </p>
                             </div>
-                            @endif
 
                             <div class="col-12 mt-3">
                                 <p class="card-main-desc card-text">{{strlen($announcement->description??'Description')>125?substr($announcement->description??'Description', 0, 125) . "..." : $announcement->description??'Description'}} </p>

@@ -74,6 +74,10 @@
 .reported {
     background-color: var(--bs-warning);
 }
+.primary {
+    background-color: var(--bs-primary);
+}
+
 .edit-image {
     display: block !important;
 }
