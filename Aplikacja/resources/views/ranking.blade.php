@@ -137,3 +137,4 @@
         <tr class="spaceRow"></tr>
     </table>
 </div>
+@include('components.footer')

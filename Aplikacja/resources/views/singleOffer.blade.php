@@ -114,9 +114,7 @@
   <div class="toTop bg-primary" onclick="scrollToTop()">
       ↑
   </div>
-  <footer class="mt-5">
-
-  </footer>
+  @include('components.footer')
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
       const showBigImage = document.querySelector('#bigImage');

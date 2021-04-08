@@ -91,11 +91,12 @@
 
 
     <!-- <Footer -->
-    <div class="row">
+      @include('components.footer')
+    {{-- <div class="row">
       <div class="p-3" style="background-color: #15192F; min-height: 200px; z-index: 1000;">
 
       </div>
-    </div>
+    </div> --}}
     <!-- </Footer> -->
 
 
