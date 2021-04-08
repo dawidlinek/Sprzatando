@@ -69,6 +69,12 @@
             <div class="card w-100 p-5  d-flex flex-row">
                 <div class="w-75">
                     <h3 class="text-primary fw-bolder">{{$announcement->title}}</h3>
+                    <div class='mb-2'>
+
+                        @foreach ($announcement->categories as $category)
+                        <span class="badge primary rounded">{{$category->name}}</span>
+                        @endforeach
+                    </div>
                     <p>{{$announcement->description}}</p>
                 </div>
                 <div  class="w-25 d-flex justify-content-end">
@@ -100,13 +106,13 @@
                 <a class="btn bg-white border border-primary border-4 p-4 w-100"  href='/register'>Zarejestruj się</a> 
                 @endguest
             </div>
-                <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
+                {{-- <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
                     @foreach ($announcement->categories as $category)
                         
                     <button class="btn btn-primary m-3 px-5 py-3">{{$category->name}}</button>
                     @endforeach
                  
-            </div>
+            </div> --}}
         </div>
         <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
