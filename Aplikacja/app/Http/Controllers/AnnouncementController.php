@@ -232,7 +232,7 @@ class AnnouncementController extends Controller
         //     }
             if ($request->categories) {
                 $request->categories=explode(',',$request->categories);
-                $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
+                $categories_prim = Categories::whereNotIn('name', $request->categories)->get()->pluck('name');
                 $querry->whereDoesntHave('categories', function (Builder $query2) use ($categories_prim){
                     $query2->whereIn('name', $categories_prim);
                 });
