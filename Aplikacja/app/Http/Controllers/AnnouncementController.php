@@ -269,6 +269,7 @@ class AnnouncementController extends Controller
         return view('search', $data);
     }
     public function SingleOffer(Announcement $announcement){
+        $announcement->increment('views');
         return view('singleOffer',['announcement'=>$announcement]);
     }
 }
