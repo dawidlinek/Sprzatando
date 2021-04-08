@@ -21,7 +21,7 @@
         <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
             <div class="d-flex justify-content-between col-auto" style="white-space: nowrap; padding-left: 0.5rem; padding-right: 0.5rem;">
 
-                <a class="text-primary text-decoration-none m-2 text-left ml-3 mr-3" href="/search">
+                <a class="text-dark text-decoration-none m-2 text-left ml-3 mr-3" href="/search">
                     Przeglądaj
                 </a>
 

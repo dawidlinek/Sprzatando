@@ -227,16 +227,16 @@ class AnnouncementController extends Controller
         if ($request->price_max) $querry->where('price', '<', $request->price_max);
         $querry->orderByDesc('created_at');
         
-        // if($request->categories){
-            //     $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
-            // }
-            // if ($request->categories) {
-            //     $request->categories=explode(',',$request->categories);
-            //     $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
-            //     $querry->whereDoesntHave('categories', function (Builder $query2) use ($categories_prim){
-            //         $query2->whereIn('name', $categories_prim);
-            //     });
-            // }
+        if($request->categories){
+                $querry->whereHas('categories',function($q) use ($request){  $q->whereIn('categories.name', $request->categories);});
+            }
+            if ($request->categories) {
+                $request->categories=explode(',',$request->categories);
+                $categories_prim = Categories::whereNotIn('name', $request->categories)->get();
+                $querry->whereDoesntHave('categories', function (Builder $query2) use ($categories_prim){
+                    $query2->whereIn('name', $categories_prim);
+                });
+            }
             
         // $all=$querry->count();
         $all= count($querry->get('id'));
