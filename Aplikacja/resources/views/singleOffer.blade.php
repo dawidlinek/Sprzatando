@@ -27,11 +27,11 @@
         </div>
    @include('components.navbar')
    @include('components.info')
-    <div class="d-flex col-12 mt-5 justify-content-center">
+    <div class="row m-5  justify-content-center">
         <!-- LEWA KOLUMNA -->
-        <div class="col-8 d-flex align-items-center justify-content-start flex-column mb-5">
+        <div class="col-md-8 col-sm-12 d-flex align-items-center justify-content-start flex-column mb-5">
             @if($announcement->img1)
-            <div class="card h-100 w-75 p-5 mb-5 ">
+            <div class="card h-100 w-100 p-5 mb-5 ">
                     <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 d-flex  align-items-center justify-content-center"  >
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -66,7 +66,7 @@
                     </div>
             </div>
             @endif
-            <div class="card w-75 p-5  d-flex flex-row">
+            <div class="card w-100 p-5  d-flex flex-row">
                 <div class="w-75">
                     <h3 class="text-primary fw-bolder">{{$announcement->title}}</h3>
                     <p>{{$announcement->description}}</p>
@@ -78,7 +78,7 @@
         </div>
         <!-- KONIEC LEWEJ KOLUMNY -->
         <!-- PRAWA KOLUMNA -->
-        <div class="col-3 mb-5 h-100">
+        <div class="col-md-4 col-sm-12 mb-5 h-100">
             <div class="card h-50 w-100 p-5 mb-5 d-flex flex-column">
                     <h3>   {{$announcement->localization}}</h3>
                     <div id="miniMap"></div>
