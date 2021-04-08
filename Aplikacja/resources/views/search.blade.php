@@ -125,7 +125,7 @@
                 <!-- KONIEC SEARCH BUTTON -->
 
                 <!-- OGŁOSZENIA -->
-                <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5 d-none p-3">
+                <div id="zgloszeniaPlace" class="card d-flex w-100 mt-5 mb-5 d-none p-3">
                     @include('components.announcement',['search'=>true])
                 </div>
                 <!-- OGLOSZENIA END -->
@@ -135,7 +135,7 @@
     <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
     </div>
-    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()" style="z-index: 1000;">
+    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()" style="z-index: 10000;">
         ↑
     </div>
     @include('components.footer')

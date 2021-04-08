@@ -138,6 +138,9 @@ input[type="number"] {
     background: #1c1c67 !important;
     color: #eeeeee;
 }
+.button-on:hover {
+    color: #eee;
+}
 .toTop {
     height: 50px;
     width: 50px;
