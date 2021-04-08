@@ -30,7 +30,7 @@
                         <div class="d-flex flex-column align-items-start justify-content-between">
 
                             <label for="FormControlInput1 col-offset">Tytuł</label>
-                            <input value="{{ old('title') }}" type="text" name='title' maxlength="254" required class="form-control mb-4" />
+                            <input value="{{ old('title') }}" type="text" name='title' maxlength="50" required class="form-control mb-4" />
                             <label for="FormControlInput1 col-offset">Lokalizacja</label>
                             <input value="{{ old('localization') }}" type="text" name='localization' maxlength="254" required id='LocalizationAutocomplete' class="form-control mb-4" />
                             <input name="longitude" id='longitude'  value="{{ old('longitude') }}" type="text" hidden/>

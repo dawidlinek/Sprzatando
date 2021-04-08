@@ -116,6 +116,7 @@ input[type="number"] {
     position: fixed;
     right: 2%;
     bottom: 5%;
+    z-index: 1000000;
     border-radius: 10%;
     color: white;
     display: flex;
