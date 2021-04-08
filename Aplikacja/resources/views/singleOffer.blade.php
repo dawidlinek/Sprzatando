@@ -16,7 +16,7 @@
 
 <body class="bg-light">
 
-        <div id="bigImage" style="height:100vh; width:100vw; z-index: 99; background:#1c1c678e" class="position-fixed top-0 start-0 d-none align-items-center justify-content-center">
+        <div id="bigImage" style="height:100vh; width:100vw; z-index: 9999; background:#1c1c678e" class="position-fixed top-0 start-0 d-none align-items-center justify-content-center">
             <div class="position-absolute d-flex align-items-center justify-content-center bg-primary" id="boxBar" onclick="unShowImage()">
                <div class="closeBar" id="bar1"></div>
                <div class="closeBar" id="bar2"></div>
