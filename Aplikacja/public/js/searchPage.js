@@ -110,7 +110,7 @@ const getAnnouncementCard = ({
 
         categories.forEach((category) => {
             const categoryToAppend = categoryOne.cloneNode(true);
-            categoryToAppend.innerText = category.name;
+            categoryToAppend.innerText = category;
             categoryPlace.appendChild(categoryToAppend);
         });
 
