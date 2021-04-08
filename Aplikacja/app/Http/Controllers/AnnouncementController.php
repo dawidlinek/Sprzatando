@@ -131,7 +131,7 @@ class AnnouncementController extends Controller
         }
         $request->validate(['img1' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img2' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img3' => 'nullable|image|dimensions:max_width=2000,max_height=2000']);
         $data = $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|max:51',
             'localization' => 'required',
             'longitude' => 'required',
             'latitude' => 'required',

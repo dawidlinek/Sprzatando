@@ -108,6 +108,7 @@ input[type="number"] {
 }
 .button-on {
     background: #1c1c67 !important;
+    color:#eeeeee;
 }
 .toTop {
     height: 50px;
@@ -115,6 +116,7 @@ input[type="number"] {
     position: fixed;
     right: 2%;
     bottom: 5%;
+    z-index: 1000000;
     border-radius: 10%;
     color: white;
     display: flex;
@@ -127,4 +129,17 @@ input[type="number"] {
     height: 40px;
     border: 1px solid white;
     border-radius: 10px;
+}
+#boxBar{
+    height: 50px;
+    width: 50px;
+    top:3%;
+    right: 5%;
+    border-radius: 10px;
+}
+#bar1{
+    transform: rotate(45deg);
+}
+#bar2{
+    transform: rotate(-45deg);
 }

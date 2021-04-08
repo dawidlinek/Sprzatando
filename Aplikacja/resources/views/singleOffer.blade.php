@@ -27,11 +27,11 @@
         </div>
    @include('components.navbar')
    @include('components.info')
-    <div class="d-flex col-12 mt-5 justify-content-center">
+    <div class="row m-5  justify-content-center">
         <!-- LEWA KOLUMNA -->
-        <div class="col-8 d-flex align-items-center justify-content-start flex-column mb-5">
+        <div class="col-md-8 col-sm-12 d-flex align-items-center justify-content-start flex-column mb-5">
             @if($announcement->img1)
-            <div class="card h-100 w-75 p-5 mb-5 ">
+            <div class="card h-100 w-100 p-5 mb-5 ">
                     <div id="carouselExampleDark" class="carousel carousel-dark slide h-100 d-flex  align-items-center justify-content-center"  >
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleDark"  data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -41,7 +41,7 @@
                         <div class="carousel-inner w-75 d-flex align-items-center position-relative" style="height: 50vh;" data-interval="false" data-ride="carousel" data-pause="hover">
                             {{-- @if($announcement->img1) --}}
                             <div class="carousel-item active align-items-center" >
-                                <img src="/uploads/{{$announcement->img1}}" class="carouselImg d-block" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
+                                <img src="/uploads/{{$announcement->img1}}" class="carouselImg d-block w-100" alt="Głowne zdjęcie oferty" onclick="showImage(this)">
                             </div>
                             {{-- @endif --}}
                             @if($announcement->img2)
@@ -66,7 +66,7 @@
                     </div>
             </div>
             @endif
-            <div class="card w-75 p-5  d-flex flex-row">
+            <div class="card w-100 p-5  d-flex flex-row">
                 <div class="w-75">
                     <h3 class="text-primary fw-bolder">{{$announcement->title}}</h3>
                     <p>{{$announcement->description}}</p>
@@ -78,7 +78,7 @@
         </div>
         <!-- KONIEC LEWEJ KOLUMNY -->
         <!-- PRAWA KOLUMNA -->
-        <div class="col-3 mb-5 h-100">
+        <div class="col-md-4 col-sm-12 mb-5 h-100">
             <div class="card h-50 w-100 p-5 mb-5 d-flex flex-column">
                     <h3>   {{$announcement->localization}}</h3>
                     <div id="miniMap"></div>
@@ -88,16 +88,16 @@
                 @auth
                 <form method="POST" action="/engage/{{$announcement->id}}">
                     @csrf
-                    <button class="btn btn-primary mb-3 p-4">Zgłoś się do zgłoszenia</button>
+                    <button class="btn btn-primary mb-3 p-4 w-100">Aplikuj</button>
                 </form>
                 <form method="POST" action="/report/{{$announcement->id}}">
                     @csrf
-                    <button class="btn bg-white border border-primary border-4 p-4">Zgłoś ogłoszenie</button> 
+                    <button class="btn bg-white border border-primary border-4 p-4 w-100">Zgłoś nadużycie</button> 
                 </form>
                 @endauth 
                 @guest 
-                <a class="btn btn-primary mb-3 p-4" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
-                <a class="btn bg-white border border-primary border-4 p-4" href='/register'>Zarejestruj się</a> 
+                <a class="btn btn-primary mb-3 p-4 w-100" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
+                <a class="btn bg-white border border-primary border-4 p-4 w-100"  href='/register'>Zarejestruj się</a> 
                 @endguest
             </div>
                 <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
