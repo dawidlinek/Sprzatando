@@ -18,7 +18,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <div class="col-12 card-main-category">
                                 <p class="card-text">
                                     @if($user??false)
                                     <span class="badge {{$announcement->status??''}} rounded">{{__($announcement->status??'Status')}}</span>
@@ -28,7 +28,7 @@
                                     <span class="badge primary rounded">{{$category->name}}</span>
                                     @endforeach
                                     @else
-                                    <span class="card-main-category badge primary rounded">Kategoria</span>
+                                    <span class="badge primary rounded">Kategoria</span>
                                     @endif
                                 </p>
                             </div>
