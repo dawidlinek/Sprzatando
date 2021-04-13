@@ -184,6 +184,9 @@ img {
   min-height: 100%;
   z-index: -99;
 }
+#podium{
+    height: min-content;
+}
 td:first-child{
     width:5%;
     padding: 1rem;
