@@ -7,6 +7,7 @@ use App\Http\Controllers\BanController;
 use App\Http\Controllers\EngageAnnouncement;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OtherController;
+use App\Http\Middleware\AdminCheck;
 use App\Models\Announcement;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
@@ -51,4 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/engage/{announcement}', [EngageAnnouncement::class, 'engage']);
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
+
+    Route::middleware(AdminCheck::class)->group(function(){
+        Route::post('/ban/{announcement}',[BanController::class,'ban_announcement']);
+    });
 });

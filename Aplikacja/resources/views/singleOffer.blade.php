@@ -84,6 +84,7 @@
         </div>
         <!-- KONIEC LEWEJ KOLUMNY -->
         <!-- PRAWA KOLUMNA -->
+        {{-- {{dd(auth()->user()->admin())}} --}}
         <div class="col-md-4 col-sm-12 mb-5 h-100">
             <div class="card h-50 w-100 p-5 mb-5 d-flex flex-column">
                     <h3>   {{$announcement->localization}}</h3>
@@ -98,8 +99,14 @@
                 </form>
                 <form method="POST" action="/report/{{$announcement->id}}">
                     @csrf
-                    <button class="btn bg-white border border-primary border-4 p-4 w-100">Zgłoś nadużycie</button> 
+                    <button class="btn bg-white border border-primary mb-3 border-4 p-4 w-100">Zgłoś nadużycie</button> 
                 </form>
+                @if(auth()->user()->admin())
+                <form method="POST"  action="/ban/{{$announcement->id}}">
+                    @csrf
+                    <button class="btn btn-primary  p-4 w-100">Zbanuj</button>
+                </form>
+                @endif
                 @endauth 
                 @guest 
                 <a class="btn btn-primary mb-3 p-4 w-100" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
