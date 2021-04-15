@@ -26,9 +26,7 @@ use Illuminate\Http\Request;
 
 // Ssl validation
 // Route::get('/.well-known/pki-validation/BCC67262E155DCE0BE3607BC68D3568B.txt');
-Route::get('/ranking',function(){
-    return view('ranking');
-});
+Route::get('/ranking',[OtherController::class,'ranking']);
 
 Route::any('/search',[AnnouncementController::class,'search']);
 

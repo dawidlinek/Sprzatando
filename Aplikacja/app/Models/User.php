@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 
@@ -68,6 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function engaged(){
         return $this->hasMany(user_has_announcement::class,'user','id')->latest();
     }
+  
     // public function engaged(){
     //     return $this->hasManyThrough(Announcement::class,user_has_announcement::class,'user','id','id','announcement');
     // }
