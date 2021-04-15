@@ -9,39 +9,17 @@
         <div class="card w-100">
             <div class="card-body d-flex flex-column align-items-start justify-content-between">
                 <div class="cart-title col-12">
-                    <h2 class="text-primary mb-4">Moje ogłoszenia</h2>
+                    <h2 class="text-primary mb-4">Moje zlecenia</h2>
                 </div>
                 @if(count($announcements)==0)
                 Brak ogłoszeń
                 @endif
-                <!-- POJEDYNCZE OGŁOSZENIE -->
+
                 @foreach ($announcements as $announcement)
-                @include('components.announcement',['zlecenia'=>true,'announcement'=>$announcement->details,'engageStatus'=>$announcement->status])
+                    @include('components.announcement',['zlecenia'=>true,'announcement'=>$announcement->details,'engageStatus'=>$announcement->status])
                 @endforeach
             </div>
         </div>
     </div>
-
-
-    {{-- <div class="fixed-bottom offset-md-2 p-4">
-                                        <nav aria-label="Strony">
-                                            <ul class="pagination justify-content-center">
-                                                <li class="page-item disabled">
-                                                    <a class="page-link" href="#" tabindex="-1">Poprzednia</a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item">
-                                                    <a class="page-link" href="#">Następna</a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        <!-- PAGINATION END -->
-                                    </div> --}}
-
-    <!-- MAIN CONTENT END -->
-    <!-- PAGINATION START -->
-
 </main>
 @endsection

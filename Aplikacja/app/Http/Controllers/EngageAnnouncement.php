@@ -22,7 +22,6 @@ class EngageAnnouncement extends Controller
     }
     public function get_engaged_announcements(Request $request){
         $announcements= auth()->user()->engaged;
-        // return $announcements;
         return view('dashboard.zlecenia',compact('announcements'));
     }
    
