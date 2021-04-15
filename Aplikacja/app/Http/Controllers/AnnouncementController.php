@@ -276,4 +276,5 @@ class AnnouncementController extends Controller
         $announcement->increment('views');
         return view('singleOffer',['announcement'=>$announcement]);
     }
+   
 }

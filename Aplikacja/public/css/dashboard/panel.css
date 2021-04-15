@@ -191,7 +191,7 @@
     background-color: var(--bs-danger);
 }
 
-.active {
+.active,.selected {
     background-color: var(--bs-success);
 }
 
@@ -199,7 +199,7 @@
     background-color: var(--bs-gray);
 }
 
-.reported {
+.reported,.engaged {
     background-color: var(--bs-warning);
 }
 .edit-image{

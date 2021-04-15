@@ -9,4 +9,7 @@ class user_has_announcement extends Model
 {
     use HasFactory;
     public $fillable=['user','announcement','status'];
+    public function details(){
+        return $this->hasOne(Announcement::class,'id','announcement');
+    }
 }

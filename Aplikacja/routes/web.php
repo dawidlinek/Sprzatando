@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/logout', 'LoginController@logout');
     Route::view('/email/verify','auth.verify-email')->name('verification.notice');
+    Route::get('/dashboard/zlecenia',[EngageAnnouncement::class,'get_engaged_announcements']);
     Route::resource('/dashboard/announcement', AnnouncementController::class);
 
     Route::get('/email/verify/{id}/{hash}',[AuthController::class,'EmailVerify'])->middleware('signed')->name('verification.verify');

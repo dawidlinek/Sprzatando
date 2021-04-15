@@ -12,6 +12,12 @@
         </a>
     </li>
     <li class="nav-item m-1">
+        <a class="nav-link rounded @if(request()->is('dashboard/zlecenia')) bg-primary text-white @endif" href="/dashboard/zlecenia">
+            <span data-feather="home"></span>
+            Moje zlecenia
+        </a>
+    </li>
+    <li class="nav-item m-1">
         <a class="nav-link rounded @if(request()->route()->uri=='user/profile') bg-primary text-white @endif" href="/user/profile">
             <span data-feather="file"></span>
             Ustawienia
