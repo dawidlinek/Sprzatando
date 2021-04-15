@@ -14,6 +14,7 @@ class BanController extends Controller
     }
     public function ban_announcement(Announcement $announcement){
         $announcement->update(['status'=>'banned']);
+        $announcement->engaged()->update(['status'=>'banned']);
         return back()->with('status','Pomyślnie zbanowano ogłoszenie');
     }
 }

@@ -17,8 +17,6 @@
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 @foreach ($announcements as $announcement)
                 @include('components.announcement',['zlecenia'=>true,'announcement'=>$announcement->details,'engageStatus'=>$announcement->status])
-              
-
                 @endforeach
             </div>
         </div>

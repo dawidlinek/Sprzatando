@@ -16,4 +16,7 @@ class Announcement extends Model
     {
         return $this->hasManyThrough(Categories::class,Has_Category::class,'announcement_id','id','id','category_id');
     }
+    public function engaged(){
+        return $this->hasMany(user_has_announcement::class,'announcement','id');
+    }
 }

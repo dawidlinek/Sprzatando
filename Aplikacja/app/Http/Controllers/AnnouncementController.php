@@ -143,6 +143,7 @@ class AnnouncementController extends Controller
         if (isset($request->status)) {
             if ($request->status == 'finished') {
                 $data['status'] = 'finished';
+                $announcement->engaged()->update(['status'=>'finished']);
             }
         }
         $categories = explode(",", $data['categories']);
