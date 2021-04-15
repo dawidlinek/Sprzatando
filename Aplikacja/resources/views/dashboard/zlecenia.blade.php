@@ -16,7 +16,7 @@
                 @endif
                 <!-- POJEDYNCZE OGŁOSZENIE -->
                 @foreach ($announcements as $announcement)
-                @include('components.announcement',['user'=>true,'zlecenia'=>true,'announcement'=>$announcement->details,'engageStatus'=>$announcement->status])
+                @include('components.announcement',['zlecenia'=>true,'announcement'=>$announcement->details,'engageStatus'=>$announcement->status])
               
 
                 @endforeach
