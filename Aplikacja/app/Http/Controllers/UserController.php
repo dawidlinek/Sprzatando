@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -55,5 +57,21 @@ class UserController extends Controller
         ])->save();
         return back()->with('status', 'Pomyślnie zaktualizowano hasło.');
         
+    }
+    public function UserApi(User $user){
+        // $user->engaged= $user->engaged()->with('details:id,rating')->get();
+        $ratings=[];
+        foreach($user->engaged()->where('status','selected')->get() as $eng){
+            $ratings[]=$eng->details->rating;
+        }
+        $user->jobs=count($ratings);
+        if($user->jobs==0){
+            $user->avg=0;
+        }else{
+            $user->avg=round(array_sum($ratings)/count($ratings),1);
+        }
+        unset($user->engaged);
+        $user->last=$user->engaged()->latest()->first()->details;
+        return $user;
     }
 }

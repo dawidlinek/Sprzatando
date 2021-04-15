@@ -16,7 +16,7 @@ class CreateUserHasAnnouncementsTable extends Migration
         Schema::create('user_has_announcements', function (Blueprint $table) {
             $table->foreignId('user');
             $table->foreignId('announcement');
-            $table->enum('status',['engaged','selected','finished','banned']);
+            $table->enum('status',['engaged','selected','discarded','finished','banned']);
             $table->timestamps();
         });
     }

@@ -12,4 +12,7 @@ class user_has_announcement extends Model
     public function details(){
         return $this->hasOne(Announcement::class,'id','announcement');
     }
+    public function userDetails(){
+        return $this->hasOne(User::class,'id','user');
+    }
 }

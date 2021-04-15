@@ -187,7 +187,7 @@
     font-weight: normal !important;
 }
 
-.banned {
+.banned, .discarded {
     background-color: var(--bs-danger);
 }
 

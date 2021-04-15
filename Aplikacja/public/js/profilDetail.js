@@ -16,12 +16,36 @@ for (let i = 0; i < profiles.length; i++) {
     detailOff.classList.add("d-none");
     detailOn.classList.remove("d-none");
     detailOn.classList.add("d-flex");
-    name.innerHTML = names[i].innerHTML;
-    date.innerHTML = "24.02.2021";
-    description.innerHTML =
-      "Moim zdaniem to nie ma tak, że dobrze albo że nie dobrze. Gdybym miał powiedzieć, co cenię w życiu najbardziej, powiedziałbym, że ludzi. Ekhm… Ludzi, którzy podali mi pomocną dłoń, kiedy sobie nie radziłem, kiedy byłem sam.";
-    numberOfOrder.innerHTML = "24";
-    lastRating.innerHTML = "*gwiazdki*";
-    avgRating.innerHTML = "*gwiazdki*";
+    let user=names[i].dataset.user;
+    fetch(`/api/user/${user}`).then(resp=>{
+      resp.json().then(data=>{
+
+        name.innerHTML = data.name;
+        date.innerHTML = new Date(Date.parse(data.created_at)).toLocaleDateString();
+        if(data.last){
+          description.innerHTML =
+         `<h4> Nazwa: ${data.last.title}</h4> ${data.last.rating_description??' Brak ostatniej oceny użytkownika'}`;
+          lastRating.innerHTML = data.last.rating??'Brak'
+          for(let i=0;i<Math.round(data.last.rating??0);i++)
+          lastRating.innerHTM+="⭐";
+        }else{
+          description.innerHTML="Ten użytkownik jeszcze nie zrealizował żadnych zleceń"
+          lastRating.innerHTML = "";
+        }
+        numberOfOrder.innerHTML = data.jobs;
+        avgRating.innerHTML = data.avg;
+        for(let i=0;i<Math.round(data.avg??0);i++)
+        lastRating.innerHTM+="⭐";
+      })
+
+    });
+    
   });
+}
+function discard(id){
+  fetch(`discard/${id}`)
+  document.querySelector(`div[data-user="${id}"]`).remove()
+  detailOn.classList.add("d-none");
+  detailOff.classList.remove("d-none");
+  detailOff.classList.add("d-flex");
 }

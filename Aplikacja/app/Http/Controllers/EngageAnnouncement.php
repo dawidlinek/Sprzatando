@@ -24,5 +24,21 @@ class EngageAnnouncement extends Controller
         $announcements= auth()->user()->engaged;
         return view('dashboard.zlecenia',compact('announcements'));
     }
+    public function discard($announcement,$user){
+        if(Announcement::findOrFail($announcement)->creator_id!=auth()->id())
+        return response('Nieautoryzowany',401);
+        user_has_announcement::where(['announcement'=>$announcement,'user'=>$user])->update(['status'=>'discarded']);
+        return response()->json(['status'=>true]);
+    }
+    public function accept($announcement,$user){
+        if(Announcement::findOrFail($announcement)->creator_id!=auth()->id())
+        return back()->withErrors(['Nie masz odpowidnich uprawnień do wykonania tej akcji']);
+        user_has_announcement::where(['announcement'=>$announcement])->update(['status'=>'finished']);
+        user_has_announcement::where(['announcement'=>$announcement,'user'=>$user])->update(['status'=>'selected']);
+        Announcement::findOrFail($announcement)->update(['status'=>'finished']);
+        return back()->with('status','Pomyślnie wybrano zleceniobiorce');
+
+
+    }
    
 }

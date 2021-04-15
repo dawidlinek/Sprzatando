@@ -37,6 +37,8 @@ Route::redirect('/dashboard','/dashboard/announcement')->middleware(['auth:sanct
 Route::post('/report/{announcement}', [BanController::class, 'report_announcement']);
 
 Route::post('/login', [LoginController::class,'login']);
+Route::get('/dashboard/announcement/{announcement}/discard/{user}',[EngageAnnouncement::class,'discard']);
+Route::post('/dashboard/announcement/{announcement}/accept/{user}',[EngageAnnouncement::class,'accept']);
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/logout', 'LoginController@logout');
