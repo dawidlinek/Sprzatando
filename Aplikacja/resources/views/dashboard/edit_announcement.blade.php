@@ -148,7 +148,7 @@
                     <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
                         <h2 class="card-title text-primary mt-4 mb-4 ">Wybierz zleceniodawce</h2>
                         <div class="w-100" id="principals">
-                            @foreach ($announcement->engaged as $eng)
+                            @foreach ($announcement->engaged->where('status','engaged')->get() as $eng)
                             {{-- {{dd($eng->userDetails)}} --}}
                             <div class="card flex-row align-items-center py-4 my-3 mx-2 w-100 profile" data-user="{{$eng->user}}">
                                 <img src="/img/avatar.jpg" class="avatarImage mx-3"> 
