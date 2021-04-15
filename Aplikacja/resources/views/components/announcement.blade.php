@@ -55,7 +55,7 @@
                         <h5 class="m-0 text-primary card-main-price">{{$announcement->price??"Price"}} zł</h5>
                     </div>
                     <div class="b-row d-flex">
-                        @if($reported) 
+                        @if($reported??false) 
                         <a class="btn btn-primary w-100 text-nowrap text-white rounded mr-1" href="/ban/{{$announcement->id}}">Zbanuj</a>
                         <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="/restore/{{$announcement->id}}">Przywróć</a>
                         @else 
