@@ -55,6 +55,10 @@
                         <h5 class="m-0 text-primary card-main-price">{{$announcement->price??"Price"}} zł</h5>
                     </div>
                     <div class="b-row d-flex">
+                        @if($reported) 
+                        <a class="btn btn-primary w-100 text-nowrap text-white rounded mr-1" href="/ban/{{$announcement->id}}">Zbanuj</a>
+                        <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="/restore/{{$announcement->id}}">Przywróć</a>
+                        @else 
                         @if($user??false)
 
                         @if($announcement->status=='active')
@@ -65,6 +69,7 @@
 
                         @else
                         <a class="card-main-a-show btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="{{route('singleOffer', $announcement->id??"0")}}">Pokaż</a>
+                        @endif
                         @endif
                     </div>
 

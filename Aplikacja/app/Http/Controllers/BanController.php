@@ -17,4 +17,13 @@ class BanController extends Controller
         $announcement->engaged()->update(['status'=>'banned']);
         return back()->with('status','Pomyślnie zbanowano ogłoszenie');
     }
+    public function reported(){
+        $announcements=Announcement::where('status','reported')->get();
+        return view('dashboard.reported',compact('announcements'));
+    }
+    public function restore_announcement(Announcement $announcement){
+        $announcement->update(['status'=>'active']);
+        return back()->with('status','Pomyślnie przywócono ogłoszenie');
+    }
+
 }

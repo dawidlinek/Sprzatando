@@ -17,6 +17,14 @@
             Moje zlecenia
         </a>
     </li>
+    @if(auth()->user()->admin())
+    <li class="nav-item m-1">
+        <a class="nav-link rounded @if(request()->is('dashboard/reported')) bg-primary text-white @endif" href="/dashboard/reported">
+            <span data-feather="home"></span>
+           Zgłoszone ogłoszenia
+        </a>
+    </li>
+    @endif
     <li class="nav-item m-1">
         <a class="nav-link rounded @if(request()->route()->uri=='user/profile') bg-primary text-white @endif" href="/user/profile">
             <span data-feather="file"></span>

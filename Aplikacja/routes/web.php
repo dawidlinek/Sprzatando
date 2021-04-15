@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/email/verify','auth.verify-email')->name('verification.notice');
     Route::get('/dashboard/zlecenia',[EngageAnnouncement::class,'get_engaged_announcements']);
     Route::resource('/dashboard/announcement', AnnouncementController::class);
-
+    
     Route::get('/email/verify/{id}/{hash}',[AuthController::class,'EmailVerify'])->middleware('signed')->name('verification.verify');
     Route::get('/report/{announcement}', [BanController::class, 'report_announcement']);
     
@@ -53,8 +53,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/engage/{announcement}', [EngageAnnouncement::class, 'engage']);
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
-
+    
     Route::middleware(AdminCheck::class)->group(function(){
-        Route::post('/ban/{announcement}',[BanController::class,'ban_announcement']);
+        Route::get('/dashboard/reported',[BanController::class,'reported']);
+        Route::any('/ban/{announcement}',[BanController::class,'ban_announcement']);
+        Route::get('/restore/{announcement}',[BanController::class,'restore_announcement']);
     });
 });
