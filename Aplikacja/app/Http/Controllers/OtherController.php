@@ -18,12 +18,10 @@ class OtherController extends Controller
     public function ranking(){
     $users=User::all();
         foreach($users as &$user){
-            $user->ratings=$user->engaged()->where('status','banned')->with('details:rating,id')->get()->toArray();
+            $user->ratings=$user->engaged()->where('status','selected')->with('details:rating,id')->get()->toArray();
             $user->ratings=array_map(fn($x)=>$x['details']['rating'],$user->ratings);
             $user->jobs=count($user->ratings);
-
             $user->avg=$user->jobs?round(array_sum($user->ratings)/$user->jobs,1):0;
-            
         }
         $users=$users->toArray();
         
