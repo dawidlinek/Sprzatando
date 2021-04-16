@@ -243,15 +243,16 @@
                     <div class="card-body d-flex flex-column  justify-content-around h-75 card " id="detailOffDiv">
                         <form action="/dashboard/announcement/{{$announcement->id}}/rating" class='w-100' method="POST">
                         <h1>Oceń zleceniobiorcę</h1>
-                        <p>⭐⭐⭐⭐⭐⭐</p>
+                        <p id='gwiazdki'>@for($i=0;$i<$announcement->rating??5;$i++)⭐@endfor</p>
                         <input type="range" min="1" max="6" value="{{$announcement->rating??5}}" {{$announcement->rating?'disabled':""}} name='rating' class="slider" id="myRange"><br>
                         <label for="">Napisz krótką opinię o zleceniobiorcy</label>
                         <textarea name="rating_description" class='w-100' id="" cols="30" rows="10" {{$announcement->rating?'disabled':""}}>{{$announcement->rating_description??''}}</textarea>
                         
                         <div class="d-flex flex-column mt-3">
                                 @csrf
-                               <input type="text" name='user' value='' hidden>
+                                 @if(!$announcement->rating)
                                 <button class="btn btn-primary w-100" type="submit">Oceń zleceniobiorcę</button>
+                                @endif
                             </div>
                         </form>
                         </div>
