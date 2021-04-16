@@ -13,7 +13,7 @@
                 <!-- <Title  -->
                 <div class="row w-100">
                     <div class="col col-12 marginLeftDesktop">
-                        <h2 class="card-title text-primary mt-4 mb-4"> @if($announcement->status=='active') Edytuj ogłoszenie @else Podgląd ogłoszenia @endif</h2>
+                        <h2 class="card-title text-primary mt-4 mb-4"> @if($announcement->status=='active' || $announcement->status=='reported') Edytuj ogłoszenie @else Podgląd ogłoszenia @endif</h2>
                     </div>
                 </div>
                 <!-- </Title  -->
@@ -29,17 +29,17 @@
                             <div class="d-flex flex-column align-items-start justify-content-between">
 
                                 <label for="FormControlInput1 col-offset">Tytuł</label>
-                                <input @if($announcement->status!='active') disabled @endif type="text" name='title' required value="{{$announcement->title}}" class="form-control mb-4" />
+                                <input @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif type="text" name='title' required value="{{$announcement->title}}" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Lokalizacja</label>
-                                <input type="text" @if($announcement->status!='active') disabled @endif name='localization' required value="{{$announcement->localization}}" id='LocalizationAutocomplete' class="form-control mb-4" />
+                                <input type="text" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif name='localization' required value="{{$announcement->localization}}" id='LocalizationAutocomplete' class="form-control mb-4" />
                                 <input name="longitude" id='longitude'  value="{{$announcement->longitude}}" type="text" hidden/>
                                 <input name="latitude" id='latitude' value="{{$announcement->latitude}}" type="text" hidden/>
                                 <label for="FormControlInput1 col-offset">Cena</label>
-                                <input type="number" @if($announcement->status!='active') disabled @endif min="1" required name='price' value="{{$announcement->price}}" step="0.05" class="form-control mb-4" />
+                                <input type="number" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif min="1" required name='price' value="{{$announcement->price}}" step="0.05" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Opis</label>
-                                <textarea maxlength="500" @if($announcement->status!='active') disabled @endif id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{$announcement->description}}</textarea>
+                                <textarea maxlength="500" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif id="descriptionTA" name='description' required class="form-control mb-1" style="resize: none; height: 30vh;">{{$announcement->description}}</textarea>
 
-                                <p @if($announcement->status!='active') class='d-none' @endif >Pozostało <span id="signs">500</span> znaków</p>
+                                <p @if($announcement->status!='active' && $announcement->status!='reported') class='d-none' @endif >Pozostało <span id="signs">500</span> znaków</p>
                             </div>
                         </div>
 
@@ -50,12 +50,12 @@
 
                                 <div class="w-100">
                                     <label for="FormControlInput1 col-offset mt-6">Czas ważności</label>
-                                    <input id='datePickerId' type="date" @if($announcement->status!='active') disabled @endif name='expiring_at' value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
+                                    <input id='datePickerId' type="date" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif name='expiring_at' value="{{date("Y-m-d",strtotime($announcement->expiring_at))}}" class="form-control mb-4" />
 
                                     <!-- <Kategorie> -->
                                     <label for="FormControlInput1 col-offset">Kategorie:</label> <br />
-                                    <input @if($announcement->status!='active') disabled @endif type="text" name="categories" class="d-none" id="categoryServerSee" value="{{implode(',',$announcement->categories()->pluck('id')->toArray())}}" />
-                                    <select class="form-select" id="categorySelect" @if($announcement->status!='active') disabled @endif class="form-select mb-4">
+                                    <input @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif type="text" name="categories" class="d-none" id="categoryServerSee" value="{{implode(',',$announcement->categories()->pluck('id')->toArray())}}" />
+                                    <select class="form-select" id="categorySelect" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif class="form-select mb-4">
                                         @php $selected=$announcement->categories()->pluck('name')->toArray() @endphp
                                         <option selected value="-1" hidden></option>
                                         @foreach ($categories as $category)
@@ -72,10 +72,10 @@
 
 
                                     <!-- <Image select> -->
-                                    <label for="FormControlInput1 col-offset" class="mb-3 mt-3"> @if($announcement->status=='active')Dodaj zdjęcia: @else Zobacz zdjęcia @endif</label>
+                                    <label for="FormControlInput1 col-offset" class="mb-3 mt-3"> @if($announcement->status=='active' && $announcement->status!='reported')Dodaj zdjęcia: @else Zobacz zdjęcia @endif</label>
                                     <div class="custom-file d-flex justify-content-md-between justify-content-around align-items-start w-100 mb-2 mb-xl-5" style="height: 15vh;">
                                         @php $tmp=["o",'first','second','third']@endphp
-                                        @for ($i = 1; $i < 4; $i++) @if((array)$announcement['img'.$i]==Null) <input @if($announcement->status!='active') disabled @endif class="form-control mb-3" type="file" name='img{{$i}}' accept="image/png, image/jpeg" id="formFileDisabled{{$i}}" />
+                                        @for ($i = 1; $i < 4; $i++) @if((array)$announcement['img'.$i]==Null) <input @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif class="form-control mb-3" type="file" name='img{{$i}}' accept="image/png, image/jpeg" id="formFileDisabled{{$i}}" />
                                             <label class="form-check-label position-relative ramka-image" for="formFileDisabled{{$i}}">
                                                 <div class="add-image">
                                                     <img src="/img/dashboard/rec.png" height="150px" width="150px" id="{{$tmp[$i]}}-image" class="img-fluid add-image zIndex2" draggable="false" />
@@ -91,7 +91,7 @@
                                                 <div class="add-image">
                                                     <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px" class="img-fluid add-image zIndex2" draggable="false" />
                                                 </div>
-                                                @if($announcement->status=='active')
+                                                @if($announcement->status=='active' && $announcement->status!='reported')
                                                 <form></form>
                                                 <form method='POST' id='deletef{{$i}}' class='delete-images' onsubmit="return confirm('Czy na pewno chcesz usunąć zdjęcie?')" action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}'>
                                                     @method('DELETE')
@@ -107,11 +107,11 @@
 
                                     </div>
                                 </div>
-                                <input hidden @if($announcement->status!='active') disabled @endif name='status' id='status' type='text' value/>
+                                <input hidden @if($announcement->status!='active' && $announcement->status!='reported')  disabled @endif name='status' id='status' type='text' value/>
 
                                 <div class="w-100" style="margin-bottom: 2.8rem;">
                                     @method('PUT')
-                                    @if($announcement->status=='active')
+                                    @if($announcement->status=='active' || $announcement->status=='reported')
                                     <button type='submit' onclick="status.value='finished';update.submit()" class="btn btn-outline-primary w-100 mt-3">Zakończ ofertę</a>
                                         <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
                                         @else
@@ -132,7 +132,7 @@
 
     
 </main>
-@if($announcement->status=='active')
+@if($announcement->status=='active' ||$announcement->status=='reported')
 <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         @if($announcement->engaged()->where('status','engaged')->count()==0)

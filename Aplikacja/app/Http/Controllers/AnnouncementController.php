@@ -126,7 +126,7 @@ class AnnouncementController extends Controller
      */
     public function update(Request $request, Announcement $announcement)
     {
-        if ($announcement->status != "active") {
+        if ($announcement->status != "active" && $announcement->status!='reported') {
             return back()->withErrors(["Edytować można tylko aktywne oferty"]);
         }
         $request->validate(['img1' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img2' => 'nullable|image|dimensions:max_width=2000,max_height=2000', 'img3' => 'nullable|image|dimensions:max_width=2000,max_height=2000']);
