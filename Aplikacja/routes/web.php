@@ -39,6 +39,7 @@ Route::post('/report/{announcement}', [BanController::class, 'report_announcemen
 Route::post('/login', [LoginController::class,'login']);
 Route::get('/dashboard/announcement/{announcement}/discard/{user}',[EngageAnnouncement::class,'discard']);
 Route::post('/dashboard/announcement/{announcement}/accept/{user}',[EngageAnnouncement::class,'accept']);
+Route::post('/dashboard/announcement/{announcement}/rating',[AnnouncementController::class,'rating']);
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/logout', 'LoginController@logout');

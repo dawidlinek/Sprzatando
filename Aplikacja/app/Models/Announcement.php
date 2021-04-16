@@ -11,7 +11,7 @@ class Announcement extends Model
     use Geographical;
     use HasFactory;
     protected static $kilometers = true;
-    protected  $fillable = ['title','localization','price','description','expiring_at','category_id','creator_id','img1','img2','img3','status','longitude','latitude'];
+    protected  $fillable = ['title','localization','price','description','expiring_at','category_id','creator_id','img1','img2','img3','status','longitude','latitude','rating','rating_description'];
     public function categories()
     {
         return $this->hasManyThrough(Categories::class,Has_Category::class,'announcement_id','id','id','category_id');

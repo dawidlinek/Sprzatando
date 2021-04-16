@@ -143,12 +143,12 @@
         @else
         <div class="row w-100 match-height">
 
-            <div class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
+            <div style='    min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
                 <div class="col-lg-5">
                     <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
                         <h2 class="card-title text-primary mt-4 mb-4 ">Wybierz zleceniodawce</h2>
                         <div class="w-100" id="principals">
-                            @foreach ($announcement->engaged->where('status','engaged')->get() as $eng)
+                            @foreach ($announcement->engaged()->where('status','engaged')->get() as $eng)
                             {{-- {{dd($eng->userDetails)}} --}}
                             <div class="card flex-row align-items-center py-4 my-3 mx-2 w-100 profile" data-user="{{$eng->user}}">
                                 <img src="/img/avatar.jpg" class="avatarImage mx-3"> 
@@ -206,37 +206,22 @@
 @elseif($announcement->status=='finished') 
 <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
+        {{-- @if($announcement->engaged()->where('status','engaged')->count()==0)
+        <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
+            <h2 class="card-title text-primary mt-4 mb-4 ">Niestety nie masz jeszcze chętnych zleceniobiorców</h2>
+           
+        </div>
+        @else --}}
         <div class="row w-100 match-height">
-
-            <div class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
-                {{-- <div class="col-lg-5">
-                    <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
-                        <h2 class="card-title text-primary mt-4 mb-4 ">Wybierz zleceniodawce</h2>
-                        <div class="w-100" id="principals">
-                            @foreach ($announcement->engaged as $eng)
-                            {{-- {{dd($eng->userDetails)}} 
-                            <div class="card flex-row align-items-center py-4 my-3 mx-2 w-100 profile" data-user="{{$eng->user}}">
-                                <img src="/img/avatar.jpg" class="avatarImage mx-3"> 
-                                <p class="mb-0 text-primary" data-user='{{$eng->userDetails->id}}'>{{$eng->userDetails->name}}</p>
-                            </div>
-                            @endforeach
-                           
-                        </div>
-                    </div>
-                </div> --}}
-                <div class="col-lg-5 d-flex  justify-content-center">
-                    {{-- <div class="card-body d-flex flex-column  justify-content-around h-75 card " id="detailOffDiv">
-                        <h1>Liczba zgłoszeń</h1>
-                        <p>{{$announcement->engaged()->count()}}</p>
-                        <h1>Ocena zgłoszenia</h1>
-                        <p>*gwiazdka*</p>
-                    </div> --}}
-                    <div class="card-body d-none flex-column  card h-75" id="detailOnDiv">
+@php $user=$announcement->engaged()->where('status','selected')->first()->userDetails @endphp
+            <div style='    min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
+                <div class="col-lg-5">
+                    <div class="card-body flex-column  card h-75" id="detailOnDiv">
                         <div class="d-flex h-25 align-items-center ">
                             <img src="/img/avatar.jpg" class="mainAvatarImage mx-3" height="100%">
                             <div class="mb-3">
-                                <h1 class="text-primary" id="detailName"></h1>
-                                <p >Konto stworzone <span id="detailDate"></span></p>
+                                <h1 class="text-primary" id="detailName">{{$user->name}}</h1>
+                                <p >Konto stworzone <span id="detailDate">{{$user->created_at}}</span></p>
                             </div>
                         </div>
                         <div class="mt-1 mb-3">
@@ -245,24 +230,39 @@
                         </div> 
                         <div class="mt-1 mb-5">
                             <h2 class="text-primary">Statystyki użytkownika</h2>
-                            <p class="mb-0">Ilość zrealizowanych zleceń: <span id="detailNumberOfOrder"></span></p>
-                            <p class="mb-0">Ostatnia ocena użytkownika: <span id="detailLastRating">*gwiazdki*</span></p>
-                            <p class="mb-0">Średnia ocena użytkownika: <span id="detailAvgRating">*gwiazdki*</span></p>
+                            <p class="mb-0">Ilość zrealizowanych zleceń: <span id="detailNumberOfOrder">{{$user->engaged()->where('status','selected')->count()}}</span></p>
+                            <p class="mb-0">Ostatnia ocena użytkownika: <span id="detailLastRating">{{$user->engaged()->where('status','selected')->latest()->first()->details->rating ??''}}</span></p>
+                            <p class="mb-0">Średnia ocena użytkownika: <span id="detailAvgRating">*</span></p>
                         </div>
-                        {{-- <div class="d-flex flex-column mt-3">
-                            <button class="btn bg-white border border-primary border-4 mb-3 w-100" onclick="discard({{$eng->userDetails->id}})">Odrzuć</button>
-                            <form action="/dashboard/announcement/{{$announcement->id}}/accept/{{$eng->userDetails->id}}" method="POST" onsubmit="return confirm('Wybranie wykonawcy jest równoznaczne z zakończeniem ogłoszenia. Czy na pewno chcesz wykonać tą akcję?')">
-                                @csrf
-                                {{-- <input type="text" name='user' value='{{$eng->userDetails->id}}' hidden>
-                                <button class="btn btn-primary w-100" type="submit">Wybierz zleceniobiorcę</button>
-                            </form>
-                        </div> --}}
                     </div>
+                </div>
+                
+                
+                <div class="col-lg-5 d-flex  justify-content-center">
+                    
+                    <div class="card-body d-flex flex-column  justify-content-around h-75 card " id="detailOffDiv">
+                        <form action="/dashboard/announcement/{{$announcement->id}}/rating" class='w-100' method="POST">
+                        <h1>Oceń zleceniobiorcę</h1>
+                        <p>⭐⭐⭐⭐⭐⭐</p>
+                        <input type="range" min="1" max="6" value="{{$announcement->rating??5}}" {{$announcement->rating?'disabled':""}} name='rating' class="slider" id="myRange"><br>
+                        <label for="">Napisz krótką opinię o zleceniobiorcy</label>
+                        <textarea name="rating_description" class='w-100' id="" cols="30" rows="10" {{$announcement->rating?'disabled':""}}>{{$announcement->rating_description??''}}</textarea>
+                        
+                        <div class="d-flex flex-column mt-3">
+                                @csrf
+                               <input type="text" name='user' value='' hidden>
+                                <button class="btn btn-primary w-100" type="submit">Oceń zleceniobiorcę</button>
+                            </div>
+                        </form>
+                        </div>
+                        
+
                 </div>
             </div>
 
 
         </div>
+        {{-- @endif --}}
     </div>
 </div>
 </div>

@@ -277,5 +277,12 @@ class AnnouncementController extends Controller
         $announcement->increment('views');
         return view('singleOffer',['announcement'=>$announcement]);
     }
+    public function rating(Announcement $announcement,Request $request){
+        $data= $request->validate(['rating'=>'required|numeric','rating_description'=>'required']);
+        if($announcement->rating)
+        return back()->withErrors(['Ten zleceniobiorca został już oceniony']);
+        $announcement->update($data);
+        return back()->with('status','Pomyślnie oceniono użytkownika');
+    }
    
 }
