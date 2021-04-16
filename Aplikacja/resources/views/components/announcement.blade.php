@@ -21,7 +21,9 @@
                             <div class="col-12 card-main-category">
                                 <p class="card-text">
                                     @if($zlecenia??false) 
-                                    
+                                    @if($announcement->status=='finished' && $engageStatus !='finished')
+                                    <span class="badge {{$announcement->status??''}} rounded">{{__($announcement->status??'Status')}}</span>
+                                    @endif
                                     <span class="badge {{$engageStatus??''}} rounded">{{__($engageStatus??'Status')}}</span>
                                     @endif
                                     @if($user??false)
