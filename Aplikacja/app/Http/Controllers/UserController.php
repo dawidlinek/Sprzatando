@@ -71,7 +71,7 @@ class UserController extends Controller
             $user->avg=round(array_sum($ratings)/count($ratings),1);
         }
         unset($user->engaged);
-        $user->last=$user->engaged()->where('status','selected')->latest()->first()->details;
+        $user->last=$user->engaged()->where('status','selected')->latest()->first()->details??"";
         return $user;
     }
 }

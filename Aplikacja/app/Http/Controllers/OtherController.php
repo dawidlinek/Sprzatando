@@ -32,4 +32,8 @@ class OtherController extends Controller
     function sort($a, $b){
 return $a['avg']<=>$b['avg'];
     }
+    public function users(){
+        $users=User::all();
+        return view('dashboard.users',compact('users'));
+    }
 }

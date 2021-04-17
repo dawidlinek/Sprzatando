@@ -24,6 +24,12 @@
            Zgłoszone ogłoszenia
         </a>
     </li>
+    <li class="nav-item m-1">
+        <a class="nav-link rounded @if(request()->is('dashboard/users')) bg-primary text-white @endif" href="/dashboard/users">
+            <span data-feather="home"></span>
+           Użytkownicy
+        </a>
+    </li>
     @endif
     <li class="nav-item m-1">
         <a class="nav-link rounded @if(request()->route()->uri=='user/profile') bg-primary text-white @endif" href="/user/profile">

@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::middleware(AdminCheck::class)->group(function(){
         Route::get('/dashboard/reported',[BanController::class,'reported']);
+        Route::get('/dashboard/users',[OtherController::class,'users']);
         Route::any('/ban/{announcement}',[BanController::class,'ban_announcement']);
         Route::get('/restore/{announcement}',[BanController::class,'restore_announcement']);
     });
