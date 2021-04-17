@@ -30,7 +30,7 @@ for (let i = 0; i < profiles.length; i++) {
           lastRating.innerHTM+="⭐";
         }else{
           description.innerHTML="Ten użytkownik jeszcze nie zrealizował żadnych zleceń"
-          lastRating.innerHTML = "";
+          lastRating.innerHTML = "Brak";
         }
         numberOfOrder.innerHTML = data.jobs;
         avgRating.innerHTML = data.avg;
