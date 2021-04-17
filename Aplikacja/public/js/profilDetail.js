@@ -56,32 +56,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 })
 document.querySelector('#search-user').addEventListener('input',e=>{
-  // console.log(all_profiles)
+
   let sorted=[];
-  // console.log(profiles)
-  // profiles.forEach(el => {
-  // })
-   
-  // console.log(e.target.value)=doc
-  // console.log(document.querySelectorAll(".profile"))
-  // console.log(all_profiles)
   for (let i = 0; i < all_profiles.length; i++) {
-    // console.log('aaaaaaaa')
-    // || names[i].innerHTML.includes(e.target.value) || e.target.value==""
-    // console.log([names[i].dataset.user==e.target.value,names[i].dataset.user,e.target.value])
     if(all_names[i].dataset.user==e.target.value || e.target.value=="" || e.target.value==null || names[i].innerHTML.toLowerCase().includes(e.target.value.toLowerCase())){
       sorted.push(all_profiles[i])
     }
-    // console.log(all_names[i].dataset.user)
     try {
       document.querySelector(`div[data-user="${all_names[i].dataset.user}"]`).remove()
-      
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
-  // document.querySelector('#principals').innerHTML=""
-    // console.log(sorted)
     sorted.forEach(e2=>{
   principals.appendChild(e2);
 })
