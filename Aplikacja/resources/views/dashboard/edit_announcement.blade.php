@@ -226,7 +226,7 @@
                         </div>
                         <div class="mt-1 mb-3">
                             <h2 class="text-primary">Ostatnie zlecenie</h2>
-                            <p id="detailDescription"></p>
+                            <p id="detailDescription">{{$user->engaged()->where('status','selected')->latest()->first()->details->}}</p>
                         </div> 
                         <div class="mt-1 mb-5">
                             <h2 class="text-primary">Statystyki użytkownika</h2>

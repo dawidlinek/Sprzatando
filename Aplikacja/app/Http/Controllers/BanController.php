@@ -23,6 +23,7 @@ class BanController extends Controller
     }
     public function restore_announcement(Announcement $announcement){
         $announcement->update(['status'=>'active']);
+        $announcement->engaged()->update(['status'=>'active']);
         return back()->with('status','Pomyślnie przywócono ogłoszenie');
     }
 
