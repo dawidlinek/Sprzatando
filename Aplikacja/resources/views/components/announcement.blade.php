@@ -13,7 +13,7 @@
                         <div>
                             <div class="col-12 d-flex flex-column @if($search??false) flex-xl-row @else flex-md-row @endif">
                                 <div class="w-100 d-flex justify-content-between">
-                                    <h5 class="card-main-title card-title text-primary">{{$announcement->title??'Title'}}</h5>
+                                    <h5 class="card-main-title card-title text-primary"><a href="{{route('singleOffer', $announcement->id??'0')}}"> {{$announcement->title??'Title'}} </a></h5>
                                     <h5 class="m-0 text-nowrap text-primary d-block card-main-price @if($search??false) d-xl-none @else d-md-none @endif" style="padding-left: 1rem;">{{$announcement->price??'Price'}} zł</h5>
                                 </div>
                             </div>
