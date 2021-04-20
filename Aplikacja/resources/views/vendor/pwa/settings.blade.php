@@ -41,6 +41,8 @@
         @media (min-width: 992px) and (max-width: 1199.98px) {}
         @media (min-width: 1200px) {}
     </style>
+    @if(auth()->check())
+    @if(auth()->user()->admin())
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
@@ -210,4 +212,6 @@
             </div>
         </div>
     </div>
+    @endif 
+    @endif
 @endsection
