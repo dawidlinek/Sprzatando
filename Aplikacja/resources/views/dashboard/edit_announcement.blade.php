@@ -132,13 +132,14 @@
 
     
 </main>
+@php $user=$announcement->engaged()->where('status','selected')->first()??null @endphp
 @if($announcement->status=='active' ||$announcement->status=='reported')
 <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         @if($announcement->engaged()->where('status','engaged')->count()==0)
         <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
             <h2 class="card-title text-primary mt-4 mb-4 ">Niestety nie masz jeszcze chętnych zleceniobiorców</h2>
-           
+            
         </div>
         @else
         <div class="row w-100 match-height">
@@ -203,7 +204,8 @@
 </div>
 </div>
 </main>
-@elseif($announcement->status=='finished') 
+@elseif($announcement->status=='finished' && $user) 
+@php $user=$user->userDetails @endphp
 <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         {{-- @if($announcement->engaged()->where('status','engaged')->count()==0)
@@ -213,7 +215,6 @@
         </div>
         @else --}}
         <div class="row w-100 match-height">
-@php $user=$announcement->engaged()->where('status','selected')->first()->userDetails @endphp
             <div style='    min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
                 <div class="col-lg-5">
                     <div class="card-body flex-column  card h-75" id="detailOnDiv">
@@ -225,14 +226,15 @@
                             </div>
                         </div>
                         <div class="mt-1 mb-3">
-                            <h2 class="text-primary">Ostatnie zlecenie</h2>
-                            <p id="detailDescription">{{$user->engaged()->where('status','selected')->latest()->first()->details->rating_description}}</p>
+                            <h2 class="text-primary">Ostatnie zlecenie:</h2><span>{{$user->engaged()->where('status','selected')->latest()->first()->details->title}}</span>
+                            <p id="detailDescription">Ocena: {{$user->engaged()->where('status','selected')->latest()->first()->details->rating_description}}</p>
                         </div> 
                         <div class="mt-1 mb-5">
                             <h2 class="text-primary">Statystyki użytkownika</h2>
                             <p class="mb-0">Ilość zrealizowanych zleceń: <span id="detailNumberOfOrder">{{$user->engaged()->where('status','selected')->count()}}</span></p>
                             <p class="mb-0">Ostatnia ocena użytkownika: <span id="detailLastRating">{{$user->engaged()->where('status','selected')->latest()->first()->details->rating ??''}}</span></p>
-                            <p class="mb-0">Średnia ocena użytkownika: <span id="detailAvgRating">*</span></p>
+                            @php $ratings=$user->engaged()->where('status','selected')->with('details')->get()->map(function($job){return $job->details->rating;}); $ratings=$ratings->toArray(); @endphp
+                            <p class="mb-0">Średnia ocena użytkownika: <span id="detailAvgRating">{{round(array_sum($ratings)/count($ratings),2)}}</span></p>
                         </div>
                     </div>
                 </div>
