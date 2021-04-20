@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/app.css" />
     <link rel="stylesheet" href="/css/welcome.css" />
     <title>Sprzatnij me:D</title>
+    @PWA
 </head>
 
 <body class="bg-light">

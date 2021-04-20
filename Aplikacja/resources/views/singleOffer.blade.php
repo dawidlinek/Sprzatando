@@ -12,6 +12,7 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
         <title>Sprzatnij me:D</title>
+        @PWA
     </head>
 
 <body class="bg-light">

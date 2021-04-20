@@ -62,3 +62,5 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/restore/{announcement}',[BanController::class,'restore_announcement']);
     });
 });
+
+\PWA::routes();

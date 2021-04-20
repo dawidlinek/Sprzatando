@@ -12,7 +12,7 @@
 
   <link rel="icon" href="/img/ooda na sto pro.ico">
   <title>Sprzatnij me:D</title>
-
+  @PWA
 </head>
 
 <body class="bg-light">

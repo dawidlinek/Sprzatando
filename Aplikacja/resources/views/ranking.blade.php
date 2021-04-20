@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/welcome.css" />
     <link rel="stylesheet" href="/css/ranking.css" />
     <title>Sprzatnij me:D</title>
+    @PWA
 </head>
 
 <body class="bg-light">
