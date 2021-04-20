@@ -7,6 +7,7 @@ const description = document.querySelector("#detailDescription");
 const numberOfOrder = document.querySelector("#detailNumberOfOrder");
 const lastRating = document.querySelector("#detailLastRating");
 const avgRating = document.querySelector("#detailAvgRating");
+const idUser = document.querySelector("#detailID");
 
 const detailOff = document.querySelector("#detailOffDiv");
 const detailOn = document.querySelector("#detailOnDiv");
@@ -33,6 +34,7 @@ for (let i = 0; i < profiles.length; i++) {
           lastRating.innerHTML = "Brak";
         }
         numberOfOrder.innerHTML = data.jobs;
+        idUser.innerText = data.id;
         avgRating.innerHTML = data.avg;
         for(let i=0;i<Math.round(data.avg??0);i++)
         lastRating.innerHTM+="⭐";
