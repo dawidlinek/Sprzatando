@@ -38,8 +38,8 @@
                     <a class="text-primary text-decoration-none m-2 col-auto text-left" href="{{route('announcement.index')}}">
                         Panel użytkownika
                     </a>
-                    <a class="text-dark text-decoration-none m-2 col-auto text-right" style="white-space: nowrap" href="#">
-                        Kontakt
+                    <a class="text-dark text-decoration-none m-2 col-auto text-right" style="white-space: nowrap" href="/ranking">
+                        Ranking
                     </a>
                 </div>
             </div>

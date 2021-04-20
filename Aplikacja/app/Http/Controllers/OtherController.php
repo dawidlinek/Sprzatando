@@ -26,7 +26,8 @@ class OtherController extends Controller
         $users=$users->toArray();
         
         usort($users,function($a, $b) {return $a['avg']<$b['avg'];});
-        // $users=sli$users;
+        $users=array_slice($users,0,10);
+
         return view('ranking',compact('users'));
     }
     function sort($a, $b){
