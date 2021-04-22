@@ -2,17 +2,11 @@
 <html lang="pl">
 
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/css/fonts.css" />
-        <link rel="stylesheet" href="/css/app.css" />
-        <link rel="stylesheet" href="/css/welcome.css" />
+        @include('components.head')
+
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-        <title>Sprzatnij me:D</title>
-        @PWA
+
     </head>
 
 <body class="bg-light">
@@ -100,7 +94,7 @@
                 </form>
                 <form method="POST" action="/report/{{$announcement->id}}">
                     @csrf
-                    <button class="btn bg-white border border-primary mb-3 border-4 p-4 w-100">Zgłoś nadużycie</button> 
+                    <button class="btn bg-white border border-primary mb-3 border-4 p-4 w-100">Zgłoś nadużycie</button>
                 </form>
                 @if(auth()->user()->admin())
                 <form method="POST"  action="/ban/{{$announcement->id}}">
@@ -108,18 +102,18 @@
                     <button class="btn btn-primary  p-4 w-100">Zbanuj</button>
                 </form>
                 @endif
-                @endauth 
-                @guest 
+                @endauth
+                @guest
                 <a class="btn btn-primary mb-3 p-4 w-100" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
-                <a class="btn bg-white border border-primary border-4 p-4 w-100"  href='/register'>Zarejestruj się</a> 
+                <a class="btn bg-white border border-primary border-4 p-4 w-100"  href='/register'>Zarejestruj się</a>
                 @endguest
             </div>
                 {{-- <div class="d-flex flex-row flex-wrap w-100 h-25 mb-5">
                     @foreach ($announcement->categories as $category)
-                        
+
                     <button class="btn btn-primary m-3 px-5 py-3">{{$category->name}}</button>
                     @endforeach
-                 
+
             </div> --}}
         </div>
         <!-- KONIEC PRAWEJ KOLUMNY -->
@@ -142,7 +136,7 @@
         header.style.display = 'none'
         showBigImage.classList.remove('d-none')
         showBigImage.classList.add('d-flex')
-        imageToShow.src = e.src 
+        imageToShow.src = e.src
       }
       function unShowImage(){
         document.body.style.overflowY = "scroll"

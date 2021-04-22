@@ -2,15 +2,8 @@
 <html lang="pl">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/fonts.css" />
-    <link rel="stylesheet" href="/css/app.css" />
-    <link rel="stylesheet" href="/css/welcome.css" />
+    @include('components.head')
     <link rel="stylesheet" href="/css/ranking.css" />
-    <title>Sprzatnij me:D</title>
     @PWA
 </head>
 
@@ -28,7 +21,7 @@
                 <div class="liczba_zgloszen mb-3 bg-primary" >
                     <p>{{$users[0]['jobs']}} zgłoszeń</p>
                 </div>
-            
+
             </div>
             <div class="flex-fill card d-flex flex-column align-items-center mt-3 mx-3 col-lg-1 col-sm-8"">
                 <img src="https://tryumf.com/api/attachment/get/E1A1D522-60A3-4575-91EE-169AD179B79B/ImageIdent/csPhotos%7CPhotoMed%7C0D5C1385-B72D-4452-AD3A-7BB92FB72D28%7C3/Medal_zamak_srebrny_drugie_miejsce.png" height="100px" width="100px">
@@ -54,8 +47,8 @@
         <table id="rankTable">
             <tr>
                 <th>Miejsce</th>
-                <th>Nazwa użytkownika</th> 
-                <th>Liczba zgłoszeń</th> 
+                <th>Nazwa użytkownika</th>
+                <th>Liczba zgłoszeń</th>
                 <th>Ocena</th>
             </tr>
             @foreach ($users as $key=>$user)
@@ -77,7 +70,7 @@
             <tr class="spaceRow"></tr>
 
 
-        
+
         </table>
     </div>
 @include('components.footer')
