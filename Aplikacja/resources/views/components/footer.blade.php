@@ -9,7 +9,7 @@
 
                         <div class="row mx-auto">
                             <a href="/" class="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-lg-start">
-                                <img style="margin-right: 0.5rem;" width="95px" height="95px" src="/img/logo_invert.png">
+                                <img  alt='logo' style="margin-right: 0.5rem;" width="95px" height="95px" src="/img/logo_invert.png">
                                 <h1 class="align-bottom" style="font-size: 60px">SPRZATNIJ.ME</h1>
                             </a>
                         </div>
@@ -33,8 +33,8 @@
                         <p>Znajdziesz nas także na:</p>
                         <div class="row justify-content-center justify-content-lg-start">
                             <div class="col-lg-6 col-sm-8 d-flex justify-content-center justify-content-lg-start">
-                                <a href="https://github.com/dawidlinek123/Sprzatando" style="margin-right: 0.5rem;" rel="noopener" target="_blank"><img width="48px" height="48px" src="/img/GitHub-Mark-Light-64px.png"></a>
-                                <a href="https://www.facebook.com/ReniaKisza" style="margin-left: 0.5rem;" rel="noopener" target="_blank"><img width="48px" height="48px" src="/img/facebook.png"></a>
+                                <a href="https://github.com/dawidlinek123/Sprzatando" style="margin-right: 0.5rem;" rel="noopener" target="_blank"  aria-label="Github"><img width="48px" height="48px" alt='github' src="/img/GitHub-Mark-Light-64px.png"></a>
+                                <a href="https://www.facebook.com/ReniaKisza" style="margin-left: 0.5rem;" rel="noopener" target="_blank"  aria-label="Facebook"><img   alt='facebook' width="48px" height="48px" src="/img/facebook.png"></a>
                             </div>
                         </div>
                     </div>

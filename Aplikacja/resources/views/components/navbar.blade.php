@@ -3,7 +3,7 @@
     <!-- <Logo & hamburger> -->
     <div class="d-flex justify-content-between col-12 col-md-auto col-lg-2">
         <a class="navbar-brand ml-2 px-3 text-left" href="/">
-            <img alt=" " src="/img/logo.png" height="60" />
+            <img alt="logo" src="/img/logo.png" height="60" />
             <span class="d-none d-lg-inline">SprzatnijME!</span>
         </a>
 
