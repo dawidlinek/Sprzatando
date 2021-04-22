@@ -26,8 +26,8 @@
                 <img alt=" " src="/img/logo.png" height="60" />
                 <span class="d-none d-xl-inline">SprzatnijME!</span>
             </a>
-            <button class="navbar-toggler border-0 d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler border-0 d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Up" >
+                <span class="navbar-toggler-icon" aria-hidden="true"></span>
             </button>
         </div>
 
