@@ -72,9 +72,9 @@
                                 </a>
                             </li>
                             <li class="nav-item m-1">
-                                <a class="nav-link rounded" href="#">
+                                <a class="nav-link rounded" href="/ranking">
                                     <span data-feather="file"></span>
-                                    Kontakt
+                                    Ranking
                                 </a>
                             </li>
                             <li class="nav-item m-1">

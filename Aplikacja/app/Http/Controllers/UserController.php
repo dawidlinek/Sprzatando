@@ -28,7 +28,7 @@ class UserController extends Controller
             // if (isset($input['photo'])) {
                 //     $user->updateProfilePhoto($input['photo']);
                 // }
-                
+
                 // if ($input['email'] !== $user->email && $user instanceof MustVerifyEmail) {
                     // $this->updateVerifiedUser($user, $input);
                     // } else {
@@ -56,7 +56,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ])->save();
         return back()->with('status', 'Pomyślnie zaktualizowano hasło.');
-        
+
     }
     public function UserApi(User $user){
         // $user->engaged= $user->engaged()->with('details:id,rating')->get();
@@ -70,8 +70,16 @@ class UserController extends Controller
         }else{
             $user->avg=round(array_sum($ratings)/count($ratings),1);
         }
+        $user->CreatedAnnouncements=$user->announcements()->count();
+        $user->ban=$user->ban_ending_at?date('Y-m-d',strtotime($user->ban_ending_at)):null;
         unset($user->engaged);
+        unset($user->ban_ending_at);
         $user->last=$user->engaged()->where('status','selected')->latest()->first()->details??"";
         return $user;
+    }
+    public function ban_user(Request $request){
+        $data=$request->validate(['date'=>'required','user'=>'required']);
+        User::findOrFail($data['user'])->update(['ban_ending_at'=>$data['date']]);
+        return back()->with('status','Pomyślnie zbanowano użytkownika');
     }
 }

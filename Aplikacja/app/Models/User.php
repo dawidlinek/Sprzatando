@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'ban_ending_at'
     ];
 
     /**
@@ -69,7 +70,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function engaged(){
         return $this->hasMany(user_has_announcement::class,'user','id')->latest();
     }
-  
+
     // public function engaged(){
     //     return $this->hasManyThrough(Announcement::class,user_has_announcement::class,'user','id','id','announcement');
     // }

@@ -8,6 +8,7 @@ const numberOfOrder = document.querySelector("#detailNumberOfOrder");
 const lastRating = document.querySelector("#detailLastRating");
 const avgRating = document.querySelector("#detailAvgRating");
 const idUser = document.querySelector("#detailID");
+const CreatedAnnouncements=document.querySelector('#detailCreatedAnnouncements')
 
 const detailOff = document.querySelector("#detailOffDiv");
 const detailOn = document.querySelector("#detailOnDiv");
@@ -20,9 +21,14 @@ for (let i = 0; i < profiles.length; i++) {
     let user=names[i].dataset.user;
     fetch(`/api/user/${user}`).then(resp=>{
       resp.json().then(data=>{
-
+        document.getElementById('ban-user-id').value=data.id
         name.innerHTML = data.name;
         date.innerHTML = new Date(Date.parse(data.created_at)).toLocaleDateString();
+        if(CreatedAnnouncements){
+            CreatedAnnouncements.innerText=data.CreatedAnnouncements;
+            // if(data.ban!=)
+            document.querySelector('#ban-user-date').value=data.ban
+        }
         if(data.last){
           description.innerHTML =
          `<h4> Nazwa: ${data.last.title}</h4> ${data.last.rating_description??' Brak ostatniej oceny użytkownika'}`;
@@ -41,7 +47,7 @@ for (let i = 0; i < profiles.length; i++) {
       })
 
     });
-    
+
   });
 }
 function discard(id){

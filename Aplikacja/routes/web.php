@@ -41,21 +41,22 @@ Route::get('/dashboard/announcement/{announcement}/discard/{user}',[EngageAnnoun
 Route::post('/dashboard/announcement/{announcement}/accept/{user}',[EngageAnnouncement::class,'accept']);
 Route::post('/dashboard/announcement/{announcement}/rating',[AnnouncementController::class,'rating']);
 Route::middleware(['auth'])->group(function () {
-    
+
     Route::get('/logout', 'LoginController@logout');
     Route::view('/email/verify','auth.verify-email')->name('verification.notice');
     Route::get('/dashboard/zlecenia',[EngageAnnouncement::class,'get_engaged_announcements']);
     Route::resource('/dashboard/announcement', AnnouncementController::class);
-    
+
     Route::get('/email/verify/{id}/{hash}',[AuthController::class,'EmailVerify'])->middleware('signed')->name('verification.verify');
     Route::get('/report/{announcement}', [BanController::class, 'report_announcement']);
-    
+
     Route::post('/email/verification-notification', [AuthController::class,'SendEmail'])->middleware('throttle:6,1')->name('verification.send');
     Route::post('/engage/{announcement}', [EngageAnnouncement::class, 'engage']);
     Route::post('/user/profile', [UserController::class, 'update'])->name('user.update');
     Route::post('/user/password', [UserController::class, 'updatePassword'])->name('user.update.password');
-    
+
     Route::middleware(AdminCheck::class)->group(function(){
+        Route::post('/user/ban',[UserController::class,'ban_user']);
         Route::get('/dashboard/reported',[BanController::class,'reported']);
         Route::get('/dashboard/users',[OtherController::class,'users']);
         Route::any('/ban/{announcement}',[BanController::class,'ban_announcement']);

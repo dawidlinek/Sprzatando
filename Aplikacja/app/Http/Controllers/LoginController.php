@@ -15,6 +15,13 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $name, 'password' => $password]))
         {
+            // return auth()->user()->ban_ending_at;
+            if(auth()->user()->ban_ending_at){
+                $data=strtotime(auth()->user()->ban_ending_at);
+            if($data>time()){
+            Auth::logout();
+            return back()->withErrors(['Na to konto został nałożony ban. Poczekaj do '.date('d-m-Y',$data).' lub skontaktuj się z administratorem']);
+            }}
             if($request->redirect)
             return redirect('/singleOffer/'.$request->redirect);
             else
