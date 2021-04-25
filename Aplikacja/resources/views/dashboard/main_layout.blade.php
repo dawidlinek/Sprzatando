@@ -20,31 +20,61 @@
             </button>
         </div>
 
-        <div class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1">
-            <!-- Przyciski z lewej -->
+        <!-- <Linki desktop> -->
+        <div class="d-none d-md-flex flex-column flex-md-row justify-content-between align-items-center w-100 p-1 ml-3">
+
+            <!-- <Przyciski z lewej> -->
             <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
                 <div class="d-flex justify-content-between col-auto" style="white-space: nowrap; padding-left: 0.5rem; padding-right: 0.5rem;">
-                    <a class="text-primary text-decoration-none m-2 col-auto text-left" href="{{route('announcement.index')}}">
-                        Panel użytkownika
+
+                    <a class="text-dark text-decoration-none m-2 text-left ml-3 mr-3" href="/search">
+                        Przeglądaj
                     </a>
-                    <a class="text-dark text-decoration-none m-2 col-auto text-right" style="white-space: nowrap" href="/ranking">
+
+                    <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3" style="white-space: nowrap" href="/ranking">
                         Ranking
                     </a>
+
                 </div>
             </div>
+            <!-- </Przyciski z lewej> -->
 
-            <!-- Przyciski z prawej -->
+
+            <!-- <Przyciski z prawej> -->
             <div class="d-none d-md-flex mr-2 col-12 col-md-auto">
                 <div class="d-flex mr-2 col-auto" style="white-space: nowrap">
-                    <form method="POST" action="{{ route('logout') }}">
+
+                    <!-- <Logged> -->
+                    @auth
+
+                    <a class="text-dark text-decoration-none m-2 text-right ml-3 mr-3 text-primary" style="white-space: nowrap" href="/dashboard/announcement">
+                        Panel użytkownika
+                    </a>
+                    <form method="POST" action="{{ route('logout') }}" class="ml-3 mr-3">
                         @csrf
-                        <button class="text-dark text-decoration-none m-2 col-5 col-auto text-right bg-transparent border-0 text-nowrap" style="padding-right: 1rem">
+                        <button class="text-dark text-decoration-none m-2 col-5 text-right bg-transparent border-0 text-nowrap w-100" style="padding-right: 1rem">
                             Wyloguj się
                         </button>
                     </form>
+                    @endauth
+                    <!-- </Logged> -->
+
+                    @guest
+                    <!-- <Unlogged> -->
+                    <a class="text-dark text-decoration-none m-2 col-auto text-right ml-3 mr-3" style="white-space: nowrap" href="/login">
+                        Zaloguj się
+                    </a>
+                    <a class="text-dark text-decoration-none m-2 col-auto text-right ml-3 mr-3" style="white-space: nowrap" href="/register">
+                        Rejestracja
+                    </a>
+                    @endguest
+                    <!-- </Unlogged> -->
                 </div>
             </div>
+            <!-- </Przyciski z prawej> -->
+
         </div>
+        <!-- </Linki desktop> -->
     </header>
 
     <div class="container-fluid">
@@ -80,7 +110,7 @@
                     </div>
 
                     <!-- Sidebar links -->
-          @include('dashboard.menu')
+                    @include('dashboard.menu')
                 </div>
             </nav>
 
