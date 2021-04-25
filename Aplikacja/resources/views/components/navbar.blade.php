@@ -74,7 +74,7 @@
 
 <!-- <Linki mobile> -->
 <div class="d-block d-md-none">
-    <nav id="mobileMenu" class="position-fixed col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse w-100" style="z-index: 999;">
+    <nav id="mobileMenu" class="p-1 position-fixed col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse w-100 h-100" style="z-index: 1001;">
         <div class="pt-3">
 
             <ul class="nav flex-column" style="text-align: right;">

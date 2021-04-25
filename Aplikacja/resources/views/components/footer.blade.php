@@ -3,14 +3,14 @@
     <div class="row">
         <div class="p-3 text-light" style="background-color: #15192F; z-index: 1000;">
             <div class="col-12 col-xl-10 offset-0 offset-xl-1">
-                <div class="row m-5 mb-0">
+                <div class="row m-3 m-md-5 mb-0">
 
                     <div class="col-lg-8 col-sm-12">
 
                         <div class="row mx-auto">
-                            <a href="/" class="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-lg-start">
+                            <a href="/" class="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-lg-start m-3 m-md-0 p-0">
                                 <img  alt='logo' style="margin-right: 0.5rem;" width="95px" height="95px" src="/img/logo_invert.png">
-                                <h1 class="align-bottom" style="font-size: 60px">SPRZATNIJ.ME</h1>
+                                <h1 class="align-bottom footer-logo-text">SPRZATNIJ.ME</h1>
                             </a>
                         </div>
 
