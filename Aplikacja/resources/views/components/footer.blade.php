@@ -7,7 +7,7 @@
 
                     <div class="col-lg-8 col-sm-12">
 
-                        <div class="row mx-auto">
+                        <div class="row mx-auto d-flex justify-content-center">
                             <a href="/" class="text-white text-decoration-none d-flex align-items-center justify-content-center justify-content-lg-start m-3 m-md-0 p-0">
                                 <img  alt='logo' style="margin-right: 0.5rem;" width="95px" height="95px" src="/img/logo_invert.png">
                                 <h1 class="align-bottom footer-logo-text">SPRZATNIJ.ME</h1>

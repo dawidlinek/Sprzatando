@@ -3,14 +3,14 @@
 @section('main')
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-<main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+<section class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
 
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
-        <div class="row w-100 match-height">
+        <div class="row w-100 match-height mx-0">
             @include('dashboard.status')
             <div class="card" style="padding-bottom: 1rem;">
 
-                <!-- <Title  -->
+                <!-- <Title>  -->
                 <div class="row w-100">
                     <div class="col col-12 marginLeftDesktop">
                         <h2 class="card-title text-primary mt-4 mb-4"> @if($announcement->status=='active' || $announcement->status=='reported') Edytuj ogłoszenie @else Podgląd ogłoszenia @endif</h2>
@@ -32,8 +32,8 @@
                                 <input @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif type="text" name='title' required value="{{$announcement->title}}" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Lokalizacja</label>
                                 <input type="text" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif name='localization' required value="{{$announcement->localization}}" id='LocalizationAutocomplete' class="form-control mb-4" />
-                                <input name="longitude" id='longitude'  value="{{$announcement->longitude}}" type="text" hidden/>
-                                <input name="latitude" id='latitude' value="{{$announcement->latitude}}" type="text" hidden/>
+                                <input name="longitude" id='longitude' value="{{$announcement->longitude}}" type="text" hidden />
+                                <input name="latitude" id='latitude' value="{{$announcement->latitude}}" type="text" hidden />
                                 <label for="FormControlInput1 col-offset">Cena</label>
                                 <input type="number" @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif min="1" required name='price' value="{{$announcement->price}}" step="0.05" class="form-control mb-4" />
                                 <label for="FormControlInput1 col-offset">Opis</label>
@@ -92,7 +92,10 @@
                                                     <img src="/uploads/{{ $announcement['img'.$i] }}" height="150px" width="150px" class="img-fluid add-image zIndex2" draggable="false" />
                                                 </div>
                                                 @if($announcement->status=='active' && $announcement->status!='reported')
+
+                                                <!-- Dont touch, this <form> is important -->
                                                 <form></form>
+
                                                 <form method='POST' id='deletef{{$i}}' class='delete-images' onsubmit="return confirm('Czy na pewno chcesz usunąć zdjęcie?')" action='{{route('announcement.destroy',$announcement->id)}}?id={{$i}}'>
                                                     @method('DELETE')
                                                     @csrf
@@ -107,44 +110,42 @@
 
                                     </div>
                                 </div>
-                                <input hidden @if($announcement->status!='active' && $announcement->status!='reported')  disabled @endif name='status' id='status' type='text' value/>
+                                <input hidden @if($announcement->status!='active' && $announcement->status!='reported') disabled @endif name='status' id='status' type='text' value/>
 
                                 <div class="w-100" style="margin-bottom: 2.8rem;">
                                     @method('PUT')
                                     @if($announcement->status=='active' || $announcement->status=='reported')
-                                    <button type='submit' onclick="status.value='finished';update.submit()" class="btn btn-outline-primary w-100 mt-3">Zakończ ofertę</a>
+                                        <button type='submit' onclick="status.value='finished';update.submit()" class="btn btn-outline-primary w-100 mt-3">Zakończ ofertę</a>
                                         <button type='submit' form='update' class="btn btn-primary w-100 mt-3 text-white" onclick="update.submit()">Zapisz</button>
-                                        @else
+                                    @else
                                         <a class="btn btn-primary w-100 mt-3 text-white" href='{{route('announcement.index')}}'>Powrót</a>
-
-                                        @endif
-
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
+                <!-- </Main form> -->
             </div>
         </div>
     </div>
-
     <!-- </Image select> -->
+</section>
 
-    </div>
-
-
-
-    
-</main>
 @php $user=$announcement->engaged()->where('status','selected')->first()??null @endphp
 @if($announcement->status=='active' ||$announcement->status=='reported')
-<main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+
+<section class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         @if($announcement->engaged()->where('status','engaged')->count()==0)
         <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
             <h2 class="card-title text-primary mt-4 mb-4 ">Niestety nie masz jeszcze chętnych zleceniobiorców</h2>
-            
+
         </div>
         @else
-        <div class="row w-100 match-height">
+        <div class="row w-100 match-height mx-0">
 
-            <div style='    min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
+            <div style='min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
                 <div class="col-lg-5">
                     <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
                         <h2 class="card-title text-primary mt-4 mb-4 ">Wybierz zleceniodawce</h2>
@@ -152,11 +153,11 @@
                             @foreach ($announcement->engaged()->where('status','engaged')->get() as $eng)
                             {{-- {{dd($eng->userDetails)}} --}}
                             <div class="card flex-row align-items-center py-4 my-3 mx-2 w-100 profile" data-user="{{$eng->user}}">
-                                <img src="/img/avatar.jpg" class="avatarImage mx-3"> 
+                                <img src="/img/avatar.jpg" class="avatarImage mx-3">
                                 <p class="mb-0 text-primary" data-user='{{$eng->userDetails->id}}'>{{$eng->userDetails->name}}</p>
                             </div>
                             @endforeach
-                           
+
                         </div>
                     </div>
                 </div>
@@ -172,13 +173,13 @@
                             <img src="/img/avatar.jpg" class="mainAvatarImage mx-3" height="100%">
                             <div class="mb-3">
                                 <h1 class="text-primary" id="detailName"></h1>
-                                <p >Konto stworzone <span id="detailDate"></span></p>
+                                <p>Konto stworzone <span id="detailDate"></span></p>
                             </div>
                         </div>
                         <div class="mt-1 mb-3">
                             <h2 class="text-primary">Ostatnie zlecenie</h2>
                             <p id="detailDescription"></p>
-                        </div> 
+                        </div>
                         <div class="mt-1 mb-5">
                             <h2 class="text-primary">Statystyki użytkownika</h2>
                             <p class="mb-0">Ilość zrealizowanych zleceń: <span id="detailNumberOfOrder"></span></p>
@@ -189,7 +190,6 @@
                             <button class="btn bg-white border border-primary border-4 mb-3 w-100" onclick="discard({{$eng->userDetails->id}})">Odrzuć</button>
                             <form action="/dashboard/announcement/{{$announcement->id}}/accept/{{$eng->userDetails->id}}" method="POST" onsubmit="return confirm('Wybranie wykonawcy jest równoznaczne z zakończeniem ogłoszenia. Czy na pewno chcesz wykonać tą akcję?')">
                                 @csrf
-                                {{-- <input type="text" name='user' value='{{$eng->userDetails->id}}' hidden> --}}
                                 <button class="btn btn-primary w-100" type="submit">Wybierz zleceniobiorcę</button>
                             </form>
                         </div>
@@ -201,34 +201,28 @@
         </div>
         @endif
     </div>
-</div>
-</div>
-</main>
-@elseif($announcement->status=='finished' && $user) 
+</section>
+
+@elseif($announcement->status=='finished' && $user)
 @php $user=$user->userDetails @endphp
-<main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+
+<section class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
-        {{-- @if($announcement->engaged()->where('status','engaged')->count()==0)
-        <div class="card-body d-flex flex-column align-items-start justify-content-between w-100 h-75 card ">
-            <h2 class="card-title text-primary mt-4 mb-4 ">Niestety nie masz jeszcze chętnych zleceniobiorców</h2>
-           
-        </div>
-        @else --}}
         <div class="row w-100 match-height">
-            <div style='    min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
+            <div style='min-height: 70vh' class="col-lg col-lg-12 d-flex flex-lg-row flex-md-column justify-content-around">
                 <div class="col-lg-5">
                     <div class="card-body flex-column  card h-75" id="detailOnDiv">
                         <div class="d-flex h-25 align-items-center ">
                             <img src="/img/avatar.jpg" class="mainAvatarImage mx-3" height="100%">
                             <div class="mb-3">
                                 <h1 class="text-primary" id="detailName">{{$user->name}}</h1>
-                                <p >Konto stworzone <span id="detailDate">{{$user->created_at}}</span></p>
+                                <p>Konto stworzone <span id="detailDate">{{$user->created_at}}</span></p>
                             </div>
                         </div>
                         <div class="mt-1 mb-3">
                             <h2 class="text-primary">Ostatnie zlecenie:</h2><span>{{$user->engaged()->where('status','selected')->latest()->first()->details->title}}</span>
                             <p id="detailDescription">Ocena: {{$user->engaged()->where('status','selected')->latest()->first()->details->rating_description}}</p>
-                        </div> 
+                        </div>
                         <div class="mt-1 mb-5">
                             <h2 class="text-primary">Statystyki użytkownika</h2>
                             <p class="mb-0">Ilość zrealizowanych zleceń: <span id="detailNumberOfOrder">{{$user->engaged()->where('status','selected')->count()}}</span></p>
@@ -238,83 +232,37 @@
                         </div>
                     </div>
                 </div>
-                
-                
+
+
                 <div class="col-lg-5 d-flex  justify-content-center">
-                    
+
                     <div class="card-body d-flex flex-column  justify-content-around h-75 card " id="detailOffDiv">
                         <form action="/dashboard/announcement/{{$announcement->id}}/rating" class='w-100' method="POST">
-                        <h1>Oceń zleceniobiorcę</h1>
-                        <p id='gwiazdki'>@for($i=0;$i<($announcement->rating??5);$i++)⭐@endfor</p>
-                        <input type="range" min="1" max="6" oninput='gwiazdki.innerHTML="";for(let i=0;i<this.value;i++){gwiazdki.innerHTML+="⭐"}' value="{{$announcement->rating??5}}" {{$announcement->rating?'disabled':""}} name='rating' class="slider" id="myRange"><br>
-                        <label for="">Napisz krótką opinię o zleceniobiorcy</label>
-                        <textarea name="rating_description" class='w-100' id="" cols="30" rows="10" {{$announcement->rating?'disabled':""}}>{{$announcement->rating_description??''}}</textarea>
-                        
-                        <div class="d-flex flex-column mt-3">
+                            <h1>Oceń zleceniobiorcę</h1>
+                            <p id='gwiazdki'>@for($i=0;$i<($announcement->rating??5);$i++)⭐@endfor</p>
+                            <input type="range" min="1" max="6" oninput='gwiazdki.innerHTML="";for(let i=0;i<this.value;i++){gwiazdki.innerHTML+="⭐"}' value="{{$announcement->rating??5}}" {{$announcement->rating?'disabled':""}} name='rating' class="slider" id="myRange"><br>
+                            <label for="">Napisz krótką opinię o zleceniobiorcy</label>
+                            <textarea name="rating_description" class='w-100' id="" cols="30" rows="10" {{$announcement->rating?'disabled':""}}>{{$announcement->rating_description??''}}</textarea>
+
+                            <div class="d-flex flex-column mt-3">
                                 @csrf
-                                 @if(!$announcement->rating)
+                                @if(!$announcement->rating)
                                 <button class="btn btn-primary w-100" type="submit">Oceń zleceniobiorcę</button>
                                 @endif
                             </div>
                         </form>
-                        </div>
-                        
+                    </div>
+
 
                 </div>
             </div>
-
-
         </div>
-        {{-- @endif --}}
     </div>
-</div>
-</div>
-</main>
+</section>
 @endif
-    <!-- </Main form> -->
 
-
-    {{-- <script>
-    const firstImage = document.querySelector('#first-image');
-const firstDeleteImage = document.querySelector('#first-delete-image');
-const sectionFirstImage = document.querySelector('#sectionAddFirstImage');
-    firstDeleteImage.addEventListener('click',()=>{
-        firstImage.src = "";
-        sectionFirstImage.style.display = 'flex';
-        firstDeleteImage.classList.remove('d-flex')
-        firstImage.style.display = 'none';
-    })
-    
-const secondImage = document.querySelector('#second-image');
-const secondDeleteImage = document.querySelector('#second-delete-image');
-const sectionSecondImage = document.querySelector('#sectionAddSecondImage');
-    secondDeleteImage.addEventListener('click',()=>{
-        secondImage.src = "";
-        sectionSecondImage.style.display = 'flex';
-        secondImage.style.display = 'none';
-        secondDeleteImage.classList.remove('d-flex')
-    })
-    
-const thirdImage = document.querySelector('#third-image');
-const thirdDeleteImage = document.querySelector('#third-delete-image');
-const sectionThirdImage = document.querySelector('#sectionAddThirdImage');
-    thirdDeleteImage.addEventListener('click',()=>{
-        thirdImage.src = "";
-        sectionThirdImage.style.display = 'flex';
-        thirdImage.style.display = 'none';
-        thirdDeleteImage.classList.remove('d-flex')
-    })
-
-    
-const descriptionTextArea = document.querySelector('#descriptionTA');
-const leftSigns = document.querySelector('#signs');
-descriptionTextArea.addEventListener('input',()=>{
-    leftSigns.innerHTML = 500-descriptionTextArea.value.length;
-})
-</script> --}}
-    <script src="https://maps.google.com/maps/api/js?key=AIzaSyD-Vt-coVq0Nqd2VZc_tEZvvylA36vIO3s&libraries=places" type="text/javascript"></script>
-    <script defer src="/js/addingannouncement.js"></script>
-    <script src="/js/profilDetail.js"></script>
-
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyD-Vt-coVq0Nqd2VZc_tEZvvylA36vIO3s&libraries=places" type="text/javascript"></script>
+<script defer src="/js/addingannouncement.js"></script>
+<script src="/js/profilDetail.js"></script>
 
 @endsection

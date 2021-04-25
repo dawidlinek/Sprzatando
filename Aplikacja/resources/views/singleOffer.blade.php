@@ -119,18 +119,12 @@
         <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
   </div>
-  <div class="toTop bg-primary" onclick="scrollToTop()">
-      ↑
-  </div>
   @include('components.footer')
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
       const showBigImage = document.querySelector('#bigImage');
       const headerSection = document.querySelector('#header');
       const imageToShow = document.querySelector('#showImage');
-      function scrollToTop(){
-          window.scrollTo(0, 0);
-      }
       function showImage(e){
         document.body.style.overflow = "hidden"
         header.style.display = 'none'

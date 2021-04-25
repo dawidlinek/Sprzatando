@@ -74,56 +74,57 @@
 
 <!-- <Linki mobile> -->
 <div class="d-block d-md-none">
-    <nav id="mobileMenu" class="p-1 position-fixed col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse w-100 h-100" style="z-index: 1001;">
-        <div class="pt-3">
+    <nav id="mobileMenu" class="w-100 col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse" style="z-index: 1000;">
+        <div class="position-sticky pt-3">
+            <!-- Mobile version main links -->
+            <div class="d-block d-md-none">
+                <ul class="nav flex-column">
+                    <!-- <Main links> -->
+                    <li class="nav-item m-1">
+                        <a class="nav-link rounded @if(request()->route()->uri=='search') bg-primary text-white @else nav-item-inactive @endif " href="/search">
+                            Szukaj
+                        </a>
+                    </li>
+                    <li class="nav-item m-1" >
+                        <a class="nav-link rounded @if(request()->route()->uri=='ranking') bg-primary text-white @else nav-item-inactive @endif " href="/ranking">
+                            Ranking
+                        </a>
+                    </li>
+                    <!-- </Main links> -->
 
-            <ul class="nav flex-column" style="text-align: right;">
+                    <!-- <Logged> -->
+                    @auth
+                    <li class="nav-item m-1 nav-item-inactive">
+                        <a class="nav-link rounded" href="/dashboard/announcement">
+                            Panel użytkownika
+                        </a>
+                    </li>
+                    <li class="nav-item m-1 nav-item-inactive">
+                        <form method="POST" action="{{ route('logout') }}" class="d-flex justify-content-start">
+                    @csrf
+                    <button class="nav-link text-decoration-none text-right bg-transparent border-0 text-nowrap">
+                        Wyloguj się
+                    </button>
+                    </form>
+                    </li>
+                    @else
+                    <!-- </Logged> -->
 
-                <!-- <Main links> -->
-                <li class="nav-item m-1 @if(request()->route()->uri=='search') nav-item-active @else nav-item-inactive @endif ">
-                    <a class="nav-link" href="/search">
-                        Szukaj
-                    </a>
-                </li>
-                <li class="nav-item m-1  @if(request()->route()->uri=='ranking') nav-item-active @else nav-item-inactive @endif" >
-                    <a class="nav-link rounded" href="/ranking">
-                        Ranking
-                    </a>
-                </li>
-                <!-- </Main links> -->
-
-                <!-- <Logged> -->
-                @auth
-                <li class="nav-item m-1 nav-item-inactive">
-                    <a class="nav-link rounded" href="/dashboard/announcement">
-                        Panel użytkownika
-                    </a>
-                </li>
-                <li class="nav-item m-1 nav-item-inactive">
-                    <form method="POST" action="{{ route('logout') }}" class="d-flex justify-content-end">
-                @csrf
-                <button class="nav-link text-decoration-none text-right bg-transparent border-0 text-nowrap">
-                    Wyloguj się
-                </button>
-                </form>
-                </li>
-                @else
-                <!-- </Logged> -->
-
-                <!-- <Unlogged> -->
-                <li class="nav-item m-1 nav-item-inactive">
-                    <a class="nav-link rounded" href="/login">
-                        Zaloguj się
-                    </a>
-                </li>
-                <li class="nav-item m-1 nav-item-inactive">
-                    <a class="nav-link rounded" href="/register">
-                        Rejestracja
-                    </a>
-                </li>
-                @endauth
-                <!-- </Unlogged> -->
-            </ul>
-        </div>
+                    <!-- <Unlogged> -->
+                    <li class="nav-item m-1 nav-item-inactive">
+                        <a class="nav-link rounded" href="/login">
+                            Zaloguj się
+                        </a>
+                    </li>
+                    <li class="nav-item m-1 nav-item-inactive">
+                        <a class="nav-link rounded" href="/register">
+                            Rejestracja
+                        </a>
+                    </li>
+                    @endauth
+                    <!-- </Unlogged> -->
+                </ul>
+            </div>
+        </div>    
     </nav>
 </div>

@@ -7,10 +7,9 @@
     @PWA
 </head>
 
-@include('components.navbar')
-
 <body class="bg-light">
 
+    @include('components.navbar')
     <div class="w-100 d-flex align-items-center flex-column col-12">
         <h1 class="primary-text mt-3 mb-5">Najlepsi z najlepszych</h1>
         <div class="d-flex w-100 flex-lg-row flex-column align-items-center justify-content-center mb-5" id="podium">
@@ -75,3 +74,4 @@
         </table>
     </div>
 @include('components.footer')
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>

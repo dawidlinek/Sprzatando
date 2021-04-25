@@ -18,7 +18,7 @@
             <!-- </Navbar> -->
 
             <!-- <Form> -->
-            <div class="d-flex justify-content-center align-items-center" style="min-height: 90%">
+            <div class="d-flex justify-content-center align-items-center" style="min-height: 90%; margin-top: -40px;">
                 <div class="p-1 p-lg-5 col-12 col-sm-8 col-lg-12 col-xl-9" style="max-width: 600px">
                     <h1 class="header text-center text-primary pb-3">
                         Dołącz do nas!
@@ -66,9 +66,4 @@
     <script src="slider.js"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
-{{-- <script src="slider.js"></script> --}}
-{{-- <script src="./bootstrap/js/bootstrap.bundle.min.js"></script> --}}
-</body>
-
 </html>
