@@ -7,7 +7,7 @@
             <span class="d-none d-lg-inline">SprzatnijME!</span>
         </a>
 
-        <button class="navbar-toggler border-0 d-md-none collapsed m-2" style="margin-right: 1rem !important" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="sidebarMenu" aria-expanded="false">
+        <button class="navbar-toggler border-0 d-md-none collapsed m-2" style="margin-right: 1rem;" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu" aria-controls="sidebarMenu" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
@@ -93,12 +93,7 @@
                     <!-- </Main links> -->
 
                     <!-- <Logged> -->
-                    @auth
-                    <li class="nav-item m-1 nav-item-inactive">
-                        <a class="nav-link rounded" href="/dashboard/announcement">
-                            Panel użytkownika
-                        </a>
-                    </li>
+                    @Auth
                     <li class="nav-item m-1 nav-item-inactive">
                         <form method="POST" action="{{ route('logout') }}" class="d-flex justify-content-start">
                     @csrf
@@ -124,6 +119,14 @@
                     @endauth
                     <!-- </Unlogged> -->
                 </ul>
+
+                <hr>
+
+                <!-- Sidebar links -->
+                <a class="nav-link rounded w-100" href="/dashboard/announcement">
+                    <h5 class="text-primary" style="padding-left: 2px;">Panel użytkownika:</h5>
+                </a>
+                @include('dashboard.menu')
             </div>
         </div>    
     </nav>

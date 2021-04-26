@@ -58,8 +58,8 @@
                     </div>
                     <div class="b-row d-flex">
                         @if($reported??false) 
-                        <a class="btn btn-primary w-100 text-nowrap text-white rounded mr-1" href="/ban/{{$announcement->id}}">Zbanuj</a>
-                        <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="/restore/{{$announcement->id}}">Przywróć</a>
+                        <a class="btn btn-primary w-100 text-nowrap text-white rounded mr-1" href="/restore/{{$announcement->id}}">Odrzuć</a>
+                        <a class="btn btn-outline-danger w-100 text-nowrap text-danger rounded ml-1" href="/ban/{{$announcement->id}}">Zbanuj</a>
                         @else 
                         @if($user??false)
 

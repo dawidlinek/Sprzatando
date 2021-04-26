@@ -5,7 +5,7 @@
 <main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         <div class="row w-100 d-flex flex-column flex-lg-row align-items-start justify-content-between">
-@include('components.info')
+            @include('components.info')
             <div class="col-12 col-lg-6 d-flex flex-column align-items-start justify-content-between card m-2 p-3 order-2" style="height: 75vh;">
                 <h2 class="card-title text-primary mb-4">Szukaj użytkownika</h2>
                 <label for="search-user">ID użytkownika/Imię/Nazwisko</label>
@@ -49,17 +49,17 @@
                     <div class="mt-1 mb-5">
                         <h3 class="text-primary">Statystyki użytkownika</h3>
                         <p class="mb-0">Ilość zrealizowanych zleceń: <span id="detailNumberOfOrder"></span></p>
-                        <p class="mb-0" >Ilość stworzonych zleceń: <span id="detailCreatedAnnouncements"></span></p>
+                        <p class="mb-0">Ilość stworzonych zleceń: <span id="detailCreatedAnnouncements"></span></p>
                         <p class="mb-0">Ostatnia ocena użytkownika: <span id="detailLastRating"></span></p>
                         <p class="mb-0">Średnia ocena użytkownika: <span id="detailAvgRating"></span></p>
                     </div>
                     <p class="mt-3 mb-0">Końcowa data blokady konta:</p>
                     <div class="d-flex flex-row">
-                        <form action='/user/ban' method="POST"  class=" w-100">
+                        <form action='/user/ban' method="POST" class=" w-100">
                             @csrf
-                        <input type="date" name='date' id='ban-user-date' class="form-control w-100" required/>
-                        <input type="text" name='user' id='ban-user-id' hidden />
-                        <button class="btn btn-primary w-100">Zbanuj</button>
+                            <input type="date" name='date' id='ban-user-date' class="form-control w-100" required />
+                            <input type="text" name='user' id='ban-user-id' hidden />
+                            <button class="btn btn-primary w-100">Zbanuj</button>
                         </form>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
 
         </div>
     </div>
-</div>
-</div>
+    </div>
+    </div>
 </main>
 <script src="/js/profilDetail.js"></script>
 
