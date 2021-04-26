@@ -23,7 +23,7 @@
 }
 .liczba_zgloszen p{
     margin-bottom: 0;
-    padding:5px;
+    padding: 5px 15px;
     color:white;
 }
 .spaceRow{
@@ -91,6 +91,10 @@ td:first-child{
     padding: 1rem;
 }
 td{
+    width:33%;
+    padding: 1rem;
+}
+th{
     width:33%;
     padding: 1rem;
 }
