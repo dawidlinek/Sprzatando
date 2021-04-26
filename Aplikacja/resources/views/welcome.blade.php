@@ -2,7 +2,7 @@
 <html lang="pl">
 
 <head>
- @include('components.head')
+  @include('components.head')
 </head>
 
 <body class="bg-light">
@@ -73,7 +73,7 @@
 
       <!-- <Wave> -->
       <svg class="welcome-wave position-absolute" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2023.356 825.819">
-        <path id="Path_24" data-name="Path 24" d="M-446.3,317.207s10.768,320.258,857.508,257.938,1120.265-202.512,1107.238-50.964-8.707,593.705-26.076,602.2-1996.839,8.321-1996.839,8.321V308.887Z" transform="translate(504.469 -308.887)" fill="#e6f2ff" />
+      <path fill="#e6f2ff" d="m-1.90456,69.4965s72.01802,260.25798 918.75802,197.93798s1120.265,-202.512 1107.238,-50.964s-8.707,593.705 -26.076,602.2s-1996.839,8.321 -1996.839,8.321l-3.08102,-757.49498zl3.08102,-68.32002" id="Path_24"/>
       </svg>
       <!-- </Wave> -->
     </div>
@@ -81,14 +81,8 @@
 
 
     <!-- <Footer -->
-      @include('components.footer')
-    {{-- <div class="row">
-      <div class="p-3" style="background-color: #15192F; min-height: 200px; z-index: 1000;">
-
-      </div>
-    </div> --}}
+    @include('components.footer')
     <!-- </Footer> -->
-
 
   </div>
   <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>

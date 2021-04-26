@@ -10,7 +10,7 @@
 
     @include('components.navbar')
 
-    <div class="d-flex col-12 mt-5">
+    <div class="d-flex flex-column flex-md-row col-12 mt-5">
 
         <!-- LEWA KOLUMNA -->
         <div id="filtry" class="d-md-flex collapse col-12 col-md-4 mt-0 mt-md-5 flex-column align-items-center">
@@ -20,7 +20,7 @@
 
                 <div class="col-10 mb-5 d-block d-md-none">
                     <button type="button" data-bs-toggle="collapse" data-bs-target="#filtry" aria-expanded="false" class="d-block d-md-none btn-block btn button-off text-nowrap mt-3 px-4 py-2" href="#">
-                        Przeglądaj oferty
+                        Ukryj filtry
                     </button>
                 </div>
 

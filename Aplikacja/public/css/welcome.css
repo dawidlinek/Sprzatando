@@ -36,11 +36,13 @@ body {
 
 .welcome-wave {
     bottom: -5rem;
-    left: -1rem;
-    right: 1rem;
+    left: 0rem;
+    right: 0rem;
+
+    padding: 0;
 
     z-index: 0;
-    transform: scaleX(1.2) scaleY(1.4);
+    transform: scaleY(1.4);
 }
 
 .card {
