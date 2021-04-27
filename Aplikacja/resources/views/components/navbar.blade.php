@@ -119,15 +119,16 @@
                     @endauth
                     <!-- </Unlogged> -->
                 </ul>
+                @auth
+                    <hr>
 
-                <hr>
-
-                <!-- Sidebar links -->
-                <a class="nav-link rounded w-100" href="/dashboard/announcement">
-                    <h5 class="text-primary" style="padding-left: 2px;">Panel użytkownika:</h5>
-                </a>
-                @include('dashboard.menu')
+                    <!-- Sidebar links -->
+                    <a class="nav-link rounded w-100" href="/dashboard/announcement">
+                        <h5 class="text-primary" style="padding-left: 2px;">Panel użytkownika:</h5>
+                    </a>
+                    @include('dashboard.menu')
+                @endauth
             </div>
-        </div>    
+        </div>
     </nav>
 </div>
