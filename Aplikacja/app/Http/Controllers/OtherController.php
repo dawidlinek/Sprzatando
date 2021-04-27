@@ -27,7 +27,7 @@ class OtherController extends Controller
             $x->avg=$x->engaged->avg('details.rating')??0;
             $x->jobs=$x->announcements()->count();
         });
-        $users=$users->sortByDesc('avg')->values()->take(10);
+        $users=$users->sortByDesc('jobs')->sortByDesc('avg')->values()->take(10);
 
         return view('ranking',compact('users'));
     }

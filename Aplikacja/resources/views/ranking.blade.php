@@ -48,8 +48,8 @@
                 <tr>
                     <th>Miejsce</th>
                     <th>Nazwa użytkownika</th>
-                    <th>Liczba ogłoszeń</th>
-                    <th>Ocena</th>
+                    <th>Stworzonych ogłoszeń</th>
+                    <th>Średnia ocena</th>
                 </tr>
 
                 @foreach ($users as $key=>$user)
@@ -61,10 +61,10 @@
                     <td>{{$user['name']}}</td>
                     <td>
                         <div class="liczba_zgloszen bg-primary">
-                            <p>{{$user['jobs']}} zgłoszeń</p>
+                            <p>{{$user['jobs']}} ogłoszeń</p>
                         </div>
                     </td>
-                    <td style="text-align: right;">{{$user['avg']}} {{str_repeat('⭐',round($user['avg']))}}</td>
+                    <td style="text-align: right;" class='text-nowrap'>{{$user['avg']}} {{str_repeat('⭐',round($user['avg']))}}</td>
                 </tr>
                 @endforeach
 
