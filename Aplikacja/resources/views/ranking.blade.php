@@ -16,7 +16,7 @@
 
         <div class="d-flex w-100 flex-lg-row flex-column align-items-center justify-content-center mb-5" id="podium">
             <div class="flex-fill card d-flex flex-column align-items-center mb-3 mx-3 col-lg-1 col-10 col-sm-8 p-3">
-                <img class="m-1" src="https://tryumf.com/api/attachment/get/E1A1D522-60A3-4575-91EE-169AD179B79B/ImageIdent/csPhotos%7CPhotoMed%7CCA532C6C-B71B-4D00-BF91-0013A9918E80%7C5.png/Medal_stalowy_zloty_pierwsze_miejsce.png" height="100px" width="100px">
+                <img class="m-1" src="/img/1 miejsce.png" height="100px" width="100px">
                 <p class="mb-1">{{$users[0]['name']}}</p>
                 <p>{{$users[0]['avg']}} {{str_repeat('⭐',round($users[0]['avg']))}}</p>
                 <div class="liczba_zgloszen mb-3 bg-primary">
@@ -25,7 +25,7 @@
 
             </div>
             <div class="flex-fill card d-flex flex-column align-items-center mt-3 mx-3 col-lg-1 col-10 col-sm-8 p-3">
-                <img class="m-1" src=" https://tryumf.com/api/attachment/get/E1A1D522-60A3-4575-91EE-169AD179B79B/ImageIdent/csPhotos%7CPhotoMed%7C0D5C1385-B72D-4452-AD3A-7BB92FB72D28%7C3/Medal_zamak_srebrny_drugie_miejsce.png" height="100px" width="100px">
+                <img class="m-1" src="/img/2 miejsce.png" height="100px" width="100px">
                 <p class="mb-1">{{$users[1]['name']}}</p>
                 <p>{{$users[1]['avg']}} {{str_repeat('⭐',round($users[1]['avg']))}}</p>
                 <div class="liczba_zgloszen mb-3 bg-primary">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="flex-fill card d-flex flex-column align-items-center mt-5 mx-3 col-lg-1 col-10 col-sm-8 p-3">
-                <img class="m-1" src="https://tryumf.com/api/attachment/get/E1A1D522-60A3-4575-91EE-169AD179B79B/ImageIdent/csPhotos%7CPhotoMed%7C3DAE345A-35A2-479F-930B-ADA2913889AF%7C3/Medal_stalowy_br%C4%85zowy_trzecie_miejsce.png" height="100px" width="100px">
+                <img class="m-1" src="/img/3 miejsce.png" height="100px" width="100px">
                 <p class="mb-1">{{$users[2]['name']}}</p>
                 <p>{{$users[2]['avg']}} {{str_repeat('⭐',round($users[2]['avg']))}}</p>
                 <div class="liczba_zgloszen mb-3 bg-primary">
