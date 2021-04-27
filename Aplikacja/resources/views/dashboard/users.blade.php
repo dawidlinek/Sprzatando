@@ -7,8 +7,13 @@
         <div class="row w-100 d-flex flex-column flex-lg-row align-items-start justify-content-between">
             @include('components.info')
             <div class="col-12 col-lg-6 d-flex flex-column align-items-start justify-content-between card m-2 p-3 order-2" style="height: 75vh;">
-                <h2 class="card-title text-primary mb-4">Szukaj użytkownika</h2>
-                <label for="search-user">ID użytkownika/Imię/Nazwisko</label>
+                <h2 class="card-title text-primary mb-4">Szukaj użytkownika
+                </h2>
+                <div class='d-flex'>
+                    <label>Sortuj po najniżych ocenach użytkownika</label> <input @if(request()->get('sort')=='avg_rating') onclick="window.location='/dashboard/users'" checked  @else onclick="window.location='/dashboard/users?sort=avg_rating'" @endif  type="checkbox"/>
+                </div>
+
+                <label for="search-user" >ID użytkownika/Imię/Nazwisko</label>
                 <input type="text" class="form-control mb-3" id="search-user" value='' aria-describedby="basic-addon3">
                 <div class="w-100" id="principals">
                     @foreach ($users as $user)
