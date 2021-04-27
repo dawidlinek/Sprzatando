@@ -129,7 +129,7 @@
     <!-- KONIEC PRAWEJ KOLUMNY -->
     </div>
     </div>
-    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()" style="z-index: 10000;">
+    <div class="toTop bg-primary" id="toTopButton" onclick="scrollToTop()" style="z-index: 1001;">
         ↑
     </div>
     @include('components.footer')

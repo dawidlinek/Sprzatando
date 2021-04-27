@@ -74,7 +74,7 @@
 
 <!-- <Linki mobile> -->
 <div class="d-block d-md-none">
-    <nav id="mobileMenu" class="w-100 col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse" style="z-index: 1000;">
+    <nav id="mobileMenu" class="w-100 col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse" style="z-index: 1002;">
         <div class="position-sticky pt-3">
             <!-- Mobile version main links -->
             <div class="d-block d-md-none">
