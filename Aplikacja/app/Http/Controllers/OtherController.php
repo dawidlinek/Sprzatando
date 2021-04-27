@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\Categories;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class OtherController extends Controller
@@ -16,35 +17,36 @@ class OtherController extends Controller
         return view('welcome', ['announcements' => $announcements, 'categories' => $categories]);
     }
     public function ranking(){
-    $users=User::all();
-        foreach($users as &$user){
-            $user->ratings=$user->engaged()->where('status','selected')->with('details:rating,id')->get()->toArray();
-            $user->ratings=array_map(fn($x)=>$x['details']['rating'],$user->ratings);
-            $user->jobs=count($user->ratings);
-            $user->avg=$user->jobs?round(array_sum($user->ratings)/$user->jobs,1):0;
-        }
-        $users=$users->toArray();
+        $users=User::with([
+            'engaged'=>function($q){
+                $q->where('status','selected');
+                $q->with('details:rating,id');
+            }])->get();
 
-        usort($users,function($a, $b) {return $a['avg']<$b['avg'];});
-        $users=array_slice($users,0,10);
+        $users->map(function($x){
+            $x->avg=$x->engaged->avg('details.rating');
+        });
+        $users=$users->sortByDesc('avg')->values()->take(10);
 
         return view('ranking',compact('users'));
     }
-    function sort($a, $b){
-return $a['avg']<=>$b['avg'];
-    }
+
     public function users(Request $request){
         $users=User::all();
         if($request->sort=='avg_rating'){
-            foreach($users as &$user){
-                $user->ratings=$user->engaged()->where('status','selected')->with('details:rating,id')->get()->toArray();
-                $user->ratings=array_map(fn($x)=>$x['details']['rating'],$user->ratings);
-                $user->jobs=count($user->ratings);
-                $user->avg=$user->jobs?round(array_sum($user->ratings)/$user->jobs,1):0;
-            }
-            $users=$users->sortBy('avg');
+            $users=User::with([
+                'engaged'=>function($q){
+                    $q->where('status','selected');
+                    $q->with('details:rating,id');
+                }])->whereHas(
+                    'engaged',function(Builder $q){$q->where('status','selected');}
+                )->get();
 
-            // usort($users,function($a, $b) {return $a['avg']>$b['avg'];});
+            $users->map(function($x){
+                $x->avg=$x->engaged->avg('details.rating');
+            });
+            $users=$users->sortBy('avg')->values();
+
         }
         return view('dashboard.users',compact('users'));
     }
