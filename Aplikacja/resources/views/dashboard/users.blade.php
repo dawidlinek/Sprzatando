@@ -6,15 +6,19 @@
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         <div class="row w-100 d-flex flex-column flex-lg-row align-items-start justify-content-between">
             @include('components.info')
+            <!-- <Lewa kolumna> -->
             <div class="col-12 col-lg-6 d-flex flex-column align-items-start justify-content-between card m-2 p-3 order-2" style="height: 75vh;">
                 <h2 class="card-title text-primary mb-4">Szukaj użytkownika
                 </h2>
-                <div class='d-flex'>
-                    <label>Sortuj po najniżych ocenach użytkownika</label> <input @if(request()->get('sort')=='avg_rating') onclick="window.location='/dashboard/users'" checked  @else onclick="window.location='/dashboard/users?sort=avg_rating'" @endif  type="checkbox"/>
+
+                <label for="search-user" >Wyszukaj: ID użytkownika/Imię/Nazwisko</label>
+                <input type="text" class="form-control mb-2" id="search-user" value='' aria-describedby="basic-addon3">
+                
+                <div class='d-flex w-100 mb-3'>
+                    <label>Od najniżej ocenionych użytkowników: </label>
+                    <input class="form-check-input ml-1" @if(request()->get('sort')=='avg_rating') onclick="window.location='/dashboard/users'" checked  @else onclick="window.location='/dashboard/users?sort=avg_rating'" @endif  type="checkbox"/>
                 </div>
 
-                <label for="search-user" >ID użytkownika/Imię/Nazwisko</label>
-                <input type="text" class="form-control mb-3" id="search-user" value='' aria-describedby="basic-addon3">
                 <div class="w-100" id="principals">
                     @foreach ($users as $user)
                     <div data-user='{{$user->id}}' class="card flex-row align-items-center py-4 my-3 mx-2 w-100 profile" style="cursor: pointer;">
@@ -23,8 +27,11 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
 
+            </div>
+            <!-- </Lewa kolumna> -->
+
+            <!-- <Prawa kolumna> -->
             <div class="col-12 col-lg-5 d-flex justify-content-center card m-2 p-3 order-1 order-lg-3">
                 <div class="d-flex flex-column justify-content-around" id="detailOffDiv">
                     <h2 class="card-title text-primary text-center mb-4">Liczba Użytkowników</h2>
@@ -68,7 +75,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- </Prawa kolumna> -->
         </div>
     </div>
     </div>
