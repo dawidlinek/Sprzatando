@@ -20,7 +20,7 @@
 
                             <div class="col-12 card-main-category">
                                 <p class="card-text">
-                                    @if($zlecenia??false) 
+                                    @if($zlecenia??false)
                                     @if($announcement->status=='finished' && $engageStatus !='finished')
                                     <span class="badge {{$announcement->status??''}} rounded">{{__($announcement->status??'Status')}}</span>
                                     @endif
@@ -57,10 +57,10 @@
                         <h5 class="m-0 text-primary card-main-price">{{$announcement->price??"Price"}} zł</h5>
                     </div>
                     <div class="b-row d-flex">
-                        @if($reported??false) 
+                        @if($reported??false)
                         <a class="btn btn-primary w-100 text-nowrap text-white rounded mr-1" href="/restore/{{$announcement->id}}">Odrzuć</a>
-                        <a class="btn btn-outline-danger w-100 text-nowrap text-danger rounded ml-1" href="/ban/{{$announcement->id}}">Zbanuj</a>
-                        @else 
+                        <a class="btn btn-outline-danger w-100 text-nowrap rounded ml-1" href="/ban/{{$announcement->id}}">Zbanuj</a>
+                        @else
                         @if($user??false)
 
                         @if($announcement->status=='active')
