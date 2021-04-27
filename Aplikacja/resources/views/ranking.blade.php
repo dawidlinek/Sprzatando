@@ -48,7 +48,7 @@
                 <tr>
                     <th>Miejsce</th>
                     <th>Nazwa użytkownika</th>
-                    <th>Liczba zgłoszeń</th>
+                    <th>Liczba ogłoszeń</th>
                     <th>Ocena</th>
                 </tr>
 
@@ -67,7 +67,7 @@
                     <td style="text-align: right;">{{$user['avg']}} {{str_repeat('⭐',round($user['avg']))}}</td>
                 </tr>
                 @endforeach
-                
+
                 <tr class="spaceRow"></tr>
             </table>
         </div>

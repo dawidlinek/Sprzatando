@@ -24,7 +24,8 @@ class OtherController extends Controller
             }])->get();
 
         $users->map(function($x){
-            $x->avg=$x->engaged->avg('details.rating');
+            $x->avg=$x->engaged->avg('details.rating')??0;
+            $x->jobs=$x->announcements()->count();
         });
         $users=$users->sortByDesc('avg')->values()->take(10);
 
