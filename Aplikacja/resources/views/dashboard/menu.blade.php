@@ -17,6 +17,7 @@
             Moje zlecenia
         </a>
     </li>
+    @auth
     @if(auth()->user()->admin())
     <li class="nav-item m-1">
         <a class="nav-link rounded @if(request()->is('dashboard/reported')) bg-primary text-white @endif" href="/dashboard/reported">
@@ -31,6 +32,7 @@
         </a>
     </li>
     @endif
+    @endauth
     <li class="nav-item m-1">
         <a class="nav-link rounded @if(request()->route()->uri=='user/profile') bg-primary text-white @endif" href="/user/profile">
             <span data-feather="file"></span>
