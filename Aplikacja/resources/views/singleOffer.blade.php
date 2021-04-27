@@ -93,7 +93,7 @@
                 <div id="miniMap"></div>
             </div>
             <div class="card w-100 p-3 p-md-4 mb-3 mb-md-5">
-
+@if($announcement->status=='active' || $announcement->status=='reported')
                 @auth
                 <!-- <Zalogowany> -->
                 <div class="row match-height">
@@ -107,24 +107,34 @@
                     </form>
                 </div>
                 <!-- </Zalogowany> -->
-
                 <!-- <Admin> -->
-                @if(auth()->user()->admin())
-                <form method="POST" action="/ban/{{$announcement->id}}">
-                    @csrf
-                    <button class="btn btn-outline-danger border-danger border-4 p-2 w-100">Zbanuj</button>
-                </form>
-                @endif
-                <!-- </Admin> -->
+                    <!-- </Admin> -->
 
-                @endauth
+                    @endauth
 
-                <!-- <Niezalogowany> -->
-                @guest
-                <p>Aby móc się korzystać z pełni możliwośći, musisz być zalogowany!</p>
-                <a class="btn btn-primary mb-3 p-2 w-100" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
-                <a class="btn bg-white border border-primary border-4 p-2 w-100" href='/register'>Zarejestruj się</a>
-                @endguest
+                    <!-- <Niezalogowany> -->
+                        @guest
+                        <p>Aby móc się korzystać z pełni możliwośći, musisz być zalogowany!</p>
+                        <a class="btn btn-primary mb-3 p-2 w-100" href='/login?redirect={{$announcement->id}}'>Zaloguj się</a>
+                        <a class="btn bg-white border border-primary border-4 p-2 w-100" href='/register'>Zarejestruj się</a>
+                        @endguest
+                        @else
+
+                        <div class="row w-100 match-height d-flex justify-content-center m-0 p-0">
+                            <div class="alert alert-danger mb-4 mt-4 col-12 border-0" role="alert">
+                                To ogłoszenie jest {{__($announcement->status)}}. Nie możesz już aplikować.
+                            </div>
+                        </div>
+                        @endif
+
+                        @auth
+                        @if(auth()->user()->admin() && $announcement->status!='banned')
+                        <form method="POST" action="/ban/{{$announcement->id}}">
+                            @csrf
+                            <button class="btn btn-outline-danger border-danger border-4 p-2 w-100">Zbanuj</button>
+                        </form>
+                        @endif
+                        @endauth
                 <!-- </Niezalogowany> -->
             </div>
         </div>
