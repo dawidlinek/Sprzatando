@@ -17,7 +17,6 @@
                         <p class="mb-0 text-primary" data-user='{{$user->id}}'>{{$user->name}}; ID: {{$user->id}}</p>
                     </div>
                     @endforeach
-
                 </div>
             </div>
 
