@@ -13,9 +13,9 @@
 
                 <label for="search-user" >Wyszukaj: ID użytkownika/Imię/Nazwisko</label>
                 <input type="text" class="form-control mb-2" id="search-user" value='' aria-describedby="basic-addon3">
-                
+
                 <div class='d-flex w-100 mb-3'>
-                    <label>Od najniżej ocenionych użytkowników: </label>
+                    <label>Najniżej ocenieni użytkownicy: </label>
                     <input class="form-check-input ml-1" @if(request()->get('sort')=='avg_rating') onclick="window.location='/dashboard/users'" checked  @else onclick="window.location='/dashboard/users?sort=avg_rating'" @endif  type="checkbox"/>
                 </div>
 
