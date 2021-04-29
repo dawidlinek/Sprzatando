@@ -82,7 +82,7 @@
                     <!-- <Main links> -->
                     <li class="nav-item m-1">
                         <a class="nav-link rounded @if(request()->route()->uri=='search') bg-primary text-white @else nav-item-inactive @endif " href="/search">
-                            Szukaj
+                            Przeglądaj
                         </a>
                     </li>
                     <li class="nav-item m-1" >
