@@ -1,7 +1,7 @@
 <footer>
     <!-- FOOTER START -->
-    <div class="row">
-        <div class="col-12">
+    <div class="row m-0">
+        <div class="col-12 p-0">
             <div class="p-3 text-light" style="background-color: #15192F; z-index: 1000;">
                 <div class="col-12 col-xl-10 offset-0 offset-xl-1">
                     <div class="row m-3 m-md-5 mb-0">
