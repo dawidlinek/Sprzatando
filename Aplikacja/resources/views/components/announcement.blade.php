@@ -29,7 +29,7 @@
                                     @if($user??false)
                                     <span class="badge {{$announcement->status??''}} rounded">{{__($announcement->status??'Status')}}</span>
                                     @if($announcement->engaged()->count()>0)
-                                    <span class="badge bg-secondary rounded">{{$announcement->engaged()->count()}} @if($announcement->engaged()->count()==1) aplikacja @else aplikacji @endif</span>
+                                    <span class="badge bg-secondary rounded">{{$announcement->engaged()->count()}} @if($announcement->engaged()->count()==1) aplikacja @elseif(in_array($announcement->engaged()->count(),[2,3,4,21,22])) aplikacje @else aplikacji @endif</span>
                                     @else
                                     <span class="badge bg-secondary rounded">Brak aplikacji</span>
                                     @endif
