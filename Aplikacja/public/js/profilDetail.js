@@ -21,7 +21,10 @@ for (let i = 0; i < profiles.length; i++) {
     let user=names[i].dataset.user;
     fetch(`/api/user/${user}`).then(resp=>{
       resp.json().then(data=>{
-        document.getElementById('ban-user-id').value=data.id
+
+        const banUserId = document.getElementById('ban-user-id'); 
+        if (banUserId) banUserId.value=data.id;
+        
         name.innerHTML = data.name;
         date.innerHTML = new Date(Date.parse(data.created_at)).toLocaleDateString();
         if(CreatedAnnouncements){
@@ -30,8 +33,7 @@ for (let i = 0; i < profiles.length; i++) {
             document.querySelector('#ban-user-date').value=data.ban
         }
         if(data.last){
-          description.innerHTML =
-         `<h4> Nazwa: ${data.last.title}</h4> ${data.last.rating_description??' Brak ostatniej oceny użytkownika'}`;
+          description.innerHTML = data.last.title;
           lastRating.innerHTML = data.last.rating??'Brak'
           for(let i=0;i<Math.round(data.last.rating??0);i++)
           lastRating.innerHTM+="⭐";
