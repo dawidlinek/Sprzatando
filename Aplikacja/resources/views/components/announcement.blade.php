@@ -28,6 +28,11 @@
                                     @endif
                                     @if($user??false)
                                     <span class="badge {{$announcement->status??''}} rounded">{{__($announcement->status??'Status')}}</span>
+                                    @if($announcement->engaged()->count()>0)
+                                    <span class="badge bg-secondary rounded">{{$announcement->engaged()->count()}} @if($announcement->engaged()->count()==1) aplikacja @else aplikacji @endif</span>
+                                    @else
+                                    <span class="badge bg-secondary rounded">Brak aplikacji</span>
+                                    @endif
                                     @endif
                                     @if($announcement??false)
                                     @foreach ($announcement->categories as $category)
@@ -64,7 +69,7 @@
                         @if($user??false)
 
                         @if($announcement->status=='active')
-                        <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="{{ route('announcement.edit', $announcement->id??"0") }}">Edytuj</a>
+                        <a class="btn btn-primary w-100 text-nowrap text-white rounded" href="{{ route('announcement.edit', $announcement->id??"0") }}">Szczegóły</a>
                         @else
                         <a class="btn btn-primary w-100 text-nowrap bg-gray text-white rounded" href="{{ route('announcement.edit', $announcement->id??"0") }}">Podgląd</a>
                         @endif
