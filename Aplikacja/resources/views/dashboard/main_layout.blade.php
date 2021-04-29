@@ -79,7 +79,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white shadow sidebar collapse" style="z-index: 1002;">
+            <nav id="sidebarMenu" class="col-md-3 col-xl-2 d-md-block bg-white shadow sidebar collapse" style="z-index: 1002;">
                 <div class="position-sticky pt-3">
                     <!-- Mobile version main links -->
                     <div class="d-block d-md-none">

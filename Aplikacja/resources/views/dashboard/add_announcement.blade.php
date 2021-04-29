@@ -3,7 +3,7 @@
 @section('main')
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-<main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+<main class="col-md-9 col-sm-12 ms-sm-auto col-xl-10 px-md-4 bg-light">
 
     <!-- Spacer -->
     <div class="pt-3 pb-2 mb-3"></div>

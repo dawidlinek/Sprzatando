@@ -3,7 +3,7 @@
 @section('main')
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-<section class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+<section class="col-md-9 col-sm-12 ms-sm-auto col-xl-10 px-md-4 bg-light">
 
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         <div class="row w-100 match-height mx-0">

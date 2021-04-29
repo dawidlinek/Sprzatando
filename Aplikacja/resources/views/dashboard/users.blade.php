@@ -2,7 +2,7 @@
 
 @section('main')
 
-<main class="col-md-9 col-sm-12 ms-sm-auto col-lg-10 px-md-4 bg-light">
+<main class="col-md-9 col-sm-12 ms-sm-auto col-xl-10 px-md-4 bg-light">
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         <div class="row w-100 d-flex flex-column flex-lg-row align-items-start justify-content-between">
             @include('components.info')
