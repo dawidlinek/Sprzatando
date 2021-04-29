@@ -22,7 +22,7 @@
     </div>
     @include('components.navbar')
 
-    <div class="col-11">
+    <div class="col-11 m-auto">
         @include('components.info')
     </div>
 
