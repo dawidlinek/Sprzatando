@@ -10,6 +10,7 @@ use App\Http\Controllers\OtherController;
 use App\Http\Middleware\AdminCheck;
 use App\Models\Announcement;
 use App\Models\Categories;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -65,3 +66,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 \PWA::routes();
+
