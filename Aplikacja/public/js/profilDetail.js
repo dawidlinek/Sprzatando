@@ -22,15 +22,16 @@ for (let i = 0; i < profiles.length; i++) {
     fetch(`/api/user/${user}`).then(resp=>{
       resp.json().then(data=>{
 
-        const banUserId = document.getElementById('ban-user-id'); 
+        const banUserId = document.getElementById('ban-user-id');
         if (banUserId) banUserId.value=data.id;
-        
+
         name.innerHTML = data.name;
         date.innerHTML = new Date(Date.parse(data.created_at)).toLocaleDateString();
         if(CreatedAnnouncements){
             CreatedAnnouncements.innerText=data.CreatedAnnouncements;
             // if(data.ban!=)
             document.querySelector('#ban-user-date').value=data.ban
+            idUser.innerText = data.id;
         }
         if(data.last){
           description.innerHTML = data.last.title;
@@ -42,10 +43,9 @@ for (let i = 0; i < profiles.length; i++) {
           lastRating.innerHTML = "Brak";
         }
         numberOfOrder.innerHTML = data.jobs;
-        idUser.innerText = data.id;
-        avgRating.innerHTML = data.avg;
+        avgRating.innerHTML = data.avg??0;
         for(let i=0;i<Math.round(data.avg??0);i++)
-        lastRating.innerHTM+="⭐";
+        avgRating.innerHTM+="⭐";
       })
 
     });
