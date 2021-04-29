@@ -17,11 +17,15 @@
             <div class="closeBar" id="bar2"></div>
         </div>
         <div class="w-75 h-75  d-flex align-items-center justify-content-center">
-            <img src="" id="showImage" height="100%" />
+            <img src="" id="showImage" width="100%" />
         </div>
     </div>
     @include('components.navbar')
-    @include('components.info')
+
+    <div class="col-11">
+        @include('components.info')
+    </div>
+
     <div class="row m-1 mt-5 m-md-5 justify-content-center">
         <!-- LEWA KOLUMNA -->
         <div class="col-md-8 col-sm-12 d-flex align-items-center justify-content-start flex-column mb-3 mb-md-5">
