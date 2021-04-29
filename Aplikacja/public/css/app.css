@@ -211,7 +211,7 @@ input[type="number"] {
     height: 50px;
     width: 50px;
     position: fixed;
-    right: 2%;
+    right: 55px;
     bottom: 5%;
     z-index: 1000000;
     border-radius: 10%;
