@@ -20,7 +20,7 @@
                 <p class="mb-1">{{$users[0]['name']}}</p>
                 <p>{{$users[0]['avg']}} {{str_repeat('⭐',round($users[0]['avg']))}}</p>
                 <div class="liczba_zgloszen mb-3 bg-primary">
-                    <p>{{$users[0]['jobs']}} ocen</p>
+                    <p>oceniony {{$users[0]['jobs']}} @if(in_array($users[0]['jobs'],[1])) raz @else razy @endif</p>
                 </div>
 
             </div>
@@ -29,7 +29,7 @@
                 <p class="mb-1">{{$users[1]['name']}}</p>
                 <p>{{$users[1]['avg']}} {{str_repeat('⭐',round($users[1]['avg']))}}</p>
                 <div class="liczba_zgloszen mb-3 bg-primary">
-                    <p>{{$users[1]['jobs']}} ocen</p>
+                    <p>oceniony {{$users[1]['jobs']}} @if(in_array($users[1]['jobs'],[1])) raz @else razy @endif</p>
                 </div>
             </div>
             <div class="flex-fill card d-flex flex-column align-items-center mt-5 mx-3 col-lg-1 col-10 col-sm-8 p-3">
@@ -37,7 +37,7 @@
                 <p class="mb-1">{{$users[2]['name']}}</p>
                 <p>{{$users[2]['avg']}} {{str_repeat('⭐',round($users[2]['avg']))}}</p>
                 <div class="liczba_zgloszen mb-3 bg-primary">
-                    <p>{{$users[2]['jobs']}} ocen</p>
+                    <p>oceniony {{$users[2]['jobs']}} @if(in_array($users[2]['jobs'],[1])) raz @else razy @endif</p>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
                     <td>{{$user['name']}}</td>
                     <td>
                         <div class="liczba_zgloszen bg-primary">
-                            <p>{{$user['jobs']}} ocen</p>
+                            <p>oceniony {{$user['jobs']}} @if(in_array($user['jobs'],[1])) raz @else razy @endif</p>
                         </div>
                     </td>
                     <td style="text-align: right;" class='text-nowrap'>{{$user['avg']}} {{str_repeat('⭐',round($user['avg']))}}</td>
