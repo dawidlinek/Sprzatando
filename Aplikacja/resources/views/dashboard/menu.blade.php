@@ -40,7 +40,7 @@
     <li class="nav-item m-1">
         <a class="nav-link rounded @if(request()->route()->uri=='user/profile') bg-primary text-white @endif" href="/user/profile">
             <span data-feather="file"></span>
-            <x-feathericon-settings class="@if(request()->is('dashboard/users')) text-white @else text-black @endif" style="margin-right: 6px;" />
+            <x-feathericon-settings class="@if(request()->is('user/users')) text-white @else text-black @endif" style="margin-right: 6px;" />
             Ustawienia
         </a>
     </li>
