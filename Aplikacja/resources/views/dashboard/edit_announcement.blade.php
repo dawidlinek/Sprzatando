@@ -147,7 +147,7 @@
 
             <!-- <Lewa kolumna> -->
             <div class="col-12 col-lg-6 d-flex flex-column align-items-start justify-content-between card m-2 p-3 order-2" style="height: 75vh;">
-                <h2 class="card-title text-primary mb-4">Wybierz zleceniodawce
+                <h2 class="card-title text-primary mb-4">Wybierz zleceniobiorcę
                 </h2>
 
                 <div class="w-100" id="principals">
@@ -170,7 +170,7 @@
                     <h2 class="card-title text-primary text-center mb-4">Wyświetlenia zgłoszenia</h2>
                     <p class="text-center">{{$announcement->views}}</p>
                 </div>
-                
+
                 <div class="d-none flex-column h-75" id="detailOnDiv">
 
                     <div class="d-flex h-25 align-items-center mb-4">
