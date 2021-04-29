@@ -9,7 +9,7 @@
 
   @include('components.navbar')
 
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
 
     <!-- <Search row> -->
     <form method="POST" action="/search">

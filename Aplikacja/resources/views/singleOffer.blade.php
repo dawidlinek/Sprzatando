@@ -17,7 +17,7 @@
             <div class="closeBar" id="bar2"></div>
         </div>
         <div class="w-75 h-75  d-flex align-items-center justify-content-center">
-            <img src="" id="showImage" width="100%" />
+            <img src="" id="showImage" width="100%" style="max-height: 100%;" />
         </div>
     </div>
     @include('components.navbar')
