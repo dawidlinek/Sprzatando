@@ -85,14 +85,12 @@
                     <div class="d-block d-md-none">
                         <ul class="nav flex-column">
                             <li class="nav-item m-1">
-                                <a class="nav-link" href="#" style="font-weight: 700;">
-                                    <span data-feather="file"></span>
-                                    Panel użytkownika
+                                <a class="nav-link rounded" href="/search">
+                                    Przeglądaj
                                 </a>
                             </li>
                             <li class="nav-item m-1">
                                 <a class="nav-link rounded" href="/ranking">
-                                    <span data-feather="file"></span>
                                     Ranking
                                 </a>
                             </li>
@@ -110,6 +108,9 @@
                     </div>
 
                     <!-- Sidebar links -->
+                    <a class="nav-link rounded w-100" href="/dashboard/announcement">
+                        <h5 class="text-primary" style="padding-left: 2px;">Panel użytkownika:</h5>
+                    </a>
                     @include('dashboard.menu')
                 </div>
             </nav>

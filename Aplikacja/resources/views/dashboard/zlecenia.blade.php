@@ -12,7 +12,7 @@
                     <h2 class="text-primary mb-4">Moje zlecenia</h2>
                 </div>
                 @if(count($announcements)==0)
-                Brak ogłoszeń
+                Brak zleceń
                 @endif
 
                 @foreach ($announcements as $announcement)
