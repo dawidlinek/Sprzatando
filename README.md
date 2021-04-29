@@ -28,10 +28,12 @@ https://xd.adobe.com/view/f8812adf-6d46-4401-b9bb-5ef1619719e8-add2/specs/
 
 ## Instalacja
 
+Pamiętajmy o skonfigurowaniu pliku env. 
 ```bash
 cd Aplikacja
 npm install
 composer install
+php artisan migrate
 ```
 
 <br>
@@ -43,5 +45,5 @@ cd Aplikacja
 php artisan serve
 ```
 
-Do poprawnego działania projektu wymagany jest plik .env
+Do poprawnego działania projektu wymagany jest plik .env. Przykładowy plik znajduje się pod nazwą .env.example. Wystarczy zmienić dane dostępowe do bazy danych oraz zmienić nazwę na .env
 <br>
