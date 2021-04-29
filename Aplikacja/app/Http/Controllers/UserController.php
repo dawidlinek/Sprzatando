@@ -59,17 +59,8 @@ class UserController extends Controller
 
     }
     public function UserApi(User $user){
-        // $user->engaged= $user->engaged()->with('details:id,rating')->get();
-        $ratings=[];
-        foreach($user->engaged()->where('status','selected')->get() as $eng){
-            $ratings[]=$eng->details->rating;
-        }
-        $user->jobs=count($ratings);
-        if($user->jobs==0){
-            $user->avg=0;
-        }else{
-            $user->avg=round(array_sum($ratings)/count($ratings),1);
-        }
+        $user->avg=round($user->engaged->avg('details.rating'),1);
+        $user->jobs=$user->engaged()->count();
         $user->CreatedAnnouncements=$user->announcements()->count();
         $user->ban=$user->ban_ending_at?date('Y-m-d',strtotime($user->ban_ending_at)):null;
         unset($user->engaged);

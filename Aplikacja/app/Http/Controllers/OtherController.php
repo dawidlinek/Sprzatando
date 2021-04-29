@@ -25,8 +25,9 @@ class OtherController extends Controller
 
         $users->map(function($x){
             $x->avg=$x->engaged->avg('details.rating')??0;
-            $x->jobs=$x->engaged()->count();
+            $x->jobs=$x->engaged()->whereHas('details',function(Builder $q){$q->where('rating','!=',null);})->count();
         });
+        
         $users=$users->sortByDesc('jobs')->sortByDesc('avg')->values()->take(10);
 
         return view('ranking',compact('users'));
