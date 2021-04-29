@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   all_names= document.querySelectorAll(".profile p");
 
 })
+if(document.querySelector('#search-user')){
 document.querySelector('#search-user').addEventListener('input',e=>{
 
   let sorted=[];
@@ -80,3 +81,4 @@ document.querySelector('#search-user').addEventListener('input',e=>{
   principals.appendChild(e2);
 })
 });
+}
