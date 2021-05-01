@@ -4,6 +4,7 @@ let names = document.querySelectorAll(".profile p");
 const name = document.querySelector("#detailName");
 const date = document.querySelector("#detailDate");
 const description = document.querySelector("#detailDescription");
+const description2 = document.querySelector("#detailDescription2");
 const numberOfOrder = document.querySelector("#detailNumberOfOrder");
 const lastRating = document.querySelector("#detailLastRating");
 const avgRating = document.querySelector("#detailAvgRating");
@@ -34,7 +35,8 @@ for (let i = 0; i < profiles.length; i++) {
             idUser.innerText = data.id;
         }
         if(data.last){
-          description.innerHTML = data.last.title;
+            description.innerHTML = data.last.title;
+            description2.innerHTML='Ostatnia opinia: '+data.last.rating_description??'Brak'
           lastRating.innerHTML = data.last.rating??'Brak'
           for(let i=0;i<Math.round(data.last.rating??0);i++)
           lastRating.innerHTM+="⭐";

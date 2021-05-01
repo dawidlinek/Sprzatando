@@ -185,8 +185,9 @@
                     </div>
 
                     <div class="mt-1 mb-3">
-                        <h3 class="text-primary">Ostatnie zlecenia</h3>
-                        <p id="detailDescription"></p>
+                        <h3 class="text-primary">Ostatnie zlecenie</h3>
+                         <p id="detailDescription"></p>
+                        <p id="detailDescription2"></p>
                     </div>
 
                     <div class="mt-1 mb-5">

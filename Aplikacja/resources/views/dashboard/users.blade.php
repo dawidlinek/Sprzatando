@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-start flex-row flex-md-column align-items-center pt-3 pb-2 mb-3">
         <div class="row w-100 d-flex flex-column flex-lg-row align-items-start justify-content-between">
             @include('components.info')
-            
+
             <!-- <Lewa kolumna> -->
             <div class="col-12 col-lg-6 d-flex flex-column align-items-start justify-content-between card m-2 p-3 order-2" style="height: 75vh;">
                 <h2 class="card-title text-primary mb-4">Szukaj użytkownika
@@ -55,8 +55,9 @@
                     </div>
 
                     <div class="mt-1 mb-3">
-                        <h3 class="text-primary">Ostatnie zlecenia</h3>
+                        <h3 class="text-primary">Ostatnie zlecenie</h3>
                         <p id="detailDescription"></p>
+                        <p id="detailDescription2"></p>
                     </div>
                     <div class="mt-1 mb-5">
                         <h3 class="text-primary">Statystyki użytkownika</h3>
